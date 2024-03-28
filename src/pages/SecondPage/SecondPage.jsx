@@ -1,13 +1,13 @@
-import { Container, Block, Title, StyledLink } from './SecondPage.styled';
+import { Link } from 'react-router-dom';
 
 const SecondPage = () => {
   return (
-    <Container>
-      <Block>
-        <Title>Second Page</Title>
-        <StyledLink to="/second/5">Half</StyledLink>
-      </Block>
-    </Container>
+    <div>
+      <div>
+        <h2>Second Page</h2>
+        <Link to="/second/5">Half</Link>
+      </div>
+    </div>
   );
 };
 
