@@ -10,3 +10,6 @@ export const theme = {
     paleBlue: '#D7E3FF',
   },
 };
+
+// Спосіб застосування! Нижче приклад!
+// color:{theme.colors.black}
