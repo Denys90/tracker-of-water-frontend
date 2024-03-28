@@ -1,9 +1,20 @@
+import { DrinkLink } from 'components/DrinkList/DrinkList';
+import { Norma } from '../../components/Norma/Norma.jsx';
+import { ProgressBar } from 'components/ProgressBar/ProgressBar';
+import { DatePicker } from 'components/DatePicker/DatePicker';
+
 const HomePage = () => {
   return (
-    <div>
+    <>
       <h2>First Page</h2>
-      <img src="#" alt="Example" />
-    </div>
+      <Norma />
+      <ProgressBar />
+      <div>
+        <DrinkLink />
+        <DatePicker />
+      </div>{' '}
+      */
+    </>
   );
 };
 
