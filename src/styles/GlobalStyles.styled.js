@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 export const globalStyles = css`
   body {
     background-color: #000;
-    /* background-image: url('./assets/background.png'); */
+
     background-size: auto 100%;
     background-position: center center;
     background-repeat: no-repeat;
