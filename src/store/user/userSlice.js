@@ -1,48 +1,50 @@
-// import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-// import {
-//   signUpThunk,
-//   loginThunk,
-//   currentUserThunk,
-//   logoutThunk,
-// } from './thunks';
-// import { handleFulfilled, handlePending, handleRejected } from './handles';
-// import { getActions } from '../servises/getActions';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
-// const initialState = {
-//   token: null,
-//   profile: { name: '', email: '' },
-//   isLogined: false,
-//   isRefreshing: false,
-//   hasError: null,
-// };
+import { handleFulfilled, handlePending, handleRejected } from './selectors';
+import {
+  currentUserThunk,
+  loginThunk,
+  logoutThunk,
+  signUpThunk,
+} from './thunk';
 
-// const usersSlice = createSlice({
-//   name: 'users',
-//   initialState,
-//   extraReducers: (builder) => {
-//     builder
-//       .addCase(signUpThunk.fulfilled, (state, { payload }) => {
-//         state.profile = payload.user;
-//         state.token = payload.token;
-//       })
+import { getActions } from '../servises/getActions';
 
-//       .addCase(loginThunk.fulfilled, (state, { payload }) => {
-//         state.profile = payload.user;
-//         state.token = payload.token;
-//       })
+const initialState = {
+  token: null,
+  profile: { name: '', email: '' },
+  isLogined: false,
+  isRefreshing: false,
+  hasError: null,
+};
 
-//       .addCase(currentUserThunk.fulfilled, (state, { payload }) => {
-//         state.profile = payload.user;
-//       })
+const usersSlice = createSlice({
+  name: 'users',
+  initialState,
+  extraReducers: (builder) => {
+    builder
+      .addCase(signUpThunk.fulfilled, (state, { payload }) => {
+        state.profile = payload.user;
+        state.token = payload.token;
+      })
 
-//       .addCase(logoutThunk.fulfilled, (state) => {
-//         return { ...initialState };
-//       })
+      .addCase(loginThunk.fulfilled, (state, { payload }) => {
+        state.profile = payload.user;
+        state.token = payload.token;
+      })
 
-//       .addMatcher(isAnyOf(...getActions('pending')), handlePending)
-//       .addMatcher(isAnyOf(...getActions('fulfilled')), handleFulfilled)
-//       .addMatcher(isAnyOf(...getActions('rejected')), handleRejected);
-//   },
-// });
+      .addCase(currentUserThunk.fulfilled, (state, { payload }) => {
+        state.profile = payload.user;
+      })
 
-// export const usersReducer = usersSlice.reducer;
+      .addCase(logoutThunk.fulfilled, () => {
+        return { ...initialState };
+      })
+
+      .addMatcher(isAnyOf(...getActions('pending')), handlePending)
+      .addMatcher(isAnyOf(...getActions('fulfilled')), handleFulfilled)
+      .addMatcher(isAnyOf(...getActions('rejected')), handleRejected);
+  },
+});
+
+export const usersReducer = usersSlice.reducer;
