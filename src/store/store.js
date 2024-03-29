@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { usersReducer } from './user/userSlice';
-
-// import { filterReducer } from './contacts/filterSlice';
+import { filterReducer } from './water/filterSlice';
+import { waterReducer } from './water/waterSlice';
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,
@@ -26,8 +26,8 @@ const persistedReducer = persistReducer(persistConfig, usersReducer);
 
 const reducer = {
   users: persistedReducer,
-  //   water: waterReducer,
-  // filter: filterReducer,
+  water: waterReducer,
+  filter: filterReducer,
   root: rootReducer,
 };
 export const store = configureStore({

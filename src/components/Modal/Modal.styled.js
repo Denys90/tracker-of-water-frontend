@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { theme } from 'styles/theme';
 
 export const Popup = styled.div`
   position: fixed;
@@ -26,7 +25,6 @@ export const ModalWrapper = styled.div`
   height: 350px;
 `;
 export const ModalContent = styled.div`
-  color: ${theme.colors.black};
   position: relative;
   padding: 20px;
   width: 450px;
