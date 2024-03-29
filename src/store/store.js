@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { usersReducer } from './users/usersSlice';
+import { usersReducer } from './user/userSlice';
 
-import { filterReducer } from './contacts/filterSlice';
+// import { filterReducer } from './contacts/filterSlice';
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,
@@ -14,7 +14,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { rootReducer } from 'components/root/slice';
+import { rootReducer } from '../root/slice';
 
 const persistConfig = {
   key: 'users',
@@ -27,7 +27,7 @@ const persistedReducer = persistReducer(persistConfig, usersReducer);
 const reducer = {
   users: persistedReducer,
   //   water: waterReducer,
-  filter: filterReducer,
+  // filter: filterReducer,
   root: rootReducer,
 };
 export const store = configureStore({

@@ -12,4 +12,5 @@ export const theme = {
 };
 
 // Спосіб застосування!
-// color:{theme.colors.black}
+// import { theme } from 'styles/theme';
+// color:${theme.colors.black}
