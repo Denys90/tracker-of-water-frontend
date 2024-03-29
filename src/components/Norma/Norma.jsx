@@ -1,14 +1,13 @@
-import { NormaDivWrapper, NormaTitle } from './NormaStyled';
+import { NormaDivWrapper, NormaTitle, NormaWrapper } from './NormaStyled';
 
 export const Norma = () => {
   return (
     <NormaDivWrapper>
       <NormaTitle>My daily norma</NormaTitle>
-
-      <div>
+      <NormaWrapper>
         <p>1.5 L</p>
         <button>Edit</button>
-      </div>
+      </NormaWrapper>
     </NormaDivWrapper>
   );
 };
