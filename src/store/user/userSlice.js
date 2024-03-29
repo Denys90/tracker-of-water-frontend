@@ -8,7 +8,7 @@ import {
   signUpThunk,
 } from './thunk';
 
-import { getActions } from '../servises/getActions';
+import { getActions } from './servises/getActions';
 
 const initialState = {
   token: null,

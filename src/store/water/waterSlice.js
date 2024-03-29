@@ -7,18 +7,13 @@ import {
 } from './thunk';
 import { handleFulfilled, handlePending, handleReject } from './handles';
 
+import { getActions } from './servises/getActions';
+
 const initialState = {
   waters: [],
   isLoading: false,
   error: null,
 };
-const extraActions = [
-  getAllWatersThunk,
-  addWatersThunk,
-  deleteWatersThunk,
-  patchWatersThunk,
-];
-const getActions = (type) => extraActions.map((action) => action[type]);
 
 const waterSlice = createSlice({
   name: 'waters',
