@@ -356,6 +356,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   text-align: center;
   height: 100vh;
 `,dT=re.h1`
+  position: absolute;
+  top: 320px;
   font-size: 111px;
   margin: 0;
   color: ${F.colors.blue};
