@@ -32,7 +32,7 @@ export const ModalContent = styled.div`
   height: auto;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.5);
-  background-color: white;
+  background-color: ${theme.colors.white};
   backdrop-filter: blur(5px);
   transform: translateY(-50px);
   transition:
