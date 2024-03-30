@@ -42,11 +42,4 @@ export const Plit = styled.img`
   position: absolute;
   top: 249px;
   filter: drop-shadow(5px 5px 10px #ffffff);
-  /* filter: drop-shadow(
-    0 0 5px ${theme.colors.white},
-    0 0 10px ${theme.colors.white},
-    0 0 20px ${theme.colors.white},
-    0 0 40px ${theme.colors.white},
-    0 0 80px ${theme.colors.white}
-  ); */
 `;
