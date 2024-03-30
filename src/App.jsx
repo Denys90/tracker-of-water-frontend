@@ -8,8 +8,6 @@ import { AppWrapper } from './App.styled';
 import { Global } from '@emotion/react';
 import { globalStyles } from 'styles/Global.styled';
 
-import { MainPage } from './components/MainPage/MainPage/MainPage';
-
 import PrivateRoute from 'guards/PrivateRoute';
 // import PublicRoute from 'guards/PublicRoute';
 
@@ -28,8 +26,6 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path="/" element={<MainPage />} />
-
             <Route path="*" element={<ErrorPage />} />
           </Route>
         </Routes>

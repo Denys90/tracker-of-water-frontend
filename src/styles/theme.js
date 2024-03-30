@@ -16,17 +16,18 @@ export const theme = {
     activeBtn: 'none',
   },
 
-  // Спосіб застосування theme.spacing
-  //  margin: ${({ theme }) => theme.spacing(2)};
-  spacing: (value) => `${value * 8}px`,
-
   breakpoint: {
     mobile: '320px',
     tablet: '768px',
     desktop: '1440px',
   },
+
+  spacing: (value) => `${value * 8}px`,
 };
 
 // Спосіб застосування!
 // import { theme } from 'styles/theme';
 // color:${theme.colors.black}
+
+// Спосіб застосування theme.spacing
+//  margin: ${({ theme }) => theme.spacing(2)};

@@ -1,5 +1,4 @@
-import { Item, List, Title, Wrapper } from './DrinkWater.styled';
-import { Container } from '@mui/system';
+import { Container, Item, List, Title, Wrapper } from './DrinkWater.styled';
 
 export const DrinkWater = () => {
   const list = [
