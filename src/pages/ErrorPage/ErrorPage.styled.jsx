@@ -15,6 +15,8 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
+  position: absolute;
+  top: 320px;
   font-size: 111px;
   margin: 0;
   color: ${theme.colors.blue};
