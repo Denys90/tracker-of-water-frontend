@@ -4,6 +4,7 @@ import {
   CloseButton,
   ModalWrapper,
 } from './ModalStyle.styled';
+import { IoMdClose } from 'react-icons/io';
 import { createPortal } from 'react-dom';
 
 import { useModalContext } from 'context/ModalContext';
@@ -22,7 +23,9 @@ const Modal = () => {
           <Popup>
             <ModalWrapper ref={popupRef}>
               <ModalContent>
-                <CloseButton onClick={toggleModal}></CloseButton>
+                <CloseButton onClick={toggleModal}>
+                  <IoMdClose />
+                </CloseButton>
               </ModalContent>
             </ModalWrapper>
           </Popup>,
