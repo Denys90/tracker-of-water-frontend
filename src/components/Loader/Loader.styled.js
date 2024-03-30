@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from '../../styles/theme';
 
 export const LoaderStyle = styled.div`
   --r1: 154%;
@@ -8,11 +9,20 @@ export const LoaderStyle = styled.div`
   border-radius: 50%;
   background: radial-gradient(
       var(--r1) var(--r2) at top,
-      #0000 79.5%,
-      #269af2 80%
+      ${theme.colors.paleBlue} 79.5%,
+      ${theme.colors.skyBlue} 80%
     ),
-    radial-gradient(var(--r1) var(--r2) at bottom, #269af2 79.5%, #0000 80%),
-    radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, #269af2 80%), #ccc;
+    radial-gradient(
+      var(--r1) var(--r2) at bottom,
+      ${theme.colors.skyBlue} 79.5%,
+      ${theme.colors.paleBlue} 80%
+    ),
+    radial-gradient(
+      var(--r1) var(--r2) at top,
+      ${theme.colors.paleBlue} 79.5%,
+      ${theme.colors.skyBlue} 80%
+    ),
+    #ccc;
   background-size: 50.5% 220%;
   background-position:
     -100% 0%,
