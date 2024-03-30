@@ -10,8 +10,6 @@ import { AppWrapper } from './App.styled';
 import { Global } from '@emotion/react';
 import { globalStyles } from 'styles/Global.styled';
 
-// import PrivateRoute from 'guards/PrivateRoute';
-// import PublicRoute from 'guards/PublicRoute';
 import { useUsers } from 'hooks/useUsers';
 
 function App() {
