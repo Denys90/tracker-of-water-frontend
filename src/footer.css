@@ -1,98 +1,32 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+html {
+	font-family:
+		system-ui,
+		'Segoe UI',
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji';
+	line-height: 8; /* 1. Correct the line height in all browsers. */
+	-webkit-text-size-adjust: 100%; /* 2. Prevent adjustments of font size after orientation changes in iOS. */
+	-moz-tab-size: 4; /* 3. Use a more readable tab size (opinionated). */
+	tab-size: 4; /* 3 */
 }
 
-body {
-  background: #333;
-  justify-content: flex-end;
-  align-items: flex-end;
-  min-height: 100vh;
+body{
+  background:white;
 }
-
 .footer {
   position: relative;
-  width: 100%;
-  background: #3586ff;
+  background: #05b3a4;
   min-height: 100px;
   padding: 20px 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.heart {
-  font-size: 30px; /* or any size you want */
-  color: #4747a7;
-}
-
-.heart:hover {
-  transform: scale(1.2); 
-}
-
-.heart::after {
-  width: 20px;
-  height: 20px;
-  bottom: -15px;
-}
-
-@keyframes glow {
-  /* Increased duration */
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; } 
-}
-
-.heart::after {
-  /* Slowed animation */
-  animation: glow 4s ease-in-out infinite; 
-}
-
-
-
-.social-icon,
-.menu {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0;
-  flex-wrap: wrap;
-}
-
-.social-icon__item,
-.menu__item {
-  list-style: none;
-}
-
-.social-icon__link {
-  font-size: 2rem;
-  color: #fff;
-  margin: 0 10px;
-  display: inline-block;
-  transition: 0.5s;
-}
-.social-icon__link:hover {
-  transform: translateY(-10px);
-}
-
-.menu__link {
-  font-size: 1.2rem;
-  color: #fff;
-  margin: 0 10px;
-  display: inline-block;
-  transition: 0.5s;
-  text-decoration: none;
-  opacity: 0.75;
-  font-weight: 300;
-}
-
-.menu__link:hover {
-  opacity: 1;
+  margin-top:35%;
 }
 
 .footer p {
@@ -102,19 +36,13 @@ body {
   font-weight: 300;
 }
 
-.heart {
-  color: #8eb1ee;
-  width: 16px;
-  height: 16px;
-}
-
 .wave {
   position: absolute;
   top: -100px;
   left: 0;
   width: 100%;
   height: 100px;
-  background: url("https://i.ibb.co/wQZVxxk/wave.png");
+  background: url("https://i.imgur.com/ZAts69f.png");
   background-size: 1000px 100px;
 }
 
@@ -146,8 +74,6 @@ body {
   animation: animate 3s linear infinite;
 }
 
-
-
 @keyframes animateWaves {
   0% {
     background-position-x: 1000px;
@@ -165,4 +91,3 @@ body {
     background-positon-x: 0px;
   }
 }
-
