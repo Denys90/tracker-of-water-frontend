@@ -15,6 +15,11 @@ export const theme = {
     hoverBtn: '0 4px 14px rgba(64, 123, 255, 0.54)',
     activeBtn: 'none',
   },
+
+  // Спосіб застосування theme.spacing
+  //  margin: ${({ theme }) => theme.spacing(2)};
+  spacing: (value) => `${value * 8}px`,
+
   breakpoint: {
     mobile: '320px',
     tablet: '768px',
