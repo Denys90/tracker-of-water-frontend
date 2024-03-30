@@ -380,17 +380,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   position: absolute;
   top: 249px;
   filter: drop-shadow(5px 5px 10px #ffffff);
-  /* filter: drop-shadow(
-    0 0 5px ${F.colors.white},
-    0 0 10px ${F.colors.white},
-    0 0 20px ${F.colors.white},
-    0 0 40px ${F.colors.white},
-    0 0 80px ${F.colors.white}
-  ); */
 `,hT="/runners_of_code__frontend/assets/water-87d9a5e7.png",mT=()=>O.jsxs(cT,{children:[O.jsx(pT,{src:hT,alt:"water",width:"100"}),O.jsx(dT,{children:"404"}),O.jsx(fT,{children:"Page not found"})]}),yT=re.div`
   width: 100%;
   height: 100vh;
-  background-color: #fff;
+  background-color: ${F.colors.white};
   background-repeat: no-repeat;
   background-position: left top;
   background-size: 100% 100%;
