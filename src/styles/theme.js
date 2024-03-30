@@ -31,3 +31,6 @@ export const theme = {
 
 // Спосіб застосування theme.spacing
 //  margin: ${({ theme }) => theme.spacing(2)};
+
+// Спосіб застосування
+//  @media screen and (min-width: ${theme.breakpoint.tablet})
