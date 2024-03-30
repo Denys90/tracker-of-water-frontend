@@ -1,8 +1,10 @@
+import { DrinkListTitle } from './DrinkListStyled';
+
 export const DrinkLink = () => {
   return (
     <>
       <div>
-        <h3>Today</h3>
+        <DrinkListTitle>Today</DrinkListTitle>
         <ul>
           <li>
             <div>

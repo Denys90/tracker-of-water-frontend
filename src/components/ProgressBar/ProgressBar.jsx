@@ -1,13 +1,16 @@
+import { ProgressDivWrapper } from './ProgressBarStyled';
+import { ProgressTitle } from './ProgressBarStyled';
+
 export const ProgressBar = () => {
   return (
     <>
-      <div>
+      <ProgressDivWrapper>
         <div>
-          <h3>Today</h3>
+          <ProgressTitle>Today</ProgressTitle>
           <div></div>
         </div>
         <button>Add Water</button>
-      </div>
+      </ProgressDivWrapper>
     </>
   );
 };
