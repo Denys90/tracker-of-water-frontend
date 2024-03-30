@@ -1,10 +1,7 @@
 import styled from '@emotion/styled';
 import { theme } from '../../../styles/theme';
 
-
 export const ConsumptionTracker = () => {
-
-
   const benefits = [
     {
       text: 'Habit drive',
@@ -24,15 +21,15 @@ export const ConsumptionTracker = () => {
   //   navigate('/signup');
   // }
 
-    return (
-      
-        <Tracker>
+  return (
+    <Tracker>
       <Title>Water consumption tracker</Title>
-      <Subtitle>Record daily water <br /> intake and track</Subtitle>
+      <Subtitle>
+        Record daily water <br /> intake and track
+      </Subtitle>
       <BenefitsTitle>Tracker Benefits</BenefitsTitle>
       <Benefits>
-          {benefits.map(({ id, text }, index) => (
-       
+        {benefits.map(({ id, text }, index) => (
           <Item key={index}>
             <Image>
               <use href={id}></use>
@@ -42,24 +39,19 @@ export const ConsumptionTracker = () => {
         ))}
       </Benefits>
 
-      <Button type="button">
-        Try tracker
-      </Button>
+      <Button type="button">Try tracker</Button>
     </Tracker>
   );
 };
 
-
-
-
 export const Title = styled.h1`
   font-weight: 700;
   font-size: 28px;
-  color: ${ theme.colors.black};
+  color: ${theme.colors.black};
   line-height: 32px;
   margin-bottom: 16px;
 
-  @media screen and (min-width: ${ theme.breakpoint.tablet}) {
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
     font-size: 36px;
     line-height: 42px;
   }
@@ -67,14 +59,14 @@ export const Title = styled.h1`
 
 export const Subtitle = styled.p`
   font-size: 24px;
-  color: ${ theme.colors.black};
+  color: ${theme.colors.black};
   line-height: 30px;
   margin-bottom: 24px;
 
-  @media screen and (min-width: ${ theme.breakpoint.tablet}) {
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
     font-size: 26px;
     line-height: 32px;
-    br{
+    br {
       display: none;
     }
   }
@@ -85,16 +77,16 @@ export const Benefits = styled.ul`
   flex-direction: column;
   gap: 16px;
   font-size: 16px;
-  color: ${ theme.colors.black};
+  color: ${theme.colors.black};
   line-height: 20px;
   margin-bottom: 24px;
 
-  @media screen and (min-width: ${ theme.breakpoint.tablet}) {
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
     flex-direction: row;
     justify-content: space-between;
   }
 
-  @media screen and (min-width: ${ theme.breakpoint.desktop}) {
+  @media screen and (min-width: ${theme.breakpoint.desktop}) {
     flex-direction: column;
     justify-content: center;
   }
@@ -118,7 +110,6 @@ export const Tracker = styled.div`
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     min-width: 439px;
-   
   }
 `;
 
@@ -128,7 +119,7 @@ export const Image = styled.svg`
   width: 32px;
   height: 32px;
 
-  @media screen and (min-width: ${ theme.breakpoint.tablet}) {
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
     width: 40px;
     height: 40px;
   }
@@ -137,7 +128,7 @@ export const Image = styled.svg`
 export const BenefitsTitle = styled.h3`
   font-weight: 500;
   font-size: 18px;
-  color: ${ theme.colors.black};
+  color: ${theme.colors.black};
   line-height: 20px;
   margin-bottom: 12px;
 `;
