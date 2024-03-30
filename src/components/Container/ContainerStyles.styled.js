@@ -15,8 +15,8 @@ export const ContainerStyles = styled.div`
   }
 
   @media screen and (min-width: ${ theme.breakpoint.desktop}) {
-    max-width: 1656px;
     padding-left: 132px;
     padding-right: 132px;
+    
   }
 `;
