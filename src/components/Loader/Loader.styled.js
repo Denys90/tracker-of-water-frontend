@@ -7,6 +7,7 @@ export const LoaderStyle = styled.div`
   width: 60px;
   aspect-ratio: 1;
   border-radius: 50%;
+  border: 1px solid ${theme.colors.blue};
   background: radial-gradient(
       var(--r1) var(--r2) at top,
       ${theme.colors.paleBlue} 79.5%,
