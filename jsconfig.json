@@ -2,5 +2,11 @@
   "compilerOptions": {
     "baseUrl": "src"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "paths": {
+    "@assets/*": ["assets/*"],
+    "paths/*": {
+      "@styles/*": ["styles/*"]
+    }
+  }
 }
