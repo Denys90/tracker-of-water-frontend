@@ -5,17 +5,15 @@ import { BackgroundElement, MainPageStyle, Wrap } from './MainPage.styled';
 
 export const MainPage = () => {
   return (
-    
     <MainPageStyle>
       <BackgroundElement>
-      <ContainerStyles>
-        <Wrap>
-        <ConsumptionTracker />
-          <DrinkWater />
-        </Wrap>
+        <ContainerStyles>
+          <Wrap>
+            <ConsumptionTracker />
+            <DrinkWater />
+          </Wrap>
         </ContainerStyles>
-        </BackgroundElement>
-      </MainPageStyle>
- 
+      </BackgroundElement>
+    </MainPageStyle>
   );
 };

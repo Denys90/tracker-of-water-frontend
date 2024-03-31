@@ -8,7 +8,8 @@ import {
   Title,
   Tracker,
 } from './ConsumptionTracker.styled';
-import svg from '../../../assets/images/icons.svg'
+
+import svg from 'assets/images/icons.svg';
 
 export const ConsumptionTracker = () => {
   const benefits = [
