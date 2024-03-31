@@ -8,20 +8,21 @@ import {
   Title,
   Tracker,
 } from './ConsumptionTracker.styled';
+import svg from '../../../assets/images/icons.svg'
 
 export const ConsumptionTracker = () => {
   const benefits = [
     {
       text: 'Habit drive',
-      id: `#icon-calendar`,
+      id: `${svg}#icon-calendar`,
     },
     {
       text: 'View statistics',
-      id: `}#icon-statistic`,
+      id: `${svg}#icon-outline1`,
     },
     {
       text: 'Personal rate setting',
-      id: `}#icon-instrument`,
+      id: `${svg}#icon-tools`,
     },
   ];
 
