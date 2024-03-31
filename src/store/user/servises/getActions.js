@@ -3,7 +3,7 @@ import {
   loginThunk,
   currentUserThunk,
   logoutThunk,
-} from '../user/thunk';
+} from '../thunk';
 
 const extraActions = [signUpThunk, loginThunk, currentUserThunk, logoutThunk];
 

@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
-import { handleFulfilled, handlePending, handleRejected } from './selectors';
+import { handlePending, handleRejected, handleFulfilled } from './handles';
 import {
   currentUserThunk,
   loginThunk,
@@ -8,7 +8,7 @@ import {
   signUpThunk,
 } from './thunk';
 
-import { getActions } from '../servises/getActions';
+import { getActions } from './servises/getActions';
 
 const initialState = {
   token: null,
