@@ -12,12 +12,12 @@ export const TryTracker = styled.button`
   border-radius: 10px;
   border: none;
   background-color: ${theme.colors.blue};
-  box-shadow: ${theme.boxShadowBtn.Btn} 0px 4px 8px;
+  box-shadow: ${theme.boxShadowBtn.Btn};
   color: ${theme.colors.white};
   cursor: pointer;
 
   &:hover {
-    box-shadow: ${theme.boxShadowBtn.hoverBtn} 0px 4px 14px;
+    box-shadow: ${theme.boxShadowBtn.hoverBtn};
   }
 
   &:active {
@@ -46,12 +46,12 @@ export const AddWater = styled.button`
   border-radius: 10px;
   border: none;
   background-color: ${theme.colors.blue};
-  box-shadow: ${theme.boxShadowBtn.Btn} 0px 4px 8px;
+  box-shadow: ${theme.boxShadowBtn.Btn};
   color: ${theme.colors.white};
   cursor: pointer;
 
   &:hover {
-    box-shadow: ${theme.boxShadowBtn.activeBtn} 0px 4px 14px;
+    box-shadow: ${theme.boxShadowBtn.activeBtn};
   }
 
   &:active {
