@@ -313,10 +313,10 @@ Error generating stack: `+i.message+`
 
   .wave {
     position: absolute;
-    top: -60px;
+    top: -70px;
     left: 0;
     width: 100%;
-    height: 60px;
+    height: 100px;
     background: url('https://i.ibb.co/wQZVxxk/wave.png');
     background-size: 1000px 100px;
   }
