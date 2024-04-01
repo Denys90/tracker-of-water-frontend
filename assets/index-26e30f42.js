@@ -803,16 +803,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
   @font-face {
     font-family: 'Roboto-Bold';
-    src: url('../assets/fonts/Roboto-Bold.ttf') format('truetype');
+    src: url('assets/fonts/Roboto-Bold.ttf') format('truetype');
   }
 
   @font-face {
     font-family: 'Roboto-Medium';
-    src: url('../assets/fonts/Roboto-Medium.ttf') format('truetype');
+    src: url('assets/fonts/Roboto-Medium.ttf') format('truetype');
   }
   @font-face {
     font-family: 'Roboto-Regular';
-    src: url('../assets/fonts/Roboto-Regular.ttf') format('truetype');
+    src: url('assets/fonts/Roboto-Regular.ttf') format('truetype');
   }
 `;function qM(){return b.jsxs(b.Fragment,{children:[b.jsx(o_,{styles:KM}),b.jsx(QM,{children:b.jsxs(tD,{children:[b.jsx(fs,{path:"/",element:b.jsx(j_,{})}),b.jsx(fs,{path:"/home",element:b.jsx(YM,{})}),b.jsx(fs,{path:"*",element:b.jsx(VM,{})})]})})]})}const GM=P.createContext(void 0),XM=({children:e})=>{const[t,n]=P.useState(!1),[r,o]=P.useState(!1),i=P.useRef(null),a=P.useCallback(u=>{u.key==="Escape"&&t&&(n(!1),o(!1))},[t]),s=P.useCallback(u=>{i.current&&!i.current.contains(u.target)&&t&&(n(!1),o(!1))},[t]);P.useEffect(()=>(window.addEventListener("mousedown",s),window.addEventListener("keydown",a),()=>{window.removeEventListener("mousedown",s),window.removeEventListener("keydown",a)}),[s,a,t]),P.useEffect(()=>{r?document.body.style.overflow="hidden":document.body.style.overflow="auto"},[r]);const l=()=>{n(!t),o(!r)};return b.jsx(GM.Provider,{value:{isOpenModal:t,popupRef:i,toggleModal:l},children:e})};var JM={};/**
  * @license React
