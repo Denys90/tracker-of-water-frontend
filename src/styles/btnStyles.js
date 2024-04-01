@@ -12,7 +12,7 @@ export const ButtonOne = styled.button`
   border-radius: 10px;
   border: none;
   background-color: ${theme.colors.blue};
-  box-shadow: ${theme.boxShadowBtn.btn} 0px 4px 8px;
+  box-shadow: ${theme.boxShadowBtn.Btn} 0px 4px 8px;
   color: ${theme.colors.white};
   cursor: pointer;
 
@@ -46,7 +46,7 @@ export const ButtonTwo = styled.button`
   border-radius: 10px;
   border: none;
   background-color: ${theme.colors.blue};
-  box-shadow: ${theme.boxShadowBtn.btn} 0px 4px 8px;
+  box-shadow: ${theme.boxShadowBtn.Btn} 0px 4px 8px;
   color: ${theme.colors.white};
   cursor: pointer;
 
