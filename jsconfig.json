@@ -5,8 +5,6 @@
   "include": ["src"],
   "paths": {
     "@assets/*": ["assets/*"],
-    "paths/*": {
-      "@styles/*": ["styles/*"]
-    }
+    "@styles/*": ["styles/*"]
   }
 }
