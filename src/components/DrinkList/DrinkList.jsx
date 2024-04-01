@@ -10,8 +10,8 @@ import {
   DrinkListRow,
 } from './DrinkListStyled';
 
-import svg from '../../assets/images/icons.svg';
-import { AddWater } from '../../styles/btnStyles';
+import svg from 'assets/images/icons.svg';
+import { AddWater } from 'styles/btnStyles';
 
 export const DrinkList = () => {
   return (

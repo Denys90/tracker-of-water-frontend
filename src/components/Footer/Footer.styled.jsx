@@ -4,7 +4,6 @@ import { theme } from 'styles/theme';
 
 export const FooterContainer = styled.footer`
   position: relative;
-  width: 100%;
   background: ${theme.colors.waves};
   min-height: 50px;
   padding: 20px 50px;
