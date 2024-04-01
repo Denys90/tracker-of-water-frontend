@@ -551,12 +551,12 @@ Error generating stack: `+i.message+`
   border-radius: 10px;
   border: none;
   background-color: ${M.colors.blue};
-  box-shadow: ${M.boxShadowBtn.Btn} 0px 4px 8px;
+  box-shadow: ${M.boxShadowBtn.Btn};
   color: ${M.colors.white};
   cursor: pointer;
 
   &:hover {
-    box-shadow: ${M.boxShadowBtn.hoverBtn} 0px 4px 14px;
+    box-shadow: ${M.boxShadowBtn.hoverBtn};
   }
 
   &:active {
@@ -583,12 +583,12 @@ Error generating stack: `+i.message+`
   border-radius: 10px;
   border: none;
   background-color: ${M.colors.blue};
-  box-shadow: ${M.boxShadowBtn.Btn} 0px 4px 8px;
+  box-shadow: ${M.boxShadowBtn.Btn};
   color: ${M.colors.white};
   cursor: pointer;
 
   &:hover {
-    box-shadow: ${M.boxShadowBtn.activeBtn} 0px 4px 14px;
+    box-shadow: ${M.boxShadowBtn.activeBtn};
   }
 
   &:active {
