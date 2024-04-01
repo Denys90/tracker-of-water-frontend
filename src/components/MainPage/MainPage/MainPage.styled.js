@@ -53,7 +53,7 @@ export const Wrap = styled.div`
     justify-content: center;
     align-items: flex-end;
     gap: 81px;
-    padding-top: 195px;
-    padding-bottom: 195px;
+    padding-top: 140px;
+    padding-bottom: 140px;
   }
 `;
