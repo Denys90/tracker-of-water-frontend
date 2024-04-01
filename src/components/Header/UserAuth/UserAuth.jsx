@@ -1,4 +1,4 @@
-import sprite from '../../../assets/images/icons.svg';
+import sprite from 'assets/images/icons.svg';
 import { NavLink } from 'react-router-dom';
 import { SignInIcon, UserAuthBtn } from './UserAuth.styled';
 

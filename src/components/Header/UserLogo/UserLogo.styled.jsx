@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from 'styles/theme';
 
 export const UserLogoContainer = styled.div`
   position: relative;
@@ -12,7 +13,7 @@ export const UserLogoTitle = styled.p`
   font-size: 18px;
   line-height: 1.33em;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (min-width: ${theme.breakpoint.mobile}) {
     font-size: 16px;
     line-height: 1.25em;
   }
@@ -45,7 +46,7 @@ export const UserDefaultAvatar = styled.span`
   align-items: center;
   justify-content: center;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.mobile}) {
+  @media (min-width: ${theme.breakpoint.mobile}) {
     font-size: 14px;
     line-height: 1.25em;
   }
@@ -54,12 +55,12 @@ export const UserDefaultAvatar = styled.span`
 export const UserModalIcon = styled.svg`
   width: 16px;
   height: 16px;
-  fill: ${({ theme }) => theme.color.accent};
-  stroke: ${({ theme }) => theme.color.accent};
+  fill: ${theme.colors.accent};
+  stroke: ${theme.colors.accent};
   transition: transform 0.5s ease;
 
   &:hover,
   &:focus {
-    stroke: ${({ theme }) => theme.color.secondaryYellow};
+    stroke: ${theme.colors.secondaryYellow};
   }
 `;

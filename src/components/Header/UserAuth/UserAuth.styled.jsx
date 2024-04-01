@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from 'styles/theme';
 
 export const UserAuthBtn = styled.button`
   display: flex;
@@ -9,14 +10,14 @@ export const UserAuthBtn = styled.button`
   background-color: transparent;
   padding: 10px;
   border: none;
-  color: #407BFF;
+  color: ${theme.colors.blue};
 
   &:hover,
   &:focus {
-    color: #FF9D43;
+    color: ${theme.colors.orange};
   }
 
-  @media screen and (min-width: 320px) {
+  @media screen and (min-width: ${theme.breakpoint.mobile}) {
     font-size: 26px;
     line-height: 1.25em;
   }
@@ -26,6 +27,6 @@ export const SignInIcon = styled.svg`
   margin-left: 8px;
   width: 48px;
   height: 48px;
-  stroke: #2F2F2F;
+  stroke: ${theme.colors.black};
   fill: transparent;
 `;
