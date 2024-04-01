@@ -128,7 +128,7 @@ export const Mark = styled.span`
   line-height: 20px;
   text-align: center;
   margin-bottom: 4px;
-
+  margin-left: -3px;
   color: ${theme.colors.blue};
   left: ${(props) => props.left};
 

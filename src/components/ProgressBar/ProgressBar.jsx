@@ -16,7 +16,7 @@ export const ProgressBar = () => {
   // const waterPercentage = useSelector((state) => state.waterPercentage); // % from Redux
 
   //exepmple
-  const waterPercentage = 358;
+  const waterPercentage = 48;
 
   return (
     <ProgressDivWrapper>
