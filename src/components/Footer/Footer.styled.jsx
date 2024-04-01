@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
+import { theme } from 'styles/theme';
 
 export const FooterContainer = styled.footer`
   position: relative;
   width: 100%;
-  background: #3586ff;
-  min-height: 60px;
+  background: ${theme.colors.waves};
+  min-height: 50px;
   padding: 20px 50px;
   display: flex;
   justify-content: center;
@@ -13,7 +14,7 @@ export const FooterContainer = styled.footer`
   z-index: 999;
 
   p {
-    color: #fff;
+    color: ${theme.colors.white};
     margin: 15px 0 10px 0;
     font-size: 1rem;
     font-weight: 300;
