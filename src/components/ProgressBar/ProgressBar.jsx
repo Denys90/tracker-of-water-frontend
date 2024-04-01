@@ -10,6 +10,7 @@ import {
   Mark,
   ProgressDiv,
 } from './ProgressBarStyled';
+import { AddWater } from '../../styles/btnStyles';
 // import { useSelector } from 'react-redux';
 
 export const ProgressBar = () => {
@@ -38,7 +39,7 @@ export const ProgressBar = () => {
         </ProgressBox>
       </ProgressDiv>
 
-      <button>Add Water</button>
+      <AddWater>Add wather</AddWater>
     </ProgressDivWrapper>
   );
 };

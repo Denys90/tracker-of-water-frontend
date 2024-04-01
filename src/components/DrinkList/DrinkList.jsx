@@ -9,7 +9,9 @@ import {
   DrinkListUl,
   DrinkListRow,
 } from './DrinkListStyled';
+
 import svg from '../../assets/images/icons.svg';
+import { AddWater } from '../../styles/btnStyles';
 
 export const DrinkList = () => {
   return (
@@ -138,7 +140,7 @@ export const DrinkList = () => {
             </DrinkButtons>
           </DrinkListRow>
         </DrinkListUl>
-        <button>Add water</button>
+        <AddWater>Add water</AddWater>
       </DrinkListWrapper>
     </>
   );
