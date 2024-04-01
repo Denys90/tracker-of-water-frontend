@@ -1,13 +1,13 @@
 import {
   Benefits,
   BenefitsTitle,
-  Button,
   Image,
   Item,
   Subtitle,
   Title,
   Tracker,
 } from './ConsumptionTracker.styled';
+import {TryTracker} from '../../../styles/btnStyles'
 
 import svg from 'assets/images/icons.svg';
 
@@ -49,7 +49,7 @@ export const ConsumptionTracker = () => {
         ))}
       </Benefits>
 
-      <Button type="button">Try tracker</Button>
+      <TryTracker type="button">Try tracker</TryTracker>
     </Tracker>
   );
 };
