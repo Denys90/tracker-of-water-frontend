@@ -294,7 +294,6 @@ Error generating stack: `+i.message+`
   }
 `,L_=()=>b.jsx(R_,{children:b.jsx($_,{children:b.jsx(B0,{children:b.jsxs(I_,{children:[b.jsx(w_,{}),b.jsx(__,{})]})})})}),A_=j.footer`
   position: relative;
-  width: 100%;
   background: ${M.colors.waves};
   min-height: 50px;
   padding: 20px 50px;
