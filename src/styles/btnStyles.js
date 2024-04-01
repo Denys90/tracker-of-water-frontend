@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
 
-export const ButtonOne = styled.button`
+export const TryTracker = styled.button`
   box-sizing: border-box;
   display: inline-block;
   /* width: 100%; */
@@ -35,7 +35,7 @@ export const ButtonOne = styled.button`
   }
 `;
 
-export const ButtonTwo = styled.button`
+export const AddWater = styled.button`
   display: flex;
   align-items: center;
   gap: 10px;
