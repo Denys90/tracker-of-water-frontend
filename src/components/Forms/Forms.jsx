@@ -10,14 +10,7 @@ import {
   Title,
   ErrorMessages,
 } from './AuthForm.styled';
-// import {
-//   FormContainer,
-//   LabelField,
-//   LinkBtn,
-//   SubmitButton,
-//   Title,
-//   styles,
-// } from './AuthForm.styled';
+
 
 const AuthForm = () => {
   const [formType, setFormType] = useState('signin');
