@@ -9,11 +9,23 @@ import {
   DrinkListUl,
   DrinkListRow,
 } from './DrinkListStyled';
+import svg from '../../assets/images/icons.svg';
 
-import svg from 'assets/images/icons.svg';
-import { AddWater } from 'styles/btnStyles';
 
 export const DrinkList = () => {
+  const [drinkList, setDrinkList] = useState([
+    { id: 1, amount: '250ml', time: '7:00AM' },
+    { id: 2, amount: '250ml', time: '8:00AM' },
+    { id: 3, amount: '250ml', time: '9:00AM' },
+   
+]);
+
+
+  const handleDeleteDrink = (id) => {
+    setDrinkList(drinkList.filter((drink) => drink.id !== id));
+};
+
+
   return (
     <>
       <DrinkListWrapper>
@@ -30,13 +42,14 @@ export const DrinkList = () => {
               </p>
             </DrinkListItem>
 
+
             <DrinkButtons>
               <DrinkButtonPlus>
                 <use href={`${svg}#icon-note`}></use>
               </DrinkButtonPlus>
-              <DrinkButtonMinus>
-                <use href={`${svg}#icon-trash`}></use>
-              </DrinkButtonMinus>
+              <DrinkButtonMinus onClick={() => handleDeleteDrink(drink.id)}>
+                  <use href={`${svg}#icon-trash`}></use>
+                </DrinkButtonMinus>
             </DrinkButtons>
           </DrinkListRow>
           <DrinkListRow>
@@ -50,13 +63,14 @@ export const DrinkList = () => {
               </p>
             </DrinkListItem>
 
+
             <DrinkButtons>
               <DrinkButtonPlus>
                 <use href={`${svg}#icon-note`}></use>
               </DrinkButtonPlus>
-              <DrinkButtonMinus>
-                <use href={`${svg}#icon-trash`}></use>
-              </DrinkButtonMinus>
+              <DrinkButtonMinus onClick={() => handleDeleteDrink(drink.id)}>
+                  <use href={`${svg}#icon-trash`}></use>
+                </DrinkButtonMinus>
             </DrinkButtons>
           </DrinkListRow>
           <DrinkListRow>
@@ -70,13 +84,14 @@ export const DrinkList = () => {
               </p>
             </DrinkListItem>
 
+
             <DrinkButtons>
               <DrinkButtonPlus>
                 <use href={`${svg}#icon-note`}></use>
               </DrinkButtonPlus>
-              <DrinkButtonMinus>
-                <use href={`${svg}#icon-trash`}></use>
-              </DrinkButtonMinus>
+              <DrinkButtonMinus onClick={() => handleDeleteDrink(drink.id)}>
+                  <use href={`${svg}#icon-trash`}></use>
+                </DrinkButtonMinus>
             </DrinkButtons>
           </DrinkListRow>
           <DrinkListRow>
@@ -90,13 +105,14 @@ export const DrinkList = () => {
               </p>
             </DrinkListItem>
 
+
             <DrinkButtons>
               <DrinkButtonPlus>
                 <use href={`${svg}#icon-note`}></use>
               </DrinkButtonPlus>
-              <DrinkButtonMinus>
-                <use href={`${svg}#icon-trash`}></use>
-              </DrinkButtonMinus>
+              <DrinkButtonMinus onClick={() => handleDeleteDrink(drink.id)}>
+                  <use href={`${svg}#icon-trash`}></use>
+                </DrinkButtonMinus>
             </DrinkButtons>
           </DrinkListRow>
           <DrinkListRow>
@@ -110,13 +126,14 @@ export const DrinkList = () => {
               </p>
             </DrinkListItem>
 
+
             <DrinkButtons>
               <DrinkButtonPlus>
                 <use href={`${svg}#icon-note`}></use>
               </DrinkButtonPlus>
-              <DrinkButtonMinus>
-                <use href={`${svg}#icon-trash`}></use>
-              </DrinkButtonMinus>
+              <DrinkButtonMinus onClick={() => handleDeleteDrink(drink.id)}>
+                  <use href={`${svg}#icon-trash`}></use>
+                </DrinkButtonMinus>
             </DrinkButtons>
           </DrinkListRow>
           <DrinkListRow>
@@ -130,17 +147,18 @@ export const DrinkList = () => {
               </p>
             </DrinkListItem>
 
+
             <DrinkButtons>
               <DrinkButtonPlus>
                 <use href={`${svg}#icon-note`}></use>
               </DrinkButtonPlus>
-              <DrinkButtonMinus>
-                <use href={`${svg}#icon-trash`}></use>
-              </DrinkButtonMinus>
+              <DrinkButtonMinus onClick={() => handleDeleteDrink(drink.id)}>
+                  <use href={`${svg}#icon-trash`}></use>
+                </DrinkButtonMinus>
             </DrinkButtons>
           </DrinkListRow>
         </DrinkListUl>
-        <AddWater>Add water</AddWater>
+        <button>Add water</button>
       </DrinkListWrapper>
     </>
   );
