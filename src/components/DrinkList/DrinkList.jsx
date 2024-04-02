@@ -9,11 +9,20 @@ import {
   DrinkListUl,
   DrinkListRow,
 } from './DrinkListStyled';
-
-import svg from 'assets/images/icons.svg';
-import { AddWater } from 'styles/btnStyles';
+import svg from '../../assets/images/icons.svg';
+import { useState } from 'react';
 
 export const DrinkList = () => {
+  const [drinkList, setDrinkList] = useState([
+    { id: 1, amount: '250ml', time: '7:00AM' },
+    { id: 2, amount: '250ml', time: '8:00AM' },
+    { id: 3, amount: '250ml', time: '9:00AM' },
+  ]);
+
+  const handleDeleteDrink = (id) => {
+    setDrinkList(drinkList.filter((drink) => drink.id !== id));
+  };
+
   return (
     <>
       <DrinkListWrapper>
@@ -34,113 +43,13 @@ export const DrinkList = () => {
               <DrinkButtonPlus>
                 <use href={`${svg}#icon-note`}></use>
               </DrinkButtonPlus>
-              <DrinkButtonMinus>
-                <use href={`${svg}#icon-trash`}></use>
-              </DrinkButtonMinus>
-            </DrinkButtons>
-          </DrinkListRow>
-          <DrinkListRow>
-            <DrinkListItem>
-              <DrinkGlass>
-                <use href={`${svg}#icon-glass`}></use>
-              </DrinkGlass>
-              <h4>250ml</h4>
-              <p>
-                7:00<span>AM</span>
-              </p>
-            </DrinkListItem>
-
-            <DrinkButtons>
-              <DrinkButtonPlus>
-                <use href={`${svg}#icon-note`}></use>
-              </DrinkButtonPlus>
-              <DrinkButtonMinus>
-                <use href={`${svg}#icon-trash`}></use>
-              </DrinkButtonMinus>
-            </DrinkButtons>
-          </DrinkListRow>
-          <DrinkListRow>
-            <DrinkListItem>
-              <DrinkGlass>
-                <use href={`${svg}#icon-glass`}></use>
-              </DrinkGlass>
-              <h4>250ml</h4>
-              <p>
-                7:00<span>AM</span>
-              </p>
-            </DrinkListItem>
-
-            <DrinkButtons>
-              <DrinkButtonPlus>
-                <use href={`${svg}#icon-note`}></use>
-              </DrinkButtonPlus>
-              <DrinkButtonMinus>
-                <use href={`${svg}#icon-trash`}></use>
-              </DrinkButtonMinus>
-            </DrinkButtons>
-          </DrinkListRow>
-          <DrinkListRow>
-            <DrinkListItem>
-              <DrinkGlass>
-                <use href={`${svg}#icon-glass`}></use>
-              </DrinkGlass>
-              <h4>250ml</h4>
-              <p>
-                7:00<span>AM</span>
-              </p>
-            </DrinkListItem>
-
-            <DrinkButtons>
-              <DrinkButtonPlus>
-                <use href={`${svg}#icon-note`}></use>
-              </DrinkButtonPlus>
-              <DrinkButtonMinus>
-                <use href={`${svg}#icon-trash`}></use>
-              </DrinkButtonMinus>
-            </DrinkButtons>
-          </DrinkListRow>
-          <DrinkListRow>
-            <DrinkListItem>
-              <DrinkGlass>
-                <use href={`${svg}#icon-glass`}></use>
-              </DrinkGlass>
-              <h4>250ml</h4>
-              <p>
-                7:00<span>AM</span>
-              </p>
-            </DrinkListItem>
-
-            <DrinkButtons>
-              <DrinkButtonPlus>
-                <use href={`${svg}#icon-note`}></use>
-              </DrinkButtonPlus>
-              <DrinkButtonMinus>
-                <use href={`${svg}#icon-trash`}></use>
-              </DrinkButtonMinus>
-            </DrinkButtons>
-          </DrinkListRow>
-          <DrinkListRow>
-            <DrinkListItem>
-              <DrinkGlass>
-                <use href={`${svg}#icon-glass`}></use>
-              </DrinkGlass>
-              <h4>250ml</h4>
-              <p>
-                7:00<span>AM</span>
-              </p>
-            </DrinkListItem>
-
-            <DrinkButtons>
-              <DrinkButtonPlus>
-                <use href={`${svg}#icon-note`}></use>
-              </DrinkButtonPlus>
-              <DrinkButtonMinus>
+              <DrinkButtonMinus onClick={() => handleDeleteDrink(drinkList.id)}>
                 <use href={`${svg}#icon-trash`}></use>
               </DrinkButtonMinus>
             </DrinkButtons>
           </DrinkListRow>
         </DrinkListUl>
-        <AddWater>Add water</AddWater>
+        <button>Add water</button>
       </DrinkListWrapper>
     </>
   );
