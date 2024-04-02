@@ -11,6 +11,7 @@ const AuthForm = () => {
       setFormSubmitted(false);
     };
   
+    
     return (
       <FormContainer>
         <Title>
