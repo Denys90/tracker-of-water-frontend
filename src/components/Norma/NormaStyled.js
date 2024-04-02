@@ -10,7 +10,7 @@ export const NormaDivWrapper = styled.div`
   width: 170px;
   border-radius: 10px;
   border: 1px solid ${theme.colors.lightBlue};
-  box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
+  box-shadow: ${theme.boxShadowBtn.Btn};
   padding-top: 22px;
 `;
 

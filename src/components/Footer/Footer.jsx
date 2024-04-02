@@ -1,13 +1,19 @@
-import React from 'react';
-import WaveAnimation from './Footer.styled';
-
+import { FooterContainer, Wave } from './Footer.styled';
 
 export function Footer() {
   return (
-    <WaveAnimation>
- 
-        <p>© 2024 | Developed with 🤍 by GoIT Students</p>
-     
-    </WaveAnimation>
+    <>
+      {' '}
+      <FooterContainer>
+        <div>
+          <Wave id="wave1"></Wave>
+          <Wave id="wave2"></Wave>
+          <Wave id="wave3"></Wave>
+          <Wave id="wave4"></Wave>
+        </div>
+
+        <p>&copy;2024 | Developed with 🤍 by GoIT Students</p>
+      </FooterContainer>
+    </>
   );
 }

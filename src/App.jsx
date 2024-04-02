@@ -1,34 +1,30 @@
 import { Route, Routes } from 'react-router-dom';
-// import { useEffect } from 'react';
+import { lazy } from 'react';
 
-import SharedLayout from 'components/SharedLayout/SharedLayout';
-// import Loader from 'components/Loader/Loader';
-import HomePage from 'pages/HomePage/HomePage';
-import ErrorPage from 'pages/ErrorPage/ErrorPage';
-
-import { AppWrapper } from './App.styled';
 import { Global } from '@emotion/react';
 import { globalStyles } from 'styles/Global.styled';
 
-// import { useUsers } from 'hooks/useUsers';
+import SharedLayout from 'components/SharedLayout/SharedLayout';
+import Welcome from 'pages/Welcome/Welcome';
+
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const ErrorPage = lazy(() => import('pages/ErrorPage/ErrorPage'));
 
 function App() {
-  // const { fetchCurrentUser } = useUsers();
-
-  // useEffect(() => {
-  //   fetchCurrentUser();
-  // }, [fetchCurrentUser]);
   return (
     <>
       <Global styles={globalStyles} />
       {/* <Loader /> */}
-      <AppWrapper>
-        <Routes>
-          <Route path="/" element={<SharedLayout />}></Route>
+
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Welcome />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </AppWrapper>
+        </Route>
+      </Routes>
     </>
   );
 }

@@ -1,27 +1,29 @@
 import {
   Benefits,
   BenefitsTitle,
-  Button,
   Image,
   Item,
   Subtitle,
   Title,
   Tracker,
 } from './ConsumptionTracker.styled';
+import {TryTracker} from '../../../styles/btnStyles'
+
+import svg from 'assets/images/icons.svg';
 
 export const ConsumptionTracker = () => {
   const benefits = [
     {
       text: 'Habit drive',
-      id: `#icon-calendar`,
+      id: `${svg}#icon-calendar`,
     },
     {
       text: 'View statistics',
-      id: `}#icon-statistic`,
+      id: `${svg}#icon-outline1`,
     },
     {
       text: 'Personal rate setting',
-      id: `}#icon-instrument`,
+      id: `${svg}#icon-tools`,
     },
   ];
 
@@ -47,7 +49,7 @@ export const ConsumptionTracker = () => {
         ))}
       </Benefits>
 
-      <Button type="button">Try tracker</Button>
+      <TryTracker type="button">Try tracker</TryTracker>
     </Tracker>
   );
 };

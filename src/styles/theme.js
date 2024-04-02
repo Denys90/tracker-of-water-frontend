@@ -8,6 +8,7 @@ export const theme = {
     skyBlue: '#9EBBFF',
     orange: '#FF9D43',
     paleBlue: '#D7E3FF',
+    waves: '#3586ff',
   },
 
   boxShadowBtn: {
@@ -30,7 +31,7 @@ export const theme = {
 // color:${theme.colors.black}
 
 // Спосіб застосування theme.spacing
-//  margin: ${({ theme }) => theme.spacing(2)};
+//  margin: ${({ theme }) => theme.spacing(2)}; цей вираз дорівнює margin: 16px:
 
 // Спосіб застосування
 //  @media screen and (min-width: ${theme.breakpoint.tablet})
