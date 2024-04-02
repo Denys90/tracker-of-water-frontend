@@ -11,6 +11,7 @@ import {
 import { TryTracker } from 'styles/btnStyles';
 
 import svg from 'assets/images/icons.svg';
+import { NavLink } from 'react-router-dom';
 
 export const ConsumptionTracker = () => {
   const benefits = [
@@ -49,8 +50,9 @@ export const ConsumptionTracker = () => {
           </Item>
         ))}
       </Benefits>
-
-      <TryTracker type="button">Try tracker</TryTracker>
+      <NavLink to="/login">
+        <TryTracker type="button">Try tracker</TryTracker>
+      </NavLink>
     </Tracker>
   );
 };

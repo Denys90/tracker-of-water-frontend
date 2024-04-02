@@ -10,14 +10,6 @@ import {
   Title,
   ErrorMessages,
 } from './AuthForm.styled';
-// import {
-//   FormContainer,
-//   LabelField,
-//   LinkBtn,
-//   SubmitButton,
-//   Title,
-//   styles,
-// } from './AuthForm.styled';
 
 const AuthForm = () => {
   const [formType, setFormType] = useState('signin');
@@ -81,19 +73,17 @@ const AuthForm = () => {
           resetForm();
         }}
       >
-        {({ isSubmitting, resetForm }) => (
+        {({ isSubmitting, errors, resetForm }) => (
           <Form>
             <InputContainer>
               <LabelField htmlFor="email">Enter email</LabelField>
               <InputField
-                // css={[
-                //   styles.input,
-                //   formSubmitted && errors.email && styles.errorInput,
-                // ]}
+                error={errors.email}
                 type="email"
                 id="email"
                 name="email"
                 placeholder="E-mail"
+                autoComplete="current-password"
               />
               <ErrorMessages name="email" component="div" />
             </InputContainer>
@@ -101,14 +91,12 @@ const AuthForm = () => {
             <InputContainer>
               <LabelField htmlFor="password">Enter password</LabelField>
               <InputField
-                // css={[
-                //   styles.input,
-                //   formSubmitted && errors.password && styles.errorInput,
-                // ]}
+                error={errors.password}
                 type="password"
                 id="password"
                 name="password"
                 placeholder="Password"
+                autoComplete="current-password"
               />
               <ErrorMessages name="password" component="div" />
             </InputContainer>
@@ -119,14 +107,12 @@ const AuthForm = () => {
                   Repeat password
                 </LabelField>
                 <InputField
-                  // css={[
-                  //   styles.input,
-                  //   formSubmitted && errors.repeatPassword && styles.errorInput,
-                  // ]}
+                  error={errors.password}
                   type="password"
                   id="repeatPassword"
                   name="repeatPassword"
                   placeholder="Repeat Password"
+                  autoComplete="current-password"
                 />
                 <ErrorMessages name="repeatPassword" component="div" />
               </InputContainer>

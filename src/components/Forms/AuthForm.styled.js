@@ -11,7 +11,7 @@ export const FormContainer = styled.div`
   width: 384px;
 `;
 export const Title = styled.h2`
-  font-family: Roboto;
+  font-family: 'Roboto-Medium', sans-serif;
   font-size: 26px;
   font-weight: 500;
   line-height: 32px;
@@ -92,6 +92,13 @@ export const InputField = styled(Field)`
   &:focus {
     outline: none;
   }
+
+  ${(props) =>
+    props.error &&
+    `
+    border-color: rgb(239, 80, 80);
+    color: rgb(239, 80, 80);
+  `}
 
   ${(props) =>
     props.error &&

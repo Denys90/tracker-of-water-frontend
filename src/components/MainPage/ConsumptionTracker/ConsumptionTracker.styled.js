@@ -90,34 +90,34 @@ export const BenefitsTitle = styled.h3`
   margin-bottom: 12px;
 `;
 
-export const Button = styled.button`
-  display: inline-block;
-  width: 100%;
-  padding: 8px 30px;
-  color: #fff;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
-  background-color: ${theme.colors.blue};
-  box-shadow: ${theme.boxShadowBtn.Btn};
-  border-radius: 10px;
-  cursor: pointer;
+// export const Button = styled.button`
+//   display: inline-block;
+//   width: 100%;
+//   padding: 8px 30px;
+//   color: #fff;
+//   font-weight: 500;
+//   font-size: 16px;
+//   line-height: 20px;
+//   background-color: ${theme.colors.blue};
+//   box-shadow: ${theme.boxShadowBtn.Btn};
+//   border-radius: 10px;
+//   cursor: pointer;
 
-  &:hover {
-    box-shadow: ${theme.boxShadowBtn.hoverBtn};
-  }
-  &:active {
-    box-shadow: ${theme.boxShadowBtn.activeBtn};
-  }
+//   &:hover {
+//     box-shadow: ${theme.boxShadowBtn.hoverBtn};
+//   }
+//   &:active {
+//     box-shadow: ${theme.boxShadowBtn.activeBtn};
+//   }
 
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    width: 280px;
-    font-size: 18px;
-    line-height: 24px;
-    padding: 10px 30px;
-  }
+//   @media screen and (min-width: ${theme.breakpoint.tablet}) {
+//     width: 280px;
+//     font-size: 18px;
+//     line-height: 24px;
+//     padding: 10px 30px;
+//   }
 
-  @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    width: 384px;
-  }
-`;
+//   @media screen and (min-width: ${theme.breakpoint.desktop}) {
+//     width: 384px;
+//   }
+// `;
