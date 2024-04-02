@@ -7,7 +7,8 @@ import {
   Title,
   Tracker,
 } from './ConsumptionTracker.styled';
-import {TryTracker} from '../../../styles/btnStyles'
+
+import { TryTracker } from 'styles/btnStyles';
 
 import svg from 'assets/images/icons.svg';
 

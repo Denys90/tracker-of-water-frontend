@@ -3,9 +3,9 @@ import { UserAuth } from './UserAuth/UserAuth';
 import { UserLogo } from './UserLogo/UserLogo';
 
 import { Containers, ContainerHeader, WrapHeader } from './Header.styled';
-import { useUsers } from 'hooks/useUsers';
+import useUsers from 'hooks/useUsers';
 
-export const Header = () => {
+const Header = () => {
   const { isAuthenticated } = useUsers();
 
   return (
@@ -21,3 +21,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

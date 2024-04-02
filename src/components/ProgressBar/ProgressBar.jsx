@@ -11,9 +11,12 @@ import {
   ProgressDiv,
 } from './ProgressBarStyled';
 import { AddWater } from '../../styles/btnStyles';
+// import useModal from 'hooks/useModal';
+
 // import { useSelector } from 'react-redux';
 
 export const ProgressBar = () => {
+  // const { toggleModal } = useModal();
   // const waterPercentage = useSelector((state) => state.waterPercentage); // % from Redux
 
   //exepmple
@@ -40,6 +43,12 @@ export const ProgressBar = () => {
       </ProgressDiv>
 
       <AddWater>Add wather</AddWater>
+      {/* {isOpenModal && (
+        <BodyModal>
+          <div>Children2</div>
+        </BodyModal>
+      )} */}
     </ProgressDivWrapper>
   );
 };
+// <AddWater onClick={toggleModal}>Add wather</AddWater>;

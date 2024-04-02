@@ -15,6 +15,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { rootReducer } from '../root/slice';
+import { modalReducer } from './modal/modalSlice';
 
 const persistConfig = {
   key: 'users',
@@ -29,6 +30,7 @@ const reducer = {
   water: waterReducer,
   filter: filterReducer,
   root: rootReducer,
+  modal: modalReducer,
 };
 export const store = configureStore({
   reducer,

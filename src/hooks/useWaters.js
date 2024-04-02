@@ -10,7 +10,7 @@ import {
 
 import { selectWater, selectFilter } from '../store/water/selectors';
 
-export const useUsers = () => {
+const useWater = () => {
   const dispatch = useDispatch();
 
   const water = useSelector(selectWater);
@@ -45,3 +45,5 @@ export const useUsers = () => {
     patchWater,
   };
 };
+
+export default useWater;

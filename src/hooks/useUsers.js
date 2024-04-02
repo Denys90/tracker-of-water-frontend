@@ -14,7 +14,7 @@ import {
   signUpThunk,
 } from '../store/user/thunk';
 
-export const useUsers = () => {
+const useUsers = () => {
   const dispatch = useDispatch();
 
   const isAuth = useSelector(selectToken);
@@ -52,3 +52,5 @@ export const useUsers = () => {
     fetchCurrentUser,
   };
 };
+
+export default useUsers;

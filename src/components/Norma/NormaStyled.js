@@ -52,3 +52,20 @@ export const NormaWrapper = styled.div`
     }
   }
 `;
+
+export const EditBtn = styled.button`
+  color: ${theme.colors.blue};
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: ${theme.colors.white};
+
+  border: none;
+
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  :hover {
+    color: ${theme.colors.black};
+  }
+`;

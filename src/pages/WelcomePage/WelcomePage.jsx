@@ -1,7 +1,7 @@
 import { MainPage } from 'components/MainPage/MainPage/MainPage';
 
-const Welcome = () => {
+const WelcomePage = () => {
   return <MainPage />;
 };
 
-export default Welcome;
+export default WelcomePage;
