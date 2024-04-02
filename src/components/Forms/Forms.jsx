@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { FormContainer, LabelField, LinkBtn, SubmitButton, Title, styles } from './forms.styled';
+import { FormContainer, LabelField, LinkBtn, SubmitButton, Title } from './forms.styled';
 
 const AuthForm = () => {
     const [formType, setFormType] = useState('signin');
