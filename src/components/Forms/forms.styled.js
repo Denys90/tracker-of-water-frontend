@@ -1,4 +1,4 @@
-import { styles } from '@emotion/react';
+import styles from '@emotion/react';
 // export const styles = {
 //     formContainer: css`
 //       display: flex;
