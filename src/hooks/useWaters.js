@@ -9,17 +9,17 @@ import {
 } from '../store/water/thunk';
 
 import {
-  selectWater,
+  selectDailyNorm,
   selectFilter,
-  selectTodo,
+  selectReps,
 } from '../store/water/selectors';
 
 const useWater = () => {
   const dispatch = useDispatch();
 
-  const water = useSelector(selectWater);
-  const todo = useSelector(selectTodo);
-  const filterWater = useSelector(selectFilter);
+  const dailyNorm = useSelector(selectDailyNorm);
+  const reps = useSelector(selectReps);
+  const filter = useSelector(selectFilter);
 
   const getWaters = useCallback(
     (credentials) => dispatch(getWatersThunk(credentials)),
@@ -42,9 +42,9 @@ const useWater = () => {
   );
 
   return {
-    water,
-    todo,
-    filterWater,
+    dailyNorm,
+    reps,
+    filter,
     getWaters,
     addDailyNorma,
     deleteTodo,

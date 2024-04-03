@@ -10,8 +10,8 @@ import { handleFulfilled, handlePending, handleReject } from './handles';
 import { getActions } from './servises/getActions';
 
 const initialState = {
-  waters: 0,
-  todos: [],
+  dailyNorm: 2,
+  reps: [],
   isLoading: false,
   error: null,
 };
@@ -25,7 +25,7 @@ const waterSlice = createSlice({
         state.waters = action.payload;
       })
       .addCase(addDailyNormaThunk.fulfilled, (state, action) => {
-        state.waters = [...state.waters, action.payload];
+        state.dailyNorm = action.payload;
       })
       .addCase(deleteTodoThunk.fulfilled, (state, action) => {
         state.todos = state.todos.filter(
