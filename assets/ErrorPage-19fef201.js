@@ -1,4 +1,4 @@
-import{n as e,t as o,d as r,j as t}from"./index-e839da99.js";const s=e.div`
+import{n as e,t as o,d as r,j as t}from"./index-4476dc3a.js";const s=e.div`
   position: relative;
   background-color: ${o.colors.blue};
   background-image: url(${r});
