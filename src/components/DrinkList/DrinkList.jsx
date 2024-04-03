@@ -8,10 +8,10 @@ import {
   DrinkButtons,
   DrinkListUl,
   DrinkListRow,
+  DrinkListAddWater,
 } from './DrinkListStyled';
 
 import svg from '../../assets/images/icons.svg';
-import { AddWater } from '../../styles/btnStyles';
 
 export const DrinkList = () => {
   return (
@@ -140,7 +140,12 @@ export const DrinkList = () => {
             </DrinkButtons>
           </DrinkListRow>
         </DrinkListUl>
-        <AddWater>Add water</AddWater>
+        <DrinkListAddWater>
+          <svg>
+            <use href={`${svg}#icon-increment`}></use>
+          </svg>
+          Add water
+        </DrinkListAddWater>
       </DrinkListWrapper>
     </>
   );

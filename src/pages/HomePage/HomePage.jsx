@@ -9,7 +9,6 @@ const HomePage = () => {
   return (
     <>
       <ContainerStyles>
-        <h2>Home Page</h2>
         <Norma />
         <ProgressBar />
         <HomeRightWrapper>

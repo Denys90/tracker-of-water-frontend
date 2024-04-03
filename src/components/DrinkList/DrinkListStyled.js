@@ -112,3 +112,42 @@ export const DrinkButtonMinus = styled.svg`
     border-bottom: 1px solid ${theme.colors.brightRed};
   }
 `;
+export const DrinkListAddWater = styled.button`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background-color: transparent;
+  color: ${theme.colors.blue};
+  border: none;
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  stroke: ${theme.colors.blue};
+
+  & svg {
+    width: 16px;
+    height: 16px;
+    fill: ${theme.colors.blue};
+    stroke: transparent;
+    padding-bottom: 2px;
+    &:hover {
+      fill: ${theme.colors.orange};
+    }
+  }
+
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  & svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover {
+    color: ${theme.colors.orange};
+    fill: ${theme.colors.orange};
+  }
+`;
