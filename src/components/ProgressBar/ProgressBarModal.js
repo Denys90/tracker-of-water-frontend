@@ -1,33 +1,33 @@
-import { useEffect, useCallback, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { openModal, closeModal } from '../store/modal/modalSlice';
-import { selectIsOpenModal } from '../store/modal/selectors';
+import { useEffect, useCallback, useRef, useState } from 'react';
 
-const useModal = () => {
-  const isOpenModal = useSelector(selectIsOpenModal);
-  const dispatch = useDispatch();
+const useModalProgressBar = () => {
+  const [isOpenModalBar, setIsOpenModalBar] = useState(false);
+  const [isScrollDisabled, setIsScrollDisabled] = useState(false);
+
   const popupRef = useRef(null);
 
   const handleKeyDown = useCallback(
     (e) => {
       if (e.key === 'Escape') {
-        if (isOpenModal) {
-          dispatch(closeModal());
+        if (isOpenModalBar) {
+          setIsOpenModalBar(false);
+          setIsScrollDisabled(false);
         }
       }
     },
-    [dispatch, isOpenModal]
+    [isOpenModalBar]
   );
 
   const handleBackdropClick = useCallback(
     (e) => {
       if (popupRef.current && !popupRef.current.contains(e.target)) {
-        if (isOpenModal) {
-          dispatch(closeModal());
+        if (isOpenModalBar) {
+          setIsOpenModalBar(false);
+          setIsScrollDisabled(false);
         }
       }
     },
-    [dispatch, isOpenModal]
+    [isOpenModalBar]
   );
 
   useEffect(() => {
@@ -41,22 +41,20 @@ const useModal = () => {
   }, [handleBackdropClick, handleKeyDown]);
 
   useEffect(() => {
-    if (isOpenModal) {
+    if (isScrollDisabled) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-  }, [isOpenModal]);
+  }, [isScrollDisabled]);
 
   const toggleModal = () => {
-    if (isOpenModal) {
-      dispatch(closeModal());
-    } else {
-      dispatch(openModal());
-    }
+    setIsOpenModalBar(!isOpenModalBar);
+    setIsScrollDisabled(!isScrollDisabled);
   };
 
-  return { isOpenModal, popupRef, toggleModal };
+  return { isOpenModalBar, popupRef, toggleModal };
 };
 
-export default useModal;
+export default useModalProgressBar;
+// =========================================

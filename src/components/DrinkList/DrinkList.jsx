@@ -11,8 +11,12 @@ import {
 } from './DrinkListStyled';
 import svg from '../../assets/images/icons.svg';
 import { useState } from 'react';
+import DrinkListModal from './DrinkListModal';
+import BodyModal from '../Modal/BodyModal';
 
 export const DrinkList = () => {
+  const { isOpenModalDrinkList, toggleModal, popupRef } = DrinkListModal();
+
   const [drinkList, setDrinkList] = useState([
     { id: 1, amount: '250ml', time: '7:00AM' },
     { id: 2, amount: '250ml', time: '8:00AM' },
@@ -49,7 +53,14 @@ export const DrinkList = () => {
             </DrinkButtons>
           </DrinkListRow>
         </DrinkListUl>
-        <button>Add water</button>
+        {isOpenModalDrinkList && (
+          <BodyModal>
+            <div>Add water of todo</div>
+          </BodyModal>
+        )}
+        <button onClick={toggleModal} ref={popupRef}>
+          Add water of todo
+        </button>
       </DrinkListWrapper>
     </>
   );

@@ -1,20 +1,15 @@
 import { createPortal } from 'react-dom';
 import { Popup, ModalContent, CloseButton, ModalWrapper } from './Modal.styled';
 
-import useModal from 'hooks/useModal';
-import useUsers from 'hooks/useUsers';
-
 const modalRoot = document.querySelector('#modalRoot');
 
-const BodyModal = ({ children }) => {
-  const { isAuthenticated } = useUsers();
-  const { popupRef, toggleModal } = useModal();
-  return isAuthenticated
+const BodyModal = ({ isOpen, toggleModal, children }) => {
+  return isOpen
     ? null
     : modalRoot &&
         createPortal(
           <Popup>
-            <ModalWrapper ref={popupRef}>
+            <ModalWrapper>
               <ModalContent>
                 {children}
                 <CloseButton onClick={toggleModal}>Х</CloseButton>
