@@ -31,8 +31,8 @@ const useWater = () => {
     [dispatch]
   );
 
-  const deleteTodo = useCallback(
-    (credentials) => dispatch(deleteTodoThunk(credentials)),
+  const deleteReps = useCallback(
+    (id) => dispatch(deleteTodoThunk(id)),
     [dispatch]
   );
 
@@ -47,7 +47,7 @@ const useWater = () => {
     filter,
     getWaters,
     addDailyNorma,
-    deleteTodo,
+    deleteReps,
     patchWater,
   };
 };
