@@ -9,6 +9,8 @@ import {
   SubmitButton,
   Title,
   ErrorMessages,
+  Container,
+  Image
 } from './AuthForm.styled';
 
 const AuthForm = () => {
@@ -21,6 +23,8 @@ const AuthForm = () => {
   };
 
   return (
+    <Container>
+      <Image src="/src/assets/images/mobile/bottle_sign_in@2x.png"  />
     <FormContainer>
       <Title>{formType === 'signin' ? 'Sign In' : 'Sign Up'}</Title>
       <Formik
@@ -140,6 +144,7 @@ const AuthForm = () => {
         )}
       </Formik>
     </FormContainer>
+    </Container>
   );
 };
 
