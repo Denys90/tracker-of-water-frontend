@@ -4,9 +4,9 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://db';
 // ==========================================>
 
-export const getAllWatersThunk = createAsyncThunk(
+export const getWatersThunk = createAsyncThunk(
   'water/getWater',
-  async (waterData, { rejectWithValue, getState }) => {
+  async (credentials, { rejectWithValue, getState }) => {
     try {
       const store = getState();
       const token = store.users.token;
@@ -20,7 +20,7 @@ export const getAllWatersThunk = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await axios.get('/water', waterData, {
+      const response = await axios.get('/water', credentials, {
         headers,
       });
       return response.data;
@@ -33,9 +33,9 @@ export const getAllWatersThunk = createAsyncThunk(
 
 // ==========================================>
 
-export const addWatersThunk = createAsyncThunk(
+export const addDailyNormaThunk = createAsyncThunk(
   'water/addWater',
-  async (waterData, { rejectWithValue, getState }) => {
+  async (credentials, { rejectWithValue, getState }) => {
     try {
       const store = getState();
       const token = store.users.token;
@@ -49,7 +49,7 @@ export const addWatersThunk = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await axios.post('/water', waterData, {
+      const response = await axios.patch('/water', credentials, {
         headers,
       });
       return response.data;
@@ -76,7 +76,7 @@ export const patchWatersThunk = createAsyncThunk(
       const headers = {
         Authorization: `Bearer ${token}`,
       };
-      const response = await axios.patch(`/water`, waterId, water, {
+      const response = await axios.put(`/water`, waterId, water, {
         headers,
       });
       return response.data;
@@ -88,7 +88,7 @@ export const patchWatersThunk = createAsyncThunk(
 
 // ==========================================>
 
-export const deleteWatersThunk = createAsyncThunk(
+export const deleteTodoThunk = createAsyncThunk(
   'water/deleteWater',
   async (id, { rejectWithValue, getState }) => {
     try {

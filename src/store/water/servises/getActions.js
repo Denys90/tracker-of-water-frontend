@@ -1,14 +1,14 @@
 import {
-  getAllWatersThunk,
-  addWatersThunk,
-  deleteWatersThunk,
+  getWatersThunk,
+  addDailyNormaThunk,
+  deleteTodoThunk,
   patchWatersThunk,
 } from '../thunk.js';
 
 const extraActions = [
-  getAllWatersThunk,
-  addWatersThunk,
-  deleteWatersThunk,
+  getWatersThunk,
+  addDailyNormaThunk,
+  deleteTodoThunk,
   patchWatersThunk,
 ];
 

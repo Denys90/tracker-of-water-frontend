@@ -1,8 +1,8 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
-  getAllWatersThunk,
-  addWatersThunk,
-  deleteWatersThunk,
+  getWatersThunk,
+  addDailyNormaThunk,
+  deleteTodoThunk,
   patchWatersThunk,
 } from './thunk';
 import { handleFulfilled, handlePending, handleReject } from './handles';
@@ -10,7 +10,8 @@ import { handleFulfilled, handlePending, handleReject } from './handles';
 import { getActions } from './servises/getActions';
 
 const initialState = {
-  waters: [],
+  waters: 0,
+  todos: [],
   isLoading: false,
   error: null,
 };
@@ -20,20 +21,20 @@ const waterSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(getAllWatersThunk.fulfilled, (state, action) => {
+      .addCase(getWatersThunk.fulfilled, (state, action) => {
         state.waters = action.payload;
       })
-      .addCase(addWatersThunk.fulfilled, (state, action) => {
+      .addCase(addDailyNormaThunk.fulfilled, (state, action) => {
         state.waters = [...state.waters, action.payload];
       })
-      .addCase(deleteWatersThunk.fulfilled, (state, action) => {
-        state.waters = state.waters.filter(
-          (contact) => contact.id !== action.payload.id
+      .addCase(deleteTodoThunk.fulfilled, (state, action) => {
+        state.todos = state.todos.filter(
+          (todo) => todo.id !== action.payload.id
         );
       })
       .addCase(patchWatersThunk.fulfilled, (state, action) => {
-        const index = state.waters.findIndex(
-          (contact) => contact.id === action.payload.id
+        const index = state.todos.findIndex(
+          (todo) => todo.id === action.payload.id
         );
         if (index !== -1) {
           state.waters[index] = action.payload;
