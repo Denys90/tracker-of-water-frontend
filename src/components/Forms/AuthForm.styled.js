@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-
+import { theme } from 'styles/theme';
 import { Field, ErrorMessage } from 'formik';
 
 export const FormContainer = styled.div`
@@ -9,6 +9,14 @@ export const FormContainer = styled.div`
   align-items: flex-start;
   padding: 0px;
   width: 384px;
+  margin-right: 200px; 
+  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+   margin-right: 0;
+   width: 336px;
+  }
+  @media screen and (max-width: ${theme.breakpoint.tablet}) {
+   width : 280px;
+  }
 `;
 export const Title = styled.h2`
   font-family: 'Roboto-Medium', sans-serif;
@@ -16,6 +24,12 @@ export const Title = styled.h2`
   font-weight: 500;
   line-height: 32px;
   width: 384px;
+  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+   width: 336px;
+  }
+  @media screen and (max-width: ${theme.breakpoint.tablet}) {
+   width : 280px;
+  }
 `;
 export const InputContainer = styled.div`
   display: flex;
@@ -26,6 +40,12 @@ export const InputContainer = styled.div`
   gap: 8px;
   margin-bottom: 16px;
   width: 384px;
+  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+   width: 336px;
+  }
+  @media screen and (max-width: ${theme.breakpoint.tablet}) {
+   width : 280px;
+  }
 `;
 export const LabelField = styled.label`
   font-family: Roboto;
@@ -33,6 +53,12 @@ export const LabelField = styled.label`
   font-weight: 400;
   line-height: 24px;
   width: 384px;
+  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+   width: 336px;
+  }
+  @media screen and (max-width: ${theme.breakpoint.tablet}) {
+   width : 280px;
+  }
 `;
 export const SubmitButton = styled.button`
   font-family: Roboto;
@@ -53,8 +79,15 @@ export const SubmitButton = styled.button`
   &:hover {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
   }
+  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+   width: 336px;
+  }
+  @media screen and (max-width: ${theme.breakpoint.tablet}) {
+   width : 280px;
+  }
 `;
 export const LinkBtn = styled.button`
+  margin-top: 16px;
   color: rgb(64, 123, 255);
   font-family: Roboto;
   font-size: 16px;
@@ -92,6 +125,12 @@ export const InputField = styled(Field)`
   &:focus {
     outline: none;
   }
+  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+   width: 336px;
+  }
+  @media screen and (max-width: ${theme.breakpoint.tablet}) {
+   width : 280px;
+  }
 
   ${(props) =>
     props.error &&
@@ -115,3 +154,29 @@ export const ErrorMessages = styled(ErrorMessage)`
   font-weight: 400;
   line-height: 18px;
 `;
+
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  
+  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+    flex-direction: row-reverse;
+  }
+  @media screen and (max-width: ${theme.breakpoint.tablet}) {
+    flex-direction: column-reverse;
+    margin-top: 50px;
+  }
+`;
+
+export const Image = styled.img`
+  height: 588.5px;
+  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+    height: 474.26px;
+  }
+  @media screen and (max-width: ${theme.breakpoint.tablet}) {
+    height: 181.74px;
+  }
+`
