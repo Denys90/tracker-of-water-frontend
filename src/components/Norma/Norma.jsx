@@ -10,6 +10,7 @@ import {
 } from './NormaStyled';
 
 import Modal from 'components/Modal/Modal';
+import WaterCalculator from './DailyNorm/DailyNormaForm';
 
 export const Norma = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,7 @@ export const Norma = () => {
       <BackgroundHome />
       {isOpen && (
         <Modal onClose={toggleModal}>
-          <h2>My daily norma</h2>
+          <WaterCalculator />
         </Modal>
       )}
     </DailyBox>
