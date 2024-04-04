@@ -14,7 +14,7 @@ import {
   SvgOpen,
   SvgOpenTwo,
   SvgClose,
-  SvgCloseTwo
+  SvgCloseTwo,
 } from './AuthForm.styled';
 
 const AuthForm = () => {
@@ -38,7 +38,7 @@ const AuthForm = () => {
 
   return (
     <Container>
-      <Image src="/src/assets/images/mobile/bottle_sign_in@2x.png" />
+      <Image src="../../assets/images/mobile/bottle_sign_in@2x.png" />
       <FormContainer>
         <Title>{formType === 'signin' ? 'Sign In' : 'Sign Up'}</Title>
         <Formik
@@ -120,35 +120,37 @@ const AuthForm = () => {
                   autoComplete="current-password"
                 />
                 {showPassword ? (
-          <>
-            <SvgClose onClick={togglePasswordVisibility} />
-          </>
-        ) : (
-          <SvgOpen onClick={togglePasswordVisibility} />
-        )}
+                  <>
+                    <SvgClose onClick={togglePasswordVisibility} />
+                  </>
+                ) : (
+                  <SvgOpen onClick={togglePasswordVisibility} />
+                )}
                 <ErrorMessages name="password" component="div" />
               </InputContainer>
 
               {formType === 'signup' && (
                 <InputContainer>
-                <LabelField htmlFor="repeatPassword">Repeat password</LabelField>
-                <InputField
-                  error={errors.repeatPassword}
-                  type={showRepeatPassword ? "text" : "password"}
-                  id="repeatPassword"
-                  name="repeatPassword"
-                  placeholder="Repeat Password"
-                  autoComplete="current-password"
-                />
-                {showRepeatPassword ? (
-          <>
-            <SvgCloseTwo onClick={toggleRepeatPasswordVisibility} />
-          </>
-        ) : (
-          <SvgOpenTwo onClick={toggleRepeatPasswordVisibility} />
-        )}
-                <ErrorMessages name="repeatPassword" component="div" />
-              </InputContainer>
+                  <LabelField htmlFor="repeatPassword">
+                    Repeat password
+                  </LabelField>
+                  <InputField
+                    error={errors.repeatPassword}
+                    type={showRepeatPassword ? 'text' : 'password'}
+                    id="repeatPassword"
+                    name="repeatPassword"
+                    placeholder="Repeat Password"
+                    autoComplete="current-password"
+                  />
+                  {showRepeatPassword ? (
+                    <>
+                      <SvgCloseTwo onClick={toggleRepeatPasswordVisibility} />
+                    </>
+                  ) : (
+                    <SvgOpenTwo onClick={toggleRepeatPasswordVisibility} />
+                  )}
+                  <ErrorMessages name="repeatPassword" component="div" />
+                </InputContainer>
               )}
 
               <SubmitButton
