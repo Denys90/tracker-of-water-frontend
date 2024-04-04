@@ -7,7 +7,7 @@ import {
   MonthButton,
   CalenderNav,
 } from './CalenderStyles';
-import svg from '../../assets/images/icons.svg';
+import svg from 'assets/images/icons.svg';
 
 export const Calender = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());

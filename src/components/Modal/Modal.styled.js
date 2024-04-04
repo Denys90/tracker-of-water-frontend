@@ -22,8 +22,8 @@ export const ModalWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 450px;
-  height: 350px;
+  width: auto;
+  height: auto;
 `;
 export const ModalContent = styled.div`
   position: relative;

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   ProgressDivWrapper,
   ProgressTitle,
@@ -11,17 +12,16 @@ import {
   ProgressDiv,
   AddWaterProgress,
 } from './ProgressBarStyled';
-import BodyModal from '../Modal/BodyModal';
-import svg from '../../assets/images/icons.svg';
-import useModalProgressBar from './ProgressBarModal';
 
-// import useModal from 'hooks/useModal';
-// import { useSelector } from 'react-redux';
+import svg from 'assets/images/icons.svg';
+import Modal from 'components/Modal/Modal';
 
 export const ProgressBar = () => {
-  const { isOpenModalBar, toggleModal, popupRef } = useModalProgressBar();
+  const [isOpen, setIsOpen] = useState(false);
 
-  // const waterPercentage = useSelector((state) => state.waterPercentage); // % from Redux
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
 
   //exepmple
   const waterPercentage = 88;
@@ -46,16 +46,16 @@ export const ProgressBar = () => {
         </ProgressBox>
       </ProgressDiv>
 
-      <AddWaterProgress onClick={toggleModal} ref={popupRef}>
+      <AddWaterProgress onClick={toggleModal}>
         <svg>
           <use href={`${svg}#icon-outline`}></use>
         </svg>
         Add water
       </AddWaterProgress>
-      {isOpenModalBar && (
-        <BodyModal>
-          <div>Add water</div>
-        </BodyModal>
+      {isOpen && (
+        <Modal onClose={toggleModal}>
+          <h2>ProgressBar</h2>
+        </Modal>
       )}
     </ProgressDivWrapper>
   );

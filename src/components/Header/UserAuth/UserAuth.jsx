@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { SignInIcon, UserAuthBtn, Button } from './UserAuth.styled';
+
+import { SignInIcon, Button, UserAuthBtn } from './UserAuth.styled';
 import sprite from 'assets/images/icons.svg';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import { NavLink } from 'react-router-dom';
 
 export const UserAuth = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -30,10 +31,11 @@ export const UserAuth = () => {
         </UserAuthBtn>
       </NavLink>
       <Button type="button" onClick={handleClick}>
-      <SignInIcon>
-        <use href={`${sprite}#icon-down`} />
-      </SignInIcon>
+        <SignInIcon>
+          <use href={`${sprite}#icon-down`} />
+        </SignInIcon>
       </Button>
+
       <Popover
         id={id}
         open={open}
@@ -48,7 +50,8 @@ export const UserAuth = () => {
           horizontal: 'right',
         }}
       >
-        <Typography sx={{ p: 2 }}>Content of the popover</Typography>
+        {/* <Typography sx={{ p: 2 }}>Content of the popover</Typography> */}
+        <Typography variant="h6">Content of the popover</Typography>
       </Popover>
     </div>
   );

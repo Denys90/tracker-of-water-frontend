@@ -1,4 +1,4 @@
-// import useModal from 'hooks/useModal';
+import { useState } from 'react';
 import {
   NormaAllWrapper,
   NormaWrapper,
@@ -6,16 +6,17 @@ import {
   BackgroundHome,
   DailyBox,
 } from './NormaStyled';
-import BodyModal from '../Modal/BodyModal';
-
-import useModalNorma from './NormaModal';
+import Modal from 'components/Modal/Modal';
 
 export const Norma = () => {
-  // const { daily_limit } = useSelector(selectUser);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+
   const daily_limit = 2000;
   const waterNorma = (daily_limit / 1000).toFixed(1) + ' L';
-
-  const { isOpenModalNorma, toggleModal, popupRef } = useModalNorma();
 
   return (
     <DailyBox>
@@ -23,17 +24,17 @@ export const Norma = () => {
         <NormaTitle>My daily norma</NormaTitle>
         <NormaWrapper>
           <p>{waterNorma}</p>
-          <a onClick={toggleModal} ref={popupRef}>
+          <button type="button" onClick={toggleModal}>
             Edit
-          </a>
+          </button>
         </NormaWrapper>
-        {isOpenModalNorma && (
-          <BodyModal>
-            <div>My daily norma</div>
-          </BodyModal>
-        )}
       </NormaAllWrapper>
       <BackgroundHome />
+      {isOpen && (
+        <Modal onClose={toggleModal}>
+          <h2>My daily norma</h2>
+        </Modal>
+      )}
     </DailyBox>
   );
 };
