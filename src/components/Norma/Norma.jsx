@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import {
   NormaAllWrapper,
   NormaWrapper,
@@ -7,6 +8,7 @@ import {
   DailyBox,
   EditButton,
 } from './NormaStyled';
+
 import Modal from 'components/Modal/Modal';
 
 export const Norma = () => {
