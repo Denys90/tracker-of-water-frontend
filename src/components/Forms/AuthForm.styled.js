@@ -1,12 +1,18 @@
 import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
 import { Field, ErrorMessage } from 'formik';
+import { ReactComponent as SVGOpen } from './icons/Vector.svg';
+import { ReactComponent as SVGOpenTwo } from './icons/Vector.svg';
+import { ReactComponent as SVGClose } from './icons/Vector2.svg';
+import { ReactComponent as SVGCloseTwo } from './icons/Vector2.svg';
 
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  position: relative;
+  display: flex;
+  align-items: center;
   padding: 0px;
   width: 384px;
   margin-right: 200px; 
@@ -115,6 +121,7 @@ export const InputField = styled(Field)`
   background: rgb(255, 255, 255);
   width: 384px;
   color: rgb(64, 123, 255);
+  position: relative;
   &::placeholder {
     color: rgb(158, 187, 255);
     font-family: Roboto;
@@ -179,4 +186,40 @@ export const Image = styled.img`
   @media screen and (max-width: ${theme.breakpoint.tablet}) {
     height: 181.74px;
   }
+`
+
+export const SvgOpen = styled(SVGOpen)`
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  top: 187px;
+  height: auto;
+  cursor: pointer;
+`
+
+export const SvgOpenTwo = styled(SVGOpenTwo)`
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  top: 276px;
+  height: auto;
+  cursor: pointer;
+`
+
+export const SvgClose = styled(SVGClose)`
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  top: 187px;
+  height: auto;
+  cursor: pointer;
+`
+
+export const SvgCloseTwo = styled(SVGCloseTwo)`
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  top: 276px;
+  height: auto;
+  cursor: pointer;
 `
