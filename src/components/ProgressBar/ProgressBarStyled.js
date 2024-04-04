@@ -8,11 +8,13 @@ export const ProgressDivWrapper = styled.div`
   justify-content: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-bottom: 40px;
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     flex-direction: row;
     justify-content: space-between;
-    gap: 12px;
+    align-items: flex-end;
+    gap: 32px;
   }
 
   @media screen and (min-width: ${theme.breakpoint.desktop}) {
@@ -140,5 +142,43 @@ export const Mark = styled.span`
     align-items: center;
     color: ${theme.colors.paleBlue};
     font-size: 12px;
+  }
+`;
+export const AddWaterProgress = styled.button`
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 6px 76px 6px 76px;
+  background-color: ${theme.colors.blue};
+  color: ${theme.colors.white};
+  border: none;
+  /* box-shadow: ${theme.boxShadowBtn};  */
+  box-shadow: ${theme.boxShadowBtn.hoverBtn};
+  width: 256px;
+  margin-left: 14px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: ${theme.colors.blue};
+    stroke: ${theme.colors.white};
+  }
+
+  &:hover {
+    box-shadow: ${theme.boxShadowBtn.hoverBtn};
+  }
+
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+    max-width: 336px;
+    height: 43px;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (min-width: ${theme.breakpoint.desktop}) {
+    width: 178px;
+    height: 44px;
+    padding: 10px 30px 10px 30px;
   }
 `;

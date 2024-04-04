@@ -1,32 +1,71 @@
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import { useState } from 'react';
+import 'react-datepicker/dist/react-datepicker.css';
+import {
+  CalenderWrapper,
+  DaysList,
+  PaginationWrapper,
+  MonthButton,
+  CalenderNav,
+} from './CalenderStyles';
+import svg from '../../assets/images/icons.svg';
 
 export const Calender = () => {
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+
+  const handleChangeMonth = (increment) => {
+    setCurrentMonth((prevMonth) => {
+      const newMonth = new Date(prevMonth);
+      newMonth.setMonth(newMonth.getMonth() + increment);
+      return newMonth;
+    });
+  };
+
+  const generateMonthDays = () => {
+    const lastDayOfMonth = new Date(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth() + 1,
+      0
+    );
+    const daysInMonth = lastDayOfMonth.getDate();
+    const days = [];
+    for (let i = 1; i <= daysInMonth; i++) {
+      days.push(i);
+    }
+    return days;
+  };
+
+  const getCurrentMonthName = () => {
+    const monthFormatter = new Intl.DateTimeFormat('en', { month: 'long' });
+    return monthFormatter.format(currentMonth);
+  };
+
+  const getCurrentYear = () => {
+    return currentMonth.getFullYear();
+  };
+
   return (
-    <>
-      <div>
-        <div>
+    <div>
+      <CalenderWrapper>
+        <CalenderNav>
           <h3>Month</h3>
-          <div>
-            <div>-</div>
-            <div>month</div>
-            <div>-</div>
-          </div>
-        </div>
-        <div>
-          {' '}
-          <DatePicker
-            // selected={selectedDate}
-            // onChange={handleDateChange}
-            // customInput={
-            // <InputField style={{ cursor: 'pointer' }}
-            ///>
-            dateFormat={'dd.MM.yyyy'}
-            calendarStartDay={1}
-            formatWeekDay={(day) => day.substring(0, 1)}
-          />
-        </div>
-      </div>
-    </>
+          <PaginationWrapper>
+            <MonthButton onClick={() => handleChangeMonth(-1)}>
+              <use href={`${svg}#icon-left`}></use>
+            </MonthButton>
+            <span>
+              {getCurrentMonthName()}, {getCurrentYear()}
+            </span>
+            <MonthButton onClick={() => handleChangeMonth(1)}>
+              <use href={`${svg}#icon-right`}></use>
+            </MonthButton>
+          </PaginationWrapper>
+        </CalenderNav>
+        <DaysList>
+          {generateMonthDays().map((day) => (
+            <div key={day}>{day}</div>
+          ))}
+        </DaysList>
+      </CalenderWrapper>
+    </div>
   );
 };

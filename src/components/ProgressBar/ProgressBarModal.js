@@ -57,4 +57,3 @@ const useModalProgressBar = () => {
 };
 
 export default useModalProgressBar;
-// =========================================

@@ -1,9 +1,10 @@
 // import useModal from 'hooks/useModal';
 import {
-  EditBtn,
-  NormaDivWrapper,
-  NormaTitle,
+  NormaAllWrapper,
   NormaWrapper,
+  NormaTitle,
+  BackgroundHome,
+  DailyBox,
 } from './NormaStyled';
 import BodyModal from '../Modal/BodyModal';
 
@@ -17,19 +18,22 @@ export const Norma = () => {
   const { isOpenModalNorma, toggleModal, popupRef } = useModalNorma();
 
   return (
-    <NormaDivWrapper>
-      <NormaTitle>My daily norma</NormaTitle>
-      <NormaWrapper>
-        <p>{waterNorma}</p>
-        <EditBtn onClick={toggleModal} ref={popupRef}>
-          Edit
-        </EditBtn>
-      </NormaWrapper>
-      {isOpenModalNorma && (
-        <BodyModal>
-          <div>My daily norma</div>
-        </BodyModal>
-      )}
-    </NormaDivWrapper>
+    <DailyBox>
+      <NormaAllWrapper>
+        <NormaTitle>My daily norma</NormaTitle>
+        <NormaWrapper>
+          <p>{waterNorma}</p>
+          <a onClick={toggleModal} ref={popupRef}>
+            Edit
+          </a>
+        </NormaWrapper>
+        {isOpenModalNorma && (
+          <BodyModal>
+            <div>My daily norma</div>
+          </BodyModal>
+        )}
+      </NormaAllWrapper>
+      <BackgroundHome />
+    </DailyBox>
   );
 };
