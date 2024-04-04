@@ -13,6 +13,8 @@ import {
   AddWaterProgress,
 } from './ProgressBarStyled';
 
+import { AddWaterModal } from 'components/AddWaterModal/AddWaterModal';
+
 import svg from 'assets/images/icons.svg';
 import Modal from 'components/Modal/Modal';
 
@@ -52,9 +54,10 @@ export const ProgressBar = () => {
         </svg>
         Add water
       </AddWaterProgress>
+      <AddWaterModal />
       {isOpen && (
         <Modal onClose={toggleModal}>
-          <h2>ProgressBar</h2>
+          <AddWaterModal />
         </Modal>
       )}
     </ProgressDivWrapper>
