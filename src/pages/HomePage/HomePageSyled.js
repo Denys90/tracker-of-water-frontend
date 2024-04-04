@@ -5,10 +5,14 @@ export const HomeBox = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 22px;
+  margin: 0 auto;
+  max-width: 704px;
+  padding-bottom: 22px;
 
   @media screen and (min-width: ${theme.breakpoint.desktop}) {
     flex-direction: row;
     gap: 32px;
+    max-width: 1176px;
   }
 `;
 

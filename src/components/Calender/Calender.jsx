@@ -6,12 +6,17 @@ import {
   PaginationWrapper,
   MonthButton,
   CalenderNav,
+  DayButton,
+  DayPercent,
 } from './CalenderStyles';
 import svg from '../../assets/images/icons.svg';
+import { format } from 'date-fns';
 
 export const Calender = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [selectedDay, setSelectedDay] = useState(new Date()); // Установка текущего дня по умолчанию
 
+  // Функция для изменения текущего месяца
   const handleChangeMonth = (increment) => {
     setCurrentMonth((prevMonth) => {
       const newMonth = new Date(prevMonth);
@@ -20,6 +25,7 @@ export const Calender = () => {
     });
   };
 
+  // Функция для генерации чисел текущего месяца
   const generateMonthDays = () => {
     const lastDayOfMonth = new Date(
       currentMonth.getFullYear(),
@@ -34,13 +40,32 @@ export const Calender = () => {
     return days;
   };
 
+  // Функция для получения имени текущего месяца
   const getCurrentMonthName = () => {
     const monthFormatter = new Intl.DateTimeFormat('en', { month: 'long' });
     return monthFormatter.format(currentMonth);
   };
 
+  // Функция для получения текущего года
   const getCurrentYear = () => {
     return currentMonth.getFullYear();
+  };
+
+  // Сохранение выбранного дня при клике
+  const handleDayClick = (day) => {
+    const selectedDate = new Date(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth(),
+      day
+    );
+    const today = new Date(); // Получаем текущую дату
+    if (selectedDate <= today) {
+      // Проверяем, что выбранная дата не позже текущей
+      setSelectedDay(selectedDate);
+      console.log(format(selectedDate, 'dd.MM.yyyy'));
+    } else {
+      console.log('Выберите день не позже сегодняшней даты');
+    }
   };
 
   return (
@@ -62,10 +87,17 @@ export const Calender = () => {
         </CalenderNav>
         <DaysList>
           {generateMonthDays().map((day) => (
-            <div key={day}>{day}</div>
+            <div key={day}>
+              <DayButton onClick={() => handleDayClick(day)}>{day}</DayButton>
+              <DayPercent>0%</DayPercent>
+            </div>
           ))}
         </DaysList>
       </CalenderWrapper>
+      {/* Отображение выбранного дня */}
+      {selectedDay !== null && (
+        <p>Selected day: {format(selectedDay, 'dd.MM.yyyy')}</p>
+      )}
     </div>
   );
 };

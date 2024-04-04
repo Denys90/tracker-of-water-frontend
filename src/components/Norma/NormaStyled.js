@@ -25,6 +25,7 @@ export const BackgroundHome = styled.div`
   background-repeat: no-repeat;
   width: 100%;
   min-height: 208px;
+  z-index: -1;
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     background-image: -webkit-image-set(
