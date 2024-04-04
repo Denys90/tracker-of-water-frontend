@@ -2,6 +2,7 @@ import {
   ModalContent,
   ModalWrapper,
   Popup,
+  CloseButton,
 } from 'components/Modal/Modal.styled';
 import { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
@@ -41,7 +42,7 @@ const Modal = ({ onClose, children }) => {
     <Popup onClick={handleClickOutside} ref={backdrop}>
       <ModalWrapper>
         <ModalContent>
-          <button onClick={onClose}>X</button>
+          <CloseButton onClick={onClose}>X</CloseButton>
           {children}
         </ModalContent>
       </ModalWrapper>
