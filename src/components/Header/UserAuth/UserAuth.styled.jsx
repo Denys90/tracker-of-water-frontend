@@ -30,3 +30,8 @@ export const SignInIcon = styled.svg`
   stroke: ${theme.colors.black};
   fill: transparent;
 `;
+export const Button = styled.button`
+  background-color: transparent;
+  padding: 0px;
+  border: none;
+  `;
