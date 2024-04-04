@@ -54,7 +54,7 @@ export const ProgressBar = () => {
         </svg>
         Add water
       </AddWaterProgress>
-      <AddWaterModal />
+   
       {isOpen && (
         <Modal onClose={toggleModal}>
           <AddWaterModal />
