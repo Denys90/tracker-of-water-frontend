@@ -13,7 +13,8 @@ import {
 
 import svg from '../../assets/images/icons.svg';
 import DrinkListModal from './DrinkListModal';
-import BodyModal from '../Modal/BodyModal';
+// import BodyModal from '../Modal/BodyModal';
+import { AddWaterModal } from '../AddWaterModal/AddWaterModal';
 
 export const DrinkList = () => {
   const { isOpenModalDrinkList, toggleModal, popupRef } = DrinkListModal();
@@ -151,9 +152,9 @@ export const DrinkList = () => {
         </DrinkListAddWater>
       </DrinkListWrapper>
       {isOpenModalDrinkList && (
-        <BodyModal>
-          <div>Add water of todo(children)</div>
-        </BodyModal>
+       
+        <AddWaterModal/>
+    
       )}
     </>
   );
