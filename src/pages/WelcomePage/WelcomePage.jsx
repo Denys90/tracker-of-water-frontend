@@ -1,7 +1,7 @@
 import { MainPage } from 'components/MainPage/MainPage/MainPage';
 
 const WelcomePage = () => {
-  return <MainPage />;
+  return  <MainPage />;
 };
 
 export default WelcomePage;
