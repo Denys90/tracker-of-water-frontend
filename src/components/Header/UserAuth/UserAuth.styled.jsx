@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import { theme } from 'styles/theme';
 
 export const UserAuthBtn = styled.button`
@@ -34,4 +35,4 @@ export const Button = styled.button`
   background-color: transparent;
   padding: 0px;
   border: none;
-  `;
+`;

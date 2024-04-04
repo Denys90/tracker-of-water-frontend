@@ -9,8 +9,10 @@ import {
   DayButton,
   DayPercent,
 } from './CalenderStyles';
+
 import svg from '../../assets/images/icons.svg';
 import { format } from 'date-fns';
+
 
 export const Calender = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
