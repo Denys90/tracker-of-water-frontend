@@ -62,7 +62,7 @@ export const InputContainer = styled.div`
   }
 `;
 export const LabelField = styled.label`
-  font-family: Roboto;
+  font-family: 'Roboto-Medium', sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
@@ -75,7 +75,7 @@ export const LabelField = styled.label`
   }
 `;
 export const SubmitButton = styled.button`
-  font-family: Roboto;
+  font-family: 'Roboto-Medium', sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -103,7 +103,7 @@ export const SubmitButton = styled.button`
 export const LinkBtn = styled.button`
   margin-top: 16px;
   color: rgb(64, 123, 255);
-  font-family: Roboto;
+  font-family: 'Roboto-Medium', sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
@@ -164,7 +164,7 @@ export const InputField = styled(Field)`
 
 export const ErrorMessages = styled(ErrorMessage)`
   color: red;
-  font-family: Roboto;
+  font-family: 'Roboto-Medium', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
