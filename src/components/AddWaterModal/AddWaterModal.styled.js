@@ -131,7 +131,7 @@ export const InputTime = styled.input`
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
-  width: 40%;
+  width: 95%;
   display: flex;
   padding: 12px 10px;
   align-items: flex-start;
@@ -167,7 +167,7 @@ export const Input = styled.input`
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
-  width: 40%;
+  width: 95%;
   display: flex;
   padding: 12px 10px;
   align-items: flex-start;
