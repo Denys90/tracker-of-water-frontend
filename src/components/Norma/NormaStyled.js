@@ -25,6 +25,7 @@ export const BackgroundHome = styled.div`
   background-repeat: no-repeat;
   width: 100%;
   min-height: 208px;
+  z-index: -1;
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     background-image: -webkit-image-set(
@@ -48,58 +49,48 @@ export const BackgroundHome = styled.div`
 
 export const NormaTitle = styled.h3`
   font-size: 18px;
-  font-weight: 500;
   line-height: 1.33;
-
-  margin-bottom: 16px;
-
+  font-family: 'Roboto-Bold', sans-serif;
+  margin-bottom: 12px;
   color: ${theme.colors.black};
-  text-align: center;
 `;
 
 export const NormaAllWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 
   padding: 8px 20px;
   padding-top: 20px;
-  align-items: center;
-  width: 170px;
+  width: 164px;
 
   border-radius: 10px;
   border: 1px solid ${theme.colors.lightBlue};
   box-shadow: ${theme.boxShadowBtn.Btn};
 
   p {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     line-height: 1;
+    margin: 0;
 
     color: ${theme.colors.blue};
-    display: block;
-  }
-  a {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.25;
-    margin-bottom: 0;
-    padding-top: 2px;
-
-    color: ${theme.colors.skyBlue};
-    cursor: pointer;
-    background: transparent;
-
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-      color: ${theme.colors.orange};
-    }
   }
 `;
 
 export const NormaWrapper = styled.div`
   display: flex;
+  align-items: flex-end;
   gap: 12px;
-  margin: 0 auto;
+`;
+
+export const EditButton = styled.button`
+  padding: 0;
+  background-color: ${theme.colors.white};
+  color: ${theme.colors.blue};
+  border: none;
+  font-size: 16px;
+  &:hover {
+    color: ${theme.colors.orange};
+  }
 `;

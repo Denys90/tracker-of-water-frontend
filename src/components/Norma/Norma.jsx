@@ -5,6 +5,7 @@ import {
   NormaTitle,
   BackgroundHome,
   DailyBox,
+  EditButton,
 } from './NormaStyled';
 import Modal from 'components/Modal/Modal';
 
@@ -24,9 +25,9 @@ export const Norma = () => {
         <NormaTitle>My daily norma</NormaTitle>
         <NormaWrapper>
           <p>{waterNorma}</p>
-          <button type="button" onClick={toggleModal}>
+          <EditButton type="button" onClick={toggleModal}>
             Edit
-          </button>
+          </EditButton>
         </NormaWrapper>
       </NormaAllWrapper>
       <BackgroundHome />
