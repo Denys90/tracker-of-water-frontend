@@ -2,6 +2,25 @@ import { Form, Field, Formik } from 'formik';
 import useWater from 'hooks/useWaters';
 import * as Yup from 'yup';
 
+import {
+  FormField,
+  ModalButtonSave,
+  ModalCalcTitle,
+  ModalCalculate,
+  ModalCalculateWater,
+  ModalContainerInput,
+  ModalFormula,
+  ModalFormulaContainer,
+  ModalFormulaSpan,
+  ModalFormulaText,
+  ModalLabel,
+  ModalRadioContainer,
+  ModalTextNote,
+  ModalTextStar,
+  ModalTitle,
+  ModalWriteWater,
+} from './DailyNormaForm.styled';
+
 function WaterCalculator() {
   const { addDailyNorma } = useWater();
 
@@ -18,8 +37,8 @@ function WaterCalculator() {
   };
 
   return (
-    <div>
-      <h2>My daily norma</h2>
+    <ModalCalculateWater>
+      <ModalTitle>My daily norma</ModalTitle>
       <Formik
         initialValues={{
           gender: 'man',
@@ -46,73 +65,92 @@ function WaterCalculator() {
       >
         {({ isSubmitting, errors, touched, values, setFieldValue }) => (
           <Form>
-            <div>
-              <p>For girl: V=(M*0,03) + (T*0,4)</p>
-              <p>For man: V=(M*0,04) + (T*0,6)</p>
-            </div>
-            <span>
-              * V is the volume of the water norm in liters per day, M is your
-              body weight, T is the time of active sports, or another type of
-              activity commensurate in terms of loads (in the absence of these,
-              you must set 0)
-            </span>
-            <div>
-              <p>Calculate your rate:</p>
-              <label>
-                <Field
-                  type="radio"
-                  name="gender"
-                  value="man"
-                  onChange={() => setFieldValue('gender', 'man')}
-                />
-                From man
-              </label>
-              <label>
-                <Field
-                  type="radio"
-                  name="gender"
-                  value="woman"
-                  onChange={() => setFieldValue('gender', 'woman')}
-                />
-                From woman
-              </label>
+            <ModalFormulaContainer>
+              <ModalFormula>
+                For girl:{' '}
+                <ModalFormulaSpan>V=(M*0,03) + (T*0,4)</ModalFormulaSpan>
+              </ModalFormula>
+              <ModalFormula>
+                For man:{' '}
+                <ModalFormulaSpan>V=(M*0,04) + (T*0,6)</ModalFormulaSpan>
+              </ModalFormula>
+            </ModalFormulaContainer>
+            <ModalFormulaText>
+              <ModalTextNote>
+                <ModalTextStar>* </ModalTextStar>V is the volume of the water
+                norm in liters per day, M is your body weight, T is the time of
+                active sports, or another type of activity commensurate in terms
+                of loads (in the absence of these, you must set 0)
+              </ModalTextNote>
+            </ModalFormulaText>
+            <ModalCalculate>
+              <ModalCalcTitle>Calculate your rate:</ModalCalcTitle>
+              <ModalRadioContainer>
+                <label>
+                  <Field
+                    type="radio"
+                    name="gender"
+                    value="man"
+                    onChange={() => setFieldValue('gender', 'man')}
+                  />
+                  For man
+                </label>
+                <label>
+                  <Field
+                    type="radio"
+                    name="gender"
+                    value="woman"
+                    onChange={() => setFieldValue('gender', 'woman')}
+                  />
+                  For woman
+                </label>
+              </ModalRadioContainer>
               {errors.gender && touched.gender && <div>{errors.gender}</div>}
-            </div>
-
-            <div>
-              <label>
+            </ModalCalculate>
+            <ModalContainerInput>
+              <ModalLabel>
                 Your weight in kilograms:
-                <Field type="number" name="weight" />
+                <Field
+                  type="number"
+                  name="weight"
+                  placeholder="0"
+                  component={FormField}
+                />
                 {errors.weight && touched.weight && <div>{errors.weight}</div>}
-              </label>
-            </div>
-
-            <div>
-              <label>
+              </ModalLabel>
+            </ModalContainerInput>
+            <ModalContainerInput>
+              <ModalLabel>
                 The time of active participation in sports or other activities
                 with a high physical. load in hours:
-                <Field type="number" name="activityHours" />
+                <Field
+                  type="number"
+                  name="activityHours"
+                  placeholder="0"
+                  component={FormField}
+                />
                 {errors.activityHours && touched.activityHours && (
                   <div>{errors.activityHours}</div>
                 )}
-              </label>
-            </div>
+              </ModalLabel>
+            </ModalContainerInput>
+            <ModalWriteWater>
+              <p>
+                Your recommended water intake per day is:
+                {calculateWater(values)
+                  ? parseFloat(calculateWater(values)).toFixed(2)
+                  : 0}
+                liters
+              </p>
+            </ModalWriteWater>
 
-            <p>
-              Your recommended water intake per day is:
-              {calculateWater(values)
-                ? parseFloat(calculateWater(values)).toFixed(2)
-                : 0}
-              liters
-            </p>
-
-            <button type="submit" disabled={isSubmitting}>
-              Submit
-            </button>
+            <ModalButtonSave type="submit" disabled={isSubmitting}>
+              Save
+            </ModalButtonSave>
           </Form>
         )}
       </Formik>
-    </div>
+    </ModalCalculateWater>
   );
 }
 

@@ -2,9 +2,11 @@ import {
   ModalContent,
   ModalWrapper,
   Popup,
+  CloseButton,
 } from 'components/Modal/Modal.styled';
 import { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
+import svg from '../../assets/images/icons.svg';
 
 // ({ onClose, children, fullVP = false })
 const Modal = ({ onClose, children }) => {
@@ -41,7 +43,11 @@ const Modal = ({ onClose, children }) => {
     <Popup onClick={handleClickOutside} ref={backdrop}>
       <ModalWrapper>
         <ModalContent>
-          <button onClick={onClose}>X</button>
+          <CloseButton onClick={onClose}>
+            <svg width={12} height={12}>
+              <use href={`${svg}#icon-close`}></use>
+            </svg>
+          </CloseButton>
           {children}
         </ModalContent>
       </ModalWrapper>
