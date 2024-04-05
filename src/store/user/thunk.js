@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'Наш бек';
+axios.defaults.baseURL = 'https://project-deep-water-server.onrender.com/api';
 
 export const token = {
   set(token) {
@@ -13,10 +13,10 @@ export const token = {
 };
 // ======================================================>
 export const signUpThunk = createAsyncThunk(
-  'users/signup',
+  'users/register',
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/users/signup', credentials);
+      const response = await axios.post('/users/register', credentials);
       token.set(response.data.token);
       if (response.data.token) {
         alert('You have successfully registered!');
@@ -47,32 +47,6 @@ export const loginThunk = createAsyncThunk(
     }
   }
 );
-
-// ======================================================>
-
-export const currentUserThunk = createAsyncThunk(
-  'users/current',
-  async (_, { rejectWithValue, getState }) => {
-    const state = getState();
-    const persistToken = state.users.token;
-
-    if (persistToken === null) {
-      return rejectWithValue('Unable to fetch user');
-    }
-
-    try {
-      token.set(persistToken);
-
-      const response = await axios.get('/users/current');
-
-      return response.data;
-    } catch (error) {
-      console.log('Error currentUserThunk', error.message);
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
 // ======================================================>
 
 export const logoutThunk = createAsyncThunk(
@@ -86,3 +60,6 @@ export const logoutThunk = createAsyncThunk(
     }
   }
 );
+// ======================================================>
+// User Info
+// ======================================================>

@@ -7,12 +7,7 @@ import {
   selectIsRefreshing,
   selectToken,
 } from '../store/user/selectors';
-import {
-  currentUserThunk,
-  loginThunk,
-  logoutThunk,
-  signUpThunk,
-} from '../store/user/thunk';
+import { loginThunk, logoutThunk, signUpThunk } from '../store/user/thunk';
 
 const useUsers = () => {
   const dispatch = useDispatch();
@@ -35,11 +30,6 @@ const useUsers = () => {
 
   const signOut = useCallback(() => dispatch(logoutThunk()), [dispatch]);
 
-  const fetchCurrentUser = useCallback(
-    () => dispatch(currentUserThunk()),
-    [dispatch]
-  );
-
   return {
     user,
     isAuthenticated,
@@ -49,7 +39,6 @@ const useUsers = () => {
     signUp,
     signIn,
     signOut,
-    fetchCurrentUser,
   };
 };
 

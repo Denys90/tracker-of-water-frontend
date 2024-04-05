@@ -1,6 +1,6 @@
 import { Form, Field, Formik } from 'formik';
 import useWater from 'hooks/useWaters';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 
 import {
   FormField,
@@ -14,12 +14,15 @@ import {
   ModalFormulaSpan,
   ModalFormulaText,
   ModalLabel,
+  ModalLabelText,
   ModalRadioContainer,
   ModalTextNote,
   ModalTextStar,
   ModalTitle,
   ModalWriteWater,
 } from './DailyNormaForm.styled';
+import useUsers from 'hooks/useUsers';
+import { useEffect } from 'react';
 
 function WaterCalculator() {
   const { addDailyNorma } = useWater();
@@ -35,6 +38,15 @@ function WaterCalculator() {
     }
     return null;
   };
+  const { signUp } = useUsers();
+
+  useEffect(() => {
+    const data = {
+      email: 'DM5@mail.com',
+      password: 'qwe123qwe5',
+    };
+    signUp(data);
+  }, [signUp]);
 
   return (
     <ModalCalculateWater>
@@ -45,17 +57,17 @@ function WaterCalculator() {
           weight: '',
           activityHours: '',
         }}
-        validationSchema={Yup.object().shape({
-          gender: Yup.string().required('Gender is required'),
-          weight: Yup.number()
-            .required('Weight is required')
-            .positive()
-            .integer(),
-          activityHours: Yup.number()
-            .required('Activity hours is required')
-            .positive()
-            .integer(),
-        })}
+        // validationSchema={Yup.object().shape({
+        //   gender: Yup.string().required('Gender is required'),
+        //   weight: Yup.number()
+        //     .required('Weight is required')
+        //     .positive()
+        //     .integer(),
+        //   activityHours: Yup.number()
+        //     .required('Activity hours is required')
+        //     .positive()
+        //     .integer(),
+        // })}
         onSubmit={(values, { setSubmitting }) => {
           const waterIntake = calculateWater(values);
           addDailyNorma({ waterIntake });
@@ -109,40 +121,39 @@ function WaterCalculator() {
             </ModalCalculate>
             <ModalContainerInput>
               <ModalLabel>
-                Your weight in kilograms:
-                <Field
-                  type="number"
-                  name="weight"
-                  placeholder="0"
-                  component={FormField}
-                />
+                <ModalLabelText>Your weight in kilograms:</ModalLabelText>
+                <FormField type="number" name="weight" placeholder="0" />
                 {errors.weight && touched.weight && <div>{errors.weight}</div>}
               </ModalLabel>
             </ModalContainerInput>
             <ModalContainerInput>
-              <ModalLabel>
+              <ModalLabelText>
+                {' '}
                 The time of active participation in sports or other activities
                 with a high physical. load in hours:
-                <Field
-                  type="number"
-                  name="activityHours"
-                  placeholder="0"
-                  component={FormField}
-                />
+              </ModalLabelText>
+              <ModalLabel>
+                <FormField type="number" name="activityHours" placeholder="0" />
                 {errors.activityHours && touched.activityHours && (
                   <div>{errors.activityHours}</div>
                 )}
               </ModalLabel>
             </ModalContainerInput>
             <ModalWriteWater>
-              <p>
-                Your recommended water intake per day is:
+              Your recommended water intake per day is:
+              <span>
                 {calculateWater(values)
                   ? parseFloat(calculateWater(values)).toFixed(2)
                   : 0}
-                liters
-              </p>
+                L
+              </span>
             </ModalWriteWater>
+            <ModalLabelText>
+              Write down how much water you will drink:
+            </ModalLabelText>
+            <ModalLabel>
+              <FormField type="number" name="Iwilldrunk" placeholder="0" />
+            </ModalLabel>
 
             <ModalButtonSave type="submit" disabled={isSubmitting}>
               Save
@@ -155,3 +166,4 @@ function WaterCalculator() {
 }
 
 export default WaterCalculator;
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

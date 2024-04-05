@@ -46,12 +46,28 @@ export const ModalContent = styled.div`
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 24px;
-  right: 12px;
+  top: 42px;
+  right: 30px;
   color: ${theme.colors.blue};
   display: block;
   border: none;
   background-color: transparent;
   padding: 0px;
   cursor: pointer;
+  & svg {
+    stroke: ${theme.colors.blue};
+    width: 16px;
+    height: 16px;
+
+    padding-bottom: 2px;
+    &:hover {
+      fill: ${theme.colors.orange};
+    }
+  }
 `;
+
+// export const CloseIcon = styled.svg`
+//   fill: ${theme.colors.blue};
+//   width: 32px;
+//   height: 32px;
+// `;

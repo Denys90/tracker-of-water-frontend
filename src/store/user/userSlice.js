@@ -1,18 +1,13 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import { handlePending, handleRejected, handleFulfilled } from './handles';
-import {
-  currentUserThunk,
-  loginThunk,
-  logoutThunk,
-  signUpThunk,
-} from './thunk';
+import { loginThunk, logoutThunk, signUpThunk } from './thunk';
 
 import { getActions } from './servises/getActions';
 
 const initialState = {
   token: null,
-  profile: { name: '', email: '' },
+  profile: { email: '' },
   isLogined: false,
   isRefreshing: false,
   hasError: null,
@@ -31,10 +26,6 @@ const usersSlice = createSlice({
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
         state.profile = payload.user;
         state.token = payload.token;
-      })
-
-      .addCase(currentUserThunk.fulfilled, (state, { payload }) => {
-        state.profile = payload.user;
       })
 
       .addCase(logoutThunk.fulfilled, () => {

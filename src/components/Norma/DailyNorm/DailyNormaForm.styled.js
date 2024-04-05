@@ -4,17 +4,15 @@ import { theme } from 'styles/theme';
 
 export const ModalTitle = styled.h2`
   font-size: 26px;
-  line-height: 1.2;
-  margin-top: 0;
+  line-height: 32px;
   margin-bottom: 24px;
 `;
 export const ModalFormulaContainer = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 26px;
+  margin: 0;
+  padding: 0;
   line-height: 1.2;
-  margin-top: 0;
-  margin-bottom: 24px;
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     flex-direction: row;
@@ -28,25 +26,26 @@ export const ModalFormula = styled.p`
 
 export const ModalFormulaSpan = styled.span`
   font-size: 18px;
-  color: blue;
+  color: ${theme.colors.blue};
 `;
 
 export const ModalFormulaText = styled.div`
-  border: 1px solid #d7e3ff;
+  border: 1px solid ${theme.colors.paleBlue};
   border-radius: 10px;
   padding: 10px;
   display: flex;
   margin-bottom: 24px;
+  width: auto;
 `;
 
 export const ModalTextNote = styled.p`
-  color: #8f8f8f;
+  color: ${theme.colors.secondText};
   font-size: 12px;
-  line-height: 1.3;
+  line-height: 16px;
   margin: 0;
 `;
 export const ModalTextStar = styled.span`
-  color: blue;
+  color: ${theme.colors.blue};
 `;
 
 export const ModalCalculate = styled.div`
@@ -70,31 +69,50 @@ export const ModalContainerInput = styled.div`
   flex-direction: column;
 `;
 
-export const ModalLabel = styled.label`
+export const ModalLabel = styled.label``;
+export const ModalWriteWater = styled.div`
+  font-size: 18px;
+  padding-bottom: 26px;
+  span {
+    padding-left: 5px;
+    color: ${theme.colors.blue};
+    font-weight: bold;
+  }
+`;
+
+export const ModalLabelText = styled.label`
+  display: block;
   font-size: 16px;
-  line-height: 1.25;
-  /* margin-bottom: 8px; */
+  line-height: 20px;
+  padding-bottom: 8px;
+  color: ${theme.colors.black};
 `;
 export const FormField = styled(Field)`
   display: flex;
   box-sizing: border-box;
   border-radius: 6px;
-  border: 1px solid #d7e3ff;
+  border: 1px solid ${theme.colors.paleBlue};
   padding: 12px 10px;
   color: blue;
   font-size: 16px;
   width: 100%;
-`;
+  &::placeholder {
+    color: ${theme.colors.paleBlue};
+  }
 
-export const ModalWriteWater = styled.div``;
+  &:focus {
+    outline: none;
+    border-color: ${theme.colors.blue};
+  }
+`;
 
 export const ModalButtonSave = styled.button`
   box-sizing: border-box;
   display: inline-block;
   width: 100%;
-  /* min-width: 280px; */
+  margin-top: 24px;
   height: 36px;
-  gap: 10px;
+
   padding: 8px 30px;
   font-size: 16px;
   border-radius: 10px;

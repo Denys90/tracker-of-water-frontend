@@ -8,7 +8,7 @@ export const theme = {
     skyBlue: '#9EBBFF',
     orange: '#FF9D43',
     paleBlue: '#D7E3FF',
-    waves: '#3586ff',
+    secondText: '#8F8F8F',
   },
 
   boxShadowBtn: {

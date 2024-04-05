@@ -1,11 +1,6 @@
-import {
-  signUpThunk,
-  loginThunk,
-  currentUserThunk,
-  logoutThunk,
-} from '../thunk';
+import { signUpThunk, loginThunk, logoutThunk } from '../thunk';
 
-const extraActions = [signUpThunk, loginThunk, currentUserThunk, logoutThunk];
+const extraActions = [signUpThunk, loginThunk, logoutThunk];
 
 export const getActions = (type) => {
   return extraActions?.map((action) => action[type]);
