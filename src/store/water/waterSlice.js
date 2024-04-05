@@ -1,6 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   getWatersThunk,
+  getMonthThunk,
   addDailyNormaThunk,
   deleteTodoThunk,
   patchWatersThunk,
@@ -12,6 +13,7 @@ import { getActions } from './servises/getActions';
 const initialState = {
   dailyNorm: 2,
   reps: [],
+  month: [],
   isLoading: false,
   error: null,
 };
@@ -22,7 +24,11 @@ const waterSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getWatersThunk.fulfilled, (state, action) => {
-        state.waters = action.payload;
+        state.dailyNorm = action.payload.daily_limit;
+        state.reps = action.payload.water_entries;
+      })
+      .addCase(getMonthThunk.fulfilled, (state, action) => {
+        state.month = action.payload;
       })
       .addCase(addDailyNormaThunk.fulfilled, (state, action) => {
         state.dailyNorm = action.payload;

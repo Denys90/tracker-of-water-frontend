@@ -2,12 +2,12 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://db';
+axios.defaults.baseURL = 'https://project-deep-water-server.onrender.com/api';
 // ==========================================>
 
 export const getWatersThunk = createAsyncThunk(
   'water/getWater',
-  async (credentials, { rejectWithValue, getState }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
       const store = getState();
       const token = store.users.token;
@@ -21,7 +21,34 @@ export const getWatersThunk = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await axios.get('/water', credentials, {
+      const response = await axios.post('/waters/created', {
+        headers,
+      });
+      return response.data;
+    } catch (error) {
+      console.log('Error getAllContactsThunk', error.message);
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getMonthThunk = createAsyncThunk(
+  'water/getMonth',
+  async (date, { rejectWithValue, getState }) => {
+    try {
+      const store = getState();
+      const token = store.users.token;
+
+      if (!token) {
+        console.error('No token found.');
+        return;
+      }
+
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
+      const response = await axios.get('/waters/month', date, {
         headers,
       });
       return response.data;
@@ -50,7 +77,7 @@ export const addWatersThunk = createAsyncThunk(
           return rejectWithValue(error.message);
       }
     }
-  },
+  }
 );
 
 // ==========================================>
