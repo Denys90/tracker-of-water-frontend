@@ -18,15 +18,20 @@ import { AddWaterModal } from 'components/AddWaterModal/AddWaterModal';
 import svg from 'assets/images/icons.svg';
 import Modal from 'components/Modal/Modal';
 
+import { useSelector } from 'react-redux';
+
+import { selectWaterObj } from '../../store/water/selectors';
+
 export const ProgressBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const water = useSelector(selectWaterObj);
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
   //exepmple
-  const waterPercentage = 88;
+  const waterPercentage = water.percent;
 
   return (
     <ProgressDivWrapper>
@@ -54,7 +59,7 @@ export const ProgressBar = () => {
         </svg>
         Add water
       </AddWaterProgress>
-   
+
       {isOpen && (
         <Modal onClose={toggleModal}>
           <AddWaterModal />
