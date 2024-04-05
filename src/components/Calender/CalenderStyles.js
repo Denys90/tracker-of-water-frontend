@@ -66,7 +66,6 @@ export const DaysList = styled.div`
     height: 268px;
   }
 `;
-
 export const DayButton = styled.button`
   padding: 7px 6px;
   width: 35px;

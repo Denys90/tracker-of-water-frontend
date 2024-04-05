@@ -13,7 +13,6 @@ import {
 } from './DrinkListStyled';
 
 import svg from 'assets/images/icons.svg';
-
 import Modal from 'components/Modal/Modal';
 
 export const DrinkList = () => {
@@ -22,7 +21,11 @@ export const DrinkList = () => {
     { id: 2, volume: 500, time: '10:00' },
   ];
 
-  const { isOpenModalDrinkList, toggleModal, popupRef } = DrinkListModal();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
