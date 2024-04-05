@@ -21,8 +21,6 @@ import {
   ModalTitle,
   ModalWriteWater,
 } from './DailyNormaForm.styled';
-import useUsers from 'hooks/useUsers';
-import { useEffect } from 'react';
 
 function WaterCalculator() {
   const { addDailyNorma } = useWater();
@@ -38,15 +36,6 @@ function WaterCalculator() {
     }
     return null;
   };
-  const { signUp } = useUsers();
-
-  useEffect(() => {
-    const data = {
-      email: 'DM5@mail.com',
-      password: 'qwe123qwe5',
-    };
-    signUp(data);
-  }, [signUp]);
 
   return (
     <ModalCalculateWater>

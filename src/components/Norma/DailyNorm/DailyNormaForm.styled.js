@@ -99,7 +99,7 @@ export const FormField = styled(Field)`
   &::placeholder {
     color: ${theme.colors.paleBlue};
   }
-
+  &:hover,
   &:focus {
     outline: none;
     border-color: ${theme.colors.blue};

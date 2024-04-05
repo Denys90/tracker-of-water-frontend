@@ -7,7 +7,8 @@ import { getActions } from './servises/getActions';
 
 const initialState = {
   token: null,
-  profile: { email: '' },
+  profile: { name: '', email: '', gender: '' },
+  avatarURL: '',
   isLogined: false,
   isRefreshing: false,
   hasError: null,

@@ -16,12 +16,16 @@ import {
   SvgClose,
   SvgCloseTwo,
 } from './AuthForm.styled';
+import useUsers from 'hooks/useUsers';
 
 const AuthForm = () => {
   const [formType, setFormType] = useState('signin');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+  console.log(formSubmitted);
+
+  const { signUp, signIn } = useUsers();
 
   const handleFormTypeChange = (type) => {
     setFormType(type);
@@ -88,8 +92,15 @@ const AuthForm = () => {
             return errors;
           }}
           onSubmit={(values, { setSubmitting, resetForm }) => {
+            const { email, password } = values;
+            if (formType === 'signin') {
+              signIn({ email: email, password: password });
+            } else {
+              signUp({ email: email, password: password });
+            }
             console.log('Form submitted:', values);
             setSubmitting(false);
+            setSubmitting('values', values);
             resetForm();
           }}
         >

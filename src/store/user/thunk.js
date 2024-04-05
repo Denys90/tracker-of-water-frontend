@@ -23,7 +23,7 @@ export const signUpThunk = createAsyncThunk(
       }
       return response.data;
     } catch (error) {
-      console.log('Error signUpThunk', error.message);
+      alert('Something went wrong, please try again!');
       return rejectWithValue(error.message);
     }
   }
@@ -54,7 +54,8 @@ export const logoutThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       token.unset();
-      await axios.post('/users/logout');
+      await axios.get('/users/logout');
+      alert('You are successfully logout!');
     } catch (error) {
       return rejectWithValue(error.message);
     }

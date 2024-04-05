@@ -6,6 +6,7 @@ import {
   selectHasError,
   selectIsRefreshing,
   selectToken,
+  selectAvatar,
 } from '../store/user/selectors';
 import { loginThunk, logoutThunk, signUpThunk } from '../store/user/thunk';
 
@@ -14,6 +15,7 @@ const useUsers = () => {
 
   const isAuth = useSelector(selectToken);
   const user = useSelector(selectProfile);
+  const avatar = useSelector(selectAvatar);
   const isAuthenticated = useSelector(selectIsLoginedIn);
   const isRefreshingUser = useSelector(selectIsRefreshing);
   const isAuthError = useSelector(selectHasError);
@@ -36,6 +38,7 @@ const useUsers = () => {
     isRefreshingUser,
     isAuthError,
     isAuth,
+    avatar,
     signUp,
     signIn,
     signOut,
