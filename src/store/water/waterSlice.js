@@ -14,6 +14,7 @@ const initialState = {
   dailyNorm: 2,
   reps: [],
   month: [],
+  percent: 0,
   isLoading: false,
   error: null,
 };
@@ -24,8 +25,10 @@ const waterSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getWatersThunk.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.dailyNorm = action.payload.daily_limit;
         state.reps = action.payload.water_entries;
+        state.percent = action.payload.percent;
       })
       .addCase(getMonthThunk.fulfilled, (state, action) => {
         state.month = action.payload;

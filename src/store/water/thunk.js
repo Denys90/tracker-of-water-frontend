@@ -7,7 +7,7 @@ axios.defaults.baseURL = 'https://project-deep-water-server.onrender.com/api';
 
 export const getWatersThunk = createAsyncThunk(
   'water/getWater',
-  async (_, { rejectWithValue, getState }) => {
+  async (date, { rejectWithValue, getState }) => {
     try {
       const store = getState();
       const token = store.users.token;
@@ -21,7 +21,7 @@ export const getWatersThunk = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await axios.post('/waters/created', {
+      const response = await axios.post('/waters/created', date, {
         headers,
       });
       return response.data;
