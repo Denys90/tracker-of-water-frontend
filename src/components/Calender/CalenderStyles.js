@@ -104,3 +104,20 @@ export const DayPercent = styled.div`
     font-size: 12px;
   }
 `;
+export const Popover = styled.div`
+  top: ${(props) => props.top}px;
+  left: ${(props) => props.left}px;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 999;
+
+  p {
+    margin: 0;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+`;
