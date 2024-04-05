@@ -66,7 +66,6 @@ export const DaysList = styled.div`
     height: 268px;
   }
 `;
-
 export const DayButton = styled.button`
   padding: 7px 6px;
   width: 35px;
@@ -102,5 +101,22 @@ export const DayPercent = styled.div`
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     font-size: 12px;
+  }
+`;
+export const Popover = styled.div`
+  top: ${(props) => props.top}px;
+  left: ${(props) => props.left}px;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 999;
+
+  p {
+    margin: 0;
+  }
+
+  button {
+    margin-top: 10px;
   }
 `;

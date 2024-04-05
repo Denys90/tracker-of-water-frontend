@@ -8,6 +8,7 @@ import {
   CalenderNav,
   DayButton,
   DayPercent,
+  Popover,
 } from './CalenderStyles';
 
 import svg from '../../assets/images/icons.svg';
@@ -16,7 +17,8 @@ import { format } from 'date-fns';
 
 export const Calender = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [selectedDay, setSelectedDay] = useState(new Date()); // Установка текущего дня по умолчанию
+  const [selectedDay, setSelectedDay] = useState(null); // Установка текущего дня по умолчанию
+  const [popoverPosition, setPopoverPosition] = useState({ x: 0, y: 0 });
 
   // Функция для изменения текущего месяца
   const handleChangeMonth = (increment) => {
@@ -53,7 +55,7 @@ export const Calender = () => {
     return currentMonth.getFullYear();
   };
 
-  // Сохранение выбранного дня при клике
+  // Обработчик клика по дню
   const handleDayClick = (day) => {
     const selectedDate = new Date(
       currentMonth.getFullYear(),
@@ -64,10 +66,17 @@ export const Calender = () => {
     if (selectedDate <= today) {
       // Проверяем, что выбранная дата не позже текущей
       setSelectedDay(selectedDate);
-      console.log(format(selectedDate, 'dd.MM.yyyy'));
+      // Устанавливаем позицию поповера
+      setPopoverPosition({ x: event.clientX, y: event.clientY });
     } else {
-      console.log('Выберите день не позже сегодняшней даты');
+      // Выводим сообщение, если выбранная дата уже прошла
+      alert('Выберите день не позже сегодняшней даты');
     }
+  };
+
+  // Закрытие поповера
+  const closePopover = () => {
+    setSelectedDay(null);
   };
 
   return (
@@ -90,15 +99,21 @@ export const Calender = () => {
         <DaysList>
           {generateMonthDays().map((day) => (
             <div key={day}>
-              <DayButton onClick={() => handleDayClick(day)}>{day}</DayButton>
+              <DayButton onClick={(e) => handleDayClick(day, e)}>
+                {day}
+              </DayButton>
               <DayPercent>0%</DayPercent>
             </div>
           ))}
         </DaysList>
       </CalenderWrapper>
-      {/* Отображение выбранного дня */}
-      {selectedDay !== null && (
-        <p>Selected day: {format(selectedDay, 'dd.MM.yyyy')}</p>
+
+      {/* Поповер */}
+      {selectedDay && (
+        <Popover style={{ top: popoverPosition.y, left: popoverPosition.x }}>
+          <p>Selected day: {format(selectedDay, 'dd.MM.yyyy')}</p>
+          <button onClick={closePopover}>Close</button>
+        </Popover>
       )}
     </div>
   );
