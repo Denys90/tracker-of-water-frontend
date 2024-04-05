@@ -14,6 +14,7 @@ import {
 import svg from '../../assets/images/icons.svg';
 import { format } from 'date-fns';
 
+
 export const Calender = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState(null); // Установка текущего дня по умолчанию

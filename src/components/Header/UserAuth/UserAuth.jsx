@@ -1,38 +1,26 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { SignInIcon, UserAuthBtn, Button } from './UserAuth.styled';
-import sprite from 'assets/images/icons.svg';
-import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
+// import Popover from '@mui/material/Popover';
+// import Typography from '@mui/material/Typography';
+// import Button from '@mui/material/Button';
+// import { useState } from 'react';
 
-export const UserAuth = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
+function UserAuth() {
+  // const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'user-auth-popover' : undefined;
+  // const open = Boolean(anchorEl);
+  // const id = open ? 'simple-popover' : undefined;
 
   return (
     <div>
-      <NavLink to="/login">
-        <UserAuthBtn type="button">
-          Sign in
-          <SignInIcon>
-            <use href={`${sprite}#icon-user`} />
-          </SignInIcon>
-        </UserAuthBtn>
-      </NavLink>
-      <Button type="button" onClick={handleClick}>
-      <SignInIcon>
-        <use href={`${sprite}#icon-down`} />
-      </SignInIcon>
+      {/* <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+        Open Popover
       </Button>
       <Popover
         id={id}
@@ -41,15 +29,15 @@ export const UserAuth = () => {
         onClose={handleClose}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
+          horizontal: 'left',
         }}
       >
-        <Typography sx={{ p: 2 }}>Content of the popover</Typography>
-      </Popover>
+        <Typography style={{ padding: '8px' }}>
+          The content of the Popover.
+        </Typography>
+      </Popover> */}
     </div>
   );
-};
+}
+
+export default UserAuth;

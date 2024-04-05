@@ -22,13 +22,13 @@ export const ModalWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 450px;
-  height: 350px;
+  width: auto;
+  height: auto;
 `;
 export const ModalContent = styled.div`
   position: relative;
-  padding: 20px;
-  width: 450px;
+  padding: 24px 12px;
+  /* width: 450px; */
   height: auto;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -38,10 +38,15 @@ export const ModalContent = styled.div`
   transition:
     opacity 0.3s,
     transform 0.3s;
+
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+    padding: 32px 24px;
+  }
 `;
+
 export const CloseButton = styled.button`
   position: absolute;
-  top: 12px;
+  top: 24px;
   right: 12px;
   color: ${theme.colors.blue};
   display: block;

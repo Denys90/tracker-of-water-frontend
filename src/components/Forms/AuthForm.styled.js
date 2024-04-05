@@ -2,17 +2,17 @@ import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
 import { Field, ErrorMessage } from 'formik';
 
-import { ReactComponent as SVGOpen } from '../../assets/images/icons/Vector.svg';
-import { ReactComponent as SVGOpenTwo } from '../../assets/images/icons/Vector.svg';
-import { ReactComponent as SVGClose } from '../../assets/images/icons/Vector2.svg';
-import { ReactComponent as SVGCloseTwo } from '../../assets/images/icons/Vector2.svg';
+import { ReactComponent as SVGOpen } from 'assets/images/icons/Vector.svg';
+import { ReactComponent as SVGOpenTwo } from 'assets/images/icons/Vector.svg';
+import { ReactComponent as SVGClose } from 'assets/images/icons/Vector2.svg';
+import { ReactComponent as SVGCloseTwo } from 'assets/images/icons/Vector2.svg';
 
-import main_mobile from '../../assets/images/mobile/background_element_home_mobile@1x.png';
-import main_mobile2 from '../../assets/images/mobile/background_element_home_mobile@2x.png';
-import main_tablet from '../../assets/images/tablet/background_element_home_mobile@1x.png';
-import main_tablet2 from '../../assets/images/tablet/background_element_home_mobile@2x.png';
-import main_desk from '../../assets/images/desc/background_element_main_desc@1x.png';
-import main_desk2 from '../../assets/images/desc/background_element_main_desc@2x.png';
+import main_mobile from 'assets/images/mobile/background_element_home_mobile@1x.png';
+import main_mobile2 from 'assets/images/mobile/background_element_home_mobile@2x.png';
+import main_tablet from 'assets/images/tablet/background_element_home_mobile@1x.png';
+import main_tablet2 from 'assets/images/tablet/background_element_home_mobile@2x.png';
+import main_desk from 'assets/images/desc/background_element_main_desc@1x.png';
+import main_desk2 from 'assets/images/desc/background_element_main_desc@2x.png';
 
 export const FormContainer = styled.div`
   display: flex;
@@ -62,7 +62,7 @@ export const InputContainer = styled.div`
   }
 `;
 export const LabelField = styled.label`
-  font-family: Roboto;
+  font-family: 'Roboto-Medium', sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
@@ -75,7 +75,7 @@ export const LabelField = styled.label`
   }
 `;
 export const SubmitButton = styled.button`
-  font-family: Roboto;
+  font-family: 'Roboto-Medium', sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -103,7 +103,7 @@ export const SubmitButton = styled.button`
 export const LinkBtn = styled.button`
   margin-top: 16px;
   color: rgb(64, 123, 255);
-  font-family: Roboto;
+  font-family: 'Roboto-Medium', sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
@@ -164,7 +164,7 @@ export const InputField = styled(Field)`
 
 export const ErrorMessages = styled(ErrorMessage)`
   color: red;
-  font-family: Roboto;
+  font-family: 'Roboto-Medium', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;

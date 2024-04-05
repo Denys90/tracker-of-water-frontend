@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   DrinkButtonMinus,
   DrinkButtonPlus,
@@ -11,9 +12,9 @@ import {
   DrinkListRow,
 } from './DrinkListStyled';
 
-import svg from '../../assets/images/icons.svg';
-import DrinkListModal from './DrinkListModal';
-import BodyModal from '../Modal/BodyModal';
+import svg from 'assets/images/icons.svg';
+
+import Modal from 'components/Modal/Modal';
 
 export const DrinkList = () => {
   const drinksData = [
@@ -52,17 +53,18 @@ export const DrinkList = () => {
             </DrinkListRow>
           ))}
         </DrinkListUl>
-        <DrinkListAddWater onClick={toggleModal} ref={popupRef}>
+        <DrinkListAddWater onClick={toggleModal}>
           <svg>
             <use href={`${svg}#icon-increment`}></use>
           </svg>
           Add water
         </DrinkListAddWater>
       </DrinkListWrapper>
-      {isOpenModalDrinkList && (
-        <BodyModal>
-          <div>Add water of todo(children)</div>
-        </BodyModal>
+
+      {isOpen && (
+        <Modal onClose={toggleModal}>
+          <h2>Drink list</h2>
+        </Modal>
       )}
     </>
   );
