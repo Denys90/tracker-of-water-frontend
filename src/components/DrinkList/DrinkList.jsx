@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   DrinkButtonMinus,
   DrinkButtonPlus,
@@ -15,13 +15,23 @@ import {
 import svg from 'assets/images/icons.svg';
 import Modal from 'components/Modal/Modal';
 
+import { getWatersThunk } from '../../store/water/thunk';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { selectReps } from '../../store/water/selectors';
+
 export const DrinkList = () => {
-  const drinksData = [
-    { id: 1, volume: 250, time: '7:00' },
-    { id: 2, volume: 500, time: '10:00' },
-  ];
+  const currentData = Date.now();
+  const date = new Date(currentData);
+  const stringDate = date.toLocaleDateString();
 
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+  const reps = useSelector(selectReps);
+
+  useEffect(() => {
+    dispatch(getWatersThunk({ date: stringDate }));
+  }, [dispatch, stringDate]);
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -32,13 +42,13 @@ export const DrinkList = () => {
       <DrinkListWrapper>
         <DrinkListTitle>Today</DrinkListTitle>
         <DrinkListUl>
-          {drinksData.map((drink) => (
-            <DrinkListRow key={drink.id}>
+          {reps.map((drink) => (
+            <DrinkListRow key={drink._id}>
               <DrinkListItem>
                 <DrinkGlass>
                   <use href={`${svg}#icon-glass`}></use>
                 </DrinkGlass>
-                <h4>{drink.volume} ml</h4>
+                <h4>{drink.amount} ml</h4>
                 <p>
                   {drink.time}
                   <span> AM</span>
