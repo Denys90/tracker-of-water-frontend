@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import {
   CalenderWrapper,
@@ -14,11 +14,11 @@ import {
 import svg from '../../assets/images/icons.svg';
 import { format } from 'date-fns';
 
-
 export const Calender = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState(null); // Установка текущего дня по умолчанию
   const [popoverPosition, setPopoverPosition] = useState({ x: 0, y: 0 });
+  const popoverRef = useRef(null);
 
   // Функция для изменения текущего месяца
   const handleChangeMonth = (increment) => {
@@ -56,7 +56,7 @@ export const Calender = () => {
   };
 
   // Обработчик клика по дню
-  const handleDayClick = (day) => {
+  const handleDayClick = (day, event) => {
     const selectedDate = new Date(
       currentMonth.getFullYear(),
       currentMonth.getMonth(),
@@ -70,14 +70,23 @@ export const Calender = () => {
       setPopoverPosition({ x: event.clientX, y: event.clientY });
     } else {
       // Выводим сообщение, если выбранная дата уже прошла
-      alert('Выберите день не позже сегодняшней даты');
+      alert('This date has not yet arrived. Please select a previous day.');
     }
   };
 
-  // Закрытие поповера
-  const closePopover = () => {
-    setSelectedDay(null);
+  // Закрытие поповера при клике за его пределами
+  const handleClickOutside = (event) => {
+    if (popoverRef.current && !popoverRef.current.contains(event.target)) {
+      setSelectedDay(null);
+    }
   };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div>
@@ -99,7 +108,10 @@ export const Calender = () => {
         <DaysList>
           {generateMonthDays().map((day) => (
             <div key={day}>
-              <DayButton onClick={(e) => handleDayClick(day, e)}>
+              <DayButton
+                onClick={(e) => handleDayClick(day, e)}
+                className={day === new Date().getDate() ? 'today' : ''}
+              >
                 {day}
               </DayButton>
               <DayPercent>0%</DayPercent>
@@ -110,9 +122,22 @@ export const Calender = () => {
 
       {/* Поповер */}
       {selectedDay && (
-        <Popover style={{ top: popoverPosition.y, left: popoverPosition.x }}>
-          <p>Selected day: {format(selectedDay, 'dd.MM.yyyy')}</p>
-          <button onClick={closePopover}>Close</button>
+        <Popover
+          ref={popoverRef}
+          style={{ top: popoverPosition.y, left: popoverPosition.x }}
+        >
+          <p>
+            <span>{format(selectedDay, 'd, MMMM')}</span>
+          </p>
+          <p>
+            Daily norma: <span>1.5 L</span>
+          </p>
+          <p>
+            Fulfillment of the daily norm: <span>60% </span>
+          </p>
+          <p>
+            How many servings of water: <span>6</span>
+          </p>
         </Popover>
       )}
     </div>
