@@ -8,7 +8,7 @@ import SharedLayout from 'components/SharedLayout/SharedLayout';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 // import Loader from 'components/Loader/Loader';
 
-import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
+// import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));

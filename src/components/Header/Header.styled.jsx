@@ -11,7 +11,7 @@ export const ContainerHeader = styled.div`
     padding-top: 16px;
   }
 
-  @media (min-width: 1440px) {
+  @media (min-width: ${theme.breakpoint.desktop}) {
     padding-top: 8px;
   }
 `;
@@ -19,6 +19,7 @@ export const ContainerHeader = styled.div`
 export const WrapHeader = styled.div`
   display: flex;
   align-items: center;
+
   gap: 8px;
   flex-direction: column;
 
