@@ -87,7 +87,7 @@ export const NormaWrapper = styled.div`
 export const EditButton = styled.button`
   padding: 0;
   background-color: ${theme.colors.white};
-  color: ${theme.colors.blue};
+  color: ${theme.colors.paleBlue};
   border: none;
   font-size: 16px;
   &:hover {

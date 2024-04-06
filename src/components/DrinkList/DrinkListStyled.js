@@ -131,23 +131,22 @@ export const DrinkListAddWater = styled.button`
     fill: ${theme.colors.blue};
     stroke: transparent;
     padding-bottom: 2px;
-    &:hover {
-      fill: ${theme.colors.orange};
-    }
   }
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     font-size: 18px;
     line-height: 1.33;
-  }
 
-  & svg {
-    width: 24px;
-    height: 24px;
-  }
+    & svg {
+      width: 24px;
+      height: 24px;
+    }
 
-  &:hover {
-    color: ${theme.colors.orange};
-    fill: ${theme.colors.orange};
+    &:hover {
+      color: ${theme.colors.orange};
+      & svg {
+        fill: ${theme.colors.orange};
+      }
+    }
   }
 `;

@@ -10,17 +10,44 @@ import {
   DayPercent,
   Popover,
 } from './CalenderStyles';
-
 import svg from '../../assets/images/icons.svg';
 import { format } from 'date-fns';
 
 export const Calender = () => {
+  // ====================================
+  // взяла приклад з документації
+  const oneitem = {
+    date: '04.04.2024',
+    daily_limit: 2000,
+    water_entries: [
+      {
+        time: '9:41',
+        amount: 250,
+        date: '02.04.2024',
+      },
+      {
+        time: '19:58',
+        amount: 250,
+        date: '02.04.2024',
+      },
+    ],
+    owner: '660ab1bf135b46797793af4f',
+    count: 5,
+    percent: 80,
+  };
+
+  // перераховуємо ліміт в потрібний формат
+  // !!!передати денну норму в мл
+  const daily_limit = oneitem.daily_limit;
+  const waterNorma = (daily_limit / 1000).toFixed(1) + ' L';
+  // ====================================
+
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [selectedDay, setSelectedDay] = useState(null); // Установка текущего дня по умолчанию
+  const [selectedDay, setSelectedDay] = useState(null);
   const [popoverPosition, setPopoverPosition] = useState({ x: 0, y: 0 });
   const popoverRef = useRef(null);
 
-  // Функция для изменения текущего месяца
+  // зміна місяця
   const handleChangeMonth = (increment) => {
     setCurrentMonth((prevMonth) => {
       const newMonth = new Date(prevMonth);
@@ -29,7 +56,7 @@ export const Calender = () => {
     });
   };
 
-  // Функция для генерации чисел текущего месяца
+  // генерація днів місяця
   const generateMonthDays = () => {
     const lastDayOfMonth = new Date(
       currentMonth.getFullYear(),
@@ -44,43 +71,42 @@ export const Calender = () => {
     return days;
   };
 
-  // Функция для получения имени текущего месяца
+  // назва місяця
   const getCurrentMonthName = () => {
     const monthFormatter = new Intl.DateTimeFormat('en', { month: 'long' });
     return monthFormatter.format(currentMonth);
   };
 
-  // Функция для получения текущего года
+  // поточний рік
   const getCurrentYear = () => {
     return currentMonth.getFullYear();
   };
 
-  // Обработчик клика по дню
+  // клік по дню
   const handleDayClick = (day, event) => {
     const selectedDate = new Date(
       currentMonth.getFullYear(),
       currentMonth.getMonth(),
       day
     );
-    const today = new Date(); // Получаем текущую дату
+    const today = new Date(); // поточна дата
     if (selectedDate <= today) {
-      // Проверяем, что выбранная дата не позже текущей
+      // Перевіряємо, що обрана дата не пізніше за поточну
       setSelectedDay(selectedDate);
-      // Устанавливаем позицию поповера
+      // Встановлюємо позицію поповера
       setPopoverPosition({ x: event.clientX, y: event.clientY });
     } else {
-      // Выводим сообщение, если выбранная дата уже прошла
+      // Виводимо повідомлення, якщо обрана дата вже пройшла
       alert('This date has not yet arrived. Please select a previous day.');
     }
   };
 
-  // Закрытие поповера при клике за его пределами
+  // Закриття поповера при натисканні за його межами
   const handleClickOutside = (event) => {
     if (popoverRef.current && !popoverRef.current.contains(event.target)) {
       setSelectedDay(null);
     }
   };
-
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -105,21 +131,36 @@ export const Calender = () => {
             </MonthButton>
           </PaginationWrapper>
         </CalenderNav>
+
         <DaysList>
-          {generateMonthDays().map((day) => (
-            <div key={day}>
-              <DayButton
-                onClick={(e) => handleDayClick(day, e)}
-                className={day === new Date().getDate() ? 'today' : ''}
-              >
-                {day}
-              </DayButton>
-              <DayPercent>0%</DayPercent>
-            </div>
-          ))}
+          {generateMonthDays().map((day) => {
+            const currentDate = new Date();
+            const selectedDate = new Date(
+              currentMonth.getFullYear(),
+              currentMonth.getMonth(),
+              day
+            );
+            const isToday =
+              currentDate.toDateString() === selectedDate.toDateString();
+
+            return (
+              <div key={day}>
+                <DayButton
+                  onClick={(e) => handleDayClick(day, e)}
+                  className={isToday ? 'today' : ''}
+                >
+                  {day}
+                </DayButton>
+                {/* ==================================== */}
+                {/* передати відсотки */}
+                <DayPercent>{oneitem.percent}%</DayPercent>
+              </div>
+            );
+          })}
         </DaysList>
       </CalenderWrapper>
 
+      {/* ==================================== */}
       {/* Поповер */}
       {selectedDay && (
         <Popover
@@ -130,13 +171,16 @@ export const Calender = () => {
             <span>{format(selectedDay, 'd, MMMM')}</span>
           </p>
           <p>
-            Daily norma: <span>1.5 L</span>
+            Daily norma: <span>{waterNorma}</span>
           </p>
           <p>
-            Fulfillment of the daily norm: <span>60% </span>
+            {/* передати відсотки */}
+            Fulfillment of the daily norm: <span>{oneitem.percent}%</span>
           </p>
           <p>
-            How many servings of water: <span>6</span>
+            {/* передати підходи */}
+            {/*oneitem.water_entries.length*/}
+            How many servings of water: <span>{oneitem.count}</span>
           </p>
         </Popover>
       )}
