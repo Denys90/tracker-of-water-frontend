@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import {
   CalenderWrapper,
@@ -10,17 +10,44 @@ import {
   DayPercent,
   Popover,
 } from './CalenderStyles';
-
 import svg from '../../assets/images/icons.svg';
 import { format } from 'date-fns';
 
-
 export const Calender = () => {
-  const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [selectedDay, setSelectedDay] = useState(null); // Установка текущего дня по умолчанию
-  const [popoverPosition, setPopoverPosition] = useState({ x: 0, y: 0 });
+  // ====================================
+  // взяла приклад з документації
+  const oneitem = {
+    date: '04.04.2024',
+    daily_limit: 2000,
+    water_entries: [
+      {
+        time: '9:41',
+        amount: 250,
+        date: '02.04.2024',
+      },
+      {
+        time: '19:58',
+        amount: 250,
+        date: '02.04.2024',
+      },
+    ],
+    owner: '660ab1bf135b46797793af4f',
+    count: 5,
+    percent: 80,
+  };
 
-  // Функция для изменения текущего месяца
+  // перераховуємо ліміт в потрібний формат
+  // !!!передати денну норму в мл
+  const daily_limit = oneitem.daily_limit;
+  const waterNorma = (daily_limit / 1000).toFixed(1) + ' L';
+  // ====================================
+
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [selectedDay, setSelectedDay] = useState(null);
+  const [popoverPosition, setPopoverPosition] = useState({ x: 0, y: 0 });
+  const popoverRef = useRef(null);
+
+  // зміна місяця
   const handleChangeMonth = (increment) => {
     setCurrentMonth((prevMonth) => {
       const newMonth = new Date(prevMonth);
@@ -29,7 +56,7 @@ export const Calender = () => {
     });
   };
 
-  // Функция для генерации чисел текущего месяца
+  // генерація днів місяця
   const generateMonthDays = () => {
     const lastDayOfMonth = new Date(
       currentMonth.getFullYear(),
@@ -44,40 +71,48 @@ export const Calender = () => {
     return days;
   };
 
-  // Функция для получения имени текущего месяца
+  // назва місяця
   const getCurrentMonthName = () => {
     const monthFormatter = new Intl.DateTimeFormat('en', { month: 'long' });
     return monthFormatter.format(currentMonth);
   };
 
-  // Функция для получения текущего года
+  // поточний рік
   const getCurrentYear = () => {
     return currentMonth.getFullYear();
   };
 
-  // Обработчик клика по дню
-  const handleDayClick = (day) => {
+  // клік по дню
+  const handleDayClick = (day, event) => {
     const selectedDate = new Date(
       currentMonth.getFullYear(),
       currentMonth.getMonth(),
       day
     );
-    const today = new Date(); // Получаем текущую дату
+    const today = new Date(); // поточна дата
     if (selectedDate <= today) {
-      // Проверяем, что выбранная дата не позже текущей
+      // Перевіряємо, що обрана дата не пізніше за поточну
       setSelectedDay(selectedDate);
-      // Устанавливаем позицию поповера
+      // Встановлюємо позицію поповера
       setPopoverPosition({ x: event.clientX, y: event.clientY });
     } else {
-      // Выводим сообщение, если выбранная дата уже прошла
-      alert('Выберите день не позже сегодняшней даты');
+      // Виводимо повідомлення, якщо обрана дата вже пройшла
+      alert('This date has not yet arrived. Please select a previous day.');
     }
   };
 
-  // Закрытие поповера
-  const closePopover = () => {
-    setSelectedDay(null);
+  // Закриття поповера при натисканні за його межами
+  const handleClickOutside = (event) => {
+    if (popoverRef.current && !popoverRef.current.contains(event.target)) {
+      setSelectedDay(null);
+    }
   };
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div>
@@ -96,23 +131,57 @@ export const Calender = () => {
             </MonthButton>
           </PaginationWrapper>
         </CalenderNav>
+
         <DaysList>
-          {generateMonthDays().map((day) => (
-            <div key={day}>
-              <DayButton onClick={(e) => handleDayClick(day, e)}>
-                {day}
-              </DayButton>
-              <DayPercent>0%</DayPercent>
-            </div>
-          ))}
+          {generateMonthDays().map((day) => {
+            const currentDate = new Date();
+            const selectedDate = new Date(
+              currentMonth.getFullYear(),
+              currentMonth.getMonth(),
+              day
+            );
+            const isToday =
+              currentDate.toDateString() === selectedDate.toDateString();
+
+            return (
+              <div key={day}>
+                <DayButton
+                  onClick={(e) => handleDayClick(day, e)}
+                  className={isToday ? 'today' : ''}
+                >
+                  {day}
+                </DayButton>
+                {/* ==================================== */}
+                {/* передати відсотки */}
+                <DayPercent>{oneitem.percent}%</DayPercent>
+              </div>
+            );
+          })}
         </DaysList>
       </CalenderWrapper>
 
+      {/* ==================================== */}
       {/* Поповер */}
       {selectedDay && (
-        <Popover style={{ top: popoverPosition.y, left: popoverPosition.x }}>
-          <p>Selected day: {format(selectedDay, 'dd.MM.yyyy')}</p>
-          <button onClick={closePopover}>Close</button>
+        <Popover
+          ref={popoverRef}
+          style={{ top: popoverPosition.y, left: popoverPosition.x }}
+        >
+          <p>
+            <span>{format(selectedDay, 'd, MMMM')}</span>
+          </p>
+          <p>
+            Daily norma: <span>{waterNorma}</span>
+          </p>
+          <p>
+            {/* передати відсотки */}
+            Fulfillment of the daily norm: <span>{oneitem.percent}%</span>
+          </p>
+          <p>
+            {/* передати підходи */}
+            {/*oneitem.water_entries.length*/}
+            How many servings of water: <span>{oneitem.count}</span>
+          </p>
         </Popover>
       )}
     </div>
