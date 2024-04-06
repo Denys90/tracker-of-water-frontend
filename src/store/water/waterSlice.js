@@ -11,7 +11,7 @@ import { handleFulfilled, handlePending, handleReject } from './handles';
 import { getActions } from './servises/getActions';
 
 const initialState = {
-  dailyNorm: 2,
+  dailyNorm: 2000,
   reps: [],
   month: [],
   percent: 0,
