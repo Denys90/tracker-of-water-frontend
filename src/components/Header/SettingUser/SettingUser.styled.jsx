@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
 import { theme } from '../../../styles/theme';
 import { Field } from 'formik';
-import { ReactComponent as SVGOpen } from 'assets/images/icons/Vector.svg';
-import { ReactComponent as SVGClose } from 'assets/images/icons/Vector2.svg';
+import { ReactComponent as SSVGOpen } from 'assets/images/icons/Vector.svg';
+import { ReactComponent as SSVGClose } from 'assets/images/icons/Vector2.svg';
 
 export const FormText = styled.h2`
   color: ${theme.colors.black};
   font-size: 18px;
   line-height: 20px;
 `;
-export const SvgClose = styled(SVGClose)`
+export const SSvgClose = styled(SSVGClose)`
   position: absolute;
   right: 10px;
   width: 20px;
@@ -17,7 +17,7 @@ export const SvgClose = styled(SVGClose)`
   height: auto;
   cursor: pointer;
 `;
-export const SvgOpen = styled(SVGOpen)`
+export const SSvgOpen = styled(SSVGOpen)`
   position: absolute;
   right: 10px;
   width: 20px;

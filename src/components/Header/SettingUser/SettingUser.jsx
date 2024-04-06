@@ -22,8 +22,8 @@ import {
   DesktopPasswordWrap,
   ModalWrap,
   Avatar,
-  SvgClose,
-  SvgOpen,
+  SSvgClose,
+  SSvgOpen,
 } from './SettingUser.styled';
 
 import sprite from 'assets/images/icons.svg';
@@ -152,10 +152,10 @@ export const SettingUser = () => {
                       />
                       {showPassword ? (
                   <>
-                    <SvgClose onClick={togglePasswordVisibility} />
+                    <SSvgClose onClick={togglePasswordVisibility} />
                   </>
                 ) : (
-                  <SvgOpen onClick={togglePasswordVisibility} />
+                  <SSvgOpen onClick={togglePasswordVisibility} />
                 )}
                       <IconButton type="button"></IconButton>
                     </PasswordInputWrap>
@@ -173,10 +173,10 @@ export const SettingUser = () => {
                       />
                       {showPassword ? (
                   <>
-                    <SvgClose onClick={togglePasswordVisibility} />
+                    <SSvgClose onClick={togglePasswordVisibility} />
                   </>
                 ) : (
-                  <SvgOpen onClick={togglePasswordVisibility} />
+                  <SSvgOpen onClick={togglePasswordVisibility} />
                 )}
                       <IconButton type="button"></IconButton>
                     </PasswordInputWrap>
@@ -194,10 +194,10 @@ export const SettingUser = () => {
                       />
                       {showPassword ? (
                   <>
-                    <SvgClose onClick={togglePasswordVisibility} />
+                    <SSvgClose onClick={togglePasswordVisibility} />
                   </>
                 ) : (
-                  <SvgOpen onClick={togglePasswordVisibility} />
+                  <SSvgOpen onClick={togglePasswordVisibility} />
                 )}
                       <IconButton type="button"></IconButton>
                     </PasswordInputWrap>
