@@ -1,3 +1,5 @@
+
+
 import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
 
@@ -15,7 +17,7 @@ export const BoxAddModal = styled.div`
     margin-bottom: 16px;
     color: ${ theme.colors.black};
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.1;
   }
 
@@ -63,7 +65,7 @@ line-height: 123%;
 `;
 
 export const Subtitle = styled.h3`
-font-weight: 500;
+font-weight: 700;
 font-size: 18px;
 line-height: 111%;
  margin-bottom: 16px;
@@ -108,9 +110,9 @@ export const ButtonMl = styled.button`
   align-items: center;
   gap: 10px;
   padding: 4px;
-  box-shadow: ${ theme.boxShadowBtn.Btn};
 
-  &:hover &:focus {
+
+  &:hover {
     box-shadow: ${theme.boxShadowBtn.hoverBtn};
   }
 `;
@@ -264,11 +266,8 @@ height: 44px;
   }
 `;
 
-
-
-
-
-
-
-
-
+export const ErrorMessage = styled.div`
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+`;
