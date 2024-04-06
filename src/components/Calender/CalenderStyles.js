@@ -56,6 +56,7 @@ export const DaysList = styled.div`
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(6, 50px);
   justify-content: space-between;
+  align-items: center;
   gap: 16px;
   height: 446px;
 
@@ -77,7 +78,12 @@ export const DayButton = styled.button`
   color: ${theme.colors.black};
 
   background-color: ${theme.colors.white};
-  border: 1px solid ${theme.colors.blue};
+  border: 1px solid ${theme.colors.white};
+
+  &.today {
+    border: 1px solid ${theme.colors.blue};
+    color: ${theme.colors.blue};
+  }
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     font-size: 16px;
@@ -89,11 +95,13 @@ export const DayButton = styled.button`
     border: 1px solid ${theme.colors.orange};
   }
 `;
+
 export const DayPercent = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   text-align: center;
+  padding-left: 10px;
   font-size: 10px;
   font-weight: 400;
   line-height: 1.6;
@@ -103,19 +111,39 @@ export const DayPercent = styled.div`
     font-size: 12px;
   }
 `;
+
 export const Popover = styled.div`
   top: ${(props) => props.top}px;
   left: ${(props) => props.left}px;
+
+  transform: translateY(-105%);
+  margin-left: -280px;
   position: absolute;
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  z-index: 999;
+  z-index: 30;
+  background-color: ${theme.colors.white};
+  border-radius: 10px;
+  max-width: 280px;
+  box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.3);
+  border-radius: 10px;
+  padding: 24px 16px;
 
   p {
-    margin: 0;
+    font-size: 14px;
+    color: ${theme.colors.black};
+    font-weight: 400;
+    padding-bottom: 3px;
+    @media screen and (min-width: ${theme.breakpoint.tablet}) {
+      font-size: 16px;
+    }
   }
-
+  span {
+    font-size: 14px;
+    font-weight: 500;
+    color: ${theme.colors.blue};
+    @media screen and (min-width: ${theme.breakpoint.tablet}) {
+      font-size: 16px;
+    }
+  }
   button {
     margin-top: 10px;
   }

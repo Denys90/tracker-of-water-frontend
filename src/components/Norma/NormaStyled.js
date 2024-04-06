@@ -16,7 +16,7 @@ export const DailyBox = styled.div`
 `;
 
 export const BackgroundHome = styled.div`
-  background-position: center;
+  background-position: left bottom;
   background-image: -webkit-image-set(
     url(${bottle_home}) 1x,
     url(${bottle_homex2}) 2x
@@ -87,7 +87,7 @@ export const NormaWrapper = styled.div`
 export const EditButton = styled.button`
   padding: 0;
   background-color: ${theme.colors.white};
-  color: ${theme.colors.blue};
+  color: ${theme.colors.paleBlue};
   border: none;
   font-size: 16px;
   &:hover {
