@@ -1,20 +1,38 @@
 import styled from '@emotion/styled';
 import { theme } from '../../../styles/theme';
 import { Field } from 'formik';
+import { ReactComponent as SVGOpen } from 'assets/images/icons/Vector.svg';
+import { ReactComponent as SVGClose } from 'assets/images/icons/Vector2.svg';
 
-export const FormText = styled.p`
+export const FormText = styled.h2`
   color: ${theme.colors.black};
   font-size: 18px;
-  font-weight: 500;
-  line-height: 1.11; /* 111.111% */
+  line-height: 20px;
 `;
+export const SvgClose = styled(SVGClose)`
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  top: 16px;
+  height: auto;
+  cursor: pointer;
+`;
+export const SvgOpen = styled(SVGOpen)`
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  top: 18px;
+  height: auto;
+  cursor: pointer;
+`;
+
 export const StyledLabel = styled.label`
   display: inline-block;
   margin-bottom: 8px;
-  color: ${theme.colors.black};
+  color: ${theme.colors.blue};
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.11; /* 111.111% */
+  line-height: 20px;
 `;
 
 export const DownloadWrap = styled.div`
@@ -42,6 +60,7 @@ export const IconButton = styled.button`
 export const PasswordInputWrap = styled.div`
   display: flex;
   align-items: flex-end;
+  position: relative;
   width: 392px;
   margin-top: 8px;
 `;
@@ -128,7 +147,7 @@ export const RadioButton = styled(Field)`
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: ${(props) => props.theme.colors.orange};
+      background: ${theme.colors.blue};
       top: 50%;
       left: 4px;
       transform: translate(0, -50%);
@@ -169,18 +188,16 @@ export const Input = styled(Field)`
   height: 44px;
   border-radius: 6px;
   border: 1px solid ${theme.colors.paleBlue};
-  color: ${theme.colors.blue};
   font-size: 16px;
   line-height: 1.25;
-  outline: transparent; /* 125% */
+  text-indent: 10px;
+  color: ${theme.colors.blue};
+  outline: ${theme.colors.paleBlue};
   background-color: ${theme.colors.white};
 
-  &:focus {
-    color: ${theme.colors.black};
-  }
 
   &::placeholder {
-    color: ${theme.colors.blue};
+    color: ${theme.colors.skyBlue};
     padding: 0px 10px;
   }
 `;
@@ -222,7 +239,7 @@ export const PasswordText = styled(FormText)`
   margin-bottom: 12px;
 `;
 
-export const PasswordLabel = styled.label`
+export const PasswordLabel = styled.p`   
   color: ${theme.colors.black};
   font-size: 16px;
   line-height: 1.25; /* 125% */
@@ -314,22 +331,6 @@ export const SaveButtonWrap = styled.ul`
   }
 `;
 
-export const DeleteButton = styled.button`
-  border: none;
-  background-color: transparent;
-  padding: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  color: ${(props) => props.theme.colors.LightBlue};
-
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    font-size: 16px;
-  }
-
-  &:is(:hover, :focus) {
-  }
-`;
 export const ContainerMod = styled.div`
   width: 1008px;
   height: 592px;
