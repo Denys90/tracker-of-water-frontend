@@ -3,8 +3,8 @@ import { useWater } from 'hooks/useWater';
 function DeleteWater() {
   const { reps, deleteWater } = useWater();
 
-  const handleDelete = (event) => {
-    const id = event.currentTarget.dataset.id;
+  const handleDelete = () => {
+    // const id = event.currentTarget.dataset.id;
     const filteredReps = reps.filter((id) => id !== id);
     deleteWater(filteredReps);
   };
@@ -14,11 +14,11 @@ function DeleteWater() {
       {reps.map((reps) => (
         <li key={reps.id}>
           {reps.text}
-          <button onClick={handleDelete} data-id={reps.id}>
-            {`${svg}#icon-trash`}
-          </button>
+          <button onClick={handleDelete} data-id={reps.id}></button>
         </li>
       ))}
     </ul>
   );
-};
+}
+
+export default DeleteWater;

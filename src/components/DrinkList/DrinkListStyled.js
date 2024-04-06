@@ -124,6 +124,7 @@ export const DrinkListAddWater = styled.button`
   font-weight: 500;
   line-height: 1.25;
   stroke: ${theme.colors.blue};
+  max-width: 125px;
 
   & svg {
     width: 16px;

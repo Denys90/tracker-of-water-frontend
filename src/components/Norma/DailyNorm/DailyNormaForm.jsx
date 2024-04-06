@@ -21,8 +21,12 @@ import {
   ModalTitle,
   ModalWriteWater,
 } from './DailyNormaForm.styled';
-import useUsers from 'hooks/useUsers';
-import { useEffect } from 'react';
+
+const initialValues = {
+  gender: 'man',
+  weight: '',
+  activityHours: '',
+};
 
 function WaterCalculator() {
   const { addDailyNorma } = useWater();
@@ -38,25 +42,12 @@ function WaterCalculator() {
     }
     return null;
   };
-  const { signUp } = useUsers();
-
-  useEffect(() => {
-    const data = {
-      email: 'DM5@mail.com',
-      password: 'qwe123qwe5',
-    };
-    signUp(data);
-  }, [signUp]);
 
   return (
     <ModalCalculateWater>
       <ModalTitle>My daily norma</ModalTitle>
       <Formik
-        initialValues={{
-          gender: 'man',
-          weight: '',
-          activityHours: '',
-        }}
+        initialValues={initialValues}
         // validationSchema={Yup.object().shape({
         //   gender: Yup.string().required('Gender is required'),
         //   weight: Yup.number()

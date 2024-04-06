@@ -61,13 +61,7 @@ export const CloseButton = styled.button`
 
     padding-bottom: 2px;
     &:hover {
-      fill: ${theme.colors.orange};
+      stroke: ${theme.colors.orange};
     }
   }
 `;
-
-// export const CloseIcon = styled.svg`
-//   fill: ${theme.colors.blue};
-//   width: 32px;
-//   height: 32px;
-// `;

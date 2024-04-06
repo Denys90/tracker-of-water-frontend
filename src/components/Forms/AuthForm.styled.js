@@ -189,13 +189,14 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
   margin: 0 auto;
 
-  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+  @media screen and (min-width: ${theme.breakpoint.tablet}) and (max-width: ${theme.breakpoint.desktop}) {
     flex-direction: row-reverse;
+    margin-left: 300px;
   }
-  @media screen and (max-width: ${theme.breakpoint.tablet}) {
+    @media screen and (max-width:767px) {
     flex-direction: column-reverse;
     margin-top: 50px;
   }
@@ -203,19 +204,22 @@ export const Container = styled.div`
 
 export const Image = styled.img`
   height: 588.5px;
-  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+  @media screen and (min-width: ${theme.breakpoint.tablet}) and (max-width: ${theme.breakpoint.desktop}) {
     height: 474.26px;
+    position: relative;
+    left: -200px;
+    top: 100px;
   }
-  @media screen and (max-width: ${theme.breakpoint.tablet}) {
+  @media screen and (min-width: ${theme.breakpoint.mobile}) and (max-width: 767px) {
     height: 181.74px;
   }
-`;
+`
 
 export const SvgOpen = styled(SVGOpen)`
   position: absolute;
   right: 10px;
   width: 20px;
-  top: 187px;
+  top: ${props => props.error ? '213px' : '187px'};
   height: auto;
   cursor: pointer;
 `;
@@ -224,7 +228,7 @@ export const SvgOpenTwo = styled(SVGOpenTwo)`
   position: absolute;
   right: 10px;
   width: 20px;
-  top: 276px;
+  top: ${props => props.error ? '326px' : '276px'};
   height: auto;
   cursor: pointer;
 `;
@@ -233,7 +237,7 @@ export const SvgClose = styled(SVGClose)`
   position: absolute;
   right: 10px;
   width: 20px;
-  top: 187px;
+  top: ${props => props.error ? '213px' : '187px'};
   height: auto;
   cursor: pointer;
 `;
@@ -242,7 +246,7 @@ export const SvgCloseTwo = styled(SVGCloseTwo)`
   position: absolute;
   right: 10px;
   width: 20px;
-  top: 276px;
+  top: ${props => props.error ? '326px' : '276px'};
   height: auto;
   cursor: pointer;
 `;

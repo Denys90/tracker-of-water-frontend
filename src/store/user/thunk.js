@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+// import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://project-deep-water-server.onrender.com/api';
 
@@ -19,11 +20,12 @@ export const signUpThunk = createAsyncThunk(
       const response = await axios.post('/users/register', credentials);
       token.set(response.data.token);
       if (response.data.token) {
+        // toast.success(`You have successfully registered!`);
         alert('You have successfully registered!');
       }
       return response.data;
     } catch (error) {
-      console.log('Error signUpThunk', error.message);
+      alert('Something went wrong, please try again!');
       return rejectWithValue(error.message);
     }
   }
@@ -54,7 +56,8 @@ export const logoutThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       token.unset();
-      await axios.post('/users/logout');
+      await axios.get('/users/logout');
+      alert('You are successfully logout!');
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -63,3 +66,83 @@ export const logoutThunk = createAsyncThunk(
 // ======================================================>
 // User Info
 // ======================================================>
+export const getUserInfoThunk = createAsyncThunk(
+  'users/getInfo',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const store = getState();
+      const token = store.users.token;
+
+      if (!token) {
+        console.error('No token found.');
+        return;
+      }
+
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
+      const response = await axios.get('/users/info', {
+        headers,
+      });
+      return response.data;
+    } catch (error) {
+      console.log('Error getAllContactsThunk', error.message);
+      return rejectWithValue(error.message);
+    }
+  }
+);
+// ======================================================>
+export const patchUserInfoThunk = createAsyncThunk(
+  'users/patchInfo',
+  async (credentials, { rejectWithValue, getState }) => {
+    try {
+      const store = getState();
+      const token = store.users.token;
+
+      if (!token) {
+        console.error('No token found.');
+        return;
+      }
+
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
+      const response = await axios.patch('/users/info', credentials, {
+        headers,
+      });
+      return response.data;
+    } catch (error) {
+      console.log('Error getAllContactsThunk', error.message);
+      return rejectWithValue(error.message);
+    }
+  }
+);
+// ======================================================>
+export const patchUserAvatarThunk = createAsyncThunk(
+  'users/patchAvatar',
+  async (credentials, { rejectWithValue, getState }) => {
+    try {
+      const store = getState();
+      const token = store.users.token;
+
+      if (!token) {
+        console.error('No token found.');
+        return;
+      }
+
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
+      const response = await axios.patch('/users/avatar', credentials, {
+        headers,
+      });
+      return response.data;
+    } catch (error) {
+      console.log('Error getAllContactsThunk', error.message);
+      return rejectWithValue(error.message);
+    }
+  }
+);

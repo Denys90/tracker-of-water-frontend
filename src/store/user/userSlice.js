@@ -1,13 +1,20 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import { handlePending, handleRejected, handleFulfilled } from './handles';
-import { loginThunk, logoutThunk, signUpThunk } from './thunk';
+import {
+  loginThunk,
+  logoutThunk,
+  signUpThunk,
+  getUserInfoThunk,
+  patchUserInfoThunk,
+  patchUserAvatarThunk,
+} from './thunk';
 
 import { getActions } from './servises/getActions';
 
 const initialState = {
   token: null,
-  profile: { email: '' },
+  profile: { name: '', email: '', gender: '', avatarURL: '' },
   isLogined: false,
   isRefreshing: false,
   hasError: null,
@@ -30,6 +37,18 @@ const usersSlice = createSlice({
 
       .addCase(logoutThunk.fulfilled, () => {
         return { ...initialState };
+      })
+
+      .addCase(getUserInfoThunk.fulfilled, (state, { payload }) => {
+        state.profile = payload.user;
+      })
+
+      .addCase(patchUserInfoThunk.fulfilled, (state, { payload }) => {
+        state.profile = payload.user;
+      })
+
+      .addCase(patchUserAvatarThunk.fulfilled, (state, { payload }) => {
+        state.profile = payload.user;
       })
 
       .addMatcher(isAnyOf(...getActions('pending')), handlePending)

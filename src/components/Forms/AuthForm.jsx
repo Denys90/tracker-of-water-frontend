@@ -16,12 +16,16 @@ import {
   SvgClose,
   SvgCloseTwo,
 } from './AuthForm.styled';
+import useUsers from 'hooks/useUsers';
 
 const AuthForm = () => {
   const [formType, setFormType] = useState('signin');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+  console.log(formSubmitted);
+
+  const { signUp, signIn } = useUsers();
 
   const handleFormTypeChange = (type) => {
     setFormType(type);
@@ -38,7 +42,7 @@ const AuthForm = () => {
 
   return (
     <Container>
-      <Image src="assets/images/mobile/bottle_sign_in@2x.png" />
+      <Image src="/src/assets/images/mobile/bottle_sign_in@2x.png" />
       <FormContainer>
         <Title>{formType === 'signin' ? 'Sign In' : 'Sign Up'}</Title>
         <Formik
@@ -88,8 +92,15 @@ const AuthForm = () => {
             return errors;
           }}
           onSubmit={(values, { setSubmitting, resetForm }) => {
+            const { email, password } = values;
+            if (formType === 'signin') {
+              signIn({ email: email, password: password });
+            } else {
+              signUp({ email: email, password: password });
+            }
             console.log('Form submitted:', values);
             setSubmitting(false);
+            setSubmitting('values', values);
             resetForm();
           }}
         >
@@ -121,10 +132,10 @@ const AuthForm = () => {
                 />
                 {showPassword ? (
                   <>
-                    <SvgClose onClick={togglePasswordVisibility} />
+                    <SvgClose onClick={togglePasswordVisibility} error={errors.password} />
                   </>
                 ) : (
-                  <SvgOpen onClick={togglePasswordVisibility} />
+                  <SvgOpen onClick={togglePasswordVisibility} error={errors.password} />
                 )}
                 <ErrorMessages name="password" component="div" />
               </InputContainer>
@@ -144,10 +155,10 @@ const AuthForm = () => {
                   />
                   {showRepeatPassword ? (
                     <>
-                      <SvgCloseTwo onClick={toggleRepeatPasswordVisibility} />
+                      <SvgCloseTwo onClick={toggleRepeatPasswordVisibility} error={errors.password}/>
                     </>
                   ) : (
-                    <SvgOpenTwo onClick={toggleRepeatPasswordVisibility} />
+                    <SvgOpenTwo onClick={toggleRepeatPasswordVisibility} error={errors.password} />
                   )}
                   <ErrorMessages name="repeatPassword" component="div" />
                 </InputContainer>

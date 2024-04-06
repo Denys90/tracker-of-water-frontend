@@ -1,7 +1,9 @@
 import Loader from '../Loader/Loader';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import svg from 'assets/images/icons.svg';
+
+import { format } from 'date-fns';
 
 import { globalLoadingSelector } from '../../root/selectors';
 import { addWatersThunk } from '../../store/water/thunk';
@@ -21,17 +23,43 @@ import {
   Title,
   Subtitle,
   BoxAddModal,
+  ErrorMessage,
 } from './AddWaterModal.styled';
 
-export const AddWaterModal = ({ onClose }) => {
+export const AddWaterModal = ({ onClose, initialTime }) => {
   const initialAmount = 0;
   const [amount, setAmount] = useState(initialAmount || 0);
-  const [time, setTime] = useState(new Date().toISOString().slice(0, 16));
+  const [time, setTime] = useState('');
+
+  useEffect(() => {
+    let roundedTime;
+    if (initialTime) {
+      const date = new Date(initialTime);
+      const minutes = Math.round(date.getMinutes() / 5) * 5; // Округлення до найближчого кратного 5 хвилинам
+      date.setMinutes(minutes);
+      roundedTime = format(date, 'HH:mm');
+    } else {
+      const now = new Date();
+      const minutes = Math.round(now.getMinutes() / 5) * 5;
+      now.setMinutes(minutes);
+      roundedTime = format(now, 'HH:mm');
+    }
+    setTime(roundedTime);
+  }, [initialTime]);
+
   const dispatch = useDispatch();
   const { isLoading } = useSelector(globalLoadingSelector);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleAmountChange = (e) => {
     let newValue = e.target.value;
+    if (newValue > 5000) {
+      setErrorMessage('The value cannot exceed 5000ml');
+      return;
+    } else {
+      setErrorMessage('');
+    }
+
     if (newValue.startsWith('0') && newValue.length > 1) {
       newValue = parseFloat(newValue.substring(1));
     }
@@ -88,10 +116,10 @@ export const AddWaterModal = ({ onClose }) => {
         <AddTime>
           <AddParagraph>Recording time:</AddParagraph>
           <InputTime
-            // type="time"
+            type="time"
             value={time}
             onChange={(e) => setTime(e.target.value)}
-            step="300"
+            step={300}
           />
         </AddTime>
         <div>
@@ -105,6 +133,7 @@ export const AddWaterModal = ({ onClose }) => {
             }
             max={5000}
           />
+          {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
         </div>
         <FooterModal>
           <span>{amount}ml</span>

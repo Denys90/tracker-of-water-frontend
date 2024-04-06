@@ -93,13 +93,13 @@ export const FormField = styled(Field)`
   border-radius: 6px;
   border: 1px solid ${theme.colors.paleBlue};
   padding: 12px 10px;
-  color: blue;
+  color: ${theme.colors.blue};
   font-size: 16px;
   width: 100%;
   &::placeholder {
     color: ${theme.colors.paleBlue};
   }
-
+  &:hover,
   &:focus {
     outline: none;
     border-color: ${theme.colors.blue};
