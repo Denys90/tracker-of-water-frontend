@@ -19,6 +19,7 @@ import { getWatersThunk } from '../../store/water/thunk';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectReps } from '../../store/water/selectors';
+
 import { SettingUser } from 'components/Header/SettingUser/SettingUser';
 import useUsers from 'hooks/useUsers';
 
@@ -80,7 +81,6 @@ export const DrinkList = () => {
 
       {isOpen && (
         <Modal onClose={toggleModal}>
-          {/* <h2>Drink list</h2> */}
           <SettingUser />
         </Modal>
       )}
