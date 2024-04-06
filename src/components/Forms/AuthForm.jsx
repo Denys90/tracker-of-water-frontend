@@ -25,7 +25,7 @@ const AuthForm = () => {
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   console.log(formSubmitted);
 
-  const { signUp, signIn } = useUsers();
+  const { signUp, signIn, userInfo } = useUsers();
 
   const handleFormTypeChange = (type) => {
     setFormType(type);
@@ -101,6 +101,7 @@ const AuthForm = () => {
             console.log('Form submitted:', values);
             setSubmitting(false);
             setSubmitting('values', values);
+            userInfo();
             resetForm();
           }}
         >
@@ -132,10 +133,16 @@ const AuthForm = () => {
                 />
                 {showPassword ? (
                   <>
-                    <SvgClose onClick={togglePasswordVisibility} error={errors.password} />
+                    <SvgClose
+                      onClick={togglePasswordVisibility}
+                      error={errors.password}
+                    />
                   </>
                 ) : (
-                  <SvgOpen onClick={togglePasswordVisibility} error={errors.password} />
+                  <SvgOpen
+                    onClick={togglePasswordVisibility}
+                    error={errors.password}
+                  />
                 )}
                 <ErrorMessages name="password" component="div" />
               </InputContainer>
@@ -155,10 +162,16 @@ const AuthForm = () => {
                   />
                   {showRepeatPassword ? (
                     <>
-                      <SvgCloseTwo onClick={toggleRepeatPasswordVisibility} error={errors.password}/>
+                      <SvgCloseTwo
+                        onClick={toggleRepeatPasswordVisibility}
+                        error={errors.password}
+                      />
                     </>
                   ) : (
-                    <SvgOpenTwo onClick={toggleRepeatPasswordVisibility} error={errors.password} />
+                    <SvgOpenTwo
+                      onClick={toggleRepeatPasswordVisibility}
+                      error={errors.password}
+                    />
                   )}
                   <ErrorMessages name="repeatPassword" component="div" />
                 </InputContainer>

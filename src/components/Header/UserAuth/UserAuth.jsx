@@ -9,9 +9,12 @@ import svg from 'assets/images/icons.svg';
 import { SettingUser } from '../SettingUser/SettingUser';
 import { useState } from 'react';
 import Modal from 'components/Modal/Modal';
+import useUsers from 'hooks/useUsers';
 
 function UserAuth() {
   const [isOpen, setIsOpen] = useState(false);
+  const { signOut } = useUsers();
+  // console.log('Token', isAuth);
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -33,7 +36,9 @@ function UserAuth() {
         <button type="button" onClick={toggleModal}>
           Setting
         </button>
-        <button type="button">Log out</button>
+        <button type="button" onClick={() => signOut()}>
+          Log out
+        </button>
       </div>
       {/* ======================================== */}
 

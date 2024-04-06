@@ -38,6 +38,7 @@ export const SettingUser = () => {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [selectedAvatarPath, setSelectedAvatarPath] = useState('');
   const { newUserAvatar, user } = useUsers();
+  console.log(user);
 
   const handleAvatarChange = (e) => {
     const file = e.currentTarget.files[0];
