@@ -1,66 +1,89 @@
 import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
 
-export const UserLogoContainer = styled.div`
+export const UserLogoWrap = styled.button`
   position: relative;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 8px;
-`;
-
-export const UserLogoTitle = styled.p`
-  font-size: 18px;
-  line-height: 1.33em;
-
-  @media (min-width: ${theme.breakpoint.mobile}) {
-    font-size: 16px;
-    line-height: 1.25em;
-  }
-`;
-
-export const UserLogoBtn = styled.button`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 4px;
-  background-color: transparent;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.33em;
-  padding: 0;
-`;
-
-export const UserAvatar = styled.img`
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-`;
-
-export const UserDefaultAvatar = styled.span`
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-
-  @media (min-width: ${theme.breakpoint.mobile}) {
-    font-size: 14px;
+  gap: 8px;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+`;
+export const UserNameBtn = styled.h3`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.33em;
+  color: ${theme.colors.black};
+  margin: 0;
+  @media screen and (min-width: ${theme.breakpoint.mobile}) {
+    font-size: 18px;
     line-height: 1.25em;
   }
 `;
-
-export const UserModalIcon = styled.svg`
-  width: 16px;
+export const UserArrow = styled.svg`
   height: 16px;
-  fill: ${theme.colors.accent};
-  stroke: ${theme.colors.accent};
-  transition: transform 0.5s ease;
+  width: 16px;
+  padding-top: 4px;
+  fill: ${theme.colors.blue};
 
   &:hover,
   &:focus {
-    stroke: ${theme.colors.secondaryYellow};
+    fill: ${theme.colors.orange};
+  }
+`;
+export const UserIcon = styled.div`
+  width: 28px;
+  height: 28px;
+  background-color: ${theme.colors.blue};
+  border-radius: 50%;
+`;
+export const AuthPopover = styled.div`
+  position: absolute;
+  z-index: 20;
+  top: 56px;
+  right: 0px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: ${theme.colors.white};
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: ${theme.boxShadowBtn.Btn};
+  right: 20px;
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+    right: 32px;
+  }
+  @media screen and (min-width: ${theme.breakpoint.desktop}) {
+    right: 132px;
+  }
+`;
+export const PopoverBtn = styled.button`
+  background-color: ${theme.colors.white};
+  text-decoration: none;
+  border: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.33em;
+  color: ${theme.colors.blue};
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  svg {
+    height: 16px;
+    width: 16px;
+    stroke: ${theme.colors.blue};
+    fill: transparent;
+  }
+
+  &:hover,
+  &:focus {
+    color: ${theme.colors.orange};
+    svg {
+      stroke: ${theme.colors.orange};
+      fill: transparent;
+    }
   }
 `;

@@ -3,19 +3,15 @@ import {
   IconDownload,
   DownloadButtonText,
   FormField,
-  FormText,
   DownloadWrap,
-  GenderText,
   GenderFormField,
   RadioButtonWrap,
   RadioButtonLabel,
   RadioButtonText,
   RadioButton,
-  StyledLabel,
   Input,
   DesktopFormWrap,
   DesktopGenderWrap,
-  PasswordText,
   PasswordFormField,
   PasswordLabel,
   PasswordInputWrap,
@@ -25,8 +21,10 @@ import {
   SaveButton,
   DesktopPasswordWrap,
   ModalWrap,
-  Header,
   Avatar,
+  SSvgClose,
+  SSvgOpen,
+  StyledLabel,
 } from './SettingUser.styled';
 
 import sprite from 'assets/images/icons.svg';
@@ -38,6 +36,7 @@ import { useState } from 'react';
 export const SettingUser = () => {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [selectedAvatarPath, setSelectedAvatarPath] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const { newUserAvatar, user } = useUsers();
   console.log(user);
 
@@ -51,7 +50,13 @@ export const SettingUser = () => {
     gender: user.gender || '',
     name: user.name || '',
     email: user.email || '',
+    password: '',
+    repeatPassword: '',
   };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <ModalWrap>
@@ -63,9 +68,9 @@ export const SettingUser = () => {
             }}
           >
             <Form>
-              <Header>Setting</Header>
+              <h1>Setting</h1>
               <FormField>
-                <FormText>Your photo</FormText>
+                <h2>Your photo</h2>
                 <DownloadWrap>
                   <Avatar
                     src={selectedAvatarPath || initialValues.avatar}
@@ -83,7 +88,7 @@ export const SettingUser = () => {
                       onChange={handleAvatarChange}
                     />
                     <IconDownload>
-                      <use href={`${sprite}#icon-outline1`}></use>
+                      <use href={`${sprite}#ic-outline`}></use>
                     </IconDownload>
                     <DownloadButtonText>Upload a photo</DownloadButtonText>
                   </DownloadButton>
@@ -92,7 +97,7 @@ export const SettingUser = () => {
               <DesktopFormWrap>
                 <DesktopGenderWrap>
                   <GenderFormField>
-                    <GenderText>Your gender identity</GenderText>
+                    <h2>Your gender identity</h2>
                     <RadioButtonWrap>
                       <RadioButtonLabel>
                         <RadioButton
@@ -101,7 +106,7 @@ export const SettingUser = () => {
                           value="female"
                           checked=""
                         />
-                        <RadioButtonText>Girl</RadioButtonText>
+                        <RadioButtonText>Woman</RadioButtonText>
                       </RadioButtonLabel>
                       <RadioButtonLabel>
                         <RadioButton
@@ -124,7 +129,7 @@ export const SettingUser = () => {
                   </div>
                 </DesktopGenderWrap>
                 <DesktopPasswordWrap>
-                  <PasswordText>Password</PasswordText>
+                  <h2>Password</h2>
                   <PasswordFormField>
                     <PasswordLabel htmlFor="oldPassword">
                       Outdated password:
@@ -136,6 +141,13 @@ export const SettingUser = () => {
                         name="outdatedPassword"
                         placeholder="Password"
                       />
+                      {showPassword ? (
+                        <>
+                          <SSvgClose onClick={togglePasswordVisibility} />
+                        </>
+                      ) : (
+                        <SSvgOpen onClick={togglePasswordVisibility} />
+                      )}
                       <IconButton type="button"></IconButton>
                     </PasswordInputWrap>
                   </PasswordFormField>
@@ -150,6 +162,13 @@ export const SettingUser = () => {
                         name="newPassword"
                         placeholder="Password"
                       />
+                      {showPassword ? (
+                        <>
+                          <SSvgClose onClick={togglePasswordVisibility} />
+                        </>
+                      ) : (
+                        <SSvgOpen onClick={togglePasswordVisibility} />
+                      )}
                       <IconButton type="button"></IconButton>
                     </PasswordInputWrap>
                   </PasswordFormField>
@@ -164,6 +183,13 @@ export const SettingUser = () => {
                         name="repeatedPassword"
                         placeholder="Password"
                       />
+                      {showPassword ? (
+                        <>
+                          <SSvgClose onClick={togglePasswordVisibility} />
+                        </>
+                      ) : (
+                        <SSvgOpen onClick={togglePasswordVisibility} />
+                      )}
                       <IconButton type="button"></IconButton>
                     </PasswordInputWrap>
                   </LastPasswordFormField>

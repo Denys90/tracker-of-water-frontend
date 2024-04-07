@@ -6,6 +6,7 @@ import { globalStyles } from 'styles/Global.styled';
 
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
+
 import PrivateRoute from 'guards/PrivateRoute';
 import PublicRoute from 'guards/PublicRoute';
 // import Loader from 'components/Loader/Loader';
