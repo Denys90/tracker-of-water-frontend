@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import {
   UserLogoWrap,
-  UserIcon,
   UserArrow,
-  UserNameBtn,
   AuthPopover,
   PopoverBtn,
+  Avatar,
+  UserName,
 } from './UserLogo.styled';
 import svg from 'assets/images/icons.svg';
 import { useUsers } from 'hooks/useUsers';
@@ -16,7 +16,7 @@ export const UserLogo = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const { signOut } = useUsers();
+  const { signOut, user } = useUsers();
 
   const popoverRef = useRef(null);
 
@@ -48,10 +48,12 @@ export const UserLogo = () => {
   return (
     <>
       <UserLogoWrap type="button" onClick={togglePopover}>
-        <UserNameBtn>David</UserNameBtn>
+        <UserName>{user.name || user.email}</UserName>
         {/* ==================================== */}
         {/* передати іконку */}
-        <UserIcon></UserIcon>
+
+        <Avatar src={user.avatarURL} alt="avatar" />
+
         <UserArrow>
           <use href={`${svg}#icon-down`} />
         </UserArrow>

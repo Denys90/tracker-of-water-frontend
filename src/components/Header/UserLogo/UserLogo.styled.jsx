@@ -10,7 +10,7 @@ export const UserLogoWrap = styled.button`
   background-color: transparent;
   border: none;
 `;
-export const UserNameBtn = styled.h3`
+export const UserName = styled.h3`
   font-weight: 400;
   font-size: 16px;
   line-height: 1.33em;
@@ -32,10 +32,10 @@ export const UserArrow = styled.svg`
     fill: ${theme.colors.orange};
   }
 `;
-export const UserIcon = styled.div`
+
+export const Avatar = styled.img`
   width: 28px;
   height: 28px;
-  background-color: ${theme.colors.blue};
   border-radius: 50%;
 `;
 export const AuthPopover = styled.div`
@@ -56,7 +56,7 @@ export const AuthPopover = styled.div`
     right: 32px;
   }
   @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    right: 132px;
+    right: 270px;
   }
 `;
 export const PopoverBtn = styled.button`
