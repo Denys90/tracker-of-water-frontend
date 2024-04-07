@@ -15,7 +15,7 @@ import {
 import svg from 'assets/images/icons.svg';
 import Modal from 'components/Modal/Modal';
 
-import { getWatersThunk } from '../../store/water/thunk';
+import { postWatersThunk } from '../../store/water/thunk';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectReps } from '../../store/water/selectors';
@@ -32,7 +32,7 @@ export const DrinkList = () => {
   const reps = useSelector(selectReps);
 
   useEffect(() => {
-    dispatch(getWatersThunk({ date: stringDate }));
+    dispatch(postWatersThunk({ date: stringDate }));
   }, [dispatch, stringDate]);
 
   const toggleModal = () => {

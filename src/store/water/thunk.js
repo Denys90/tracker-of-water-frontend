@@ -25,7 +25,7 @@ export const getWatersThunk = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log('Error getAllContactsThunk', error.message);
+      console.log('Error getWatersThunk', error.message);
       return rejectWithValue(error.message);
     }
   }

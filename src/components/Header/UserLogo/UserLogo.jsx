@@ -22,6 +22,7 @@ export const UserLogo = () => {
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
+    setIsPopoverOpen(false);
   };
 
   useEffect(() => {
@@ -49,8 +50,6 @@ export const UserLogo = () => {
     <>
       <UserLogoWrap type="button" onClick={togglePopover}>
         <UserName>{user.name || user.email}</UserName>
-        {/* ==================================== */}
-        {/* передати іконку */}
 
         <Avatar src={user.avatarURL} alt="avatar" />
 
@@ -77,7 +76,7 @@ export const UserLogo = () => {
       )}
       {isOpen && (
         <Modal onClose={toggleModal}>
-          <SettingUser />
+          <SettingUser toggleModal={toggleModal} />
         </Modal>
       )}
     </>

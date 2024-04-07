@@ -89,6 +89,13 @@ export const DownloadButtonText = styled.span`
 export const FormField = styled.div`
   margin-bottom: 24px;
 
+  h2 {
+    display: block;
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 0%;
+  }
+
   .error-input {
     border: 1px solid ${theme.colors.brightRed};
     color: ${theme.colors.brightRed};
@@ -195,7 +202,6 @@ export const Input = styled(Field)`
   outline: ${theme.colors.paleBlue};
   background-color: ${theme.colors.white};
 
-
   &::placeholder {
     color: ${theme.colors.skyBlue};
     padding: 0px 10px;
@@ -239,7 +245,9 @@ export const PasswordText = styled(FormText)`
   margin-bottom: 12px;
 `;
 
-export const PasswordLabel = styled.p`   
+export const PasswordLabel = styled.p`
+  display: block;
+  margin: 0;
   color: ${theme.colors.black};
   font-size: 16px;
   line-height: 1.25; /* 125% */
@@ -345,4 +353,30 @@ export const Header = styled.h1`
   font-size: 26px;
   font-weight: 500;
   line-height: 32px;
+`;
+
+export const Title = styled.h2`
+  display: block;
+  margin: 0;
+  margin-bottom: 24px;
+  font-family: 'Roboto-Bold', sans-serif;
+  font-size: 26px;
+  letter-spacing: 0%;
+`;
+
+export const EmailInput = styled.div``;
+export const TitlePassword = styled.h2`
+  font-family: 'Roboto-Medium', sans-serif;
+  color: ${theme.colors.black};
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0%;
+`;
+export const TitleGender = styled.h2`
+  font-family: 'Roboto-Medium', sans-serif;
+  color: ${theme.colors.black};
+  font-size: 18px;
+
+  line-height: 20px;
+  letter-spacing: 0%;
 `;

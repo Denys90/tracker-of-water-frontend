@@ -25,7 +25,7 @@ const AuthForm = () => {
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   console.log(formSubmitted);
 
-  const { signUp, signIn, userInfo } = useUsers();
+  const { signUp, signIn } = useUsers();
 
   const handleFormTypeChange = (type) => {
     setFormType(type);
@@ -101,9 +101,7 @@ const AuthForm = () => {
             console.log('Form submitted:', values);
             setSubmitting(false);
             setSubmitting('values', values);
-            setTimeout(() => {
-              userInfo();
-            }, 1000);
+
             resetForm();
           }}
         >

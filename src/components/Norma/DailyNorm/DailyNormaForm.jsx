@@ -149,12 +149,7 @@ function WaterCalculator({ toggleModal }) {
               <FormField type="number" name="dailyNorma" placeholder="0" />
             </ModalLabel>
 
-            <ModalButtonSave
-              type="submit"
-              // disabled={isSubmitting}
-            >
-              Save
-            </ModalButtonSave>
+            <ModalButtonSave type="submit">Save</ModalButtonSave>
           </Form>
         )}
       </Formik>

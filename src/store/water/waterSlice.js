@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
-  getWatersThunk,
+  addWatersThunk,
   getMonthThunk,
   addDailyNormaThunk,
   deleteTodoThunk,
@@ -24,7 +24,7 @@ const waterSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(getWatersThunk.fulfilled, (state, action) => {
+      .addCase(addWatersThunk.fulfilled, (state, action) => {
         state.dailyNorm = action.payload.daily_limit;
         state.reps = action.payload.water_entries;
         state.percent = action.payload.percent;

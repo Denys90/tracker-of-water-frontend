@@ -1,12 +1,11 @@
 import Loader from '../Loader/Loader';
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import svg from 'assets/images/icons.svg';
 
 import { format } from 'date-fns';
 
 import { globalLoadingSelector } from '../../root/selectors';
-import { addWatersThunk } from '../../store/water/thunk';
 
 import {
   BtnSave,
@@ -25,11 +24,14 @@ import {
   BoxAddModal,
   ErrorMessage,
 } from './AddWaterModal.styled';
+import useWater from 'hooks/useWaters';
 
-export const AddWaterModal = ({ onClose, initialTime }) => {
+export const AddWaterModal = ({ onClose, initialTime, toggleModal }) => {
   const initialAmount = 0;
   const [amount, setAmount] = useState(initialAmount || 0);
   const [time, setTime] = useState('');
+
+  const { addWater } = useWater();
 
   useEffect(() => {
     let roundedTime;
@@ -47,7 +49,6 @@ export const AddWaterModal = ({ onClose, initialTime }) => {
     setTime(roundedTime);
   }, [initialTime]);
 
-  const dispatch = useDispatch();
   const { isLoading } = useSelector(globalLoadingSelector);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -71,11 +72,12 @@ export const AddWaterModal = ({ onClose, initialTime }) => {
       waterVolume: amount,
       date: time,
     };
-    dispatch(addWatersThunk(waterData)).then((data) => {
+    addWater(waterData).then((data) => {
       if (!data.error) {
         onClose();
         setAmount(0);
       }
+      toggleModal();
     });
   };
 
