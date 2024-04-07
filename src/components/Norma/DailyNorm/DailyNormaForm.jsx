@@ -22,12 +22,6 @@ import {
   ModalWriteWater,
 } from './DailyNormaForm.styled';
 
-const initialValues = {
-  gender: 'man',
-  weight: '',
-  activityHours: '',
-};
-
 function WaterCalculator() {
   const { addDailyNorma } = useWater();
 
@@ -41,6 +35,13 @@ function WaterCalculator() {
       }
     }
     return null;
+  };
+
+  const initialValues = {
+    gender: 'man',
+    weight: '',
+    activityHours: '',
+    dailyNorma: '',
   };
 
   return (
@@ -61,8 +62,12 @@ function WaterCalculator() {
         // })}
         onSubmit={(values, { setSubmitting }) => {
           const waterIntake = calculateWater(values);
-          addDailyNorma({ waterIntake });
+          const dailyNorma = values.dailyNorma * 1000;
+
           console.log('Form data:', { ...values, waterIntake });
+          console.log('Form dailyNorma:', dailyNorma);
+
+          addDailyNorma(dailyNorma);
           setSubmitting(false);
         }}
       >
@@ -140,10 +145,10 @@ function WaterCalculator() {
               </span>
             </ModalWriteWater>
             <ModalLabelText>
-              Write down how much water you will drink:
+              Write down how much water you will drink:s
             </ModalLabelText>
             <ModalLabel>
-              <FormField type="number" name="Iwilldrunk" placeholder="0" />
+              <FormField type="number" name="dailyNorma" placeholder="0" />
             </ModalLabel>
 
             <ModalButtonSave type="submit" disabled={isSubmitting}>

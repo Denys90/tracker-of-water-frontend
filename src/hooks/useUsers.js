@@ -16,7 +16,7 @@ import {
   patchUserAvatarThunk,
 } from '../store/user/thunk';
 
-const useUsers = () => {
+export const useUsers = () => {
   const dispatch = useDispatch();
 
   const isAuth = useSelector(selectToken);
@@ -67,4 +67,4 @@ const useUsers = () => {
   };
 };
 
-export default useUsers;
+// export default useUsers;

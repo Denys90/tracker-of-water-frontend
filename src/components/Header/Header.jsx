@@ -17,7 +17,6 @@ const Header = () => {
           <WrapHeader>
             <UserLogo />
             <UserAuth />
-            {/* {isAuthenticated ? <UserLogo /> : <UserAuth />} */}
           </WrapHeader>
         </ContainerHeader>
       </Containers>

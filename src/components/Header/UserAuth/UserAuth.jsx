@@ -9,11 +9,11 @@ import svg from 'assets/images/icons.svg';
 import { SettingUser } from '../SettingUser/SettingUser';
 import { useState } from 'react';
 import Modal from 'components/Modal/Modal';
-import useUsers from 'hooks/useUsers';
+import { useUsers } from 'hooks/useUsers';
 
 function UserAuth() {
   const [isOpen, setIsOpen] = useState(false);
-  const { signOut } = useUsers();
+  const { signOut, isAuthenticated } = useUsers();
   // console.log('Token', isAuth);
 
   const toggleModal = () => {
@@ -32,14 +32,22 @@ function UserAuth() {
         </UserAuthBtn>
       </NavLink>
       {/* <Кнопки які мають бути в popOver> */}
-      <div>
-        <button type="button" onClick={toggleModal}>
-          Setting
-        </button>
-        <button type="button" onClick={() => signOut()}>
-          Log out
-        </button>
-      </div>
+      {isAuthenticated ? (
+        <div>
+          <button type="button" onClick={toggleModal}>
+            Setting
+          </button>
+          <button type="button" onClick={() => signOut()}>
+            Log out
+          </button>
+        </div>
+      ) : null}
+      {/* {isAuthenticated ? (
+        <AuthArrow>
+          <use href={`${svg}#icon-down`} />
+        </AuthArrow>
+      ) : null} */}
+
       {/* ======================================== */}
 
       {isOpen && (

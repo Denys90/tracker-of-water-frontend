@@ -6,6 +6,8 @@ import { globalStyles } from 'styles/Global.styled';
 
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
+import PrivateRoute from 'guards/PrivateRoute';
+import PublicRoute from 'guards/PublicRoute';
 // import Loader from 'components/Loader/Loader';
 
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
@@ -22,8 +24,22 @@ function App() {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<WelcomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/home" element={<HomePage />} />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/home"
+              element={
+                <PrivateRoute>
+                  <HomePage />
+                </PrivateRoute>
+              }
+            />
           </Route>
           <Route path="*" element={<ErrorPage />} />
         </Routes>

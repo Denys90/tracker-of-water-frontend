@@ -24,6 +24,7 @@ export const ModalWrapper = styled.div`
   align-items: center;
   width: auto;
   height: auto;
+  margin: 15px;
 `;
 export const ModalContent = styled.div`
   position: relative;

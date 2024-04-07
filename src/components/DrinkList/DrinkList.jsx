@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { selectReps } from '../../store/water/selectors';
 
-import { SettingUser } from 'components/Header/SettingUser/SettingUser';
+import { AddWaterModal } from 'components/AddWaterModal/AddWaterModal';
 
 export const DrinkList = () => {
   const currentData = Date.now();
@@ -78,7 +78,7 @@ export const DrinkList = () => {
 
       {isOpen && (
         <Modal onClose={toggleModal}>
-          <SettingUser />{' '}
+          <AddWaterModal />
         </Modal>
       )}
     </>

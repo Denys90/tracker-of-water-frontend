@@ -6,7 +6,11 @@ const PublicRoute = ({ children }) => {
 
   const { state: prevLocation } = useLocation();
 
-  return !isAuthenticated ? children : <Navigate to={prevLocation ?? '/'} />;
+  return !isAuthenticated ? (
+    children
+  ) : (
+    <Navigate to={prevLocation ?? '/home'} />
+  );
 };
 
 export default PublicRoute;

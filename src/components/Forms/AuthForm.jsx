@@ -16,7 +16,7 @@ import {
   SvgClose,
   SvgCloseTwo,
 } from './AuthForm.styled';
-import useUsers from 'hooks/useUsers';
+import { useUsers } from 'hooks/useUsers';
 
 const AuthForm = () => {
   const [formType, setFormType] = useState('signin');
@@ -101,7 +101,9 @@ const AuthForm = () => {
             console.log('Form submitted:', values);
             setSubmitting(false);
             setSubmitting('values', values);
-            userInfo();
+            setTimeout(() => {
+              userInfo();
+            }, 1000);
             resetForm();
           }}
         >
@@ -115,7 +117,6 @@ const AuthForm = () => {
                   id="email"
                   name="email"
                   placeholder="E-mail"
-                  autoComplete="current-password"
                 />
 
                 <ErrorMessages name="email" component="div" />
@@ -129,7 +130,6 @@ const AuthForm = () => {
                   id="password"
                   name="password"
                   placeholder="Password"
-                  autoComplete="current-password"
                 />
                 {showPassword ? (
                   <>
@@ -158,7 +158,6 @@ const AuthForm = () => {
                     id="repeatPassword"
                     name="repeatPassword"
                     placeholder="Repeat Password"
-                    autoComplete="current-password"
                   />
                   {showRepeatPassword ? (
                     <>

@@ -31,7 +31,8 @@ import {
 
 import sprite from 'assets/images/icons.svg';
 import { Formik, Form, Field } from 'formik';
-import useUsers from 'hooks/useUsers';
+import { useUsers } from 'hooks/useUsers';
+
 import { useState } from 'react';
 
 export const SettingUser = () => {
@@ -46,7 +47,7 @@ export const SettingUser = () => {
     setSelectedAvatarPath(URL.createObjectURL(file));
   };
   const initialValues = {
-    avatar: user.avatarURL || '',
+    avatar: user.avatarURL,
     gender: user.gender || '',
     name: user.name || '',
     email: user.email || '',
@@ -57,9 +58,8 @@ export const SettingUser = () => {
         {
           <Formik
             initialValues={initialValues}
-            onSubmit={(values) => {
+            onSubmit={() => {
               newUserAvatar(selectedAvatar);
-              console.log('SettingUser', values);
             }}
           >
             <Form>
@@ -68,7 +68,7 @@ export const SettingUser = () => {
                 <FormText>Your photo</FormText>
                 <DownloadWrap>
                   <Avatar
-                    src={selectedAvatarPath || user.avatar}
+                    src={selectedAvatarPath || initialValues.avatar}
                     alt="user avatar"
                     width="80px"
                     height="80px"
@@ -99,7 +99,7 @@ export const SettingUser = () => {
                           type="radio"
                           name="gender"
                           value="female"
-                          checked={''}
+                          checked=""
                         />
                         <RadioButtonText>Girl</RadioButtonText>
                       </RadioButtonLabel>
@@ -108,7 +108,7 @@ export const SettingUser = () => {
                           type="radio"
                           name="gender"
                           value="male"
-                          checked={''}
+                          checked=""
                         />
                         <RadioButtonText>Man</RadioButtonText>
                       </RadioButtonLabel>
@@ -116,21 +116,11 @@ export const SettingUser = () => {
                   </GenderFormField>
                   <FormField>
                     <StyledLabel htmlFor="username">Your name</StyledLabel>
-                    <Input
-                      type="text"
-                      id="username"
-                      name="name"
-                      value={user.name}
-                    />
+                    <Input type="text" id="username" name="name" />
                   </FormField>
                   <div>
                     <StyledLabel htmlFor="email">E-mail</StyledLabel>
-                    <Input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={user.email}
-                    />
+                    <Input type="email" id="email" name="email" />
                   </div>
                 </DesktopGenderWrap>
                 <DesktopPasswordWrap>
@@ -141,7 +131,7 @@ export const SettingUser = () => {
                     </PasswordLabel>
                     <PasswordInputWrap>
                       <Input
-                        type={'password'}
+                        type="password"
                         id="oldPassword"
                         name="outdatedPassword"
                         placeholder="Password"
@@ -155,7 +145,7 @@ export const SettingUser = () => {
                     </PasswordLabel>
                     <PasswordInputWrap>
                       <Input
-                        type={'password'}
+                        type="password"
                         id="password"
                         name="newPassword"
                         placeholder="Password"
@@ -169,7 +159,7 @@ export const SettingUser = () => {
                     </PasswordLabel>
                     <PasswordInputWrap>
                       <Input
-                        type={'password'}
+                        type="password"
                         id="repeatedPassword"
                         name="repeatedPassword"
                         placeholder="Password"

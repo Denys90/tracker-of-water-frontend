@@ -26,12 +26,12 @@ const usersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(signUpThunk.fulfilled, (state, { payload }) => {
-        state.profile = payload.users;
+        state.profile = payload;
         state.token = payload.token;
       })
 
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
-        state.profile = payload.users;
+        state.profile = payload;
         state.token = payload.token;
       })
 

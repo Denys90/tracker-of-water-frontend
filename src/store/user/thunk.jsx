@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import { toast } from 'react-toastify';
+import { Toaster, toast } from 'sonner';
 
 axios.defaults.baseURL = 'https://project-deep-water-server.onrender.com/api';
 
@@ -20,8 +20,9 @@ export const signUpThunk = createAsyncThunk(
       const response = await axios.post('/users/register', credentials);
       token.set(response.data.token);
       if (response.data.token) {
-        // toast.success(`You have successfully registered!`);
-        alert('You have successfully registered!');
+        toast.success('Event has been created');
+        // alert('You have successfully registered!');
+        <Toaster richColors />;
       }
       return response.data;
     } catch (error) {
@@ -40,7 +41,9 @@ export const loginThunk = createAsyncThunk(
       token.set(response.data.token);
 
       if (response.data.token) {
-        alert('You are successfully logged in!');
+        toast.success('Event has been created');
+        // alert('You are successfully logged in!');
+        <Toaster richColors />;
       }
       return response.data;
     } catch (error) {
@@ -55,12 +58,6 @@ export const logoutThunk = createAsyncThunk(
   'users/logout',
   async (_, { rejectWithValue }) => {
     try {
-      // const store = getState();
-      // const token = store.users.token;
-
-      // const headers = {
-      //   Authorization: `Bearer ${token}`,
-      // };
       await axios.get('/users/logout');
       token.unset();
       alert('You are successfully logout!');
