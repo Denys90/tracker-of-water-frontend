@@ -80,7 +80,7 @@ export const addWatersThunk = createAsyncThunk(
 // ==========================================>
 
 export const addDailyNormaThunk = createAsyncThunk(
-  'waters/patchDailyNorma',
+  'waters/patchDailyLimit',
   async (credentials, { rejectWithValue, getState }) => {
     try {
       const store = getState();
@@ -100,7 +100,7 @@ export const addDailyNormaThunk = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log('Error addContactThunk', error.message);
+      console.log('Error addDailyNormaThunk', error.message);
       return rejectWithValue(error.message);
     }
   }

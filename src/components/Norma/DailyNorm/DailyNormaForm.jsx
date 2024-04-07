@@ -22,7 +22,7 @@ import {
   ModalWriteWater,
 } from './DailyNormaForm.styled';
 
-function WaterCalculator() {
+function WaterCalculator({ toggleModal }) {
   const { addDailyNorma } = useWater();
 
   const calculateWater = (formData) => {
@@ -44,34 +44,32 @@ function WaterCalculator() {
     dailyNorma: '',
   };
 
+  const currentDate = new Date();
+  const day = String(currentDate.getDate()).padStart(2, '0');
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+  const year = String(currentDate.getFullYear());
+
+  const formattedDate = `${day}.${month}.${year}`;
+
   return (
     <ModalCalculateWater>
       <ModalTitle>My daily norma</ModalTitle>
       <Formik
         initialValues={initialValues}
-        // validationSchema={Yup.object().shape({
-        //   gender: Yup.string().required('Gender is required'),
-        //   weight: Yup.number()
-        //     .required('Weight is required')
-        //     .positive()
-        //     .integer(),
-        //   activityHours: Yup.number()
-        //     .required('Activity hours is required')
-        //     .positive()
-        //     .integer(),
-        // })}
         onSubmit={(values, { setSubmitting }) => {
-          const waterIntake = calculateWater(values);
           const dailyNorma = values.dailyNorma * 1000;
+          const date = {
+            daily_limit: dailyNorma,
+            date: formattedDate,
+          };
+          console.log('Form dailyNorma:', date);
 
-          console.log('Form data:', { ...values, waterIntake });
-          console.log('Form dailyNorma:', dailyNorma);
-
-          addDailyNorma(dailyNorma);
+          addDailyNorma(date);
           setSubmitting(false);
+          toggleModal();
         }}
       >
-        {({ isSubmitting, errors, touched, values, setFieldValue }) => (
+        {({ errors, touched, values, setFieldValue }) => (
           <Form>
             <ModalFormulaContainer>
               <ModalFormula>
@@ -151,7 +149,10 @@ function WaterCalculator() {
               <FormField type="number" name="dailyNorma" placeholder="0" />
             </ModalLabel>
 
-            <ModalButtonSave type="submit" disabled={isSubmitting}>
+            <ModalButtonSave
+              type="submit"
+              // disabled={isSubmitting}
+            >
               Save
             </ModalButtonSave>
           </Form>

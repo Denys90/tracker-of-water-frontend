@@ -38,7 +38,7 @@ export const Norma = () => {
       <BackgroundHome />
       {isOpen && (
         <Modal onClose={toggleModal}>
-          <WaterCalculator />
+          <WaterCalculator toggleModal={toggleModal} />
         </Modal>
       )}
     </DailyBox>
