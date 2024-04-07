@@ -3,7 +3,6 @@ import {
   addWatersThunk,
   getMonthThunk,
   addDailyNormaThunk,
-  addWatersThunk,
   deleteTodoThunk,
   patchWatersThunk,
 } from './thunk';
