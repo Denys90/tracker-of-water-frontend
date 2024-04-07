@@ -84,7 +84,7 @@ export const addWatersThunk = createAsyncThunk(
 
 export const addDailyNormaThunk = createAsyncThunk(
   'water/addWater',
-  async (credentials, { rejectWithValue, getState }) => {
+  async (data, { rejectWithValue, getState }) => {
     try {
       const store = getState();
       const token = store.users.token;
@@ -98,7 +98,7 @@ export const addDailyNormaThunk = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await axios.patch('/water', credentials, {
+      const response = await axios.patch('/water', data, {
         headers,
       });
       return response.data;

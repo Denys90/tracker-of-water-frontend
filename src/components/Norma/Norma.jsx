@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import {
   NormaAllWrapper,
@@ -11,6 +12,7 @@ import {
 
 import Modal from 'components/Modal/Modal';
 import WaterCalculator from './DailyNorm/DailyNormaForm';
+import { selectDailyNorm } from '../../store/water/selectors';
 
 export const Norma = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +21,7 @@ export const Norma = () => {
     setIsOpen(!isOpen);
   };
 
-  const daily_limit = 2000;
+  const daily_limit = useSelector(selectDailyNorm);
   const waterNorma = (daily_limit / 1000).toFixed(1) + ' L';
 
   return (
