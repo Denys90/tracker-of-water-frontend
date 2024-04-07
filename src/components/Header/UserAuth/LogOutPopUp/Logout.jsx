@@ -1,21 +1,22 @@
 import {
   ButtonCancel,
-  ButtonDelete,
+  ButtonLogOut,
   ContainerPopUp,
   TextContainer,
   ButtonContainer,
-} from './DeleteEntry.styled';
-export const DeleteEntry = () => {
+} from './Logout.styled';
+
+export const LogOut = () => {
   return (
     <>
       <ContainerPopUp>
         <TextContainer>
-          <h2>Delete entry</h2>
-          <p>Are you sure you want to delete the entry?</p>
+          <h2>Log out</h2>
+          <p>Do you really want to leave?</p>
         </TextContainer>
         <ButtonContainer>
           <ButtonCancel>Cancel</ButtonCancel>
-          <ButtonDelete>Delete</ButtonDelete>
+          <ButtonLogOut>Log out</ButtonLogOut>
         </ButtonContainer>
       </ContainerPopUp>
     </>

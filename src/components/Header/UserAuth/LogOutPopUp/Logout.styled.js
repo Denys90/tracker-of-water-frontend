@@ -10,6 +10,7 @@ export const ContainerPopUp = styled.div`
       .mobile}) and (max-width: ${theme.breakpoint.tablet}) {
     width: 232px;
   }
+  width: 544px;
 `;
 
 export const TextContainer = styled.div`
@@ -40,11 +41,16 @@ export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 24px;
+  margin-left: 0;
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     flex-direction: row;
-    margin-left: 200px;
+    margin-left: 0;
     column-gap: 24px;
+  }
+  @media screen and (min-width: ${theme.breakpoint
+      .tablet}) and (max-width: ${theme.breakpoint.desktop}) {
+    margin-left: 200px;
   }
 `;
 
@@ -80,7 +86,7 @@ export const ButtonCancel = styled.button`
   }
 `;
 
-export const ButtonDelete = styled.button`
+export const ButtonLogOut = styled.button`
   width: 232px;
   height: 36px;
   display: flex;

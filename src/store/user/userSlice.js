@@ -26,12 +26,12 @@ const usersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(signUpThunk.fulfilled, (state, { payload }) => {
-        state.profile = payload.user;
+        state.profile = payload.users;
         state.token = payload.token;
       })
 
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
-        state.profile = payload.user;
+        state.profile = payload.users;
         state.token = payload.token;
       })
 
@@ -40,15 +40,15 @@ const usersSlice = createSlice({
       })
 
       .addCase(getUserInfoThunk.fulfilled, (state, { payload }) => {
-        state.profile = payload.user;
+        state.profile = payload;
       })
 
       .addCase(patchUserInfoThunk.fulfilled, (state, { payload }) => {
-        state.profile = payload.user;
+        state.profile = payload;
       })
 
       .addCase(patchUserAvatarThunk.fulfilled, (state, { payload }) => {
-        state.profile = payload.user;
+        state.profile = payload;
       })
 
       .addMatcher(isAnyOf(...getActions('pending')), handlePending)

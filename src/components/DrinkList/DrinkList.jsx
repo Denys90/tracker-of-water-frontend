@@ -21,7 +21,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectReps } from '../../store/water/selectors';
 
 import { SettingUser } from 'components/Header/SettingUser/SettingUser';
-import useUsers from 'hooks/useUsers';
 
 export const DrinkList = () => {
   const currentData = Date.now();
@@ -31,7 +30,6 @@ export const DrinkList = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const reps = useSelector(selectReps);
-  const { userInfo } = useUsers();
 
   useEffect(() => {
     dispatch(getWatersThunk({ date: stringDate }));
@@ -39,7 +37,6 @@ export const DrinkList = () => {
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
-    userInfo();
   };
 
   return (
@@ -81,7 +78,7 @@ export const DrinkList = () => {
 
       {isOpen && (
         <Modal onClose={toggleModal}>
-          <SettingUser />
+          <SettingUser />{' '}
         </Modal>
       )}
     </>

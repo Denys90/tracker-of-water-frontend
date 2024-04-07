@@ -55,8 +55,14 @@ export const logoutThunk = createAsyncThunk(
   'users/logout',
   async (_, { rejectWithValue }) => {
     try {
-      token.unset();
+      // const store = getState();
+      // const token = store.users.token;
+
+      // const headers = {
+      //   Authorization: `Bearer ${token}`,
+      // };
       await axios.get('/users/logout');
+      token.unset();
       alert('You are successfully logout!');
     } catch (error) {
       return rejectWithValue(error.message);
