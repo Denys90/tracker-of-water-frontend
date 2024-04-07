@@ -3,7 +3,8 @@ import {
   getWatersThunk,
   getMonthThunk,
   addDailyNormaThunk,
-  deleteTodoThunk,
+  addDrinkThunk,
+  deleteDrinkThunk,
   patchWatersThunk,
 } from './thunk';
 import { handleFulfilled, handlePending, handleReject } from './handles';
@@ -35,10 +36,11 @@ const waterSlice = createSlice({
       .addCase(addDailyNormaThunk.fulfilled, (state, action) => {
         state.dailyNorm = action.payload.daily_limit;
       })
-      .addCase(deleteTodoThunk.fulfilled, (state, action) => {
-        state.todos = state.todos.filter(
-          (todo) => todo.id !== action.payload.id
-        );
+      .addCase(addDrinkThunk.fulfilled, (state, action) => {
+        state.reps.push(action.payload);
+      })
+      .addCase(deleteDrinkThunk.fulfilled, (state, action) => {
+        state.reps = state.reps.filter((rep) => rep.id !== action.payload.id);
       })
       .addCase(patchWatersThunk.fulfilled, (state, action) => {
         const index = state.todos.findIndex(
