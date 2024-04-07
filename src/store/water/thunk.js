@@ -157,7 +157,7 @@ export const patchWatersThunk = createAsyncThunk(
 
 // ==========================================>
 
-export const deleteDrinkThunk = createAsyncThunk(
+export const deleteTodoThunk = createAsyncThunk(
   'water/deleteWater',
   async ({ id, date }, { rejectWithValue, getState }) => {
     try {
