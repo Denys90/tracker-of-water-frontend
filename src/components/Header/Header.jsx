@@ -1,7 +1,5 @@
 import { Logo } from './Logo/Logo';
-
 import { UserLogo } from './UserLogo/UserLogo';
-
 import { Containers, ContainerHeader, WrapHeader } from './Header.styled';
 // import useUsers from 'hooks/useUsers';
 import UserAuth from './UserAuth/UserAuth';

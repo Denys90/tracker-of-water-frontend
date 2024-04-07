@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Button } from 'flowbite-react';
+
 import { theme } from 'styles/theme';
 
 export const UserAuthBtn = styled.button`
@@ -31,20 +31,4 @@ export const SignInIcon = styled.svg`
   stroke: ${theme.colors.black};
   fill: transparent;
 `;
-// export const Button = styled.button`
-//   background-color: transparent;
-//   padding: 0px;
-//   border: none;
-// `;
-export const UserIcon = styled.svg`
-  display: block;
-  border: none;
-  background-color: ${theme.colors.white};
-  width: 16px;
-  height: 16px;
-`;
-export const ButtonUser = styled(Button)`
-  display: block;
-  border: none;
-  background-color: ${theme.colors.white};
-`;
+

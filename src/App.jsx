@@ -6,7 +6,8 @@ import { globalStyles } from 'styles/Global.styled';
 
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
-// import Loader from 'components/Loader/Loader';
+// import Loader from 'components/Loader/Loader'
+
 
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
