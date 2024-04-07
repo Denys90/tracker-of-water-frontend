@@ -3,7 +3,7 @@ import {
   getWatersThunk,
   getMonthThunk,
   addDailyNormaThunk,
-  addDrinkThunk,
+  addWatersThunk,
   deleteTodoThunk,
   patchWatersThunk,
 } from './thunk';
@@ -36,7 +36,7 @@ const waterSlice = createSlice({
       .addCase(addDailyNormaThunk.fulfilled, (state, action) => {
         state.dailyNorm = action.payload.daily_limit;
       })
-      .addCase(addDrinkThunk.fulfilled, (state, action) => {
+      .addCase(addWatersThunk.fulfilled, (state, action) => {
         state.reps.push(action.payload);
       })
       .addCase(deleteTodoThunk.fulfilled, (state, action) => {

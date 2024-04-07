@@ -58,7 +58,7 @@ export const getMonthThunk = createAsyncThunk(
   }
 );
 // ==========================================>
-export const addDrinkThunk = createAsyncThunk(
+export const addWatersThunk = createAsyncThunk(
   'water/addWater',
   async (newWater, { rejectWithValue, getState }) => {
     try {
