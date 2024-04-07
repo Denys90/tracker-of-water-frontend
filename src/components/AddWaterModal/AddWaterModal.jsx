@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import svg from 'assets/images/icons.svg';
 
-import { format } from 'date-fns';
-
 import { globalLoadingSelector } from '../../root/selectors';
 
 import {
@@ -14,7 +12,6 @@ import {
   AddWater,
   FooterModal,
   Input,
-  InputTime,
   Water,
   Label,
   ButtonMl,
@@ -23,31 +20,42 @@ import {
   Subtitle,
   BoxAddModal,
   ErrorMessage,
+  StyledSelect,
 } from './AddWaterModal.styled';
 import useWater from 'hooks/useWaters';
 
-export const AddWaterModal = ({ onClose, initialTime, toggleModal }) => {
+export const AddWaterModal = ({ onClose, toggleModal }) => {
   const initialAmount = 0;
   const [amount, setAmount] = useState(initialAmount || 0);
   const [time, setTime] = useState('');
+  const [timeOptions, setTimeOptions] = useState([]);
 
   const { addWater } = useWater();
 
   useEffect(() => {
-    let roundedTime;
-    if (initialTime) {
-      const date = new Date(initialTime);
-      const minutes = Math.round(date.getMinutes() / 5) * 5; // Округлення до найближчого кратного 5 хвилинам
-      date.setMinutes(minutes);
-      roundedTime = format(date, 'HH:mm');
-    } else {
-      const now = new Date();
-      const minutes = Math.round(now.getMinutes() / 5) * 5;
-      now.setMinutes(minutes);
-      roundedTime = format(now, 'HH:mm');
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+    const newTimeOptions = [];
+
+    for (let hour = currentHour; hour < 24; hour++) {
+      for (let minute = 0; minute < 60; minute += 5) {
+        if (hour === currentHour && minute < currentMinute) {
+          continue;
+        }
+        const formattedHour = String(hour).padStart(2, '0');
+        const formattedMinute = String(minute).padStart(2, '0');
+        const currentTime = `${formattedHour}:${formattedMinute}`;
+        newTimeOptions.push(currentTime);
+      }
     }
-    setTime(roundedTime);
-  }, [initialTime]);
+
+    const formattedHour = String(currentHour).padStart(2, '0');
+    const formattedMinute = String(currentMinute).padStart(2, '0');
+    const currentTime = `${formattedHour}:${formattedMinute}`;
+    setTime(currentTime);
+    setTimeOptions(newTimeOptions);
+  }, []);
 
   const { isLoading } = useSelector(globalLoadingSelector);
   const [errorMessage, setErrorMessage] = useState('');
@@ -117,12 +125,20 @@ export const AddWaterModal = ({ onClose, initialTime, toggleModal }) => {
         </AddWater>
         <AddTime>
           <AddParagraph>Recording time:</AddParagraph>
-          <InputTime
-            type="time"
+          <StyledSelect
             value={time}
             onChange={(e) => setTime(e.target.value)}
-            step={300}
-          />
+            style={{ width: '100%' }}
+          >
+            <option key="current-time" value={time}>
+              {time}
+            </option>
+            {timeOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </StyledSelect>
         </AddTime>
         <div>
           <h3>Enter the value of the water used:</h3>

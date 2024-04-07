@@ -128,7 +128,7 @@ export const AddTime = styled.div`
   margin-bottom: 24px;
 `;
 
-export const InputTime = styled.input`
+export const StyledSelect = styled.select`
   color: ${ theme.colors.blue};
   font-size: 16px;
   font-weight: 400;
@@ -142,23 +142,6 @@ export const InputTime = styled.input`
   border: 1px solid ${theme.colors.paleBlue};
   background-color: ${ theme.colors.white};
 
-  &::placeholder {
-    color: ${ theme.colors.skyBlue};
-  }
-
-  &:hover {
-    color: ${ theme.colors.blue};
-    border: 1px solid ${ theme.colors.blue};
-  }
-
-  &:focus {
-    outline: none;
-    border: 1px solid ${ theme.colors.blue};
-  }
-
-  &:not(:placeholder-shown) {
-    color: ${ theme.colors.blue};
-  }
    @media screen and (min-width: ${ theme.breakpoint.tablet}) {
     width: 97%;
   }
