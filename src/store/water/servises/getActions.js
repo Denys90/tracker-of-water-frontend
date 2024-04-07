@@ -1,12 +1,12 @@
 import {
-  addWatersThunk,
+  createWaterThunk,
   addDailyNormaThunk,
   deleteTodoThunk,
   patchWatersThunk,
 } from '../thunk.js';
 
 const extraActions = [
-  addWatersThunk,
+  createWaterThunk,
   addDailyNormaThunk,
   deleteTodoThunk,
   patchWatersThunk,

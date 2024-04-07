@@ -2,7 +2,8 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  addWatersThunk,
+  createWaterThunk,
+  addOneTodoThunk,
   addDailyNormaThunk,
   deleteTodoThunk,
   patchWatersThunk,
@@ -21,10 +22,10 @@ const useWater = () => {
   const reps = useSelector(selectReps);
   const filter = useSelector(selectFilter);
 
-  // const getWaters = useCallback(
-  //   (credentials) => dispatch(postWatersThunk(credentials)),
-  //   [dispatch]
-  // );
+  const createWater = useCallback(
+    (credentials) => dispatch(createWaterThunk(credentials)),
+    [dispatch]
+  );
 
   const addDailyNorma = useCallback(
     (credentials) => dispatch(addDailyNormaThunk(credentials)),
@@ -40,8 +41,8 @@ const useWater = () => {
     (credentials) => dispatch(patchWatersThunk(credentials)),
     [dispatch]
   );
-  const addWater = useCallback(
-    (credentials) => dispatch(addWatersThunk(credentials)),
+  const addOneDrink = useCallback(
+    (credentials) => dispatch(addOneTodoThunk(credentials)),
     [dispatch]
   );
 
@@ -53,7 +54,8 @@ const useWater = () => {
     addDailyNorma,
     deleteReps,
     patchWater,
-    addWater,
+    addOneDrink,
+    createWater,
   };
 };
 

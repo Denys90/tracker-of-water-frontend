@@ -98,7 +98,7 @@ const AuthForm = () => {
             } else {
               signUp({ email: email, password: password });
             }
-            console.log('Form submitted:', values);
+
             setSubmitting(false);
             setSubmitting('values', values);
 

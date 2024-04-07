@@ -4,7 +4,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://project-deep-water-server.onrender.com/api';
 // ==========================================>
 
-export const getWatersThunk = createAsyncThunk(
+export const createWaterThunk = createAsyncThunk(
   'water/getWater',
   async (date, { rejectWithValue, getState }) => {
     try {
@@ -58,8 +58,8 @@ export const getMonthThunk = createAsyncThunk(
   }
 );
 // ==========================================>
-export const addWatersThunk = createAsyncThunk(
-  'water/addWater',
+export const addOneTodoThunk = createAsyncThunk(
+  'water/addDrink',
   async (newWater, { rejectWithValue, getState }) => {
     try {
       const store = getState();
