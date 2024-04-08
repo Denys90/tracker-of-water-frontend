@@ -14,7 +14,7 @@ export const UserName = styled.h3`
   font-weight: 400;
   font-size: 16px;
   line-height: 1.33em;
-  color: ${theme.colors.black};
+  color: ${theme.colors.blue};
   margin: 0;
   @media screen and (min-width: ${theme.breakpoint.mobile}) {
     font-size: 18px;

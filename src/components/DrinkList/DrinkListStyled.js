@@ -95,6 +95,7 @@ export const DrinkButtons = styled.div`
   margin-right: 10px;
 `;
 export const DrinkButtonPlus = styled.svg`
+  cursor: pointer;
   width: 16px;
   height: 16px;
   stroke: ${theme.colors.skyBlue};
@@ -104,6 +105,7 @@ export const DrinkButtonPlus = styled.svg`
   }
 `;
 export const DrinkButtonMinus = styled.svg`
+  cursor: pointer;
   width: 16px;
   height: 16px;
   stroke: ${theme.colors.brightRed};
