@@ -16,9 +16,17 @@ const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCurrentThunk } from './store/user/thunk.jsx';
+
 // import { globalLoadingSelector } from './root/selectors';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCurrentThunk());
+  }, [dispatch]);
   // const loding = useSelector(globalLoadingSelector);
   return (
     <>
