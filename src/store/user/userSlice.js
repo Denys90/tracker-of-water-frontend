@@ -8,6 +8,7 @@ import {
   getUserInfoThunk,
   patchUserInfoThunk,
   patchUserAvatarThunk,
+  getCurrentThunk,
 } from './thunk';
 
 import { getActions } from './servises/getActions';
@@ -49,6 +50,11 @@ const usersSlice = createSlice({
 
       .addCase(patchUserAvatarThunk.fulfilled, (state, { payload }) => {
         state.profile = payload;
+      })
+      .addCase(getCurrentThunk.fulfilled, (state, { payload }) => {
+        console.log('pl', payload);
+        state.isLogined = true;
+        state.profile = payload.data;
       })
 
       .addMatcher(isAnyOf(...getActions('pending')), handlePending)
