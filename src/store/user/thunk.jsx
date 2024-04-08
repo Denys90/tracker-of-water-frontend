@@ -149,3 +149,33 @@ export const patchUserAvatarThunk = createAsyncThunk(
     }
   }
 );
+//=========================================================================
+export const getCurrentThunk = createAsyncThunk(
+  'users/current',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const store = getState();
+      const token = store.users.token;
+      console.log('token', token);
+
+      if (!token) {
+        console.error('No token found.');
+        return;
+      }
+      console.log(1);
+
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      console.log(2);
+      const response = await axios.get('/users/current', {
+        headers,
+      });
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log('Error', error.message);
+      return rejectWithValue(error.message);
+    }
+  }
+);

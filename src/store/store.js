@@ -17,7 +17,7 @@ import {
 import { rootReducer } from '../root/slice';
 
 const persistConfig = {
-  key: 'water',
+  key: 'users',
   storage,
   whitelist: ['token'],
 };
