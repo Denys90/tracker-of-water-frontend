@@ -79,8 +79,8 @@ export const DrinkList = () => {
 
       {isOpen && (
         <Modal onClose={toggleModal}>
-          {/* <AddWaterModal /> */}
           <AddWaterModal />
+          {/* <EditWaterModal /> */}
         </Modal>
       )}
     </>

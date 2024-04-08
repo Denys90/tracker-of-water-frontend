@@ -5,13 +5,7 @@ import svg from 'assets/images/icons.svg';
 import { globalLoadingSelector } from '../../root/selectors';
 import { patchWatersThunk } from '../../store/water/thunk';
 
-import {
-  BtnSave,
-  FooterModal,
-  Input,
-  ErrorMessage,
-  StyledSelect,
-} from './AddWaterModal.styled';
+import { ErrorMessage, StyledSelect } from './AddWaterModal.styled';
 
 import {
   BoxEditModal,
@@ -27,6 +21,11 @@ import {
   EditMenu,
   AddDelWater,
   EditTime,
+  EditItemWater,
+  FooterModal,
+  BtnSave,
+  Input,
+  DrinkGlass,
 } from './EditWaterModal.styled';
 
 export const EditWaterModal = ({
@@ -85,7 +84,9 @@ export const EditWaterModal = ({
         <Title>Edit the entered amount of water</Title>
         <EditMenu>
           <WaterItem>
-            <use href={`${svg}#icon-glass`}></use>
+            <DrinkGlass>
+              <use href={`${svg}#icon-glass`}></use>
+            </DrinkGlass>
             <h4>{amount} ml</h4>
             <p>
               {time}
@@ -123,8 +124,8 @@ export const EditWaterModal = ({
               </option>
             </StyledSelect>
           </EditTime>
-          <div>
-            <h3>Enter the value of the water used:</h3>
+          <EditItemWater>
+            <Subtitle>Enter the value of the water used:</Subtitle>
             <Input
               type="number"
               value={amount}
@@ -135,7 +136,7 @@ export const EditWaterModal = ({
               max={5000}
             />
             {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-          </div>
+          </EditItemWater>
         </EditMenu>
         <FooterModal>
           <span>{amount}ml</span>
