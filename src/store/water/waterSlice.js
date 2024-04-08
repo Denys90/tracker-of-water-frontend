@@ -1,11 +1,11 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
-  getWatersThunk,
+  createWaterThunk,
   getMonthThunk,
   addDailyNormaThunk,
-  addWatersThunk,
   deleteTodoThunk,
   patchWatersThunk,
+  addOneTodoThunk,
 } from './thunk';
 import { handleFulfilled, handlePending, handleReject } from './handles';
 
@@ -25,7 +25,7 @@ const waterSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(getWatersThunk.fulfilled, (state, action) => {
+      .addCase(createWaterThunk.fulfilled, (state, action) => {
         state.dailyNorm = action.payload.daily_limit;
         state.reps = action.payload.water_entries;
         state.percent = action.payload.percent;
@@ -36,7 +36,7 @@ const waterSlice = createSlice({
       .addCase(addDailyNormaThunk.fulfilled, (state, action) => {
         state.dailyNorm = action.payload.daily_limit;
       })
-      .addCase(addWatersThunk.fulfilled, (state, action) => {
+      .addCase(addOneTodoThunk.fulfilled, (state, action) => {
         state.reps.push(action.payload);
       })
       .addCase(deleteTodoThunk.fulfilled, (state, action) => {

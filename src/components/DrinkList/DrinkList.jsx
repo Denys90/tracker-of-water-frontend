@@ -15,26 +15,25 @@ import {
 import svg from 'assets/images/icons.svg';
 import Modal from 'components/Modal/Modal';
 
-import { getWatersThunk } from '../../store/water/thunk';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { selectReps } from '../../store/water/selectors';
-
 import { AddWaterModal } from 'components/AddWaterModal/AddWaterModal';
 // import { EditWaterModal } from 'components/AddWaterModal/EditWaterModal';
 
+import useWater from 'hooks/useWaters';
+
 export const DrinkList = () => {
+  const { createWater } = useWater();
+
   const currentData = Date.now();
   const date = new Date(currentData);
   const stringDate = date.toLocaleDateString();
 
   const [isOpen, setIsOpen] = useState(false);
-  const dispatch = useDispatch();
-  const reps = useSelector(selectReps);
+
+  const { reps } = useWater();
 
   useEffect(() => {
-    dispatch(getWatersThunk({ date: stringDate }));
-  }, [dispatch, stringDate]);
+    createWater({ date: stringDate });
+  }, [createWater, stringDate]);
 
   const toggleModal = () => {
     setIsOpen(!isOpen);

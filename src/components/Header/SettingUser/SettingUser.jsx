@@ -25,6 +25,10 @@ import {
   SSvgClose,
   SSvgOpen,
   StyledLabel,
+  Title,
+  EmailInput,
+  TitlePassword,
+  TitleGender,
 } from './SettingUser.styled';
 
 import sprite from 'assets/images/icons.svg';
@@ -33,26 +37,25 @@ import { useUsers } from 'hooks/useUsers';
 
 import { useState } from 'react';
 
-export const SettingUser = () => {
+export const SettingUser = ({ toggleModal }) => {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [selectedAvatarPath, setSelectedAvatarPath] = useState('');
+
   const [showPassword, setShowPassword] = useState(false);
-  const { newUserAvatar, user } = useUsers();
-  console.log(user);
+  const { user, newUserInfo, newUserAvatar } = useUsers();
 
   const handleAvatarChange = (e) => {
     const file = e.currentTarget.files[0];
     setSelectedAvatar(file);
     setSelectedAvatarPath(URL.createObjectURL(file));
   };
+
   const initialValues = {
     avatar: user.avatarURL,
-    gender: user.gender || '',
     name: user.name || '',
     email: user.email || '',
-    password: '',
-    repeatPassword: '',
   };
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -63,12 +66,26 @@ export const SettingUser = () => {
         {
           <Formik
             initialValues={initialValues}
-            onSubmit={() => {
-              newUserAvatar(selectedAvatar);
+            onSubmit={(value) => {
+              const newAvatar = {
+                avatar: selectedAvatar,
+              };
+              console.log(newAvatar);
+              newUserAvatar(newAvatar);
+
+              const userNewInfo = {
+                name: value.name,
+                email: value.email,
+                gender: value.gender,
+                newPassword: value.newPassword,
+                oldPassword: value.outdatedPassword,
+              };
+              newUserInfo(userNewInfo);
+              toggleModal();
             }}
           >
             <Form>
-              <h1>Setting</h1>
+              <Title>Setting</Title>
               <FormField>
                 <h2>Your photo</h2>
                 <DownloadWrap>
@@ -83,6 +100,7 @@ export const SettingUser = () => {
                     <Field
                       type="file"
                       name="avatar"
+                      value=""
                       hidden
                       accept="image/png, image/jpeg"
                       onChange={handleAvatarChange}
@@ -97,14 +115,13 @@ export const SettingUser = () => {
               <DesktopFormWrap>
                 <DesktopGenderWrap>
                   <GenderFormField>
-                    <h2>Your gender identity</h2>
+                    <TitleGender>Your gender identity</TitleGender>
                     <RadioButtonWrap>
                       <RadioButtonLabel>
                         <RadioButton
                           type="radio"
                           name="gender"
                           value="female"
-                          checked=""
                         />
                         <RadioButtonText>Woman</RadioButtonText>
                       </RadioButtonLabel>
@@ -113,7 +130,7 @@ export const SettingUser = () => {
                           type="radio"
                           name="gender"
                           value="male"
-                          checked=""
+                          defaultChecked
                         />
                         <RadioButtonText>Man</RadioButtonText>
                       </RadioButtonLabel>
@@ -123,13 +140,18 @@ export const SettingUser = () => {
                     <StyledLabel htmlFor="username">Your name</StyledLabel>
                     <Input type="text" id="username" name="name" />
                   </FormField>
-                  <div>
+                  <EmailInput>
                     <StyledLabel htmlFor="email">E-mail</StyledLabel>
-                    <Input type="email" id="email" name="email" />
-                  </div>
+                    <Input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={user.email}
+                    />
+                  </EmailInput>
                 </DesktopGenderWrap>
                 <DesktopPasswordWrap>
-                  <h2>Password</h2>
+                  <TitlePassword>Password</TitlePassword>
                   <PasswordFormField>
                     <PasswordLabel htmlFor="oldPassword">
                       Outdated password:

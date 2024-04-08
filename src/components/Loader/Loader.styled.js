@@ -2,6 +2,10 @@ import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
 
 export const LoaderStyle = styled.div`
+  position: absolute;
+  margin: 50vw;
+  margin-top: 30vh;
+  transform: translate(-50%, -50%);
   --r1: 154%;
   --r2: 68.5%;
   width: 60px;

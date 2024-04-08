@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
+// import { useSelector } from 'react-redux';
 
 import { Global } from '@emotion/react';
 import { globalStyles } from 'styles/Global.styled';
@@ -15,12 +16,41 @@ const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
+// import { globalLoadingSelector } from './root/selectors';
+
 function App() {
+  // const loding = useSelector(globalLoadingSelector);
   return (
     <>
       <Global styles={globalStyles} />
-      {/* <Loader /> */}
-
+      {/* {loding ? (
+        <Loader />
+      ) : (
+        <Suspense>
+          <Routes>
+            <Route path="/" element={<SharedLayout />}>
+              <Route index element={<WelcomePage />} />
+              <Route
+                path="/login"
+                element={
+                  <PublicRoute>
+                    <LoginPage />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/home"
+                element={
+                  <PrivateRoute>
+                    <HomePage />
+                  </PrivateRoute>
+                }
+              />
+            </Route>
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </Suspense>
+      )} */}
       <Suspense>
         <Routes>
           <Route path="/" element={<SharedLayout />}>

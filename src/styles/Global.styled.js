@@ -34,15 +34,15 @@ export const globalStyles = css`
   }
   @font-face {
     font-family: 'Roboto-Bold';
-    src: url('../assets/fonts/Roboto-Bold.ttf') format('truetype');
+    src: url('assets/fonts/Roboto-Bold.ttf') format('truetype');
   }
 
   @font-face {
     font-family: 'Roboto-Medium';
-    src: url('../assets/fonts/Roboto-Medium.ttf') format('truetype');
+    src: url('assets/fonts/Roboto-Medium.ttf') format('truetype');
   }
   @font-face {
     font-family: 'Roboto-Regular';
-    src: url('../assets/fonts/Roboto-Regular.ttf') format('truetype');
+    src: url('assets/fonts/Roboto-Regular.ttf') format('truetype');
   }
 `;

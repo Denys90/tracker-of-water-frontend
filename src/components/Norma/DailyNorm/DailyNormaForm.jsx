@@ -56,7 +56,7 @@ function WaterCalculator({ toggleModal }) {
       <ModalTitle>My daily norma</ModalTitle>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values) => {
           const dailyNorma = values.dailyNorma * 1000;
           const date = {
             daily_limit: dailyNorma,
@@ -65,7 +65,7 @@ function WaterCalculator({ toggleModal }) {
           console.log('Form dailyNorma:', date);
 
           addDailyNorma(date);
-          setSubmitting(false);
+          // setSubmitting(false);
           toggleModal();
         }}
       >
@@ -149,12 +149,7 @@ function WaterCalculator({ toggleModal }) {
               <FormField type="number" name="dailyNorma" placeholder="0" />
             </ModalLabel>
 
-            <ModalButtonSave
-              type="submit"
-              // disabled={isSubmitting}
-            >
-              Save
-            </ModalButtonSave>
+            <ModalButtonSave type="submit">Save</ModalButtonSave>
           </Form>
         )}
       </Formik>
@@ -163,4 +158,3 @@ function WaterCalculator({ toggleModal }) {
 }
 
 export default WaterCalculator;
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

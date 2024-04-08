@@ -90,7 +90,7 @@ export const getUserInfoThunk = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log('Error getAllContactsThunk', error.message);
+      console.log('Error getUserInfoThunk', error.message);
       return rejectWithValue(error.message);
     }
   }
@@ -117,7 +117,7 @@ export const patchUserInfoThunk = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log('Error getAllContactsThunk', error.message);
+      console.log('Error patchUserInfoThunk', error.message);
       return rejectWithValue(error.message);
     }
   }
@@ -144,7 +144,7 @@ export const patchUserAvatarThunk = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log('Error getAllContactsThunk', error.message);
+      console.log('Error patchUserAvatarThunk', error.message);
       return rejectWithValue(error.message);
     }
   }
