@@ -60,9 +60,6 @@ export const WaterItem = styled.div`
     line-height: 24px;
     color: ${theme.colors.black};
     margin: 0;
-    span {
-      text-transform: uppercase;
-    }
   }
 `;
 

@@ -88,10 +88,7 @@ export const EditWaterModal = ({
               <use href={`${svg}#icon-glass`}></use>
             </DrinkGlass>
             <h4>{amount} ml</h4>
-            <p>
-              {time}
-              <span> AM</span>
-            </p>
+            <p>{time}</p>
           </WaterItem>
           <EditWater>
             <Subtitle>Correct entered date:</Subtitle>
