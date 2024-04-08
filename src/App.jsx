@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-// import { useSelector } from 'react-redux';
 
 import { Global } from '@emotion/react';
 import { globalStyles } from 'styles/Global.styled';
@@ -10,28 +9,27 @@ import WelcomePage from './pages/WelcomePage/WelcomePage';
 
 import PrivateRoute from 'guards/PrivateRoute';
 import PublicRoute from 'guards/PublicRoute';
-// import Loader from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getCurrentThunk } from './store/user/thunk.jsx';
 
-// import { globalLoadingSelector } from './root/selectors';
+import { useUsers } from 'hooks/useUsers';
 
 function App() {
-  const dispatch = useDispatch();
+  const { isRefreshingUser, getCurrent } = useUsers();
+
   useEffect(() => {
-    dispatch(getCurrentThunk());
-  }, [dispatch]);
-  // const loding = useSelector(globalLoadingSelector);
+    getCurrent();
+  }, [getCurrent]);
+
   return (
     <>
       <Global styles={globalStyles} />
-      {/* {loding ? (
+      {isRefreshingUser ? (
         <Loader />
       ) : (
         <Suspense>
@@ -58,8 +56,8 @@ function App() {
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </Suspense>
-      )} */}
-      <Suspense>
+      )}
+      {/* <Suspense>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<WelcomePage />} />
@@ -82,7 +80,7 @@ function App() {
           </Route>
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }

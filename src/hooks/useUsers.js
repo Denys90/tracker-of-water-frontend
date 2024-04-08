@@ -11,6 +11,7 @@ import {
   loginThunk,
   logoutThunk,
   signUpThunk,
+  getCurrentThunk,
   getUserInfoThunk,
   patchUserInfoThunk,
   patchUserAvatarThunk,
@@ -50,18 +51,20 @@ export const useUsers = () => {
     (credentials) => dispatch(patchUserAvatarThunk(credentials)),
     [dispatch]
   );
+  const getCurrent = useCallback(() => dispatch(getCurrentThunk()), [dispatch]);
 
   return {
-    user,
     isAuthenticated,
     isRefreshingUser,
     isAuthError,
     isAuth,
+    user,
 
     signUp,
     signIn,
     signOut,
     userInfo,
+    getCurrent,
     newUserInfo,
     newUserAvatar,
   };

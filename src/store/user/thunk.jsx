@@ -156,25 +156,23 @@ export const getCurrentThunk = createAsyncThunk(
     try {
       const store = getState();
       const token = store.users.token;
-      console.log('token', token);
 
       if (!token) {
         console.error('No token found.');
         return;
       }
-      console.log(1);
 
       const headers = {
         Authorization: `Bearer ${token}`,
       };
-      console.log(2);
+
       const response = await axios.get('/users/current', {
         headers,
       });
-      console.log(response);
+
       return response;
     } catch (error) {
-      console.log('Error', error.message);
+      console.log('Error getCurrentThunk', error.message);
       return rejectWithValue(error.message);
     }
   }

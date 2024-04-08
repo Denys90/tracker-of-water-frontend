@@ -52,9 +52,8 @@ const usersSlice = createSlice({
         state.profile = payload;
       })
       .addCase(getCurrentThunk.fulfilled, (state, { payload }) => {
-        console.log('pl', payload);
-        state.isLogined = true;
         state.profile = payload.data;
+        state.isLogined = true;
       })
 
       .addMatcher(isAnyOf(...getActions('pending')), handlePending)
