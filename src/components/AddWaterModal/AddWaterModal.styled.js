@@ -130,6 +130,9 @@ export const StyledSelect = styled.select`
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     width: 97%;
   }
+  &:hover {
+    border-color: ${theme.colors.blue};
+  }
 `;
 
 export const Input = styled(Field)`

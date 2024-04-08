@@ -16,14 +16,14 @@ import svg from 'assets/images/icons.svg';
 import Modal from 'components/Modal/Modal';
 
 import { AddWaterModal } from 'components/AddWaterModal/AddWaterModal';
-// import { EditWaterModal } from 'components/EditWaterModal/EditWaterModal';
-// import { DeleteWaterModal } from 'components/DrinkList/deleteEntryPopUp/DeleteEntry';
+import { EditWaterModal } from 'components/AddWaterModal/EditWaterModal';
+import { DeleteEntry } from './deleteEntryPopUp/DeleteEntry';
 
 import useWater from 'hooks/useWaters';
 
 export const DrinkList = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [modalContent, setModalContent] = useState(null);
   const { createWater } = useWater();
 
   const currentData = Date.now();
@@ -38,6 +38,11 @@ export const DrinkList = () => {
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
+  };
+
+  const openModalWithContent = (content) => {
+    setModalContent(content);
+    setIsOpen(true);
   };
 
   return (
@@ -58,17 +63,23 @@ export const DrinkList = () => {
                 </p>
               </DrinkListItem>
               <DrinkButtons>
-                <DrinkButtonPlus onClick={toggleModal}>
+                <DrinkButtonPlus
+                  onClick={() => openModalWithContent(<EditWaterModal />)}
+                >
                   <use href={`${svg}#icon-note`}></use>
                 </DrinkButtonPlus>
-                <DrinkButtonMinus>
+                <DrinkButtonMinus
+                  onClick={() => openModalWithContent(<DeleteEntry />)}
+                >
                   <use href={`${svg}#icon-trash`}></use>
                 </DrinkButtonMinus>
               </DrinkButtons>
             </DrinkListRow>
           ))}
         </DrinkListUl>
-        <DrinkListAddWater onClick={toggleModal}>
+        <DrinkListAddWater
+          onClick={() => openModalWithContent(<AddWaterModal />)}
+        >
           <svg>
             <use href={`${svg}#icon-increment`}></use>
           </svg>
@@ -76,11 +87,12 @@ export const DrinkList = () => {
         </DrinkListAddWater>
       </DrinkListWrapper>
 
-      {isOpen && (
+      {/* {isOpen && (
         <Modal onClose={toggleModal}>
           <AddWaterModal />
         </Modal>
-      )}
+      )} */}
+      {isOpen && <Modal onClose={toggleModal}>{modalContent}</Modal>}
     </>
   );
 };

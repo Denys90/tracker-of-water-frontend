@@ -22,7 +22,7 @@ import {
   // StyledField,
 } from './AddWaterModal.styled';
 
-export const AddWaterModal = () => {
+export const AddWaterModal = ({ toggleModal }) => {
   const [time, setTime] = useState('');
   const [timeOptions, setTimeOptions] = useState([]);
   const { addOneDrink } = useWater();
@@ -68,7 +68,8 @@ export const AddWaterModal = () => {
     return errorMessage;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const waterData = {
       time: time,
       amount: amount,
@@ -78,6 +79,7 @@ export const AddWaterModal = () => {
     addOneDrink(waterData);
     setAmount(0);
     setTime('');
+    toggleModal();
   };
 
   const decrementAmount = () => {

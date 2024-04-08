@@ -62,7 +62,7 @@ export const ProgressBar = () => {
 
       {isOpen && (
         <Modal onClose={toggleModal}>
-          <AddWaterModal />
+          <AddWaterModal toggleModal={toggleModal} />
         </Modal>
       )}
     </ProgressDivWrapper>

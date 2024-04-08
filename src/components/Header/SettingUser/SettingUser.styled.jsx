@@ -29,7 +29,7 @@ export const SSvgOpen = styled(SSVGOpen)`
 export const StyledLabel = styled.label`
   display: inline-block;
   margin-bottom: 8px;
-  color: ${theme.colors.blue};
+  color: ${theme.colors.black};
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
@@ -256,6 +256,7 @@ export const PasswordLabel = styled.p`
 export const SaveButton = styled.button`
   min-width: 100%;
   padding: 8px 30px;
+  border-style: none;
   border-radius: 10px;
   background: ${theme.colors.blue};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
