@@ -67,11 +67,8 @@ export const SettingUser = ({ toggleModal }) => {
           <Formik
             initialValues={initialValues}
             onSubmit={(value) => {
-              const newAvatar = {
-                avatar: selectedAvatar,
-              };
-              console.log(newAvatar);
-              newUserAvatar(newAvatar);
+              console.log(selectedAvatar);
+              newUserAvatar(selectedAvatar);
 
               const userNewInfo = {
                 name: value.name,
@@ -102,7 +99,7 @@ export const SettingUser = ({ toggleModal }) => {
                       name="avatar"
                       value=""
                       hidden
-                      accept="image/png, image/jpeg"
+                      accept="image/png, image/jpeg, image/jpg"
                       onChange={handleAvatarChange}
                     />
                     <IconDownload>

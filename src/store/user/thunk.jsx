@@ -125,7 +125,7 @@ export const patchUserInfoThunk = createAsyncThunk(
 // ======================================================>
 export const patchUserAvatarThunk = createAsyncThunk(
   'users/patchAvatar',
-  async (credentials, { rejectWithValue, getState }) => {
+  async (file, { rejectWithValue, getState }) => {
     try {
       const store = getState();
       const token = store.users.token;
@@ -139,7 +139,7 @@ export const patchUserAvatarThunk = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await axios.patch('/users/avatar', credentials, {
+      const response = await axios.patch('/users/avatar', file, {
         headers,
       });
       return response.data;
@@ -149,3 +149,4 @@ export const patchUserAvatarThunk = createAsyncThunk(
     }
   }
 );
+// ======================================================>
