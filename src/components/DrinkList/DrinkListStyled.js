@@ -80,15 +80,7 @@ export const DrinkListItem = styled.div`
     }
   }
 `;
-export const DrinkGlass = styled.svg`
-  width: 26px;
-  height: 26px;
-  fill: transparent;
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    width: 36px;
-    height: 36px;
-  }
-`;
+
 export const DrinkButtons = styled.div`
   display: flex;
   gap: 18px;

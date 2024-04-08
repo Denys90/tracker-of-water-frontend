@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectReps } from '../../store/water/selectors';
 
 import { AddWaterModal } from 'components/AddWaterModal/AddWaterModal';
+// import { EditWaterModal } from 'components/AddWaterModal/EditWaterModal';
 
 export const DrinkList = () => {
   const currentData = Date.now();
@@ -78,6 +79,7 @@ export const DrinkList = () => {
 
       {isOpen && (
         <Modal onClose={toggleModal}>
+          {/* <AddWaterModal /> */}
           <AddWaterModal />
         </Modal>
       )}

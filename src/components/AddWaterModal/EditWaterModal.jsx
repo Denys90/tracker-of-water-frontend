@@ -7,21 +7,27 @@ import { patchWatersThunk } from '../../store/water/thunk';
 
 import {
   BtnSave,
-  AddParagraph,
-  AddTime,
-  AddWater,
   FooterModal,
   Input,
-  Water,
-  Label,
-  ButtonMl,
-  Icon,
-  Title,
-  Subtitle,
-  BoxAddModal,
   ErrorMessage,
   StyledSelect,
 } from './AddWaterModal.styled';
+
+import {
+  BoxEditModal,
+  EditWater,
+  Title,
+  WaterItem,
+  Subtitle,
+  AddParagraph,
+  ButtonMl,
+  Icon,
+  Label,
+  Water,
+  EditMenu,
+  AddDelWater,
+  EditTime,
+} from './EditWaterModal.styled';
 
 export const EditWaterModal = ({
   onClose,
@@ -75,61 +81,69 @@ export const EditWaterModal = ({
 
   return (
     <>
-      <BoxAddModal onClose={onClose}>
-        <AddWater>
-          <Title>Edit the entered amount of water</Title>
-
-          <Subtitle>Correct entered date:</Subtitle>
-
-          <AddParagraph>Amount of water:</AddParagraph>
-          <div>
-            <ButtonMl onClick={minusAmount}>
-              <Icon>
-                <use href={`${svg}#icon-minus`}></use>
-              </Icon>
-            </ButtonMl>
-            <Label>
-              <Water>{amount} ml</Water>
-            </Label>
-            <ButtonMl onClick={plusAmount}>
-              <Icon>
-                <use href={`${svg}#icon-plus`}></use>
-              </Icon>
-            </ButtonMl>
-          </div>
-        </AddWater>
-        <AddTime>
-          <AddParagraph>Recording time:</AddParagraph>
-          <StyledSelect
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-            style={{ width: '100%' }}
-          >
-            <option key="current-time" value={time}>
+      <BoxEditModal onClose={onClose}>
+        <Title>Edit the entered amount of water</Title>
+        <EditMenu>
+          <WaterItem>
+            <use href={`${svg}#icon-glass`}></use>
+            <h4>{amount} ml</h4>
+            <p>
               {time}
-            </option>
-          </StyledSelect>
-        </AddTime>
-        <div>
-          <h3>Enter the value of the water used:</h3>
-          <Input
-            type="number"
-            value={amount}
-            onChange={handleAmountChange}
-            onBlur={() =>
-              setAmount((prevAmount) => prevAmount || initialAmount || 0)
-            }
-            max={5000}
-          />
-          {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-        </div>
+              <span> AM</span>
+            </p>
+          </WaterItem>
+          <EditWater>
+            <Subtitle>Correct entered date:</Subtitle>
+            <AddParagraph>Amount of water:</AddParagraph>
+            <AddDelWater>
+              <ButtonMl onClick={minusAmount}>
+                <Icon>
+                  <use href={`${svg}#icon-minus`}></use>
+                </Icon>
+              </ButtonMl>
+              <Label>
+                <Water>{amount} ml</Water>
+              </Label>
+              <ButtonMl onClick={plusAmount}>
+                <Icon>
+                  <use href={`${svg}#icon-plus`}></use>
+                </Icon>
+              </ButtonMl>
+            </AddDelWater>
+          </EditWater>
+          <EditTime>
+            <AddParagraph>Recording time:</AddParagraph>
+            <StyledSelect
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              style={{ width: '100%' }}
+            >
+              <option key="current-time" value={time}>
+                {time}
+              </option>
+            </StyledSelect>
+          </EditTime>
+          <div>
+            <h3>Enter the value of the water used:</h3>
+            <Input
+              type="number"
+              value={amount}
+              onChange={handleAmountChange}
+              onBlur={() =>
+                setAmount((prevAmount) => prevAmount || initialAmount || 0)
+              }
+              max={5000}
+            />
+            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+          </div>
+        </EditMenu>
         <FooterModal>
           <span>{amount}ml</span>
           <BtnSave onClick={handleSubmit}>
             Save {isLoading && <Loader />}
           </BtnSave>
         </FooterModal>
-      </BoxAddModal>
+      </BoxEditModal>
     </>
   );
 };
