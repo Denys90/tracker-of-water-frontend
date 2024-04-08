@@ -69,7 +69,11 @@ export const DrinkList = () => {
                   <use href={`${svg}#icon-note`}></use>
                 </DrinkButtonPlus>
                 <DrinkButtonMinus
-                  onClick={() => openModalWithContent(<DeleteEntry />)}
+                  onClick={() =>
+                    openModalWithContent(
+                      <DeleteEntry id={drink._id} date={{ date: stringDate }} />
+                    )
+                  }
                 >
                   <use href={`${svg}#icon-trash`}></use>
                 </DrinkButtonMinus>
