@@ -1,4 +1,4 @@
-import Loader from '../Loader/Loader';
+// import Loader from '../Loader/Loader';
 import { useState, useEffect } from 'react';
 import svg from 'assets/images/icons.svg';
 import { Formik, ErrorMessage } from 'formik';
@@ -25,7 +25,7 @@ import {
 export const AddWaterModal = () => {
   const [time, setTime] = useState('');
   const [timeOptions, setTimeOptions] = useState([]);
-  const { addWater } = useWater();
+  const { addOneDrink } = useWater();
   const [amount, setAmount] = useState(0);
 
   useEffect(() => {
@@ -53,6 +53,13 @@ export const AddWaterModal = () => {
     setTimeOptions(newTimeOptions);
   }, []);
 
+  const currentDate = new Date();
+  const day = String(currentDate.getDate()).padStart(2, '0');
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+  const year = String(currentDate.getFullYear());
+
+  const formattedDate = `${day}.${month}.${year}`;
+
   const validateAmount = (value) => {
     let errorMessage = '';
     if (value > 5000) {
@@ -61,17 +68,17 @@ export const AddWaterModal = () => {
     return errorMessage;
   };
 
-  // const handleSubmit = (values, actions) => {
-  //   const waterData = {
-  //     waterVolume: amount,
-  //     date: values.time,
-  //   };
-  //   console.log(waterData);
-  //   addWater(waterData);
-  //   setAmount(0);
-  //   setTime('');
-  //   actions.setSubmitting(false);
-  // };
+  const handleSubmit = () => {
+    const waterData = {
+      time: time,
+      amount: amount,
+      date: formattedDate,
+    };
+    console.log(waterData);
+    addOneDrink(waterData);
+    setAmount(0);
+    setTime('');
+  };
 
   const decrementAmount = () => {
     setAmount((prevAmount) => Math.max(prevAmount - 50, 0));
@@ -84,21 +91,8 @@ export const AddWaterModal = () => {
   };
 
   return (
-    <Formik
-      initialValues={{ amount: 0, time }}
-      onSubmit={(values) => {
-        const waterData = {
-          waterVolume: amount,
-          date: values.time,
-        };
-        console.log(waterData);
-        addWater(waterData);
-        setAmount(0);
-        setTime('');
-        // actions.setSubmitting(false);
-      }}
-    >
-      {({ isSubmitting }) => (
+    <Formik initialValues={{ amount: 0, time }} onSubmit={handleSubmit}>
+      {() => (
         <BoxAddModal>
           <AddWaterContainer>
             <Title>Add Water</Title>
@@ -123,7 +117,11 @@ export const AddWaterModal = () => {
           </AddWaterContainer>
           <AddTime>
             <AddParagraph>Recording time:</AddParagraph>
-            <StyledSelect name="time" style={{ width: '100%' }}>
+            <StyledSelect
+              name="time"
+              style={{ width: '100%' }}
+              onChange={(e) => setTime(e.target.value)}
+            >
               <option key="current-time" value={time}>
                 {time}
               </option>
@@ -147,10 +145,15 @@ export const AddWaterModal = () => {
           </div>
           <FooterModal>
             <span>{amount}ml</span>
-            <BtnSave type="submit">Save {isSubmitting && <Loader />}</BtnSave>
+            <BtnSave type="submit" onClick={handleSubmit}>
+              Save{' '}
+            </BtnSave>
           </FooterModal>
         </BoxAddModal>
       )}
     </Formik>
   );
 };
+{
+  // isSubmitting && <Loader />;
+}

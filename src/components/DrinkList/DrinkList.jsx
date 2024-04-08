@@ -16,16 +16,19 @@ import svg from 'assets/images/icons.svg';
 import Modal from 'components/Modal/Modal';
 
 import { AddWaterModal } from 'components/AddWaterModal/AddWaterModal';
+// import { EditWaterModal } from 'components/EditWaterModal/EditWaterModal';
+// import { DeleteWaterModal } from 'components/DrinkList/deleteEntryPopUp/DeleteEntry';
+
 import useWater from 'hooks/useWaters';
 
 export const DrinkList = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const { createWater } = useWater();
 
   const currentData = Date.now();
   const date = new Date(currentData);
   const stringDate = date.toLocaleDateString();
-
-  const [isOpen, setIsOpen] = useState(false);
 
   const { reps } = useWater();
 
@@ -54,9 +57,8 @@ export const DrinkList = () => {
                   <span> AM</span>
                 </p>
               </DrinkListItem>
-
               <DrinkButtons>
-                <DrinkButtonPlus>
+                <DrinkButtonPlus onClick={toggleModal}>
                   <use href={`${svg}#icon-note`}></use>
                 </DrinkButtonPlus>
                 <DrinkButtonMinus>

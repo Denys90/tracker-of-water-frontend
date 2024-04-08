@@ -6,7 +6,7 @@ axios.defaults.baseURL = 'https://project-deep-water-server.onrender.com/api';
 
 export const createWaterThunk = createAsyncThunk(
   'water/getWater',
-  async (date, { rejectWithValue, getState }) => {
+  async (credentials, { rejectWithValue, getState }) => {
     try {
       const store = getState();
       const token = store.users.token;
@@ -20,12 +20,12 @@ export const createWaterThunk = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await axios.post('/waters/created', date, {
+      const response = await axios.post('/waters/created', credentials, {
         headers,
       });
       return response.data;
     } catch (error) {
-      console.log('Error getWatersThunk', error.message);
+      console.log('Error createWaterThunk', error.message);
       return rejectWithValue(error.message);
     }
   }
@@ -52,7 +52,7 @@ export const getMonthThunk = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log('Error getAllContactsThunk', error.message);
+      console.log('Error getMonthThunk', error.message);
       return rejectWithValue(error.message);
     }
   }
@@ -60,7 +60,7 @@ export const getMonthThunk = createAsyncThunk(
 // ==========================================>
 export const addOneTodoThunk = createAsyncThunk(
   'water/addDrink',
-  async (newWater, { rejectWithValue, getState }) => {
+  async (credentials, { rejectWithValue, getState }) => {
     try {
       const store = getState();
       const token = store.users.token;
@@ -69,28 +69,17 @@ export const addOneTodoThunk = createAsyncThunk(
         console.error('No token found.');
         return;
       }
-      if (!newWater) {
-        console.error('No data found.');
-        return;
-      }
 
       const headers = {
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await axios.post('/waters/drink', newWater, {
+      const response = await axios.post('/waters/drink', credentials, {
         headers,
       });
       return response;
     } catch (error) {
-      switch (error.response.status) {
-        case 409:
-          return rejectWithValue(error.message);
-        case 400:
-          return rejectWithValue(error.message);
-        default:
-          return rejectWithValue(error.message);
-      }
+      return rejectWithValue(error.message);
     }
   }
 );
