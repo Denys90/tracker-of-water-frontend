@@ -5,7 +5,16 @@ import {
   TextContainer,
   ButtonContainer,
 } from './DeleteEntry.styled';
-export const DeleteEntry = () => {
+import { useDispatch } from 'react-redux';
+
+import { deleteTodoThunk } from 'store/water/thunk.js';
+
+export const DeleteEntry = ({ toggleModal, id, date }) => {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(deleteTodoThunk({ id, date }));
+  };
   return (
     <>
       <ContainerPopUp>
@@ -14,8 +23,12 @@ export const DeleteEntry = () => {
           <p>Are you sure you want to delete the entry?</p>
         </TextContainer>
         <ButtonContainer>
-          <ButtonCancel>Cancel</ButtonCancel>
-          <ButtonDelete>Delete</ButtonDelete>
+          <ButtonCancel type="button" onClick={toggleModal}>
+            Cancel
+          </ButtonCancel>
+          <ButtonDelete type="button" onClick={handleClick}>
+            Delete
+          </ButtonDelete>
         </ButtonContainer>
       </ContainerPopUp>
     </>

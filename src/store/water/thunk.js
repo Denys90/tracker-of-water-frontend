@@ -148,7 +148,7 @@ export const patchWatersThunk = createAsyncThunk(
 
 export const deleteTodoThunk = createAsyncThunk(
   'water/deleteWater',
-  async ({ id, date }, { rejectWithValue, getState }) => {
+  async ({ date, id }, { rejectWithValue, getState }) => {
     try {
       const store = getState();
       const token = store.users.token;
@@ -162,7 +162,7 @@ export const deleteTodoThunk = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await axios.delete(`/waters/${id}`, date, {
+      const response = await axios.put(`/waters/drink/${id}`, date, {
         headers,
       });
       return response.data;
