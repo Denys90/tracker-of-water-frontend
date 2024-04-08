@@ -16,6 +16,8 @@ import svg from 'assets/images/icons.svg';
 import Modal from 'components/Modal/Modal';
 
 import { AddWaterModal } from 'components/AddWaterModal/AddWaterModal';
+
+
 import useWater from 'hooks/useWaters';
 
 export const DrinkList = () => {
@@ -77,6 +79,7 @@ export const DrinkList = () => {
       {isOpen && (
         <Modal onClose={toggleModal}>
           <AddWaterModal />
+         
         </Modal>
       )}
     </>
