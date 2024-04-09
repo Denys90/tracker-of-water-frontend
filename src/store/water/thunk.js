@@ -168,9 +168,12 @@ export const deleteTodoThunk = createAsyncThunk(
         // 'Content-Type': 'application/json',
       };
 
-      const response = await axios.put(`/waters/drink/${id}`, date, {
-        headers,
-      });
+      const response = await axios.delete(
+        `/waters/drink/${id}?date=${date.date}`,
+        {
+          headers,
+        }
+      );
       return response.data;
     } catch (error) {
       console.log('Error deleteContactThunk', error.message);
