@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getMonthThunk } from '../../store/water/thunk';
 import { selectMonth } from '../../store/water/selectors';
-
 import 'react-datepicker/dist/react-datepicker.css';
 import {
   CalenderWrapper,
@@ -19,20 +18,19 @@ import { format } from 'date-fns';
 
 export const Calender = () => {
   const dispatch = useDispatch();
-  const monthData = useSelector(selectMonth); // Исправлено на monthData
+  const monthData = useSelector(selectMonth);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState(null);
-
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const currentDate = new Date();
-  const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Получаем месяц с ведущим нулем, если нужно
-  const year = currentDate.getFullYear().toString();
+  const popoverRef = useRef(null);
 
   useEffect(() => {
-    // Загрузка данных о водном потреблении для текущего месяца
+    const month = (currentMonth.getMonth() + 1).toString().padStart(2, '0');
+    const year = currentMonth.getFullYear().toString();
     dispatch(getMonthThunk({ date: `${month}.${year}` }));
-  }, [dispatch, month, year]);
+  }, [dispatch, currentMonth]);
 
-  // Обработчик изменения месяца
   const handleChangeMonth = (increment) => {
     setCurrentMonth((prevMonth) => {
       const newMonth = new Date(prevMonth);
@@ -41,7 +39,6 @@ export const Calender = () => {
     });
   };
 
-  // Генерация дней месяца
   const generateMonthDays = () => {
     const lastDayOfMonth = new Date(
       currentMonth.getFullYear(),
@@ -56,41 +53,41 @@ export const Calender = () => {
     return days;
   };
 
-  // Обработчик клика по дню
   const handleDayClick = (day) => {
-    setSelectedDay(day);
+    setSelectedDay(parseInt(day));
+    setIsPopoverOpen(true);
   };
 
-  const length = generateMonthDays().length;
-  // console.log(length);
-  let currMonth = [];
 
-  for (let i = 0; i <= length; i += 1) {
-    let obj = {
-      day: i.toString(),
-      daily_limit: 2000,
-      count: 0,
-      percent: 0,
-      id: '',
-    };
-
-    for (let a = 0; a < monthData.length; a++) {
-      const asd = monthData[a];
-      if (i.toString() === asd.date[1]) {
-        // console.log('qwe');
-        obj = {
-          day: asd.date[1],
-          daily_limit: asd.daily_limit,
-          count: asd.count,
-          percent: asd.percent,
-          id: asd._id,
-        };
-      }
+  const handleClickOutside = (event) => {
+    if (popoverRef.current && !popoverRef.current.contains(event.target)) {
+      setIsPopoverOpen(false);
     }
+  };
 
-    currMonth.push(obj);
-  }
-  // console.log('--------------------------------------------------', currMonth);
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+
+  const currMonth = generateMonthDays().map((day) => {
+    const foundDay = monthData.find(
+      (entry) => parseInt(entry.date.split('.')[0], 10) === day
+    );
+    return {
+      day: day.toString(),
+      daily_limit: foundDay ? foundDay.daily_limit : 2000,
+      count: foundDay ? foundDay.count : 0,
+      percent: foundDay ? foundDay.percent : 0,
+      id: foundDay ? foundDay._id : '',
+    };
+  });
+
+
   return (
     <div>
       <CalenderWrapper>
@@ -111,32 +108,29 @@ export const Calender = () => {
             </MonthButton>
           </PaginationWrapper>
         </CalenderNav>
-
         <DaysList>
-          {generateMonthDays().map((day) => {
-            const currentDate = new Date();
+          {currMonth.map((currDay) => {
             const selectedDate = new Date(
               currentMonth.getFullYear(),
               currentMonth.getMonth(),
-              day
+              parseInt(currDay.day)
             );
-            // console.log(typeof day);
+
             const isToday =
               currentDate.toDateString() === selectedDate.toDateString();
 
-            // Проверяем, есть ли запись о водном потреблении для текущего дня
-
-            const currDay = currMonth[day];
-            // console.log(currDay);
-
             return (
-              <div key={day - 1}>
+              <div key={currDay.day}>
                 <DayButton
-                  percent={currDay.percent ? currDay.percent : 0}
-                  onClick={() => handleDayClick(day)}
-                  className={isToday ? 'today' : ''}
+                  percent={currDay.percent}
+                  onClick={() => handleDayClick(currDay.day)}
+                  className={
+                    selectedDay === parseInt(currDay.day) || isToday
+                      ? 'today'
+                      : ''
+                  }
                 >
-                  {day}
+                  {currDay.day}
                 </DayButton>
                 <DayPercent>{`${currDay.percent}%`}</DayPercent>
               </div>
@@ -144,8 +138,9 @@ export const Calender = () => {
           })}
         </DaysList>
       </CalenderWrapper>
-      {selectedDay && (
-        <Popover day={selectedDay}>
+
+      {selectedDay && isPopoverOpen && (
+        <Popover ref={popoverRef}>
           <p>
             <span>
               {format(
@@ -178,17 +173,16 @@ export const Calender = () => {
             }
             return null;
           })}
-          {/* Добавляем условие для отображения сообщения, если данные отсутствуют */}
+
           {!monthData.some(
             (entry) =>
               parseInt(entry.date.split('.')[0], 10) === selectedDay &&
-              entry.percent === 0
+              entry.percent > 0
           ) && (
             <div>
               <p>You did not drink on this day.</p>
             </div>
           )}
-          {/* Добавляем условие для отображения сообщения, если выбранная дата находится в будущем */}
           {new Date() <
             new Date(
               currentMonth.getFullYear(),

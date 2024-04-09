@@ -104,7 +104,7 @@ export const DayButton = styled.button`
       `;
     } else {
       return `
-        background-color: ${theme.colors.white};
+      border: 1px solid ${theme.colors.white};
       `;
     }
   }}
