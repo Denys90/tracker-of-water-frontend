@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import {
   ButtonCancel,
   ButtonDelete,
@@ -10,13 +10,14 @@ import { useDispatch } from 'react-redux';
 
 import { deleteTodoThunk } from 'store/water/thunk.js';
 
-export const DeleteEntry = ({ id, date }) => {
+export const DeleteEntry = ({ id, date, toggleModal }) => {
   const dispatch = useDispatch();
-  const [isOpen, setIsOpen] = useState();
+  // const [isOpen, setIsOpen] = useState(false);
 
-  const toggleModal = () => {
-    setIsOpen(!isOpen);
-  };
+  // const toggleModal = () => {
+  //   console.log(' console.log(isOpen);', isOpen);
+  //   setIsOpen(!isOpen);
+  // };
 
   const handleClick = () => {
     dispatch(deleteTodoThunk({ id, date }));

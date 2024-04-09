@@ -62,7 +62,7 @@ export const Calender = () => {
   };
 
   const length = generateMonthDays().length;
-  console.log(length);
+  // console.log(length);
   let currMonth = [];
 
   for (let i = 0; i <= length; i += 1) {
@@ -77,7 +77,7 @@ export const Calender = () => {
     for (let a = 0; a < monthData.length; a++) {
       const asd = monthData[a];
       if (i.toString() === asd.date[1]) {
-        console.log('qwe');
+        // console.log('qwe');
         obj = {
           day: asd.date[1],
           daily_limit: asd.daily_limit,
@@ -90,7 +90,7 @@ export const Calender = () => {
 
     currMonth.push(obj);
   }
-  console.log('--------------------------------------------------', currMonth);
+  // console.log('--------------------------------------------------', currMonth);
   return (
     <div>
       <CalenderWrapper>
@@ -120,14 +120,14 @@ export const Calender = () => {
               currentMonth.getMonth(),
               day
             );
-            console.log(typeof day);
+            // console.log(typeof day);
             const isToday =
               currentDate.toDateString() === selectedDate.toDateString();
 
             // Проверяем, есть ли запись о водном потреблении для текущего дня
 
             const currDay = currMonth[day];
-            console.log(currDay);
+            // console.log(currDay);
 
             return (
               <div key={day - 1}>
