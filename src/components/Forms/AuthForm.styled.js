@@ -19,31 +19,39 @@ export const FormContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
-  display: flex;
   align-items: center;
   padding: 0px;
-  width: 384px;
-  margin-right: 200px;
-  @media screen and (max-width: ${theme.breakpoint.desktop}) {
-    margin-right: 0;
+  width: 280px;
+margin: 0 auto;
+
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
     width: 336px;
+    height: ${props => props.signup ? '404px' : '312px'}; 
+    margin-top: 40px;
   }
-  @media screen and (max-width: ${theme.breakpoint.tablet}) {
-    width: 280px;
+   @media screen and (min-width: ${theme.breakpoint.desktop}) {
+    margin-right: 50px;
+    width: 384px;
+    top: 550px;
+flex-direction: column;
+
   }
 `;
 export const Title = styled.h2`
-  font-family: 'Roboto-Medium', sans-serif;
   font-size: 26px;
   font-weight: 500;
   line-height: 32px;
-  width: 384px;
-  @media screen and (max-width: ${theme.breakpoint.desktop}) {
-    width: 336px;
+  margin-bottom: 16px;
+  width: 280px;
+
+   @media screen and (min-width: ${theme.breakpoint.tablet}) {
+       width: 336px;
+  } 
+   @media screen and (min-width: ${theme.breakpoint.desktop}) {
+    width: 384px;
+
   }
-  @media screen and (max-width: ${theme.breakpoint.tablet}) {
-    width: 280px;
-  }
+ 
 `;
 export const InputContainer = styled.div`
   display: flex;
@@ -53,67 +61,73 @@ export const InputContainer = styled.div`
   padding: 0px;
   gap: 8px;
   margin-bottom: 16px;
-  width: 384px;
-  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+  width: 280px;
+  
+   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     width: 336px;
   }
-  @media screen and (max-width: ${theme.breakpoint.tablet}) {
-    width: 280px;
+
+    @media screen and (min-width: ${theme.breakpoint.desktop}) {
+    width: 384px;
   }
 `;
 export const LabelField = styled.label`
-  font-family: 'Roboto-Medium', sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
-  width: 384px;
-  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+  width: 280px;
+ 
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
     width: 336px;
   }
-  @media screen and (max-width: ${theme.breakpoint.tablet}) {
-    width: 280px;
+
+   @media screen and (min-width: ${theme.breakpoint.desktop}) {
+    width: 384px;
   }
 `;
 export const SubmitButton = styled.button`
-  font-family: 'Roboto-Medium', sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0%;
   text-align: center;
-  color: white;
-  padding: 10px 30px 10px 30px;
+  color: ${ theme.colors.white};
+  padding: 10px 30px;
   border-radius: 10px;
-  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-  background: rgb(64, 123, 255);
-  width: 384px;
+   box-shadow: ${theme.boxShadowBtn.hoverBtn};
+   background-color: ${ theme.colors.blue};
   border: none;
   cursor: pointer;
+  border-radius: 10px;
+padding: 8px 30px;
+width: 280px;
+
+
+
   transition: 0.4s;
   &:hover {
-    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+       box-shadow: ${theme.boxShadowBtn.hoverBtn};
   }
-  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+ 
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
     width: 336px;
   }
-  @media screen and (max-width: ${theme.breakpoint.tablet}) {
-    width: 280px;
+
+     @media screen and (min-width: ${theme.breakpoint.desktop}) {
+    width: 384px;
   }
 `;
 export const LinkBtn = styled.button`
   margin-top: 16px;
-  color: rgb(64, 123, 255);
-  font-family: 'Roboto-Medium', sans-serif;
-  font-size: 16px;
+  color: ${ theme.colors.blue};
   font-weight: 400;
-  line-height: 20px;
-  letter-spacing: 0%;
-  text-decoration: none;
+font-size: 16px;
+line-height: 125%;
   transition: 0.4s;
   background-color: transparent;
   border: none;
   &:hover {
-    color: rgb(255, 157, 67);
+    color: ${ theme.colors.orange};
   }
 `;
 
@@ -122,17 +136,16 @@ export const InputField = styled(Field)`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 12px 10px 12px 10px;
+  padding: 12px 10px;
   box-sizing: border-box;
-  border: 1px solid rgb(215, 227, 255);
+  border: 1px solid ${theme.colors.paleBlue}; 
   border-radius: 6px;
-  background: rgb(255, 255, 255);
-  width: 384px;
-  color: rgb(64, 123, 255);
+  background: ${theme.colors.white};
+  width: 280px;
+  color: ${theme.colors.blue};
   position: relative;
   &::placeholder {
-    color: rgb(158, 187, 255);
-    font-family: Roboto;
+    color:  ${theme.colors.skyBlue};
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
@@ -140,31 +153,32 @@ export const InputField = styled(Field)`
   &:focus {
     outline: none;
   }
-  @media screen and (max-width: ${theme.breakpoint.desktop}) {
+ 
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
     width: 336px;
   }
-  @media screen and (max-width: ${theme.breakpoint.tablet}) {
-    width: 280px;
+
+   @media screen and (min-width: ${theme.breakpoint.desktop}) {
+    width: 384px;
   }
 
   ${(props) =>
     props.error &&
     `
-    border-color: rgb(239, 80, 80);
-    color: rgb(239, 80, 80);
+    border-color: ${theme.colors.brightRed};
+    color: ${theme.colors.brightRed};
   `}
 
   ${(props) =>
     props.error &&
     `
-    border-color: rgb(239, 80, 80);
-    color: rgb(239, 80, 80);
+    border-color: ${theme.colors.brightRed};
+    color: ${theme.colors.brightRed};
   `}
 `;
 
 export const ErrorMessages = styled(ErrorMessage)`
   color: red;
-  font-family: 'Roboto-Medium', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
@@ -174,44 +188,70 @@ export const Container = styled.div`
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 120%;
   background-image: url(${main_mobile}), url(${main_mobile2});
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     background-image: url(${main_tablet}), url(${main_tablet2});
-    min-height: 100vh;
+    /* min-height: 100vh; */
+   height: 350px;
   }
   @media screen and (min-width: ${theme.breakpoint.desktop}) {
     background-image: url(${main_desk}), url(${main_desk2});
-    min-height: 100vh;
+    /* min-height: 100vh; */
+     height: 470px;
+     background-size: cover;
   }
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* width: 100%; */
-  margin: 0 auto;
+ 
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) and (max-width: ${theme.breakpoint.desktop}) {
     flex-direction: row-reverse;
-    margin-left: 300px;
+      margin: 0;
+    margin-left: 260px;
   }
     @media screen and (max-width:767px) {
     flex-direction: column-reverse;
-    margin-top: 50px;
+      margin: 0;
+    margin-top: 40px;
+
+  }
+   @media screen and (min-width:${theme.breakpoint.desktop}) {
+flex-wrap: wrap-reverse;
+    margin-top: 0;
+    margin-left: 120px;
+    margin-right: 220px;
+    justify-content: space-between;
+    
+    
+  
+
   }
 `;
 
 export const Image = styled.img`
-  height: 588.5px;
+  height: 210px;
   @media screen and (min-width: ${theme.breakpoint.tablet}) and (max-width: ${theme.breakpoint.desktop}) {
-    height: 474.26px;
+    height: 475px;
     position: relative;
     left: -200px;
     top: 100px;
   }
   @media screen and (min-width: ${theme.breakpoint.mobile}) and (max-width: 767px) {
-    height: 181.74px;
+    height: 182px;
+  }
+   @media screen and (min-width: ${theme.breakpoint.desktop})  {
+    height: 589px;
+    position: relative;
+    top: 150px;
+    left: -370px;
+  
+
   }
 `
 
