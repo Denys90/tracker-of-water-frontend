@@ -58,11 +58,13 @@ export const Calender = () => {
     setIsPopoverOpen(true);
   };
 
+
   const handleClickOutside = (event) => {
     if (popoverRef.current && !popoverRef.current.contains(event.target)) {
       setIsPopoverOpen(false);
     }
   };
+
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -70,6 +72,7 @@ export const Calender = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
 
   const currMonth = generateMonthDays().map((day) => {
     const foundDay = monthData.find(
@@ -83,6 +86,7 @@ export const Calender = () => {
       id: foundDay ? foundDay._id : '',
     };
   });
+
 
   return (
     <div>
@@ -111,8 +115,10 @@ export const Calender = () => {
               currentMonth.getMonth(),
               parseInt(currDay.day)
             );
+
             const isToday =
               currentDate.toDateString() === selectedDate.toDateString();
+
             return (
               <div key={currDay.day}>
                 <DayButton
