@@ -12,16 +12,9 @@ import { deleteTodoThunk } from 'store/water/thunk.js';
 
 export const DeleteEntry = ({ id, date, toggleModal }) => {
   const dispatch = useDispatch();
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const toggleModal = () => {
-  //   console.log(' console.log(isOpen);', isOpen);
-  //   setIsOpen(!isOpen);
-  // };
 
   const handleClick = () => {
     dispatch(deleteTodoThunk({ id, date }));
-    toggleModal();
   };
   return (
     <>

@@ -77,9 +77,9 @@ export const DrinkList = () => {
                   onClick={() =>
                     openModalWithContent(
                       <DeleteEntry
+                        toggleModal={toggleModal}
                         id={drink._id}
                         date={{ date: stringDate }}
-                        toggleModal={toggleModal}
                       />
                     )
                   }

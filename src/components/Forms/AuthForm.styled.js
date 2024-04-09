@@ -7,12 +7,15 @@ import { ReactComponent as SVGOpenTwo } from 'assets/images/icons/Vector.svg';
 import { ReactComponent as SVGClose } from 'assets/images/icons/Vector2.svg';
 import { ReactComponent as SVGCloseTwo } from 'assets/images/icons/Vector2.svg';
 
-import main_mobile from 'assets/images/mobile/background_element_home_mobile@1x.png';
-import main_mobile2 from 'assets/images/mobile/background_element_home_mobile@2x.png';
-import main_tablet from 'assets/images/tablet/background_element_home_mobile@1x.png';
-import main_tablet2 from 'assets/images/tablet/background_element_home_mobile@2x.png';
-import main_desk from 'assets/images/desc/background_element_main_desc@1x.png';
-import main_desk2 from 'assets/images/desc/background_element_main_desc@2x.png';
+// import main_mobile from 'assets/images/mobile/background_element_home_mobile@1x.png';
+// import main_mobile2 from 'assets/images/mobile/background_element_home_mobile@2x.png';
+// import main_tablet from 'assets/images/tablet/background_element_home_mobile@1x.png';
+// import main_tablet2 from 'assets/images/tablet/background_element_home_mobile@2x.png';
+// import main_desk from 'assets/images/desc/background_element_main_desc@1x.png';
+// import main_desk2 from 'assets/images/desc/background_element_main_desc@2x.png';
+
+import main from 'assets/images/desc/x1.png';
+import main2 from 'assets/images/desc/x2.png';
 
 export const FormContainer = styled.div`
   display: flex;
@@ -22,19 +25,6 @@ export const FormContainer = styled.div`
   align-items: center;
   padding: 0px;
   width: 280px;
-  margin: 0 auto;
-
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    width: 336px;
-    height: ${(props) => (props.signup ? '404px' : '312px')};
-    margin-top: 40px;
-  }
-  @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    margin-right: 50px;
-    width: 384px;
-    top: 550px;
-    flex-direction: column;
-  }
 `;
 export const Title = styled.h2`
   font-size: 26px;
@@ -42,13 +32,6 @@ export const Title = styled.h2`
   line-height: 32px;
   margin-bottom: 16px;
   width: 280px;
-
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    width: 336px;
-  }
-  @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    width: 384px;
-  }
 `;
 export const InputContainer = styled.div`
   display: flex;
@@ -59,28 +42,12 @@ export const InputContainer = styled.div`
   gap: 8px;
   margin-bottom: 16px;
   width: 280px;
-
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    width: 336px;
-  }
-
-  @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    width: 384px;
-  }
 `;
 export const LabelField = styled.label`
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
   width: 280px;
-
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    width: 336px;
-  }
-
-  @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    width: 384px;
-  }
 `;
 export const SubmitButton = styled.button`
   font-size: 18px;
@@ -102,14 +69,6 @@ export const SubmitButton = styled.button`
   transition: 0.4s;
   &:hover {
     box-shadow: ${theme.boxShadowBtn.hoverBtn};
-  }
-
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    width: 336px;
-  }
-
-  @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    width: 384px;
   }
 `;
 export const LinkBtn = styled.button`
@@ -149,14 +108,6 @@ export const InputField = styled(Field)`
     outline: none;
   }
 
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    width: 336px;
-  }
-
-  @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    width: 384px;
-  }
-
   ${(props) =>
     props.error &&
     `
@@ -183,75 +134,31 @@ export const Container = styled.div`
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
-  background-size: 120%;
-  background-image: url(${main_mobile}), url(${main_mobile2});
+
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    background-image: url(${main_tablet}), url(${main_tablet2});
-    /* min-height: 100vh; */
-    height: 350px;
-  }
-  @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    background-image: url(${main_desk}), url(${main_desk2});
-    /* min-height: 100vh; */
-    height: 470px;
-    background-size: cover;
-  }
-
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    flex-direction: row-reverse;
-    margin: 0;
-    margin-left: 260px;
+    display: flex;
   }
   @media screen and (max-width: ${theme.breakpoint.desktop}) {
-    flex-direction: row-reverse;
-    margin: 0;
-    margin-left: 260px;
-  }
-  @media screen and (max-width: 767px) {
-    flex-direction: column-reverse;
-    margin: 0;
-    margin-top: 40px;
-  }
-  @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    flex-wrap: wrap-reverse;
-    margin-top: 0;
-    margin-left: 120px;
-    margin-right: 220px;
-    justify-content: space-between;
   }
 `;
 
 export const Image = styled.img`
-  height: 210px;
+  height: 181px;
+
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
+    background-image: url(${main}), url(${main2});
     display: block;
-    height: 475px;
-    position: relative;
-    top: 100px;
-  }
-  @media screen and (max-width: ${theme.breakpoint.desktop}) {
-    height: 475px;
-    position: relative;
+    height: 474px;
 
     top: 100px;
   }
-
-  /* @media screen and (min-width: ${theme.breakpoint.mobile}) {
-    height: 182px;
-  }
-  @media screen and (max-width: 767px) {
-    height: 182px;
-  } */
   @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    height: 589px;
-    position: relative;
-    top: 150px;
-    left: -370px;
+    background-image: url(${main}), url(${main2});
+    height: 588px;
   }
 `;
 
