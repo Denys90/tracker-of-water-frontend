@@ -42,7 +42,7 @@ const AuthForm = () => {
 
   return (
     <Container>
-      <Image src="/src/assets/images/mobile/bottle_sign_in@2x.png" />
+      <Image src="assets/images/mobile/bottle_sign_in@2x.png" />
       <FormContainer>
         <Title signup={formType === 'signup'}>
           {formType === 'signin' ? 'Sign In' : 'Sign Up'}
