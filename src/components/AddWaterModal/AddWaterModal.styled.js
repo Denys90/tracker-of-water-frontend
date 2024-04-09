@@ -45,7 +45,7 @@ export const Title = styled.h2`
   color: ${theme.colors.black};
   font-size: 26px;
   line-height: 123%;
-  font-weight: 500;
+  font-weight: 600;
 `;
 
 export const Subtitle = styled.h3`

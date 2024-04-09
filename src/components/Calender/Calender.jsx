@@ -1,4 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getMonthThunk } from '../../store/water/thunk';
+import { selectMonth } from '../../store/water/selectors';
+
 import 'react-datepicker/dist/react-datepicker.css';
 import {
   CalenderWrapper,
@@ -14,40 +18,21 @@ import svg from '../../assets/images/icons.svg';
 import { format } from 'date-fns';
 
 export const Calender = () => {
-  // ====================================
-  // взяла приклад з документації
-  const oneitem = {
-    date: '04.04.2024',
-    daily_limit: 2000,
-    water_entries: [
-      {
-        time: '9:41',
-        amount: 250,
-        date: '02.04.2024',
-      },
-      {
-        time: '19:58',
-        amount: 250,
-        date: '02.04.2024',
-      },
-    ],
-    owner: '660ab1bf135b46797793af4f',
-    count: 5,
-    percent: 80,
-  };
-
-  // перераховуємо ліміт в потрібний формат
-  // !!!передати денну норму в мл
-  const daily_limit = oneitem.daily_limit;
-  const waterNorma = (daily_limit / 1000).toFixed(1) + ' L';
-  // ====================================
-
+  const dispatch = useDispatch();
+  const monthData = useSelector(selectMonth); // Исправлено на monthData
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState(null);
-  const [popoverPosition, setPopoverPosition] = useState({ x: 0, y: 0 });
-  const popoverRef = useRef(null);
 
-  // зміна місяця
+  const currentDate = new Date();
+  const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Получаем месяц с ведущим нулем, если нужно
+  const year = currentDate.getFullYear().toString();
+
+  useEffect(() => {
+    // Загрузка данных о водном потреблении для текущего месяца
+    dispatch(getMonthThunk({ date: `${month}.${year}` }));
+  }, [dispatch, month, year]);
+
+  // Обработчик изменения месяца
   const handleChangeMonth = (increment) => {
     setCurrentMonth((prevMonth) => {
       const newMonth = new Date(prevMonth);
@@ -56,7 +41,7 @@ export const Calender = () => {
     });
   };
 
-  // генерація днів місяця
+  // Генерация дней месяца
   const generateMonthDays = () => {
     const lastDayOfMonth = new Date(
       currentMonth.getFullYear(),
@@ -71,49 +56,41 @@ export const Calender = () => {
     return days;
   };
 
-  // назва місяця
-  const getCurrentMonthName = () => {
-    const monthFormatter = new Intl.DateTimeFormat('en', { month: 'long' });
-    return monthFormatter.format(currentMonth);
+  // Обработчик клика по дню
+  const handleDayClick = (day) => {
+    setSelectedDay(day);
   };
 
-  // поточний рік
-  const getCurrentYear = () => {
-    return currentMonth.getFullYear();
-  };
+  const length = generateMonthDays().length;
+  console.log(length);
+  let currMonth = [];
 
-  // клік по дню
-  const handleDayClick = (day, event) => {
-    const selectedDate = new Date(
-      currentMonth.getFullYear(),
-      currentMonth.getMonth(),
-      day
-    );
-    const today = new Date(); // поточна дата
-    if (selectedDate <= today) {
-      // Перевіряємо, що обрана дата не пізніше за поточну
-      setSelectedDay(selectedDate);
-      // Встановлюємо позицію поповера
-      setPopoverPosition({ x: event.clientX, y: event.clientY });
-    } else {
-      // Виводимо повідомлення, якщо обрана дата вже пройшла
-      alert('This date has not yet arrived. Please select a previous day.');
-    }
-  };
-
-  // Закриття поповера при натисканні за його межами
-  const handleClickOutside = (event) => {
-    if (popoverRef.current && !popoverRef.current.contains(event.target)) {
-      setSelectedDay(null);
-    }
-  };
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+  for (let i = 0; i <= length; i += 1) {
+    let obj = {
+      day: i.toString(),
+      daily_limit: 2000,
+      count: 0,
+      percent: 0,
+      id: '',
     };
-  }, []);
 
+    for (let a = 0; a < monthData.length; a++) {
+      const asd = monthData[a];
+      if (i.toString() === asd.date[1]) {
+        console.log('qwe');
+        obj = {
+          day: asd.date[1],
+          daily_limit: asd.daily_limit,
+          count: asd.count,
+          percent: asd.percent,
+          id: asd._id,
+        };
+      }
+    }
+
+    currMonth.push(obj);
+  }
+  console.log('--------------------------------------------------', currMonth);
   return (
     <div>
       <CalenderWrapper>
@@ -124,7 +101,10 @@ export const Calender = () => {
               <use href={`${svg}#icon-left`}></use>
             </MonthButton>
             <span>
-              {getCurrentMonthName()}, {getCurrentYear()}
+              {currentMonth.toLocaleDateString('en', {
+                month: 'long',
+                year: 'numeric',
+              })}
             </span>
             <MonthButton onClick={() => handleChangeMonth(1)}>
               <use href={`${svg}#icon-right`}></use>
@@ -140,48 +120,85 @@ export const Calender = () => {
               currentMonth.getMonth(),
               day
             );
+            console.log(typeof day);
             const isToday =
               currentDate.toDateString() === selectedDate.toDateString();
 
+            // Проверяем, есть ли запись о водном потреблении для текущего дня
+
+            const currDay = currMonth[day];
+            console.log(currDay);
+
             return (
-              <div key={day}>
+              <div key={day - 1}>
                 <DayButton
-                  onClick={(e) => handleDayClick(day, e)}
+                  percent={currDay.percent ? currDay.percent : 0}
+                  onClick={() => handleDayClick(day)}
                   className={isToday ? 'today' : ''}
                 >
                   {day}
                 </DayButton>
-                {/* ==================================== */}
-                {/* передати відсотки */}
-                <DayPercent>{oneitem.percent}%</DayPercent>
+                <DayPercent>{`${currDay.percent}%`}</DayPercent>
               </div>
             );
           })}
         </DaysList>
       </CalenderWrapper>
-
-      {/* ==================================== */}
-      {/* Поповер */}
       {selectedDay && (
-        <Popover
-          ref={popoverRef}
-          style={{ top: popoverPosition.y, left: popoverPosition.x }}
-        >
+        <Popover day={selectedDay}>
           <p>
-            <span>{format(selectedDay, 'd, MMMM')}</span>
+            <span>
+              {format(
+                new Date(
+                  currentMonth.getFullYear(),
+                  currentMonth.getMonth(),
+                  selectedDay
+                ),
+                'd, MMMM'
+              )}
+            </span>
           </p>
-          <p>
-            Daily norma: <span>{waterNorma}</span>
-          </p>
-          <p>
-            {/* передати відсотки */}
-            Fulfillment of the daily norm: <span>{oneitem.percent}%</span>
-          </p>
-          <p>
-            {/* передати підходи */}
-            {/*oneitem.water_entries.length*/}
-            How many servings of water: <span>{oneitem.count}</span>
-          </p>
+          {monthData.map((entry) => {
+            const entryDay = parseInt(entry.date.split('.')[0], 10);
+            if (entryDay === selectedDay) {
+              return (
+                <div key={entry._id}>
+                  <p>
+                    Daily limit: <span>{entry.daily_limit / 1000} L</span>
+                  </p>
+                  <p>
+                    Fulfillment of the daily limit:{' '}
+                    <span>{entry.percent}%</span>
+                  </p>
+                  <p>
+                    Number of water servings: <span>{entry.count}</span>
+                  </p>
+                </div>
+              );
+            }
+            return null;
+          })}
+          {/* Добавляем условие для отображения сообщения, если данные отсутствуют */}
+          {!monthData.some(
+            (entry) =>
+              parseInt(entry.date.split('.')[0], 10) === selectedDay &&
+              entry.percent === 0
+          ) && (
+            <div>
+              <p>You did not drink on this day.</p>
+            </div>
+          )}
+          {/* Добавляем условие для отображения сообщения, если выбранная дата находится в будущем */}
+          {new Date() <
+            new Date(
+              currentMonth.getFullYear(),
+              currentMonth.getMonth(),
+              selectedDay
+            ) && (
+            <div>
+              <p>This day has not yet arrived.</p>
+            </div>
+          )}
         </Popover>
       )}
     </div>

@@ -49,7 +49,7 @@ export const getMonthThunk = createAsyncThunk(
         'Content-Type': 'application/json',
       };
 
-      const response = await axios.get('/waters/month', date, {
+      const response = await axios.post('/waters/month', date, {
         headers,
       });
       return response.data;
