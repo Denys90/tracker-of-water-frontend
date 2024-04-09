@@ -3,9 +3,6 @@ import { Field } from 'formik';
 import { theme } from 'styles/theme';
 
 export const BoxAddModal = styled.div`
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-bottom: 24px;
   display: flex;
   flex-direction: column;
 
@@ -19,9 +16,6 @@ export const BoxAddModal = styled.div`
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     min-width: 704px;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 32px;
   }
 
   @media screen and (min-width: ${theme.breakpoint.desktop}) {

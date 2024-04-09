@@ -48,6 +48,7 @@ export const WaterItem = styled.div`
   padding: 8px 24px;
   gap: 12px;
   background-color: ${theme.colors.lightBlue};
+  margin-bottom: 24px;
   h4 {
     font-size: 18px;
     line-height: 24px;

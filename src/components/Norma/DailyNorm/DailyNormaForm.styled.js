@@ -5,14 +5,13 @@ import { theme } from 'styles/theme';
 export const ModalTitle = styled.h2`
   font-size: 26px;
   line-height: 32px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 `;
 export const ModalFormulaContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
-  line-height: 1.2;
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     flex-direction: row;

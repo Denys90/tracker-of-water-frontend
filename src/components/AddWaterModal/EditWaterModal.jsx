@@ -1,100 +1,116 @@
-import Loader from '../Loader/Loader';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import Loader from '../Loader/Loader';
+import { useState, useEffect } from 'react';
 import svg from 'assets/images/icons.svg';
-import { globalLoadingSelector } from '../../root/selectors';
-import { patchWatersThunk } from '../../store/water/thunk';
-
-import { ErrorMessage, StyledSelect } from './AddWaterModal.styled';
+import { Formik, ErrorMessage } from 'formik';
+import useWater from 'hooks/useWaters';
 
 import {
-  BoxEditModal,
-  EditWater,
-  Title,
-  WaterItem,
-  Subtitle,
+  BtnSave,
   AddParagraph,
+  AddTime,
+  FooterModal,
+  Water,
+  Label,
   ButtonMl,
   Icon,
-  Label,
-  Water,
-  EditMenu,
-  AddDelWater,
-  EditTime,
-  EditItemWater,
-  FooterModal,
-  BtnSave,
+  Title,
+  Subtitle,
+  BoxAddModal,
+  StyledSelect,
+  AddWaterContainer,
   Input,
-  DrinkGlass,
-} from './EditWaterModal.styled';
+  // StyledField,
+} from './AddWaterModal.styled';
+import { DrinkGlass, WaterItem } from './EditWaterModal.styled';
 
-export const EditWaterModal = ({
-  onClose,
-  waterId,
-  initialAmount,
-  initialTime,
-}) => {
-  const [amount, setAmount] = useState(initialAmount || 0);
-  const [time, setTime] = useState(initialTime || '');
+export const EditWaterModal = ({ toggleModal }) => {
+  const [time, setTime] = useState('');
+  const [timeOptions, setTimeOptions] = useState([]);
+  const { addOneDrink } = useWater();
+  const [amount, setAmount] = useState(0);
 
-  const dispatch = useDispatch();
-  const { isLoading } = useSelector(globalLoadingSelector);
-  const [errorMessage, setErrorMessage] = useState('');
+  useEffect(() => {
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+    const newTimeOptions = [];
 
-  const handleAmountChange = (e) => {
-    let newValue = e.target.value;
-    if (newValue > 5000) {
-      setErrorMessage('The value cannot exceed 5000ml');
-      return;
-    } else {
-      setErrorMessage('');
-    }
-
-    if (newValue.startsWith('0') && newValue.length > 1) {
-      newValue = parseFloat(newValue.substring(1));
-    }
-    setAmount(newValue.toString());
-  };
-
-  const handleSubmit = () => {
-    const waterData = {
-      waterVolume: amount,
-      date: time,
-    };
-    dispatch(patchWatersThunk(waterId, waterData)).then((data) => {
-      if (!data.error) {
-        onClose();
+    for (let hour = currentHour; hour < 24; hour++) {
+      for (let minute = 0; minute < 60; minute += 5) {
+        if (hour === currentHour && minute < currentMinute) {
+          continue;
+        }
+        const formattedHour = String(hour).padStart(2, '0');
+        const formattedMinute = String(minute).padStart(2, '0');
+        const currentTime = `${formattedHour}:${formattedMinute}`;
+        newTimeOptions.push(currentTime);
       }
-    });
+    }
+
+    const formattedHour = String(currentHour).padStart(2, '0');
+    const formattedMinute = String(currentMinute).padStart(2, '0');
+    const currentTime = `${formattedHour}:${formattedMinute}`;
+    setTime(currentTime);
+    setTimeOptions(newTimeOptions);
+  }, []);
+
+  const currentDate = new Date();
+  const day = String(currentDate.getDate()).padStart(2, '0');
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+  const year = String(currentDate.getFullYear());
+
+  const formattedDate = `${day}.${month}.${year}`;
+
+  const validateAmount = (value) => {
+    let errorMessage = '';
+    if (value > 5000) {
+      errorMessage = 'The value cannot exceed 5000ml';
+    }
+    return errorMessage;
   };
 
-  const minusAmount = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const waterData = {
+      time: time,
+      amount: amount,
+      date: formattedDate,
+    };
+    console.log(waterData);
+    addOneDrink(waterData);
+    setAmount(0);
+    setTime('');
+    toggleModal();
+  };
+
+  const decrementAmount = () => {
     setAmount((prevAmount) => Math.max(prevAmount - 50, 0));
   };
 
-  const plusAmount = () => {
+  const incrementAmount = () => {
     const newAmount = amount + 50;
     const maxAmount = 5000;
     setAmount(newAmount <= maxAmount ? newAmount : maxAmount);
   };
 
   return (
-    <>
-      <BoxEditModal onClose={onClose}>
-        <Title>Edit the entered amount of water</Title>
-        <EditMenu>
-          <WaterItem>
-            <DrinkGlass>
-              <use href={`${svg}#icon-glass`}></use>
-            </DrinkGlass>
-            <h4>{amount} ml</h4>
-            <p>{time}</p>
-          </WaterItem>
-          <EditWater>
-            <Subtitle>Correct entered date:</Subtitle>
+    <Formik initialValues={{ amount: 0, time }} onSubmit={handleSubmit}>
+      {() => (
+        <BoxAddModal>
+          <AddWaterContainer>
+            <Title>Edit the entered amount of water</Title>
+            <WaterItem>
+              <DrinkGlass>
+                <use href={`${svg}#icon-glass`}></use>
+              </DrinkGlass>
+              <h4>{amount} ml</h4>
+              <p>{time} AM</p>
+            </WaterItem>
+            <Subtitle>Choose a value:</Subtitle>
+
             <AddParagraph>Amount of water:</AddParagraph>
-            <AddDelWater>
-              <ButtonMl onClick={minusAmount}>
+            <div>
+              <ButtonMl type="button" onClick={decrementAmount}>
                 <Icon>
                   <use href={`${svg}#icon-minus`}></use>
                 </Icon>
@@ -102,46 +118,52 @@ export const EditWaterModal = ({
               <Label>
                 <Water>{amount} ml</Water>
               </Label>
-              <ButtonMl onClick={plusAmount}>
+              <ButtonMl type="button" onClick={incrementAmount}>
                 <Icon>
                   <use href={`${svg}#icon-plus`}></use>
                 </Icon>
               </ButtonMl>
-            </AddDelWater>
-          </EditWater>
-          <EditTime>
+            </div>
+          </AddWaterContainer>
+          <AddTime>
             <AddParagraph>Recording time:</AddParagraph>
             <StyledSelect
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
+              name="time"
               style={{ width: '100%' }}
+              onChange={(e) => setTime(e.target.value)}
             >
               <option key="current-time" value={time}>
                 {time}
               </option>
+              {timeOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
             </StyledSelect>
-          </EditTime>
-          <EditItemWater>
-            <Subtitle>Enter the value of the water used:</Subtitle>
+          </AddTime>
+          <div>
+            <h3>Enter the value of the water used:</h3>
             <Input
               type="number"
-              value={amount}
-              onChange={handleAmountChange}
-              onBlur={() =>
-                setAmount((prevAmount) => prevAmount || initialAmount || 0)
-              }
+              name="amount"
+              validate={validateAmount}
               max={5000}
+              value={amount}
             />
-            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-          </EditItemWater>
-        </EditMenu>
-        <FooterModal>
-          <span>{amount}ml</span>
-          <BtnSave onClick={handleSubmit}>
-            Save {isLoading && <Loader />}
-          </BtnSave>
-        </FooterModal>
-      </BoxEditModal>
-    </>
+            <ErrorMessage name="amount" component="div" />
+          </div>
+          <FooterModal>
+            <span>{amount}ml</span>
+            <BtnSave type="submit" onClick={handleSubmit}>
+              Save{' '}
+            </BtnSave>
+          </FooterModal>
+        </BoxAddModal>
+      )}
+    </Formik>
   );
 };
+{
+  // isSubmitting && <Loader />;
+}

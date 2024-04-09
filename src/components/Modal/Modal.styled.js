@@ -22,14 +22,11 @@ export const ModalWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto;
-  height: auto;
-  margin: 15px;
 `;
 export const ModalContent = styled.div`
   position: relative;
   padding: 24px 12px;
-  /* width: 450px; */
+
   height: auto;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.5);

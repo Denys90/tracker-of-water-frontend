@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'https://project-deep-water-server.onrender.com/api';
 // ==========================================>
 
 export const createWaterThunk = createAsyncThunk(
-  'water/getWater',
+  'water/postWater',
   async (credentials, { rejectWithValue, getState }) => {
     try {
       const store = getState();
@@ -18,6 +18,7 @@ export const createWaterThunk = createAsyncThunk(
 
       const headers = {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       };
 
       const response = await axios.post('/waters/created', credentials, {
@@ -45,6 +46,7 @@ export const getMonthThunk = createAsyncThunk(
 
       const headers = {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       };
 
       const response = await axios.get('/waters/month', date, {
@@ -72,6 +74,7 @@ export const addOneTodoThunk = createAsyncThunk(
 
       const headers = {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       };
 
       const response = await axios.post('/waters/drink', credentials, {
@@ -100,6 +103,7 @@ export const addDailyNormaThunk = createAsyncThunk(
 
       const headers = {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       };
 
       const response = await axios.patch('/waters/daily_limit', data, {
@@ -133,6 +137,7 @@ export const patchWatersThunk = createAsyncThunk(
 
       const headers = {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       };
       const response = await axios.put(`/waters/${waterId}`, water, {
         headers,
@@ -160,6 +165,7 @@ export const deleteTodoThunk = createAsyncThunk(
 
       const headers = {
         Authorization: `Bearer ${token}`,
+        // 'Content-Type': 'application/json',
       };
 
       const response = await axios.put(`/waters/drink/${id}`, date, {

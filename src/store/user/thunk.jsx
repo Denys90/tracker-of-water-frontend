@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { Toaster, toast } from 'sonner';
 
 axios.defaults.baseURL = 'https://project-deep-water-server.onrender.com/api';
 
@@ -12,6 +11,7 @@ export const token = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
+
 // ======================================================>
 export const signUpThunk = createAsyncThunk(
   'users/register',
@@ -20,9 +20,7 @@ export const signUpThunk = createAsyncThunk(
       const response = await axios.post('/users/register', credentials);
       token.set(response.data.token);
       if (response.data.token) {
-        toast.success('Event has been created');
-        // alert('You have successfully registered!');
-        <Toaster richColors />;
+        alert('You have successfully registered!');
       }
       return response.data;
     } catch (error) {
@@ -40,11 +38,6 @@ export const loginThunk = createAsyncThunk(
       const response = await axios.post('/users/login', credentials);
       token.set(response.data.token);
 
-      if (response.data.token) {
-        toast.success('Event has been created');
-        // alert('You are successfully logged in!');
-        <Toaster richColors />;
-      }
       return response.data;
     } catch (error) {
       alert('You have entered incorrect data, please try again!');
@@ -58,7 +51,7 @@ export const logoutThunk = createAsyncThunk(
   'users/logout',
   async (_, { rejectWithValue }) => {
     try {
-      await axios.get('/users/logout');
+      await axios.post('/users/logout');
       token.unset();
       alert('You are successfully logout!');
     } catch (error) {
@@ -137,6 +130,7 @@ export const patchUserAvatarThunk = createAsyncThunk(
 
       const headers = {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
       };
 
       const response = await axios.patch('/users/avatar', file, {
@@ -164,6 +158,7 @@ export const getCurrentThunk = createAsyncThunk(
 
       const headers = {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data' || 'application/json',
       };
 
       const response = await axios.get('/users/current', {

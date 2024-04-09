@@ -76,6 +76,7 @@ export const AddWaterModal = ({ toggleModal }) => {
       date: formattedDate,
     };
     console.log(waterData);
+
     addOneDrink(waterData);
     setAmount(0);
     setTime('');

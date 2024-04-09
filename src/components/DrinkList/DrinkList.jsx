@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { nanoid } from 'nanoid';
 import {
   DrinkButtonMinus,
   DrinkButtonPlus,
@@ -34,7 +35,7 @@ export const DrinkList = () => {
 
   useEffect(() => {
     createWater({ date: stringDate });
-  }, [createWater, stringDate]);
+  }, [stringDate, createWater]);
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -51,7 +52,7 @@ export const DrinkList = () => {
         <DrinkListTitle>Today</DrinkListTitle>
         <DrinkListUl>
           {reps.map((drink) => (
-            <DrinkListRow key={drink._id}>
+            <DrinkListRow key={nanoid()}>
               <DrinkListItem>
                 <DrinkGlass>
                   <use href={`${svg}#icon-glass`}></use>
@@ -91,11 +92,6 @@ export const DrinkList = () => {
         </DrinkListAddWater>
       </DrinkListWrapper>
 
-      {/* {isOpen && (
-        <Modal onClose={toggleModal}>
-          <AddWaterModal />
-        </Modal>
-      )} */}
       {isOpen && <Modal onClose={toggleModal}>{modalContent}</Modal>}
     </>
   );

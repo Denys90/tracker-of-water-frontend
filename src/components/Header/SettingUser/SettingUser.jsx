@@ -69,7 +69,7 @@ export const SettingUser = ({ toggleModal }) => {
             onSubmit={(values) => {
               const formData = new FormData();
               formData.append('avatar', selectedAvatar);
-              console.log(formData);
+
               newUserAvatar(formData);
 
               const userNewInfo = {
@@ -129,7 +129,7 @@ export const SettingUser = ({ toggleModal }) => {
                           type="radio"
                           name="gender"
                           value="male"
-                          defaultChecked
+                          // defaultChecked
                         />
                         <RadioButtonText>Man</RadioButtonText>
                       </RadioButtonLabel>

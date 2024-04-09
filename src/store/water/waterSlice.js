@@ -40,7 +40,6 @@ const waterSlice = createSlice({
         state.reps = [...state.reps, action.payload];
       })
       .addCase(deleteTodoThunk.fulfilled, (state, action) => {
-        console.log(action.payload.water_entries);
         state.reps = action.payload.water_entries;
       })
       .addCase(patchWatersThunk.fulfilled, (state, action) => {
