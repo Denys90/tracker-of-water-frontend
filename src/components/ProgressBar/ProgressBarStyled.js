@@ -154,8 +154,7 @@ export const AddWaterProgress = styled.button`
   background-color: ${theme.colors.blue};
   color: ${theme.colors.white};
   border: none;
-  /* box-shadow: ${theme.boxShadowBtn};  */
-  box-shadow: ${theme.boxShadowBtn.hoverBtn};
+
   width: 256px;
   margin-left: 14px;
 

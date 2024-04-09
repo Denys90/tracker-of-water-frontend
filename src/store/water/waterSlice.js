@@ -40,7 +40,8 @@ const waterSlice = createSlice({
         state.reps = [...state.reps, action.payload];
       })
       .addCase(deleteTodoThunk.fulfilled, (state, action) => {
-        state.reps = state.reps.filter((rep) => rep.id !== action.payload.id);
+        console.log(action.payload.water_entries);
+        state.reps = action.payload.water_entries;
       })
       .addCase(patchWatersThunk.fulfilled, (state, action) => {
         const index = state.todos.findIndex(

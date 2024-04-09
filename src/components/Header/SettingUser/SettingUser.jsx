@@ -66,16 +66,18 @@ export const SettingUser = ({ toggleModal }) => {
         {
           <Formik
             initialValues={initialValues}
-            onSubmit={(value) => {
-              console.log(selectedAvatar);
-              newUserAvatar(selectedAvatar);
+            onSubmit={(values) => {
+              const formData = new FormData();
+              formData.append('avatar', selectedAvatar);
+              console.log(formData);
+              newUserAvatar(formData);
 
               const userNewInfo = {
-                name: value.name,
-                email: value.email,
-                gender: value.gender,
-                newPassword: value.newPassword,
-                oldPassword: value.outdatedPassword,
+                name: values.name,
+                email: values.email,
+                gender: values.gender,
+                newPassword: values.newPassword,
+                oldPassword: values.outdatedPassword,
               };
               newUserInfo(userNewInfo);
               toggleModal();
@@ -226,3 +228,109 @@ export const SettingUser = ({ toggleModal }) => {
     </>
   );
 };
+// ііііііііііііііііііііііііііііііііііііііі
+// import { useState } from 'react';
+// import { Formik, Form, Field } from 'formik';
+// import axios from 'axios'; // імпорт axios
+// import {
+//   DownloadButton,
+//   IconDownload,
+//   DownloadButtonText,
+//   FormField,
+//   DownloadWrap,
+//   GenderFormField,
+//   RadioButtonWrap,
+//   RadioButtonLabel,
+//   RadioButtonText,
+//   RadioButton,
+//   Input,
+//   DesktopFormWrap,
+//   DesktopGenderWrap,
+//   PasswordFormField,
+//   PasswordLabel,
+//   PasswordInputWrap,
+//   IconButton,
+//   LastPasswordFormField,
+//   SaveButtonWrap,
+//   SaveButton,
+//   DesktopPasswordWrap,
+//   ModalWrap,
+//   Avatar,
+//   SSvgClose,
+//   SSvgOpen,
+//   StyledLabel,
+//   Title,
+//   EmailInput,
+//   TitlePassword,
+//   TitleGender,
+// } from './SettingUser.styled';
+// import sprite from 'assets/images/icons.svg';
+// import { useUsers } from 'hooks/useUsers';
+
+// export const SettingUser = ({ toggleModal }) => {
+//   const [selectedAvatar, setSelectedAvatar] = useState(null);
+//   const [selectedAvatarPath, setSelectedAvatarPath] = useState('');
+//   const [showPassword, setShowPassword] = useState(false);
+//   const { user, newUserInfo, newUserAvatar } = useUsers();
+
+//   const handleAvatarChange = (e) => {
+//     const file = e.currentTarget.files[0];
+//     setSelectedAvatar(file);
+//     setSelectedAvatarPath(URL.createObjectURL(file));
+//   };
+
+//   const initialValues = {
+//     avatar: user.avatarURL,
+//     name: user.name || '',
+//     email: user.email || '',
+//   };
+
+//   const togglePasswordVisibility = () => {
+//     setShowPassword(!showPassword);
+//   };
+
+//   return (
+//     <>
+//       <ModalWrap>
+//         <Formik
+//           initialValues={initialValues}
+//           onSubmit={(values) => {
+//             console.log(selectedAvatar);
+//             newUserAvatar(selectedAvatar);
+
+//             const userNewInfo = {
+//               name: values.name,
+//               email: values.email,
+//               gender: values.gender,
+//               newPassword: values.newPassword,
+//               oldPassword: values.outdatedPassword,
+//             };
+//             newUserInfo(userNewInfo);
+
+//             // Створення нового екземпляру FormData для передачі даних форми
+//             const formData = new FormData();
+//             formData.append('avatar', selectedAvatar);
+//             formData.append('name', values.name);
+//             formData.append('email', values.email);
+//             formData.append('gender', values.gender);
+//             formData.append('newPassword', values.newPassword);
+//             formData.append('oldPassword', values.outdatedPassword);
+
+//             // Використання axios для відправки даних форми
+//             axios
+//               .post('https://example.com', formData)
+//               .then((response) => {
+//                 console.log(response.data);
+//                 toggleModal();
+//               })
+//               .catch((error) => {
+//                 console.error('Error:', error);
+//               });
+//           }}
+//         >
+//           <Form>{/* Останній код компонента Formik */}</Form>
+//         </Formik>
+//       </ModalWrap>
+//     </>
+//   );
+// };
