@@ -9,10 +9,14 @@ export const Popup = styled.div`
   align-items: center;
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.8);
   transition: opacity 0.3s;
+  overflow: auto;
+  padding: 70px 0;
 `;
 export const ModalWrapper = styled.div`
   position: absolute;
@@ -24,7 +28,7 @@ export const ModalWrapper = styled.div`
   align-items: center;
 `;
 export const ModalContent = styled.div`
-  position: relative;
+  position: absolute;
   padding: 24px 12px;
 
   height: auto;
@@ -36,6 +40,8 @@ export const ModalContent = styled.div`
   transition:
     opacity 0.3s,
     transform 0.3s;
+  max-height: 90vh;
+  overflow: auto;
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     padding: 32px 24px;
