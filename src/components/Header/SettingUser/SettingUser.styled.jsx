@@ -61,7 +61,7 @@ export const PasswordInputWrap = styled.div`
   display: flex;
   align-items: flex-end;
   position: relative;
-  width: 392px;
+  width: 100%;
   margin-top: 8px;
 `;
 
@@ -223,13 +223,13 @@ export const StyledErrorText = styled.p`
 `;
 
 export const ModalWrap = styled.div`
-  /* padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 32px;
+    margin: 0 auto;
     border-radius: 10px;
-    border: 2px solid ${theme.colors.black};
-    background-color: ${theme.colors.white}; */
+    background-color: ${theme.colors.white};
 
+  @media screen and (min-width: ${theme.breakpoint.mobile}) {
+      min-width: 280px;
+    }
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     min-width: 704px;
     padding-left: 24px;
@@ -251,6 +251,9 @@ export const PasswordLabel = styled.p`
   color: ${theme.colors.black};
   font-size: 16px;
   line-height: 1.25; /* 125% */
+  @media screen and (max-width: ${theme.breakpoint.mobile}) {
+    font-size: 32px;
+  }
 `;
 
 export const SaveButton = styled.button`
@@ -340,16 +343,7 @@ export const SaveButtonWrap = styled.ul`
   }
 `;
 
-export const ContainerMod = styled.div`
-  width: 1008px;
-  height: 592px;
-  padding: 32px 24px 32px 24px;
-  border-radius: 10px 0px 0px 0px;
-  border: 2px solid #2f2f2f;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.2);
-`;
+
 export const Header = styled.h1`
   font-size: 26px;
   font-weight: 500;
@@ -357,7 +351,8 @@ export const Header = styled.h1`
 `;
 
 export const Title = styled.h2`
-  display: block;
+  display: flex;
+  flex-direction: space-between;
   margin: 0;
   margin-bottom: 24px;
   font-family: 'Roboto-Bold', sans-serif;
