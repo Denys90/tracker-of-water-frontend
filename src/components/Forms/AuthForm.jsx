@@ -44,7 +44,9 @@ const AuthForm = () => {
     <Container>
       <Image src="/src/assets/images/mobile/bottle_sign_in@2x.png" />
       <FormContainer>
-        <Title>{formType === 'signin' ? 'Sign In' : 'Sign Up'}</Title>
+        <Title signup={formType === 'signup'}>
+          {formType === 'signin' ? 'Sign In' : 'Sign Up'}
+        </Title>
         <Formik
           initialValues={{
             email: '',
@@ -108,7 +110,7 @@ const AuthForm = () => {
           {({ isSubmitting, errors, resetForm }) => (
             <Form>
               <InputContainer>
-                <LabelField htmlFor="email">Enter email</LabelField>
+                <LabelField htmlFor="email">Enter your email</LabelField>
                 <InputField
                   error={errors.email}
                   type="email"
@@ -121,7 +123,7 @@ const AuthForm = () => {
               </InputContainer>
 
               <InputContainer>
-                <LabelField htmlFor="password">Enter password</LabelField>
+                <LabelField htmlFor="password">Enter your password</LabelField>
                 <InputField
                   error={errors.password}
                   type={showPassword ? 'text' : 'password'}
