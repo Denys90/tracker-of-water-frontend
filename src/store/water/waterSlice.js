@@ -37,7 +37,7 @@ const waterSlice = createSlice({
         state.dailyNorm = action.payload.daily_limit;
       })
       .addCase(addOneTodoThunk.fulfilled, (state, action) => {
-        state.reps = [...state.reps, action.payload];
+        state.reps = action.payload.data.water_entries;
       })
       .addCase(deleteTodoThunk.fulfilled, (state, action) => {
         state.reps = action.payload.water_entries;

@@ -49,7 +49,7 @@ const usersSlice = createSlice({
       })
 
       .addCase(patchUserAvatarThunk.fulfilled, (state, { payload }) => {
-        state.profile = payload;
+        state.profile.avatarURL = payload.avatarURL;
       })
       .addCase(getCurrentThunk.fulfilled, (state, { payload }) => {
         state.profile = payload.data;
