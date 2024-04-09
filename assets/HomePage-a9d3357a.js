@@ -1,4 +1,4 @@
-import{n as s,t as a,e as Pe,f as G,g as C,r as y,h as Oe,i as Te,k as Be,p as xe,l as Ce,F as A,j as o,c as me,d as Fe,M as V,s as $,E as _e,L as ze,o as T,q as F}from"./index-5c834796.js";const Ye="/runners_of_code__frontend/assets/bottle_home_mobile@1x-0d6054eb.png",Ee="/runners_of_code__frontend/assets/bottle_home_mobile@2x-52eb5066.png",Ne="/runners_of_code__frontend/assets/bottle_home_tablet@1x-c4bedac4.png",Ae="/runners_of_code__frontend/assets/bottle_home_tablet@2x-867eb443.png",Le="/runners_of_code__frontend/assets/bottle_home_desk-f67b46be.png",He="/runners_of_code__frontend/assets/bottle_home_deskx2-acd9b153.png",qe=s.div`
+import{n as s,t as a,e as Pe,f as G,g as C,r as y,h as Oe,i as Te,k as Be,p as xe,l as Ce,F as A,j as o,c as me,d as Fe,M as V,s as $,E as _e,L as ze,o as T,q as F}from"./index-817eac19.js";const Ye="/runners_of_code__frontend/assets/bottle_home_mobile@1x-0d6054eb.png",Ee="/runners_of_code__frontend/assets/bottle_home_mobile@2x-52eb5066.png",Ne="/runners_of_code__frontend/assets/bottle_home_tablet@1x-c4bedac4.png",Ae="/runners_of_code__frontend/assets/bottle_home_tablet@2x-867eb443.png",Le="/runners_of_code__frontend/assets/bottle_home_desk-f67b46be.png",He="/runners_of_code__frontend/assets/bottle_home_deskx2-acd9b153.png",qe=s.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
@@ -413,7 +413,7 @@ import{n as s,t as a,e as Pe,f as G,g as C,r as y,h as Oe,i as Te,k as Be,p as x
   color: ${a.colors.black};
   font-size: 26px;
   line-height: 123%;
-  font-weight: 500;
+  font-weight: 600;
 `,vt=s.h3`
   font-weight: 700;
   font-size: 18px;
