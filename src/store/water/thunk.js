@@ -47,7 +47,7 @@ export const getMonthThunk = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       };
 
-      const response = await axios.get('/waters/month', date, {
+      const response = await axios.post('/waters/month', date, {
         headers,
       });
       return response.data;
