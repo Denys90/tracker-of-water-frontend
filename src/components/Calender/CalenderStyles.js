@@ -82,13 +82,32 @@ export const DayButton = styled.button`
 
   &.today {
     border: 1px solid ${theme.colors.blue};
-    color: ${theme.colors.blue};
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.blue};
   }
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     font-size: 16px;
     padding: 7px;
   }
+
+  ${({ percent }) => {
+    if (percent >= 100) {
+      return `
+      border: 1px solid  ${theme.colors.blue};
+        
+      `;
+    } else if (percent > 0) {
+      return `
+      border: 1px solid ${theme.colors.orange};
+        
+      `;
+    } else {
+      return `
+        background-color: ${theme.colors.white};
+      `;
+    }
+  }}
 
   &:hover {
     box-shadow: 0px 4px 8px ${theme.colors.skyBlue};
@@ -113,13 +132,10 @@ export const DayPercent = styled.div`
 `;
 
 export const Popover = styled.div`
-  top: ${(props) => props.top}px;
-  left: ${(props) => props.left}px;
-
-  transform: translateY(-105%);
-  margin-left: -280px;
+  margin: 0 auto;
   position: absolute;
-  z-index: 30;
+  z-index: 20;
+  top: 300px;
   background-color: ${theme.colors.white};
   border-radius: 10px;
   max-width: 280px;
