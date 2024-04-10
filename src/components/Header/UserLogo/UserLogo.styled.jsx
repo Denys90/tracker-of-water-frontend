@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
 
 export const UserLogoWrap = styled.button`
-  position: relative;
   display: flex;
   justify-content: center;
   gap: 8px;
@@ -16,6 +15,7 @@ export const UserName = styled.h3`
   line-height: 1.33em;
   color: ${theme.colors.blue};
   margin: 0;
+
   @media screen and (min-width: ${theme.breakpoint.mobile}) {
     font-size: 18px;
     line-height: 1.25em;
@@ -41,8 +41,7 @@ export const Avatar = styled.img`
 export const AuthPopover = styled.div`
   position: absolute;
   z-index: 20;
-  top: 56px;
-  right: 0px;
+  top: 60px;
 
   display: flex;
   flex-direction: column;
@@ -51,13 +50,8 @@ export const AuthPopover = styled.div`
   padding: 16px;
   border-radius: 10px;
   box-shadow: ${theme.boxShadowBtn.Btn};
-  right: 20px;
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    right: 32px;
-  }
-  @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    right: 270px;
-  }
+  right: 30px;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
 export const PopoverBtn = styled.button`
   background-color: ${theme.colors.white};
