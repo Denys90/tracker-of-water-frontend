@@ -1,6 +1,38 @@
 import styled from '@emotion/styled';
 import { theme } from '../../styles/theme';
 
+import imgHomeDesk1x from 'assets/images/desc/bubbleDesk.png';
+import imgHomeDesk2x from 'assets/images/desc/bubbleDesk@2x.png';
+import imgHomeMob1x from 'assets/images/mobile/bubbleMob.png';
+import imgHomeMob2x from 'assets/images/mobile/bubbleMob@2x.png';
+import imgHomeTabl1x from 'assets/images/tablet/bubbleTablet.png';
+import imgHomeTabl2x from 'assets/images/tablet/bubbleTablet@2x.png';
+
+export const HomeSection = styled.div`
+  background-position: center center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  background-image: -webkit-image-set(
+    url(${imgHomeMob1x}) 1x,
+    url(${imgHomeMob2x}) 2x
+  );
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+    background-image: -webkit-image-set(
+      url(${imgHomeTabl1x}) 1x,
+      url(${imgHomeTabl2x}) 2x
+    );
+  }
+  @media screen and (min-width: ${theme.breakpoint.desktop}) {
+    background-image: -webkit-image-set(
+      url(${imgHomeDesk1x}) 1x,
+      url(${imgHomeDesk2x}) 2x
+    );
+  }
+`;
+
 export const HomeBox = styled.div`
   display: flex;
   flex-direction: column;
