@@ -65,14 +65,22 @@ export const DrinkList = () => {
               </DrinkListItem>
               <DrinkButtons>
                 <DrinkButtonPlus
-                  onClick={() => openModalWithContent(<EditWaterModal />)}
+                  onClick={() =>
+                    openModalWithContent(
+                      <EditWaterModal toggleModal={toggleModal} />
+                    )
+                  }
                 >
                   <use href={`${svg}#icon-note`}></use>
                 </DrinkButtonPlus>
                 <DrinkButtonMinus
                   onClick={() =>
                     openModalWithContent(
-                      <DeleteEntry id={drink._id} date={{ date: stringDate }} />
+                      <DeleteEntry
+                        toggleModal={toggleModal}
+                        id={drink._id}
+                        date={{ date: stringDate }}
+                      />
                     )
                   }
                 >

@@ -111,7 +111,7 @@ function WaterCalculator({ toggleModal }) {
                   For woman
                 </label>
               </ModalRadioContainer>
-              {errors.gender && touched.gender && <div>{errors.gender}</div>}
+              {errors.gender && touched.gender && <div>{touched.gender}</div>}
             </ModalCalculate>
             <ModalContainerInput>
               <ModalLabel>
@@ -143,7 +143,7 @@ function WaterCalculator({ toggleModal }) {
               </span>
             </ModalWriteWater>
             <ModalLabelText>
-              Write down how much water you will drink:s
+              Write down how much water you will drink:
             </ModalLabelText>
             <ModalLabel>
               <FormField type="number" name="dailyNorma" placeholder="0" />

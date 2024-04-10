@@ -17,6 +17,8 @@ import {
   SvgCloseTwo,
 } from './AuthForm.styled';
 import { useUsers } from 'hooks/useUsers';
+import singIn from 'assets/images/desc/bottle_for_sign_in_desc@2x.png';
+// import main2 from 'assets/images/desc/x2.png';
 
 const AuthForm = () => {
   const [formType, setFormType] = useState('signin');
@@ -42,7 +44,8 @@ const AuthForm = () => {
 
   return (
     <Container>
-      <Image src="/src/assets/images/mobile/bottle_sign_in@2x.png" />
+      <Image src={singIn} />
+
       <FormContainer>
         <Title signup={formType === 'signup'}>
           {formType === 'signin' ? 'Sign In' : 'Sign Up'}
