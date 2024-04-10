@@ -18,12 +18,14 @@ export const CalenderWrapper = styled.div`
     }
   }
 `;
+
 export const CalenderNav = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
 `;
+
 export const PaginationWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -41,6 +43,7 @@ export const PaginationWrapper = styled.div`
     text-align: center;
   }
 `;
+
 export const MonthButton = styled.svg`
   width: 6px;
   height: 10px;
@@ -51,6 +54,7 @@ export const MonthButton = styled.svg`
     fill: ${theme.colors.orange};
   }
 `;
+
 export const DaysList = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -67,6 +71,7 @@ export const DaysList = styled.div`
     height: 268px;
   }
 `;
+
 export const DayButton = styled.button`
   padding: 7px 6px;
   width: 35px;
@@ -135,13 +140,18 @@ export const Popover = styled.div`
   margin: 0 auto;
   position: absolute;
   z-index: 20;
-  top: 300px;
+  top: 830px;
+
   background-color: ${theme.colors.white};
   border-radius: 10px;
   max-width: 280px;
   box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.3);
   border-radius: 10px;
   padding: 24px 16px;
+
+  @media screen and (min-width: ${theme.breakpoint.desktop}) {
+    top: 280px;
+  }
 
   p {
     font-size: 14px;
