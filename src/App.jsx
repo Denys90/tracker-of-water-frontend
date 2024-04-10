@@ -47,7 +47,7 @@ function App() {
                 }
               />
               <Route
-                path="/verification/:verificationToken"
+                path="/verify/:verificationToken"
                 element={
                   <PublicRoute>
                     <VerificationPage />
