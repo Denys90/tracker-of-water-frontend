@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { theme } from '../../../styles/theme';
+// import { theme } from '../../../styles/theme';
+import { theme } from 'styles/theme';
 import { Field } from 'formik';
 import { ReactComponent as SSVGOpen } from 'assets/images/icons/Vector.svg';
 import { ReactComponent as SSVGClose } from 'assets/images/icons/Vector2.svg';
@@ -9,15 +10,9 @@ export const FormText = styled.h2`
   font-size: 18px;
   line-height: 20px;
 `;
-export const SSvgClose = styled(SSVGClose)`
-  position: absolute;
-  right: 10px;
-  width: 20px;
-  top: 16px;
-  height: auto;
-  cursor: pointer;
-`;
 export const SSvgOpen = styled(SSVGOpen)`
+  color: ${({ error }) =>
+    error ? `${theme.colors.brightRed}` : `${theme.colors.blue}`};
   position: absolute;
   right: 10px;
   width: 20px;
@@ -26,6 +21,18 @@ export const SSvgOpen = styled(SSVGOpen)`
   cursor: pointer;
 `;
 
+export const SSvgClose = styled(SSVGClose)`
+  color: ${({ error }) =>
+    error ? `${theme.colors.brightRed}` : `${theme.colors.blue}`};
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  top: 16px;
+  height: auto;
+  cursor: pointer;
+`;
+
+// sssssssssssssssssssssssssssssssssssssssssssssssssssss
 export const StyledLabel = styled.label`
   display: inline-block;
   margin-bottom: 8px;
@@ -63,6 +70,13 @@ export const PasswordInputWrap = styled.div`
   position: relative;
   width: 100%;
   margin-top: 8px;
+
+  ${({ error }) =>
+    error &&
+    `
+    border-color: red; 
+   
+  `}
 `;
 
 export const PasswordIcon = styled(IconDownload)`
@@ -198,7 +212,6 @@ export const Input = styled(Field)`
   font-size: 16px;
   line-height: 1.25;
   text-indent: 10px;
-  color: ${theme.colors.blue};
   outline: ${theme.colors.paleBlue};
   background-color: ${theme.colors.white};
 
@@ -206,6 +219,17 @@ export const Input = styled(Field)`
     color: ${theme.colors.skyBlue};
     padding: 0px 10px;
   }
+
+  ${(props) =>
+    props.error &&
+    `
+    border-color: ${theme.colors.brightRed};
+    color: ${theme.colors.brightRed};
+  `}
+`;
+
+export const ErrorMessages = styled.div`
+  color: ${theme.colors.brightRed};
 `;
 
 export const StyledErrorMessage = styled.div`
@@ -223,13 +247,13 @@ export const StyledErrorText = styled.p`
 `;
 
 export const ModalWrap = styled.div`
-    margin: 0 auto;
-    border-radius: 10px;
-    background-color: ${theme.colors.white};
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: ${theme.colors.white};
 
   @media screen and (min-width: ${theme.breakpoint.mobile}) {
-      min-width: 280px;
-    }
+    min-width: 280px;
+  }
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     min-width: 704px;
     padding-left: 24px;
@@ -262,14 +286,13 @@ export const SaveButton = styled.button`
   border-style: none;
   border-radius: 10px;
   background: ${theme.colors.blue};
-  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   color: #fff;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.25; /* 125% */
 
   &:is(:hover, :focus) {
-    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    box-shadow: ${theme.boxShadowBtn.hoverBtn};
   }
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
@@ -342,7 +365,6 @@ export const SaveButtonWrap = styled.ul`
     justify-content: space-between;
   }
 `;
-
 
 export const Header = styled.h1`
   font-size: 26px;

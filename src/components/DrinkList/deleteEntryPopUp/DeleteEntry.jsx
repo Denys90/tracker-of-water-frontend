@@ -1,4 +1,5 @@
 // import { useState } from 'react';
+import useWater from 'hooks/useWaters';
 import {
   ButtonCancel,
   ButtonDelete,
@@ -6,15 +7,13 @@ import {
   TextContainer,
   ButtonContainer,
 } from './DeleteEntry.styled';
-import { useDispatch } from 'react-redux';
-
-import { deleteTodoThunk } from 'store/water/thunk.js';
 
 export const DeleteEntry = ({ id, date, toggleModal }) => {
-  const dispatch = useDispatch();
+  const { deleteReps, createWater } = useWater();
 
   const handleClick = () => {
-    dispatch(deleteTodoThunk({ id, date }));
+    deleteReps({ id, date });
+    createWater(date);
   };
   return (
     <>

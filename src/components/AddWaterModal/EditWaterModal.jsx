@@ -26,7 +26,7 @@ import { DrinkGlass, WaterItem } from './EditWaterModal.styled';
 export const EditWaterModal = ({ toggleModal }) => {
   const [time, setTime] = useState('');
   const [timeOptions, setTimeOptions] = useState([]);
-  const { addOneDrink } = useWater();
+  const { addOneDrink, createWater } = useWater();
   const [amount, setAmount] = useState(0);
 
   useEffect(() => {
@@ -69,15 +69,15 @@ export const EditWaterModal = ({ toggleModal }) => {
     return errorMessage;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     const waterData = {
       time: time,
       amount: amount,
       date: formattedDate,
     };
-    console.log(waterData);
+
     addOneDrink(waterData);
+    createWater({ date: formattedDate });
     setAmount(0);
     setTime('');
     toggleModal();
@@ -93,9 +93,14 @@ export const EditWaterModal = ({ toggleModal }) => {
     setAmount(newAmount <= maxAmount ? newAmount : maxAmount);
   };
 
+  const handleChangeAmount = (e) => {
+    const newValue = parseInt(e.target.value);
+    setAmount(newValue);
+  };
+
   return (
     <Formik initialValues={{ amount: 0, time }} onSubmit={handleSubmit}>
-      {() => (
+      {(values) => (
         <BoxAddModal>
           <AddWaterContainer>
             <Title>Edit the entered amount of water</Title>
@@ -149,7 +154,8 @@ export const EditWaterModal = ({ toggleModal }) => {
               name="amount"
               validate={validateAmount}
               max={5000}
-              value={amount}
+              value={values.amount || amount}
+              onChange={handleChangeAmount}
             />
             <ErrorMessage name="amount" component="div" />
           </div>

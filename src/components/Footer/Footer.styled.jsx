@@ -4,7 +4,7 @@ import { theme } from 'styles/theme';
 
 export const FooterContainer = styled.footer`
   position: relative;
-  background: ${theme.colors.waves};
+  background: ${theme.colors.skyBlue};
   min-height: 50px;
   padding: 20px 50px;
   display: flex;
