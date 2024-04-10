@@ -19,14 +19,12 @@ export const HomeSection = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   width: 100%;
-
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     background-image: -webkit-image-set(
       url(${imgHomeTabl1x}) 1x,
       url(${imgHomeTabl2x}) 2x
     );
   }
-
   @media screen and (min-width: ${theme.breakpoint.desktop}) {
     background-image: -webkit-image-set(
       url(${imgHomeDesk1x}) 1x,

@@ -141,7 +141,6 @@ export const Popover = styled.div`
   position: absolute;
   z-index: 20;
   top: 830px;
-
   background-color: ${theme.colors.white};
   border-radius: 10px;
   max-width: 280px;
