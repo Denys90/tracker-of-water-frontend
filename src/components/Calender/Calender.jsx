@@ -58,13 +58,11 @@ export const Calender = () => {
     setIsPopoverOpen(true);
   };
 
-
   const handleClickOutside = (event) => {
     if (popoverRef.current && !popoverRef.current.contains(event.target)) {
       setIsPopoverOpen(false);
     }
   };
-
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -72,7 +70,6 @@ export const Calender = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
 
   const currMonth = generateMonthDays().map((day) => {
     const foundDay = monthData.find(
@@ -87,7 +84,6 @@ export const Calender = () => {
     };
   });
 
-
   return (
     <div>
       <CalenderWrapper>
@@ -95,7 +91,9 @@ export const Calender = () => {
           <h3>Month</h3>
           <PaginationWrapper>
             <MonthButton onClick={() => handleChangeMonth(-1)}>
-              <use href={`${svg}#icon-left`}></use>
+              <svg>
+                <use href={`${svg}#icon-left`}></use>
+              </svg>
             </MonthButton>
             <span>
               {currentMonth.toLocaleDateString('en', {
@@ -104,7 +102,9 @@ export const Calender = () => {
               })}
             </span>
             <MonthButton onClick={() => handleChangeMonth(1)}>
-              <use href={`${svg}#icon-right`}></use>
+              <svg>
+                <use href={`${svg}#icon-right`}></use>
+              </svg>
             </MonthButton>
           </PaginationWrapper>
         </CalenderNav>

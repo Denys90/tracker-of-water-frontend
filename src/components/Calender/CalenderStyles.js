@@ -4,6 +4,7 @@ import { theme } from 'styles/theme';
 export const CalenderWrapper = styled.div`
   display: flex;
   flex-direction: column;
+
   h3 {
     font-size: 24px;
     font-weight: 500;
@@ -44,14 +45,23 @@ export const PaginationWrapper = styled.div`
   }
 `;
 
-export const MonthButton = styled.svg`
-  width: 6px;
-  height: 10px;
-  background: transparent;
-  fill: ${theme.colors.blue};
+export const MonthButton = styled.div`
+  width: 15px;
+  height: 15px;
+  display: flex;
+  flex-direction: center;
+  align-items: center;
 
-  &:hover {
-    fill: ${theme.colors.orange};
+  svg {
+    width: 6px;
+    height: 10px;
+    background: transparent;
+    fill: ${theme.colors.blue};
+    cursor: pointer;
+
+    &:hover {
+      fill: ${theme.colors.orange};
+    }
   }
 `;
 
