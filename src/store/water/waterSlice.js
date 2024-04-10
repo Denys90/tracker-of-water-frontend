@@ -26,7 +26,7 @@ const waterSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(createWaterThunk.fulfilled, (state, action) => {
-        state.dailyNorm = action.payload.daily_limit || initialState.dailyNorm;
+        state.dailyNorm = action.payload.daily_limit;
         state.reps = action.payload.water_entries;
         state.percent = action.payload.percent;
       })
