@@ -217,8 +217,9 @@ export const Input = styled(Field)`
     color: ${theme.colors.skyBlue};
     padding: 0px 10px;
   }
+
   ${(props) =>
-    props.error &&
+    props.error /* Check if error prop is true */ &&
     `
     border-color: ${theme.colors.brightRed};
     color: ${theme.colors.brightRed};

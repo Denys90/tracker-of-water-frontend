@@ -62,6 +62,8 @@ export const SettingUser = ({ toggleModal }) => {
     name: user.name || '',
     email: user.email || '',
     gender: user.gender,
+    newPassword: '',
+    repeatedPassword: '',
   };
 
   const togglePasswordVisibility = () => {
@@ -74,7 +76,16 @@ export const SettingUser = ({ toggleModal }) => {
         {
           <Formik
             initialValues={initialValues}
-            onSubmit={(values, setSubmitting) => {
+            onSubmit={(values, { setSubmitting, setErrors }) => {
+              if (values.newPassword !== values.repeatedPassword) {
+                setErrors({
+                  password: 'Passwords do not match',
+                  repeatedPassword: 'Passwords do not match',
+                });
+                setSubmitting(false);
+                return;
+              }
+
               if (values.newPassword !== values.repeatedPassword) {
                 setSubmitting(false);
                 return;
@@ -194,6 +205,7 @@ export const SettingUser = ({ toggleModal }) => {
                       </PasswordLabel>
                       <PasswordInputWrap>
                         <Input
+                          type={showPassword ? 'text' : 'password'}
                           error={errors.password}
                           id="password"
                           name="newPassword"
@@ -222,6 +234,7 @@ export const SettingUser = ({ toggleModal }) => {
                       </PasswordLabel>
                       <PasswordInputWrap>
                         <Input
+                          type={showPassword ? 'text' : 'password'}
                           error={errors.repeatPassword}
                           id="repeatedPassword"
                           name="repeatedPassword"
