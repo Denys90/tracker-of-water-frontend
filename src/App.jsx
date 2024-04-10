@@ -35,7 +35,14 @@ function App() {
         <Suspense>
           <Routes>
             <Route path="/" element={<SharedLayout />}>
-              <Route index element={<WelcomePage />} />
+              <Route
+                index
+                element={
+                  <PublicRoute>
+                    <WelcomePage />
+                  </PublicRoute>
+                }
+              />
               <Route
                 path="/login"
                 element={

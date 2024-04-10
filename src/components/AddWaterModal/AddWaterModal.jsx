@@ -25,7 +25,7 @@ import {
 export const AddWaterModal = ({ toggleModal }) => {
   const [time, setTime] = useState('');
   const [timeOptions, setTimeOptions] = useState([]);
-  const { addOneDrink } = useWater();
+  const { addOneDrink, createWater } = useWater();
   const [amount, setAmount] = useState(0);
 
   useEffect(() => {
@@ -68,16 +68,15 @@ export const AddWaterModal = ({ toggleModal }) => {
     return errorMessage;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     const waterData = {
       time: time,
       amount: amount,
       date: formattedDate,
     };
-    console.log(waterData);
 
     addOneDrink(waterData);
+    createWater({ date: formattedDate });
     setAmount(0);
     setTime('');
     toggleModal();
@@ -92,10 +91,14 @@ export const AddWaterModal = ({ toggleModal }) => {
     const maxAmount = 5000;
     setAmount(newAmount <= maxAmount ? newAmount : maxAmount);
   };
+  const handleChangeAmount = (e) => {
+    const newValue = parseInt(e.target.value);
+    setAmount(newValue);
+  };
 
   return (
     <Formik initialValues={{ amount: 0, time }} onSubmit={handleSubmit}>
-      {() => (
+      {(values) => (
         <BoxAddModal>
           <AddWaterContainer>
             <Title>Add Water</Title>
@@ -109,7 +112,7 @@ export const AddWaterModal = ({ toggleModal }) => {
                 </Icon>
               </ButtonMl>
               <Label>
-                <Water>{amount} ml</Water>
+                <Water>{amount || 0} ml</Water>
               </Label>
               <ButtonMl type="button" onClick={incrementAmount}>
                 <Icon>
@@ -142,12 +145,13 @@ export const AddWaterModal = ({ toggleModal }) => {
               name="amount"
               validate={validateAmount}
               max={5000}
-              value={amount}
+              value={values.amount || amount}
+              onChange={handleChangeAmount}
             />
             <ErrorMessage name="amount" component="div" />
           </div>
           <FooterModal>
-            <span>{amount}ml</span>
+            <span>{amount || 0}ml</span>
             <BtnSave type="submit" onClick={handleSubmit}>
               Save{' '}
             </BtnSave>
@@ -157,6 +161,3 @@ export const AddWaterModal = ({ toggleModal }) => {
     </Formik>
   );
 };
-{
-  // isSubmitting && <Loader />;
-}

@@ -33,7 +33,7 @@ const useWater = () => {
   );
 
   const deleteReps = useCallback(
-    (id) => dispatch(deleteTodoThunk(id)),
+    (credentials) => dispatch(deleteTodoThunk(credentials)),
     [dispatch]
   );
 

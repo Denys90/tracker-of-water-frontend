@@ -9,14 +9,6 @@ export const FormText = styled.h2`
   font-size: 18px;
   line-height: 20px;
 `;
-export const SSvgClose = styled(SSVGClose)`
-  position: absolute;
-  right: 10px;
-  width: 20px;
-  top: 16px;
-  height: auto;
-  cursor: pointer;
-`;
 export const SSvgOpen = styled(SSVGOpen)`
   position: absolute;
   right: 10px;
@@ -26,6 +18,16 @@ export const SSvgOpen = styled(SSVGOpen)`
   cursor: pointer;
 `;
 
+export const SSvgClose = styled(SSVGClose)`
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  top: 16px;
+  height: auto;
+  cursor: pointer;
+`;
+
+// sssssssssssssssssssssssssssssssssssssssssssssssssssss
 export const StyledLabel = styled.label`
   display: inline-block;
   margin-bottom: 8px;
@@ -63,6 +65,13 @@ export const PasswordInputWrap = styled.div`
   position: relative;
   width: 100%;
   margin-top: 8px;
+
+  ${({ error }) =>
+    error &&
+    `
+    border-color: red; 
+   
+  `}
 `;
 
 export const PasswordIcon = styled(IconDownload)`
@@ -199,6 +208,8 @@ export const Input = styled(Field)`
   line-height: 1.25;
   text-indent: 10px;
   color: ${theme.colors.blue};
+  /* border-color: ${({ error }) =>
+    error ? `${theme.colors.red}` : `${theme.colors.blue}`}; */
   outline: ${theme.colors.paleBlue};
   background-color: ${theme.colors.white};
 
@@ -206,6 +217,12 @@ export const Input = styled(Field)`
     color: ${theme.colors.skyBlue};
     padding: 0px 10px;
   }
+  ${(props) =>
+    props.error &&
+    `
+    border-color: ${theme.colors.brightRed};
+    color: ${theme.colors.brightRed};
+  `}
 `;
 
 export const StyledErrorMessage = styled.div`
@@ -223,13 +240,13 @@ export const StyledErrorText = styled.p`
 `;
 
 export const ModalWrap = styled.div`
-    margin: 0 auto;
-    border-radius: 10px;
-    background-color: ${theme.colors.white};
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: ${theme.colors.white};
 
   @media screen and (min-width: ${theme.breakpoint.mobile}) {
-      min-width: 280px;
-    }
+    min-width: 280px;
+  }
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     min-width: 704px;
     padding-left: 24px;
@@ -342,7 +359,6 @@ export const SaveButtonWrap = styled.ul`
     justify-content: space-between;
   }
 `;
-
 
 export const Header = styled.h1`
   font-size: 26px;
