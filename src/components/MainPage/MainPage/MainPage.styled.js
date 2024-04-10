@@ -15,14 +15,16 @@ export const MainPageStyle = styled.div`
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100%;
+        height: 100vh;
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     background-image: url(${main_tab}), url(${main_tabx2});
     min-height: 100vh;
+          height: 100%;
   }
   @media screen and (min-width: ${theme.breakpoint.desktop}) {
     background-image: url(${main_desk}), url(${main_deskx2});
-    min-height: 100vh;
+    height: 100%;
   }
 `;
 
@@ -44,9 +46,13 @@ export const Wrap = styled.div`
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     gap: 60px;
-    align-items: stretch;
+     align-items: stretch;
     padding-top: 32px;
     padding-bottom: 32px;
+     justify-content: center;
+      margin: 0 auto;
+    width: 100%;
+    max-width: 704px;
   }
   @media screen and (min-width: ${theme.breakpoint.desktop}) {
     flex-direction: row;
@@ -55,5 +61,7 @@ export const Wrap = styled.div`
     gap: 81px;
     padding-top: 140px;
     padding-bottom: 140px;
+    width: 100%;
+     max-width: 100%;
   }
 `;
