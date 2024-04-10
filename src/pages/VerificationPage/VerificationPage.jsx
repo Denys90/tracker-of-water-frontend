@@ -1,7 +1,13 @@
-import { Verification } from 'components/Verification/Verification';
+import { Navigate } from 'react-router-dom';
 
-const VerificationPage = () => {
-  return <Verification />;
-};
+function VerificationPage() {
+  const redirectToLogin = true;
+
+  if (redirectToLogin) {
+    return <Navigate to="/login" />;
+  }
+
+  return <div>The verification was successful</div>;
+}
 
 export default VerificationPage;

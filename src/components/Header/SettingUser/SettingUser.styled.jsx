@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { theme } from '../../../styles/theme';
+// import { theme } from '../../../styles/theme';
+import { theme } from 'styles/theme';
 import { Field } from 'formik';
 import { ReactComponent as SSVGOpen } from 'assets/images/icons/Vector.svg';
 import { ReactComponent as SSVGClose } from 'assets/images/icons/Vector2.svg';
@@ -10,6 +11,8 @@ export const FormText = styled.h2`
   line-height: 20px;
 `;
 export const SSvgOpen = styled(SSVGOpen)`
+  color: ${({ error }) =>
+    error ? `${theme.colors.brightRed}` : `${theme.colors.blue}`};
   position: absolute;
   right: 10px;
   width: 20px;
@@ -19,6 +22,8 @@ export const SSvgOpen = styled(SSVGOpen)`
 `;
 
 export const SSvgClose = styled(SSVGClose)`
+  color: ${({ error }) =>
+    error ? `${theme.colors.brightRed}` : `${theme.colors.blue}`};
   position: absolute;
   right: 10px;
   width: 20px;
@@ -207,9 +212,6 @@ export const Input = styled(Field)`
   font-size: 16px;
   line-height: 1.25;
   text-indent: 10px;
-  color: ${theme.colors.blue};
-  /* border-color: ${({ error }) =>
-    error ? `${theme.colors.red}` : `${theme.colors.blue}`}; */
   outline: ${theme.colors.paleBlue};
   background-color: ${theme.colors.white};
 
@@ -219,11 +221,15 @@ export const Input = styled(Field)`
   }
 
   ${(props) =>
-    props.error /* Check if error prop is true */ &&
+    props.error &&
     `
     border-color: ${theme.colors.brightRed};
     color: ${theme.colors.brightRed};
   `}
+`;
+
+export const ErrorMessages = styled.div`
+  color: ${theme.colors.brightRed};
 `;
 
 export const StyledErrorMessage = styled.div`
@@ -280,14 +286,13 @@ export const SaveButton = styled.button`
   border-style: none;
   border-radius: 10px;
   background: ${theme.colors.blue};
-  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   color: #fff;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.25; /* 125% */
 
   &:is(:hover, :focus) {
-    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    box-shadow: ${theme.boxShadowBtn.hoverBtn};
   }
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {

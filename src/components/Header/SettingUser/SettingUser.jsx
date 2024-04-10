@@ -1,4 +1,3 @@
-import { ErrorMessages } from 'components/Forms/AuthForm.styled';
 import {
   DownloadButton,
   IconDownload,
@@ -30,6 +29,7 @@ import {
   EmailInput,
   TitlePassword,
   TitleGender,
+  ErrorMessages,
 } from './SettingUser.styled';
 
 import sprite from 'assets/images/icons.svg';
@@ -51,11 +51,6 @@ export const SettingUser = ({ toggleModal }) => {
     setSelectedAvatar(file);
     setSelectedAvatarPath(URL.createObjectURL(file));
   };
-
-  // const handleGenderChange = (e) => {
-  //   const { setFieldValue } = useFormikContext();
-  //   setFieldValue('gender', e.target.value);
-  // };
 
   const initialValues = {
     avatar: user.avatarURL,
@@ -81,6 +76,7 @@ export const SettingUser = ({ toggleModal }) => {
                 setErrors({
                   password: 'Passwords do not match',
                   repeatedPassword: 'Passwords do not match',
+                  SSvgClose: 'Passwords do not match',
                 });
                 setSubmitting(false);
                 return;
@@ -224,8 +220,8 @@ export const SettingUser = ({ toggleModal }) => {
                             error={errors.password}
                           />
                         )}
+
                         <IconButton type="button"></IconButton>
-                        <ErrorMessages name="repeatPassword" component="div" />
                       </PasswordInputWrap>
                     </PasswordFormField>
                     <LastPasswordFormField>
@@ -235,7 +231,7 @@ export const SettingUser = ({ toggleModal }) => {
                       <PasswordInputWrap>
                         <Input
                           type={showPassword ? 'text' : 'password'}
-                          error={errors.repeatPassword}
+                          error={errors.repeatedPassword}
                           id="repeatedPassword"
                           name="repeatedPassword"
                           placeholder="Repeat Password"
@@ -244,23 +240,18 @@ export const SettingUser = ({ toggleModal }) => {
                           <>
                             <SSvgClose
                               onClick={togglePasswordVisibility}
-                              error={errors.password}
+                              error={errors.repeatedPassword}
                             />
                           </>
                         ) : (
                           <SSvgOpen
                             onClick={togglePasswordVisibility}
-                            error={errors.password}
+                            error={errors.repeatedPassword}
                           />
                         )}
                         <IconButton type="button"></IconButton>
                         <ErrorMessages name="repeatPassword" component="div" />
                       </PasswordInputWrap>
-                      {errors.repeatedPassword && (
-                        <div className="error-message">
-                          {errors.repeatedPassword}
-                        </div>
-                      )}
                     </LastPasswordFormField>
                   </DesktopPasswordWrap>
                 </DesktopFormWrap>
