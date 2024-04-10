@@ -152,7 +152,7 @@ export const getCurrentThunk = createAsyncThunk(
       const token = store.users.token;
 
       if (!token) {
-        console.error('No token found.');
+        console.error('No token found - getCurrentThunk.');
         return;
       }
 

@@ -27,7 +27,7 @@ const usersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(signUpThunk.fulfilled, (state, { payload }) => {
-        state.profile = payload;
+        // state.profile = payload;
         state.token = payload.token;
       })
 
@@ -52,8 +52,8 @@ const usersSlice = createSlice({
         state.profile.avatarURL = payload.avatarURL;
       })
       .addCase(getCurrentThunk.fulfilled, (state, { payload }) => {
+        console.log('payload ====>', payload);
         state.profile = payload.data;
-        state.isLogined = true;
       })
 
       .addMatcher(isAnyOf(...getActions('pending')), handlePending)

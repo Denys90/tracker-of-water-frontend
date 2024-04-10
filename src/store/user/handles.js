@@ -1,5 +1,5 @@
 export const handleFulfilled = (state) => {
-  state.isLogined = true;
+  state.isLogined = false;
   state.isRefreshing = false;
 };
 
