@@ -135,13 +135,17 @@ export const Popover = styled.div`
   margin: 0 auto;
   position: absolute;
   z-index: 20;
-  top: 300px;
+  top: 830px;
   background-color: ${theme.colors.white};
   border-radius: 10px;
   max-width: 280px;
   box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.3);
   border-radius: 10px;
   padding: 24px 16px;
+
+  @media screen and (min-width: ${theme.breakpoint.desktop}) {
+    top: 280px;
+  }
 
   p {
     font-size: 14px;

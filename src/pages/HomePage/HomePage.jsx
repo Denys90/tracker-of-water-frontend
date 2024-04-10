@@ -7,23 +7,26 @@ import {
   HomeLeftWrapper,
   HomeBox,
   HomeContainer,
+  HomeSection,
 } from 'pages/HomePage/HomePageSyled';
 
 const HomePage = () => {
   return (
     <>
-      <HomeContainer>
-        <HomeBox>
-          <HomeLeftWrapper>
-            <Norma />
-            <ProgressBar />
-          </HomeLeftWrapper>
-          <HomeRightWrapper>
-            <DrinkList />
-            <Calender />
-          </HomeRightWrapper>
-        </HomeBox>
-      </HomeContainer>
+      <HomeSection>
+        <HomeContainer>
+          <HomeBox>
+            <HomeLeftWrapper>
+              <Norma />
+              <ProgressBar />
+            </HomeLeftWrapper>
+            <HomeRightWrapper>
+              <DrinkList />
+              <Calender />
+            </HomeRightWrapper>
+          </HomeBox>
+        </HomeContainer>
+      </HomeSection>
     </>
   );
 };
