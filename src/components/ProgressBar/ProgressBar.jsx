@@ -30,8 +30,7 @@ export const ProgressBar = () => {
     setIsOpen(!isOpen);
   };
 
-  //exepmple
-  const waterPercentage = water.percent;
+  const waterPercentage = Math.round(water.percent);
 
   return (
     <ProgressDivWrapper>
