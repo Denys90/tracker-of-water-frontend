@@ -23,13 +23,13 @@ import { useEffect } from 'react';
 import { useUsers } from 'hooks/useUsers';
 
 function App() {
-  const { isRefreshingUser, getCurrent, isAuthenticated } = useUsers();
+  const { isRefreshingUser, getCurrent, user } = useUsers();
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (user.token) {
       getCurrent();
     }
-  }, [getCurrent, isAuthenticated]);
+  }, [getCurrent, user.token]);
 
   return (
     <>
