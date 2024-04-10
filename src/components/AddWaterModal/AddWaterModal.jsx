@@ -1,3 +1,4 @@
+// import Loader from '../Loader/Loader';
 import { useState, useEffect } from 'react';
 import svg from 'assets/images/icons.svg';
 import { Formik, ErrorMessage } from 'formik';
@@ -18,10 +19,10 @@ import {
   StyledSelect,
   AddWaterContainer,
   Input,
+  // StyledField,
 } from './AddWaterModal.styled';
-import { DrinkGlass, WaterItem } from './EditWaterModal.styled';
 
-export const EditWaterModal = ({ toggleModal }) => {
+export const AddWaterModal = ({ toggleModal }) => {
   const [time, setTime] = useState('');
   const [timeOptions, setTimeOptions] = useState([]);
   const { addOneDrink } = useWater();
@@ -38,18 +39,16 @@ export const EditWaterModal = ({ toggleModal }) => {
         if (hour === currentHour && minute < currentMinute) {
           continue;
         }
-        const formattedHour = (hour % 12 || 12).toString().padStart(2, '0');
-        const formattedMinute = minute.toString().padStart(2, '0');
-        const ampm = hour >= 12 ? 'PM' : 'AM';
-        const currentTime = `${formattedHour}:${formattedMinute} ${ampm}`;
+        const formattedHour = String(hour).padStart(2, '0');
+        const formattedMinute = String(minute).padStart(2, '0');
+        const currentTime = `${formattedHour}:${formattedMinute}`;
         newTimeOptions.push(currentTime);
       }
     }
 
-    const formattedHour = (currentHour % 12 || 12).toString().padStart(2, '0');
-    const formattedMinute = currentMinute.toString().padStart(2, '0');
-    const ampm = currentHour >= 12 ? 'PM' : 'AM';
-    const currentTime = `${formattedHour}:${formattedMinute} ${ampm}`;
+    const formattedHour = String(currentHour).padStart(2, '0');
+    const formattedMinute = String(currentMinute).padStart(2, '0');
+    const currentTime = `${formattedHour}:${formattedMinute}`;
     setTime(currentTime);
     setTimeOptions(newTimeOptions);
   }, []);
@@ -77,6 +76,7 @@ export const EditWaterModal = ({ toggleModal }) => {
       date: formattedDate,
     };
     console.log(waterData);
+
     addOneDrink(waterData);
     setAmount(0);
     setTime('');
@@ -98,14 +98,7 @@ export const EditWaterModal = ({ toggleModal }) => {
       {() => (
         <BoxAddModal>
           <AddWaterContainer>
-            <Title>Edit the entered amount of water</Title>
-            <WaterItem>
-              <DrinkGlass>
-                <use href={`${svg}#icon-glass`}></use>
-              </DrinkGlass>
-              <h4>{amount} ml</h4>
-              <p>{time}</p>
-            </WaterItem>
+            <Title>Add Water</Title>
             <Subtitle>Choose a value:</Subtitle>
 
             <AddParagraph>Amount of water:</AddParagraph>
@@ -156,7 +149,7 @@ export const EditWaterModal = ({ toggleModal }) => {
           <FooterModal>
             <span>{amount}ml</span>
             <BtnSave type="submit" onClick={handleSubmit}>
-              Save
+              Save{' '}
             </BtnSave>
           </FooterModal>
         </BoxAddModal>
@@ -164,3 +157,6 @@ export const EditWaterModal = ({ toggleModal }) => {
     </Formik>
   );
 };
+{
+  // isSubmitting && <Loader />;
+}
