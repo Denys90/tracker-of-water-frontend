@@ -34,6 +34,7 @@ export const WrapHeader = styled.div`
 `;
 
 export const Containers = styled.div`
+  position: relative;
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
