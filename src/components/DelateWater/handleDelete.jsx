@@ -4,7 +4,6 @@ function DeleteWater() {
   const { reps, deleteWater } = useWater();
 
   const handleDelete = () => {
-    // const id = event.currentTarget.dataset.id;
     const filteredReps = reps.filter((id) => id !== id);
     deleteWater(filteredReps);
   };

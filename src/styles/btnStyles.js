@@ -4,7 +4,6 @@ import { theme } from 'styles/theme';
 export const TryTracker = styled.button`
   box-sizing: border-box;
   display: inline-block;
-  /* width: 100%; */
   width: 280px;
   gap: 10px;
   padding: 8px 30px;

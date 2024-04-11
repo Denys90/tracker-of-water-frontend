@@ -26,23 +26,21 @@ export const UserLogo = () => {
   };
 
   useEffect(() => {
-    // Додає клік по кнопці
     document.addEventListener('click', handleClickOutside);
-    // прибирає клік
+
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
 
   const handleClickOutside = (event) => {
-    // перевіряє чи клікнули мимо поовера
     if (popoverRef.current && !popoverRef.current.contains(event.target)) {
-      setIsPopoverOpen(false); // Закриваємо поповер
+      setIsPopoverOpen(false);
     }
   };
 
   const togglePopover = (event) => {
-    event.stopPropagation(); // Останавливаем всплытие события, чтобы NavLink не перенаправил пользователя
+    event.stopPropagation();
     setIsPopoverOpen(!isPopoverOpen);
   };
 

@@ -233,18 +233,12 @@ export const Image = styled.img`
     position: relative;
     top: 100px;
   }
-  /* @media screen and (max-width: ${theme.breakpoint.desktop}) {
-    height: 475px;
-    position: relative;
-    top: 100px;
-  } */
 
   @media screen and (max-width: ${theme.breakpoint.desktop}) {
     height: 589px;
     position: relative;
     top: 150px;
     margin-right: 303px;
-    /* left: -370px; */
   }
 `;
 

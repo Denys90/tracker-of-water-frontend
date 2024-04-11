@@ -29,10 +29,6 @@ export const ConsumptionTracker = () => {
     },
   ];
 
-  // function handleClick() {
-  //   navigate('/signup');
-  // }
-
   return (
     <Tracker>
       <Title>Water consumption tracker</Title>

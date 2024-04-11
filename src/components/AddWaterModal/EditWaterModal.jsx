@@ -19,11 +19,10 @@ import {
   StyledSelect,
   AddWaterContainer,
   Input,
-  // StyledField,
 } from './AddWaterModal.styled';
 import { DrinkGlass, WaterItem } from './EditWaterModal.styled';
 
-export const EditWaterModal = ({ toggleModal }) => {
+export const EditWaterModal = ({ onClose }) => {
   const [time, setTime] = useState('');
   const [timeOptions, setTimeOptions] = useState([]);
   const { patchWater, reps } = useWater();
@@ -79,12 +78,10 @@ export const EditWaterModal = ({ toggleModal }) => {
       id: reps.id,
     };
 
-    // addOneDrink(waterData);
-    // createWater({ date: formattedDate });
     patchWater({ waterData, id });
     setAmount(0);
     setTime('');
-    toggleModal();
+    onClose();
   };
 
   const decrementAmount = () => {
@@ -174,6 +171,3 @@ export const EditWaterModal = ({ toggleModal }) => {
     </Formik>
   );
 };
-{
-  // isSubmitting && <Loader />;
-}

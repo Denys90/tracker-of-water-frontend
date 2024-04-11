@@ -50,7 +50,7 @@ export const ModalContent = styled.div`
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 42px;
+  top: 36px;
   right: 30px;
   color: ${theme.colors.blue};
   display: block;
@@ -67,5 +67,8 @@ export const CloseButton = styled.button`
     &:hover {
       stroke: ${theme.colors.orange};
     }
+  }
+  @media screen and (min-width: ${theme.breakpoint.desktop}) {
+    top: 42px;
   }
 `;

@@ -25,13 +25,3 @@ export const theme = {
 
   spacing: (value) => `${value * 8}px`,
 };
-
-// Спосіб застосування!
-// import { theme } from 'styles/theme';
-// color:${theme.colors.black}
-
-// Спосіб застосування theme.spacing
-//  margin: ${({ theme }) => theme.spacing(2)}; цей вираз дорівнює margin: 16px:
-
-// Спосіб застосування
-//  @media screen and (min-width: ${theme.breakpoint.tablet})

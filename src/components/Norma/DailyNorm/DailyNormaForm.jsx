@@ -62,10 +62,9 @@ function WaterCalculator({ toggleModal }) {
             daily_limit: dailyNorma,
             date: formattedDate,
           };
-          console.log('Form dailyNorma:', date);
 
           addDailyNorma(date);
-          // setSubmitting(false);
+
           toggleModal();
         }}
       >

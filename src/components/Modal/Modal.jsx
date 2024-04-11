@@ -8,7 +8,6 @@ import { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import svg from 'assets/images/icons.svg';
 
-// ({ onClose, children, fullVP = false })
 const Modal = ({ onClose, children }) => {
   const targetElement = document.getElementById('modal-root');
   const backdrop = useRef();

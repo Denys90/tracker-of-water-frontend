@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 axios.defaults.baseURL = 'https://project-deep-water-server.onrender.com/api';
-// ==========================================>
 
 export const createWaterThunk = createAsyncThunk(
   'water/postWater',
@@ -13,14 +12,8 @@ export const createWaterThunk = createAsyncThunk(
       const store = getState();
       const token = store.users.token;
 
-      if (!token) {
-        console.error('No token found.');
-        return;
-      }
-
       const headers = {
         Authorization: `Bearer ${token}`,
-        // 'Content-Type': 'application/json',
       };
 
       const response = await axios.post('/waters/created', credentials, {
@@ -28,7 +21,6 @@ export const createWaterThunk = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log('Error createWaterThunk', error.message);
       return rejectWithValue(error.message);
     }
   }
@@ -41,14 +33,8 @@ export const getMonthThunk = createAsyncThunk(
       const store = getState();
       const token = store.users.token;
 
-      if (!token) {
-        console.error('No token found.');
-        return;
-      }
-
       const headers = {
         Authorization: `Bearer ${token}`,
-        // 'Content-Type': 'application/json',
       };
 
       const response = await axios.post('/waters/month', date, {
@@ -56,7 +42,6 @@ export const getMonthThunk = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log('Error getMonthThunk', error.message);
       return rejectWithValue(error.message);
     }
   }
@@ -69,20 +54,14 @@ export const addOneTodoThunk = createAsyncThunk(
       const store = getState();
       const token = store.users.token;
 
-      if (!token) {
-        console.error('No token found.');
-        return;
-      }
-
       const headers = {
         Authorization: `Bearer ${token}`,
-        // 'Content-Type': 'application/json',
       };
 
       const response = await axios.post('/waters/drink', credentials, {
         headers,
       });
-      console.log(response);
+
       if (response.data) {
         toast.success('Glass successfully added!!');
       }
@@ -94,8 +73,6 @@ export const addOneTodoThunk = createAsyncThunk(
   }
 );
 
-// ==========================================>
-
 export const addDailyNormaThunk = createAsyncThunk(
   'waters/patchDailyLimit',
   async (data, { rejectWithValue, getState }) => {
@@ -103,14 +80,8 @@ export const addDailyNormaThunk = createAsyncThunk(
       const store = getState();
       const token = store.users.token;
 
-      if (!token) {
-        console.error('No token found.');
-        return;
-      }
-
       const headers = {
         Authorization: `Bearer ${token}`,
-        // 'Content-Type': 'application/json',
       };
 
       const response = await axios.patch('/waters/daily_limit', data, {
@@ -118,7 +89,6 @@ export const addDailyNormaThunk = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log('Error addDailyNormaThunk', error.message);
       return rejectWithValue(error.message);
     }
   }
@@ -132,19 +102,8 @@ export const patchWatersThunk = createAsyncThunk(
       const store = getState();
       const token = store.users.token;
 
-      if (!token) {
-        console.error('No token found.');
-        return;
-      }
-
-      if (!water) {
-        console.error('No body found.');
-        return;
-      }
-
       const headers = {
         Authorization: `Bearer ${token}`,
-        // 'Content-Type': 'application/json',
       };
       const response = await axios.put(`/waters/${waterId}`, water, {
         headers,
@@ -165,14 +124,8 @@ export const deleteTodoThunk = createAsyncThunk(
       const store = getState();
       const token = store.users.token;
 
-      if (!token) {
-        console.error('No token found.');
-        return;
-      }
-
       const headers = {
         Authorization: `Bearer ${token}`,
-        // 'Content-Type': 'application/json',
       };
 
       const response = await axios.delete(
@@ -183,7 +136,6 @@ export const deleteTodoThunk = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      console.log('Error deleteContactThunk', error.message);
       return rejectWithValue(error.message);
     }
   }

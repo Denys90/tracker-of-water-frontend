@@ -24,8 +24,6 @@ import useWater from 'hooks/useWaters';
 
 export const DrinkList = () => {
   const [isOpen, setIsOpen] = useState(false);
-  // const [modals, setModals] = useState([]);
-  // console.log('isOpen =====>>>>', isOpen);
 
   const [modalContent, setModalContent] = useState(null);
 
@@ -50,28 +48,17 @@ export const DrinkList = () => {
     setIsOpen(true);
   };
 
-  // const openModalWithContent = (content) => {
-  //   setModalContent(content);
-  //   setModals([...modals, content]);
-  // };
-
-  // const closeModal = () => {
-  //   setModalContent(null);
-  //   setModals(modals.slice(0, -1));
-  // };
   return (
     <>
       <DrinkListWrapper>
         <DrinkListTitle>Today</DrinkListTitle>
         <DrinkListUl>
           {reps.map((drink) => {
-            // Получаем часы и минуты из строки времени
             const [hours, minutes] = drink.time.split(':').map(Number);
 
-            // Преобразуем часы к формату AM/PM
             const parsedHours = hours >= 12 ? hours - 12 : hours;
             const ampm = hours >= 12 ? 'PM' : 'AM';
-            const displayHours = parsedHours === 0 ? 12 : parsedHours; // 12 часов вместо 0
+            const displayHours = parsedHours === 0 ? 12 : parsedHours;
 
             return (
               <DrinkListRow key={nanoid()}>
@@ -124,12 +111,6 @@ export const DrinkList = () => {
       </DrinkListWrapper>
 
       {isOpen && <Modal onClose={onClose}>{modalContent}</Modal>}
-      {/* 
-      {modals.map((modalContent, index) => (
-        <Modal key={index} onClose={closeModal}>
-          {modalContent}
-        </Modal>
-      ))} */}
     </>
   );
 };

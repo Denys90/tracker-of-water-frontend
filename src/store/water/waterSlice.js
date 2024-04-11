@@ -43,7 +43,6 @@ const waterSlice = createSlice({
         state.reps = action.payload.water_entries;
       })
       .addCase(patchWatersThunk.fulfilled, (state, action) => {
-        console.log('action.payload', state.reps);
         const index = state.reps.findIndex(
           (todo) => todo.id === action.payload.todo
         );

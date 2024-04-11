@@ -20,7 +20,7 @@ export const signUpThunk = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await axios.post('/users/register', credentials);
-      console.log(response.data.message);
+
       toast.success(response.data.message);
       token.set(response.data.token);
 
@@ -85,7 +85,6 @@ export const getUserInfoThunk = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log('Error getUserInfoThunk', error.message);
       return rejectWithValue(error.message);
     }
   }
@@ -112,7 +111,6 @@ export const patchUserInfoThunk = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log('Error patchUserInfoThunk', error.message);
       return rejectWithValue(error.message);
     }
   }
@@ -140,7 +138,6 @@ export const patchUserAvatarThunk = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log('Error patchUserAvatarThunk', error.message);
       return rejectWithValue(error.message);
     }
   }
@@ -169,7 +166,6 @@ export const getCurrentThunk = createAsyncThunk(
 
       return response;
     } catch (error) {
-      console.log('Error getCurrentThunk', error.message);
       return rejectWithValue(error.message);
     }
   }

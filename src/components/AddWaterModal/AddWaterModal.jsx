@@ -1,4 +1,3 @@
-// import Loader from '../Loader/Loader';
 import { useState, useEffect } from 'react';
 import svg from 'assets/images/icons.svg';
 import { Formik, ErrorMessage } from 'formik';
@@ -19,10 +18,9 @@ import {
   StyledSelect,
   AddWaterContainer,
   Input,
-  // StyledField,
 } from './AddWaterModal.styled';
 
-export const AddWaterModal = ({ toggleModal }) => {
+export const AddWaterModal = ({ onClose }) => {
   const [time, setTime] = useState('');
   const [timeOptions, setTimeOptions] = useState([]);
   const { addOneDrink, createWater } = useWater();
@@ -79,7 +77,7 @@ export const AddWaterModal = ({ toggleModal }) => {
     createWater({ date: formattedDate });
     setAmount(0);
     setTime('');
-    toggleModal();
+    onClose();
   };
 
   const decrementAmount = () => {
