@@ -3,6 +3,7 @@ import { Suspense, lazy } from 'react';
 
 import { Global } from '@emotion/react';
 import { globalStyles } from 'styles/Global.styled';
+import { ToastContainer } from 'react-toastify';
 
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
@@ -34,6 +35,7 @@ function App() {
   return (
     <>
       <Global styles={globalStyles} />
+      <ToastContainer />
       {isRefreshingUser ? (
         <Loader />
       ) : (

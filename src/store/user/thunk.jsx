@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 axios.defaults.baseURL = 'https://project-deep-water-server.onrender.com/api';
 
@@ -18,13 +20,13 @@ export const signUpThunk = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await axios.post('/users/register', credentials);
+      console.log(response.data.message);
+      toast.success(response.data.message);
       token.set(response.data.token);
-      if (response.data.token) {
-        alert('You have successfully registered!');
-      }
+
       return response.data;
     } catch (error) {
-      alert('Something went wrong, please try again!');
+      toast.error('Something went wrong, please try again!');
       return rejectWithValue(error.message);
     }
   }
@@ -40,7 +42,7 @@ export const loginThunk = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      alert('You have entered incorrect data, please try again!');
+      toast.error('You have entered incorrect data, please try again!');
       return rejectWithValue(error.message);
     }
   }
@@ -53,7 +55,7 @@ export const logoutThunk = createAsyncThunk(
     try {
       await axios.post('/users/logout');
       token.unset();
-      alert('You are successfully logout!');
+      toast.success('You are successfully logout!');
     } catch (error) {
       return rejectWithValue(error.message);
     }

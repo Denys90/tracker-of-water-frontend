@@ -7,14 +7,14 @@ import {
   ButtonContainer,
 } from './DeleteEntry.styled';
 
-export const DeleteEntry = ({ id, date, toggleModal }) => {
+export const DeleteEntry = ({ id, date, onClose }) => {
   const { deleteReps, createWater } = useWater();
 
   const handleClick = () => {
     deleteReps({ id, date });
     createWater(date);
 
-    toggleModal();
+    onClose();
   };
 
   return (
@@ -25,7 +25,7 @@ export const DeleteEntry = ({ id, date, toggleModal }) => {
           <p>Are you sure you want to delete the entry?</p>
         </TextContainer>
         <ButtonContainer>
-          <ButtonCancel type="button" onClick={() => toggleModal()}>
+          <ButtonCancel type="button" onClick={onClose}>
             Cancel
           </ButtonCancel>
           <ButtonDelete type="button" onClick={handleClick}>

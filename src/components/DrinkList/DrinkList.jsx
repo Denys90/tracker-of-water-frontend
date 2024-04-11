@@ -24,8 +24,8 @@ import useWater from 'hooks/useWaters';
 
 export const DrinkList = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  console.log('isOpen =====>>>>', isOpen);
+  // const [modals, setModals] = useState([]);
+  // console.log('isOpen =====>>>>', isOpen);
 
   const [modalContent, setModalContent] = useState(null);
 
@@ -40,7 +40,7 @@ export const DrinkList = () => {
     createWater({ date: stringDate });
   }, [stringDate, createWater]);
 
-  const toggleModal = () => {
+  const onClose = () => {
     setIsOpen(!isOpen);
   };
 
@@ -50,6 +50,15 @@ export const DrinkList = () => {
     setIsOpen(true);
   };
 
+  // const openModalWithContent = (content) => {
+  //   setModalContent(content);
+  //   setModals([...modals, content]);
+  // };
+
+  // const closeModal = () => {
+  //   setModalContent(null);
+  //   setModals(modals.slice(0, -1));
+  // };
   return (
     <>
       <DrinkListWrapper>
@@ -79,9 +88,7 @@ export const DrinkList = () => {
                 <DrinkButtons>
                   <DrinkButtonPlus
                     onClick={() =>
-                      openModalWithContent(
-                        <EditWaterModal toggleModal={toggleModal} />
-                      )
+                      openModalWithContent(<EditWaterModal onClose={onClose} />)
                     }
                   >
                     <use href={`${svg}#icon-note`}></use>
@@ -92,10 +99,10 @@ export const DrinkList = () => {
                         <DeleteEntry
                           id={drink._id}
                           date={{ date: stringDate }}
+                          onClose={onClose}
                         />
                       )
                     }
-                    toggleModal={toggleModal}
                   >
                     <use href={`${svg}#icon-trash`}></use>
                   </DrinkButtonMinus>
@@ -106,7 +113,7 @@ export const DrinkList = () => {
         </DrinkListUl>
         <DrinkListAddWater
           onClick={() =>
-            openModalWithContent(<AddWaterModal onClick={toggleModal} />)
+            openModalWithContent(<AddWaterModal onClose={onClose} />)
           }
         >
           <svg>
@@ -116,15 +123,13 @@ export const DrinkList = () => {
         </DrinkListAddWater>
       </DrinkListWrapper>
 
-      {isOpen && <Modal onClose={toggleModal}>{modalContent}</Modal>}
-      {/* {Object.entries(modalStates).map(
-        ([modalId, isOpen]) =>
-          isOpen && (
-            <Modal key={modalId} onClose={() => closeModal(modalId)}>
-              {modalContent}
-            </Modal>
-          )
-      )} */}
+      {isOpen && <Modal onClose={onClose}>{modalContent}</Modal>}
+      {/* 
+      {modals.map((modalContent, index) => (
+        <Modal key={index} onClose={closeModal}>
+          {modalContent}
+        </Modal>
+      ))} */}
     </>
   );
 };
