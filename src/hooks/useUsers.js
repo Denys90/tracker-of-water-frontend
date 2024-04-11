@@ -53,7 +53,10 @@ export const useUsers = () => {
     [dispatch]
   );
   const getCurrent = useCallback(() => dispatch(getCurrentThunk()), [dispatch]);
-  const getVerify = useCallback(() => dispatch(verifyThunk()), [dispatch]);
+  const getVerify = useCallback(
+    (data) => dispatch(verifyThunk(data)),
+    [dispatch]
+  );
 
   return {
     isAuthenticated,
