@@ -342,6 +342,8 @@ export const LastPasswordFormField = styled.div`
 `;
 
 export const ErrorMessages = styled.div`
+  opacity: 0;
+  cursor: none;
   color: ${theme.colors.brightRed};
 `;
 

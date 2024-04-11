@@ -14,6 +14,9 @@ import main_tablet2 from 'assets/images/tablet/bubbleTablet@2x.png';
 import main_desk from 'assets/images/desc/bubbleDesk.png';
 import main_desk2 from 'assets/images/desc/bubbleDesk@2x.png';
 
+import bottle_sign_in from 'assets/images/tablet/bottle_sign_in_tablet@1x.png';
+import bottle_sign_in2 from 'assets/images/tablet/bottle_sign_in_tablet@2x.png';
+
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,19 +25,23 @@ export const FormContainer = styled.div`
   align-items: center;
   padding: 0px;
   width: 280px;
+  margin: 0 auto;
+  padding-top: 4px;
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
+    justify-content: flex-start;
+    margin-left: 32px;
     width: 336px;
-    height: ${(props) => (props.signup ? '404px' : '312px')};
-    margin-top: 40px;
+    height: ${(props) => (props.formType === 'signup' ? '396px' : '304px')};
   }
   @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    margin-right: 50px;
     width: 384px;
-    top: 550px;
+    margin-top: 113px;
     flex-direction: column;
+    height: 312px;
   }
 `;
+
 export const Title = styled.h2`
   font-size: 26px;
   font-weight: 500;
@@ -49,6 +56,7 @@ export const Title = styled.h2`
     width: 384px;
   }
 `;
+
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -67,6 +75,7 @@ export const InputContainer = styled.div`
     width: 384px;
   }
 `;
+
 export const LabelField = styled.label`
   font-size: 18px;
   font-weight: 400;
@@ -81,6 +90,7 @@ export const LabelField = styled.label`
     width: 384px;
   }
 `;
+
 export const SubmitButton = styled.button`
   font-size: 18px;
   font-weight: 500;
@@ -111,6 +121,7 @@ export const SubmitButton = styled.button`
     width: 384px;
   }
 `;
+
 export const LinkBtn = styled.button`
   margin-top: 16px;
   color: ${theme.colors.blue};
@@ -135,7 +146,7 @@ export const InputField = styled(Field)`
   border: 1px solid ${theme.colors.paleBlue};
   border-radius: 6px;
   background: ${theme.colors.white};
-  width: 280px;
+  width: 100%;
   color: ${theme.colors.blue};
   position: relative;
   &::placeholder {
@@ -148,7 +159,7 @@ export const InputField = styled(Field)`
     outline: none;
   }
 
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+  @media screen and(min-width: ${theme.breakpoint.tablet}) {
     width: 336px;
   }
 
@@ -166,7 +177,7 @@ export const InputField = styled(Field)`
   ${(props) =>
     props.error &&
     `
-    border-color: ${theme.colors.brightRed};
+   border-color: ${theme.colors.brightRed};
     color: ${theme.colors.brightRed};
   `}
 `;
@@ -183,62 +194,73 @@ export const Container = styled.div`
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 120%;
-  background-image: url(${main_mobile}), url(${main_mobile2});
+
   display: flex;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
-  /* margin: 0 auto; */
+  margin: 0 auto;
+  padding: 24px;
+  gap: 66px;
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+    width: 768px;
+    padding-right: 32px;
+    padding-left: 32px;
+    flex-direction: row-reverse;
+    gap: 0;
+    align-items: flex-start;
+    justify-content: start;
+    padding: 40px;
+  }
+
+  @media screen and (min-width: ${theme.breakpoint.desktop}) {
+    width: 1440px;
+    padding-left: 132px;
+    padding-right: 132px;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: flex-start;
+  }
+`;
+
+export const ContainerBackground = styled.div`
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-image: url(${main_mobile}), url(${main_mobile2});
+  height: 100vh;
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    background-image: url(${main_tablet}), url(${main_tablet2});
-    /* min-height: 100vh; */
-    /* height: 350px; */
+    background-image: url(${main_tablet}), url(${main_tablet2}),
+      url(${bottle_sign_in}), url(${bottle_sign_in2});
+    background-position: 86%;
+    height: 100vh;
+    background-size: contain;
   }
   @media screen and (min-width: ${theme.breakpoint.desktop}) {
     background-image: url(${main_desk}), url(${main_desk2});
-    /* min-height: 100vh; */
-    height: 470px;
-    background-size: cover;
-  }
-
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    flex-direction: row-reverse;
-    /* margin: 0; */
-    /* margin-left: 260px; */
-  }
-  @media screen and (max-width: ${theme.breakpoint.desktop}) {
-    flex-direction: row-reverse;
-    /* margin: 0; */
-    /* margin-left: 260px; */
-  }
-  @media screen and (max-width: 767px) {
-    flex-direction: column-reverse;
-    /* margin: 0; */
-    margin-top: 40px;
-  }
-  @media screen and (min-width: ${theme.breakpoint.desktop}) {
-    flex-wrap: wrap-reverse;
-    margin-top: 0;
-    margin-left: 120px;
-    margin-right: 220px;
-    justify-content: space-between;
+    background-size: 100%;
   }
 `;
 
 export const Image = styled.img`
   height: 210px;
-  @media screen and (min-width: ${theme.breakpoint.tablet}) {
-    display: block;
-    height: 475px;
-    position: relative;
-    top: 100px;
-  }
 
-  @media screen and (max-width: ${theme.breakpoint.desktop}) {
-    height: 589px;
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+    /* height: 540px;
     position: relative;
-    top: 150px;
-    margin-right: 303px;
+    left: -160px; */
+    display: none;
+
+    @media screen and (min-width: ${theme.breakpoint.desktop}) {
+      /* height: 589px;
+      left: 10px;
+      margin-right: -350px;
+      margin-left: 150px;
+      display: flex; */
+      height: 589px;
+      display: block;
+    }
   }
 `;
 
@@ -246,7 +268,7 @@ export const SvgOpen = styled(SVGOpen)`
   position: absolute;
   right: 10px;
   width: 20px;
-  top: ${(props) => (props.error ? '213px' : '187px')};
+  top: ${(props) => (props.errors ? '213px' : '187px')};
   height: auto;
   cursor: pointer;
 `;
@@ -255,7 +277,7 @@ export const SvgOpenTwo = styled(SVGOpenTwo)`
   position: absolute;
   right: 10px;
   width: 20px;
-  top: ${(props) => (props.error ? '326px' : '276px')};
+  top: ${(props) => (props.errors ? '326px' : '276px')};
   height: auto;
   cursor: pointer;
 `;
@@ -264,7 +286,7 @@ export const SvgClose = styled(SVGClose)`
   position: absolute;
   right: 10px;
   width: 20px;
-  top: ${(props) => (props.error ? '213px' : '187px')};
+  top: ${(props) => (props.errors ? '213px' : '187px')};
   height: auto;
   cursor: pointer;
 `;
@@ -273,7 +295,7 @@ export const SvgCloseTwo = styled(SVGCloseTwo)`
   position: absolute;
   right: 10px;
   width: 20px;
-  top: ${(props) => (props.error ? '326px' : '276px')};
+  top: ${(props) => (props.errors ? '326px' : '276px')};
   height: auto;
   cursor: pointer;
 `;

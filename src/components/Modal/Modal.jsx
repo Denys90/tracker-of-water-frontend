@@ -56,21 +56,3 @@ const Modal = ({ onClose, children }) => {
 };
 
 export default Modal;
-{
-  /* <div
-  className={fullVP ? styles.menu : styles.modal}
-  onClick={handleClickOutside}
-  ref={backdrop}
->
-  <div className={styles.cover}>
-    <div className={styles.content}>
-      <button className={styles.close} onClick={onClose}>
-        <svg width="20" height="20">
-          <use href={`${sprite}#icon-cross`}></use>
-        </svg>
-      </button>
-      {children}
-    </div>
-  </div>
-</div>, */
-}

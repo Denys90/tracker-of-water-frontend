@@ -27,9 +27,7 @@ function App() {
   const { isRefreshingUser, getCurrent, isAuth } = useUsers();
 
   useEffect(() => {
-    console.log('start', isAuth);
     if (isAuth) {
-      console.log('user.token', isAuth);
       getCurrent();
     }
   }, [getCurrent, isAuth]);

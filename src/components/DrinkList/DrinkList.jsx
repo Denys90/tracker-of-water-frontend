@@ -38,7 +38,7 @@ export const DrinkList = () => {
     createWater({ date: stringDate });
   }, [stringDate, createWater]);
 
-  const onClose = () => {
+  const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
@@ -75,10 +75,12 @@ export const DrinkList = () => {
                 <DrinkButtons>
                   <DrinkButtonPlus
                     onClick={() =>
-
-
-                      openModalWithContent(<EditWaterModal id={drink._id} onClose={onClose} />)
-
+                      openModalWithContent(
+                        <EditWaterModal
+                          id={drink._id}
+                          toggleModal={toggleModal}
+                        />
+                      )
                     }
                   >
                     <use href={`${svg}#icon-note`}></use>
@@ -89,7 +91,7 @@ export const DrinkList = () => {
                         <DeleteEntry
                           id={drink._id}
                           date={{ date: stringDate }}
-                          onClose={onClose}
+                          toggleModal={toggleModal}
                         />
                       )
                     }
@@ -103,7 +105,7 @@ export const DrinkList = () => {
         </DrinkListUl>
         <DrinkListAddWater
           onClick={() =>
-            openModalWithContent(<AddWaterModal onClose={onClose} />)
+            openModalWithContent(<AddWaterModal onClose={toggleModal} />)
           }
         >
           <svg>
@@ -113,7 +115,7 @@ export const DrinkList = () => {
         </DrinkListAddWater>
       </DrinkListWrapper>
 
-      {isOpen && <Modal onClose={onClose}>{modalContent}</Modal>}
+      {isOpen && <Modal onClose={toggleModal}>{modalContent}</Modal>}
     </>
   );
 };

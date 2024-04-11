@@ -22,7 +22,7 @@ import {
 } from './AddWaterModal.styled';
 import { DrinkGlass, WaterItem } from './EditWaterModal.styled';
 
-export const EditWaterModal = ({ onClose, id }) => {
+export const EditWaterModal = ({ toggleModal, id }) => {
   const [time, setTime] = useState('');
   const [timeOptions, setTimeOptions] = useState([]);
   const { patchWater, createWater } = useWater();
@@ -81,7 +81,7 @@ export const EditWaterModal = ({ onClose, id }) => {
     createWater({ date: formattedDate });
     setAmount(0);
     setTime('');
-    onClose();
+    toggleModal();
   };
 
   const decrementAmount = () => {
