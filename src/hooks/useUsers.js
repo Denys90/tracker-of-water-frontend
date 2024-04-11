@@ -15,6 +15,7 @@ import {
   getUserInfoThunk,
   patchUserInfoThunk,
   patchUserAvatarThunk,
+  verifyThunk,
 } from '../store/user/thunk';
 
 export const useUsers = () => {
@@ -52,6 +53,7 @@ export const useUsers = () => {
     [dispatch]
   );
   const getCurrent = useCallback(() => dispatch(getCurrentThunk()), [dispatch]);
+  const getVerify = useCallback(() => dispatch(verifyThunk()), [dispatch]);
 
   return {
     isAuthenticated,
@@ -67,6 +69,7 @@ export const useUsers = () => {
     getCurrent,
     newUserInfo,
     newUserAvatar,
+    getVerify,
   };
 };
 
