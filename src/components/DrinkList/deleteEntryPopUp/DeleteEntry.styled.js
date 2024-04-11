@@ -5,17 +5,19 @@ export const ContainerPopUp = styled.div`
   display: flex;
   flex-direction: column;
   margin: 8px 12px;
-  row-gap: 24px;
-  @media screen and (min-width: ${theme.breakpoint
-      .mobile}) and (max-width: ${theme.breakpoint.tablet}) {
-    width: 232px;
+  gap: 24px;
+  width: 232px;
+
+  @media screen and (min-width: ${theme.breakpoint.tablet}) {
+    width: 544px;
+    margin: 0;
   }
 `;
 
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 24px;
+  gap: 24px;
 
   h2 {
     color: ${theme.colors.black};
@@ -38,12 +40,12 @@ export const TextContainer = styled.div`
 
 export const ButtonContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  row-gap: 24px;
+  flex-direction: column-reverse;
+  gap: 24px;
 
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     flex-direction: row;
-    margin-left: 200px;
+    justify-content: flex-end;
     column-gap: 24px;
   }
 `;

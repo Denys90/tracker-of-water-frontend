@@ -26,10 +26,13 @@ import {
   SSvgOpen,
   StyledLabel,
   Title,
-  EmailInput,
+  FormInput,
   TitlePassword,
   TitleGender,
   ErrorMessages,
+  FormBlock,
+  FormDiv,
+  InputBlock,
 } from './SettingUser.styled';
 
 import sprite from 'assets/images/icons.svg';
@@ -106,160 +109,174 @@ export const SettingUser = ({ toggleModal }) => {
           >
             {({ errors, values }) => (
               <Form>
-                <Title>Setting</Title>
-                <FormField>
-                  <h2>Your photo</h2>
-                  <DownloadWrap>
-                    <Avatar
-                      src={selectedAvatarPath || initialValues.avatar}
-                      alt="user avatar"
-                      width="80px"
-                      height="80px"
-                    />
-
-                    <DownloadButton>
-                      <Field
-                        type="file"
-                        name="avatar"
-                        value=""
-                        hidden
-                        accept="image/png, image/jpeg, image/jpg"
-                        onChange={handleAvatarChange}
-                      />
-                      <IconDownload>
-                        <use href={`${sprite}#ic-outline`}></use>
-                      </IconDownload>
-                      <DownloadButtonText>Upload a photo</DownloadButtonText>
-                    </DownloadButton>
-                  </DownloadWrap>
-                </FormField>
-                <DesktopFormWrap>
-                  <DesktopGenderWrap>
-                    <GenderFormField>
-                      <TitleGender>Your gender identity</TitleGender>
-                      <RadioButtonWrap>
-                        <RadioButtonLabel>
-                          <RadioButton
-                            type="radio"
-                            name="gender"
-                            value="woman"
-                            checked={values.gender === 'woman'}
-                          />
-                          <RadioButtonText>Woman</RadioButtonText>
-                        </RadioButtonLabel>
-                        <RadioButtonLabel>
-                          <RadioButton
-                            type="radio"
-                            name="gender"
-                            value="man"
-                            checked={values.gender === 'man'}
-                          />
-                          <RadioButtonText>Man</RadioButtonText>
-                        </RadioButtonLabel>
-                      </RadioButtonWrap>
-                    </GenderFormField>
+                <FormDiv>
+                  <Title>Setting</Title>
+                  <FormBlock>
                     <FormField>
-                      <StyledLabel htmlFor="username">Your name</StyledLabel>
-                      <Input type="text" id="username" name="name" />
-                    </FormField>
-                    <EmailInput>
-                      <StyledLabel htmlFor="email">E-mail</StyledLabel>
-                      <Input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={user.email}
-                      />
-                    </EmailInput>
-                  </DesktopGenderWrap>
-                  <DesktopPasswordWrap>
-                    <TitlePassword>Password</TitlePassword>
-                    <PasswordFormField>
-                      <PasswordLabel htmlFor="oldPassword">
-                        Outdated password:
-                      </PasswordLabel>
-                      <PasswordInputWrap>
-                        <Input
-                          type={showPassword ? 'text' : 'password'}
-                          id="oldPassword"
-                          name="outdatedPassword"
-                          placeholder="Password"
+                      <h2>Your photo</h2>
+                      <DownloadWrap>
+                        <Avatar
+                          src={selectedAvatarPath || initialValues.avatar}
+                          alt="user avatar"
+                          width="80px"
+                          height="80px"
                         />
-                        {showPassword ? (
-                          <>
-                            <SSvgClose onClick={togglePasswordVisibility} />
-                          </>
-                        ) : (
-                          <SSvgOpen onClick={togglePasswordVisibility} />
-                        )}
-                        <IconButton type="button"></IconButton>
-                      </PasswordInputWrap>
-                    </PasswordFormField>
-                    <PasswordFormField>
-                      <PasswordLabel htmlFor="password">
-                        New Password:
-                      </PasswordLabel>
-                      <PasswordInputWrap>
-                        <Input
-                          type={showPassword ? 'text' : 'password'}
-                          error={errors.password}
-                          id="password"
-                          name="newPassword"
-                          placeholder="New password"
-                        />
-                        {showPassword ? (
-                          <>
-                            <SSvgClose
-                              onClick={togglePasswordVisibility}
-                              error={errors.password}
-                            />
-                          </>
-                        ) : (
-                          <SSvgOpen
-                            onClick={togglePasswordVisibility}
-                            error={errors.password}
-                          />
-                        )}
 
-                        <IconButton type="button"></IconButton>
-                      </PasswordInputWrap>
-                    </PasswordFormField>
-                    <LastPasswordFormField>
-                      <PasswordLabel htmlFor="repeatedPassword">
-                        Repeat new password:
-                      </PasswordLabel>
-                      <PasswordInputWrap>
-                        <Input
-                          type={showPassword ? 'text' : 'password'}
-                          error={errors.repeatedPassword}
-                          id="repeatedPassword"
-                          name="repeatedPassword"
-                          placeholder="Repeat Password"
-                        />
-                        {showPassword ? (
-                          <>
-                            <SSvgClose
-                              onClick={togglePasswordVisibility}
-                              error={errors.repeatedPassword}
-                            />
-                          </>
-                        ) : (
-                          <SSvgOpen
-                            onClick={togglePasswordVisibility}
-                            error={errors.repeatedPassword}
+                        <DownloadButton>
+                          <Field
+                            type="file"
+                            name="avatar"
+                            value=""
+                            hidden
+                            accept="image/png, image/jpeg, image/jpg"
+                            onChange={handleAvatarChange}
                           />
-                        )}
-                        <IconButton type="button"></IconButton>
-                        <ErrorMessages name="repeatPassword" component="div" />
-                      </PasswordInputWrap>
-                    </LastPasswordFormField>
-                  </DesktopPasswordWrap>
-                </DesktopFormWrap>
-                <SaveButtonWrap>
-                  <li>
-                    <SaveButton type="submit">Save</SaveButton>
-                  </li>
-                </SaveButtonWrap>
+                          <IconDownload>
+                            <use href={`${sprite}#ic-outline`}></use>
+                          </IconDownload>
+                          <DownloadButtonText>
+                            Upload a photo
+                          </DownloadButtonText>
+                        </DownloadButton>
+                      </DownloadWrap>
+                    </FormField>
+                    <DesktopFormWrap>
+                      <DesktopGenderWrap>
+                        <GenderFormField>
+                          <TitleGender>Your gender identity</TitleGender>
+                          <RadioButtonWrap>
+                            <RadioButtonLabel>
+                              <RadioButton
+                                type="radio"
+                                name="gender"
+                                value="woman"
+                                checked={values.gender === 'woman'}
+                              />
+                              <RadioButtonText>Woman</RadioButtonText>
+                            </RadioButtonLabel>
+                            <RadioButtonLabel>
+                              <RadioButton
+                                type="radio"
+                                name="gender"
+                                value="man"
+                                checked={values.gender === 'man'}
+                              />
+                              <RadioButtonText>Man</RadioButtonText>
+                            </RadioButtonLabel>
+                          </RadioButtonWrap>
+                        </GenderFormField>
+                        <InputBlock>
+                          <FormInput>
+                            <StyledLabel htmlFor="username">
+                              Your name
+                            </StyledLabel>
+                            <Input type="text" id="username" name="name" />
+                          </FormInput>
+                          <FormInput>
+                            <StyledLabel htmlFor="email">E-mail</StyledLabel>
+                            <Input
+                              type="email"
+                              id="email"
+                              name="email"
+                              value={user.email}
+                            />
+                          </FormInput>
+                        </InputBlock>
+                      </DesktopGenderWrap>
+                      <DesktopPasswordWrap>
+                        <TitlePassword>Password</TitlePassword>
+                        <PasswordFormField>
+                          <PasswordLabel htmlFor="oldPassword">
+                            Outdated password:
+                          </PasswordLabel>
+                          <PasswordInputWrap>
+                            <Input
+                              type={showPassword ? 'text' : 'password'}
+                              id="oldPassword"
+                              name="outdatedPassword"
+                              placeholder="Password"
+                            />
+                            {showPassword ? (
+                              <>
+                                <SSvgClose onClick={togglePasswordVisibility} />
+                              </>
+                            ) : (
+                              <SSvgOpen onClick={togglePasswordVisibility} />
+                            )}
+                            <IconButton type="button"></IconButton>
+                          </PasswordInputWrap>
+                        </PasswordFormField>
+                        <PasswordFormField>
+                          <PasswordLabel htmlFor="password">
+                            New Password:
+                          </PasswordLabel>
+                          <PasswordInputWrap>
+                            <Input
+                              type={showPassword ? 'text' : 'password'}
+                              error={errors.password}
+                              id="password"
+                              name="newPassword"
+                              placeholder="New password"
+                            />
+                            {showPassword ? (
+                              <>
+                                <SSvgClose
+                                  onClick={togglePasswordVisibility}
+                                  error={errors.password}
+                                />
+                              </>
+                            ) : (
+                              <SSvgOpen
+                                onClick={togglePasswordVisibility}
+                                error={errors.password}
+                              />
+                            )}
+
+                            <IconButton type="button"></IconButton>
+                          </PasswordInputWrap>
+                        </PasswordFormField>
+                        <LastPasswordFormField>
+                          <PasswordLabel htmlFor="repeatedPassword">
+                            Repeat new password:
+                          </PasswordLabel>
+                          <PasswordInputWrap>
+                            <Input
+                              type={showPassword ? 'text' : 'password'}
+                              error={errors.repeatedPassword}
+                              id="repeatedPassword"
+                              name="repeatedPassword"
+                              placeholder="Repeat Password"
+                            />
+                            {showPassword ? (
+                              <>
+                                <SSvgClose
+                                  onClick={togglePasswordVisibility}
+                                  error={errors.repeatedPassword}
+                                />
+                              </>
+                            ) : (
+                              <SSvgOpen
+                                onClick={togglePasswordVisibility}
+                                error={errors.repeatedPassword}
+                              />
+                            )}
+                            <IconButton type="button"></IconButton>
+                            <ErrorMessages
+                              name="repeatPassword"
+                              component="div"
+                            />
+                          </PasswordInputWrap>
+                        </LastPasswordFormField>
+                      </DesktopPasswordWrap>
+                    </DesktopFormWrap>
+                  </FormBlock>
+
+                  <SaveButtonWrap>
+                    <li>
+                      <SaveButton type="submit">Save</SaveButton>
+                    </li>
+                  </SaveButtonWrap>
+                </FormDiv>
               </Form>
             )}
           </Formik>
