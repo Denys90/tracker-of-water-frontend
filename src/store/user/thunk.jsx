@@ -170,3 +170,15 @@ export const getCurrentThunk = createAsyncThunk(
     }
   }
 );
+export const verifyThunk = createAsyncThunk(
+  'users/verify',
+  async ({ verificationToken }, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`/users/verify/${verificationToken}`);
+
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
