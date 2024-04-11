@@ -6,7 +6,7 @@ export const ContainerHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-top: 12px;
-
+  background-color: transparent;
   @media (min-width: ${theme.breakpoint.tablet}) {
     padding-top: 16px;
   }
@@ -17,6 +17,7 @@ export const ContainerHeader = styled.div`
 `;
 
 export const WrapHeader = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
 
@@ -34,13 +35,12 @@ export const WrapHeader = styled.div`
 `;
 
 export const Containers = styled.div`
-  position: relative;
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
-
+  background-color: transparent;
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     width: 768px;
     padding-right: 32px;
