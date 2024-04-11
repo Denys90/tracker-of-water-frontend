@@ -43,14 +43,7 @@ const waterSlice = createSlice({
         state.reps = action.payload.water_entries;
       })
       .addCase(patchWatersThunk.fulfilled, (state, action) => {
-        console.log('action.payload', state.reps);
-        const index = state.reps.findIndex(
-          (todo) => todo.id === action.payload.todo
-        );
-
-        if (index !== -1) {
-          state.reps[index] = action.payload;
-        }
+        state.reps = action.payload.water_entries;
       })
       .addMatcher(isAnyOf(...getActions('pending')), handlePending)
       .addMatcher(isAnyOf(...getActions('fulfilled')), handleFulfilled)

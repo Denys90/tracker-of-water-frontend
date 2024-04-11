@@ -80,7 +80,10 @@ export const DrinkList = () => {
                   <DrinkButtonPlus
                     onClick={() =>
                       openModalWithContent(
-                        <EditWaterModal toggleModal={toggleModal} />
+                        <EditWaterModal
+                          toggleModal={toggleModal}
+                          id={drink._id}
+                        />
                       )
                     }
                   >
