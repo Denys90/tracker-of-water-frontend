@@ -10,8 +10,8 @@ import {
 export const DeleteEntry = ({ id, date, onClose }) => {
   const { deleteReps, createWater } = useWater();
 
-  const handleClick = () => {
-    deleteReps({ id, date });
+  const handleClick = async () => {
+    await deleteReps({ id, date });
     createWater(date);
 
     onClose();
