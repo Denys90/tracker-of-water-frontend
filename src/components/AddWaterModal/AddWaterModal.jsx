@@ -68,14 +68,14 @@ export const AddWaterModal = ({ toggleModal }) => {
     return errorMessage;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const waterData = {
       time: time,
       amount: amount,
       date: formattedDate,
     };
 
-    addOneDrink(waterData);
+    await addOneDrink(waterData);
     createWater({ date: formattedDate });
     setAmount(0);
     setTime('');
