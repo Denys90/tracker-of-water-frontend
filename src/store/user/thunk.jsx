@@ -172,9 +172,12 @@ export const getCurrentThunk = createAsyncThunk(
 );
 export const verifyThunk = createAsyncThunk(
   'users/verify',
-  async ({ verificationToken }, { rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`/users/verify/${verificationToken}`);
+      console.log(data);
+      const response = await axios.get(
+        `/users/verify/${data.verificationToken}`
+      );
 
       return response;
     } catch (error) {

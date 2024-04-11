@@ -1,18 +1,14 @@
-// import { useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { useUsers } from 'hooks/useUsers';
 import { useEffect } from 'react';
 
 function VerificationPage() {
-  // const [searchParams] = useSearchParams();
-  const { getVerify } = useUsers();
-  // const verificationToken = searchParams.get('verificationToken');
-  // console.log(verificationToken);
-  const redirectToLogin = true;
+  const { verificationToken } = useParams();
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const verificationToken = urlParams.get('verificationToken');
-  console.log('urlParams================>', urlParams);
+  const { getVerify } = useUsers();
+
+  const redirectToLogin = true;
 
   useEffect(() => {
     console.log('verificationToken================> ', verificationToken);
