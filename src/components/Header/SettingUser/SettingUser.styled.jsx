@@ -231,6 +231,7 @@ export const RadioButtonText = styled.span`
 
 export const InputBlock = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 24px;
 `;
 

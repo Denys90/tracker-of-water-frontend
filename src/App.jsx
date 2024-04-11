@@ -3,6 +3,7 @@ import { Suspense, lazy } from 'react';
 
 import { Global } from '@emotion/react';
 import { globalStyles } from 'styles/Global.styled';
+import { ToastContainer } from 'react-toastify';
 
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
@@ -23,17 +24,20 @@ import { useEffect } from 'react';
 import { useUsers } from 'hooks/useUsers';
 
 function App() {
-  const { isRefreshingUser, getCurrent, user } = useUsers();
+  const { isRefreshingUser, getCurrent, isAuth } = useUsers();
 
   useEffect(() => {
-    if (user.token) {
+    console.log('start', isAuth);
+    if (isAuth) {
+      console.log('user.token', isAuth);
       getCurrent();
     }
-  }, [getCurrent, user.token]);
+  }, [getCurrent, isAuth]);
 
   return (
     <>
       <Global styles={globalStyles} />
+      <ToastContainer />
       {isRefreshingUser ? (
         <Loader />
       ) : (

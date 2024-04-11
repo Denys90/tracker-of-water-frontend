@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 axios.defaults.baseURL = 'https://project-deep-water-server.onrender.com/api';
 // ==========================================>
@@ -81,6 +83,11 @@ export const addOneTodoThunk = createAsyncThunk(
       const response = await axios.post('/waters/drink', credentials, {
         headers,
       });
+      console.log(response);
+      if (response.data) {
+        toast.success('Glass successfully added!!');
+      }
+
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
