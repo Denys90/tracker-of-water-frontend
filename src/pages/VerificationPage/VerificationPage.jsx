@@ -10,8 +10,8 @@ function VerificationPage() {
   const { getVerify } = useUsers();
 
   useEffect(() => {
-    getVerify(verificationToken);
-  }, [verificationToken, getVerify]);
+    getVerify({ verificationToken });
+  }, [getVerify, verificationToken]);
 
   if (redirectToLogin) {
     return <Navigate to="/login" />;
