@@ -19,6 +19,7 @@ export const createWaterThunk = createAsyncThunk(
       const response = await axios.post('/waters/created', credentials, {
         headers,
       });
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -97,17 +98,33 @@ export const addDailyNormaThunk = createAsyncThunk(
 
 export const patchWatersThunk = createAsyncThunk(
   'water/patchWater',
-  async ({ waterId, water }, { rejectWithValue, getState }) => {
+  async (data, { rejectWithValue, getState }) => {
     try {
       const store = getState();
       const token = store.users.token;
 
+      if (!token) {
+        console.error('No token found.');
+        return;
+      }
+
+      if (!data.waterData) {
+        console.error('No body found.');
+        return;
+      }
+
       const headers = {
         Authorization: `Bearer ${token}`,
       };
-      const response = await axios.put(`/waters/${waterId}`, water, {
-        headers,
-      });
+
+      const response = await axios.patch(
+        `/waters/drink/${data.id}`,
+        data.waterData,
+        {
+          headers,
+        }
+      );
+
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);

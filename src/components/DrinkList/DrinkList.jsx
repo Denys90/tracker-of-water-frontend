@@ -75,7 +75,10 @@ export const DrinkList = () => {
                 <DrinkButtons>
                   <DrinkButtonPlus
                     onClick={() =>
-                      openModalWithContent(<EditWaterModal onClose={onClose} />)
+
+
+                      openModalWithContent(<EditWaterModal id={drink._id} onClose={onClose} />)
+
                     }
                   >
                     <use href={`${svg}#icon-note`}></use>

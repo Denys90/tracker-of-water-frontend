@@ -22,10 +22,10 @@ import {
 } from './AddWaterModal.styled';
 import { DrinkGlass, WaterItem } from './EditWaterModal.styled';
 
-export const EditWaterModal = ({ onClose }) => {
+export const EditWaterModal = ({ onClose, id }) => {
   const [time, setTime] = useState('');
   const [timeOptions, setTimeOptions] = useState([]);
-  const { patchWater, reps } = useWater();
+  const { patchWater, createWater } = useWater();
   const [amount, setAmount] = useState(0);
 
   useEffect(() => {
@@ -68,17 +68,17 @@ export const EditWaterModal = ({ onClose }) => {
     return errorMessage;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (amount) => {
     const waterData = {
       time: time,
-      amount: amount,
+      amount,
       date: formattedDate,
-    };
-    const id = {
-      id: reps.id,
     };
 
     patchWater({ waterData, id });
+
+    await patchWater({ id, waterData });
+    createWater({ date: formattedDate });
     setAmount(0);
     setTime('');
     onClose();
@@ -162,7 +162,12 @@ export const EditWaterModal = ({ onClose }) => {
           </div>
           <FooterModal>
             <span>{amount}ml</span>
-            <BtnSave type="submit" onClick={handleSubmit}>
+            <BtnSave
+              type="submit"
+              onClick={() => {
+                handleSubmit(amount);
+              }}
+            >
               Save{' '}
             </BtnSave>
           </FooterModal>
