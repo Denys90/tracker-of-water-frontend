@@ -1,4 +1,4 @@
-import{n as s,t as e,F as C,E as z,S as f,a as k,r as n,u as E,j as i,b as R,c as _}from"./index-dbf1c3b5.js";import{i as B,a as T,b as A,c as I,d as H,e as Z}from"./bubbleDesk@2x-afc6d3c1.js";const V=s.div`
+import{n as s,t as e,F as C,E as z,S as f,a as k,r as n,u as E,j as i,b as R,c as _}from"./index-ff3f47e4.js";import{i as B,a as T,b as A,c as I,d as H,e as Z}from"./bubbleDesk@2x-afc6d3c1.js";const V=s.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
