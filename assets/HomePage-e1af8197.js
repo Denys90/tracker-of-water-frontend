@@ -1,4 +1,4 @@
-import{n as s,t as i,d as _e,e as ge,f as F,r as y,g as Ye,h as ze,i as Ee,p as Ne,k as He,F as A,j as r,b as re,c as Ae,M as oe,s as M,E as fe,l as Le}from"./index-05e69e44.js";import{i as Re,a as qe,b as Ie,c as Xe,d as Qe,e as Ve}from"./bubbleDesk@2x-afc6d3c1.js";const Ge="/runners_of_code__frontend/assets/bottle_home_mobile@1x-0d6054eb.png",Je="/runners_of_code__frontend/assets/bottle_home_mobile@2x-52eb5066.png",Ue="/runners_of_code__frontend/assets/bottle_home_tablet@1x-c4bedac4.png",Ke="/runners_of_code__frontend/assets/bottle_home_tablet@2x-867eb443.png",Ze="/runners_of_code__frontend/assets/bottle_home_desk-f67b46be.png",et="/runners_of_code__frontend/assets/bottle_home_deskx2-acd9b153.png",tt=s.div`
+import{n as s,t as i,d as _e,e as ge,f as F,r as y,g as Ye,h as ze,i as Ee,p as Ne,k as He,F as A,j as r,b as re,c as Ae,M as oe,s as M,E as fe,l as Le}from"./index-99c7bb28.js";import{i as Re,a as qe,b as Ie,c as Xe,d as Qe,e as Ve}from"./bubbleDesk@2x-afc6d3c1.js";const Ge="/runners_of_code__frontend/assets/bottle_home_mobile@1x-0d6054eb.png",Je="/runners_of_code__frontend/assets/bottle_home_mobile@2x-52eb5066.png",Ue="/runners_of_code__frontend/assets/bottle_home_tablet@1x-c4bedac4.png",Ke="/runners_of_code__frontend/assets/bottle_home_tablet@2x-867eb443.png",Ze="/runners_of_code__frontend/assets/bottle_home_desk-f67b46be.png",et="/runners_of_code__frontend/assets/bottle_home_deskx2-acd9b153.png",tt=s.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
@@ -935,14 +935,17 @@ import{n as s,t as i,d as _e,e as ge,f as F,r as y,g as Ye,h as ze,i as Ee,p as 
   display: flex;
   flex-direction: column;
   margin: 8px 12px;
-  row-gap: 24px;
-  @media screen and (min-width: ${i.breakpoint.mobile}) and (max-width: ${i.breakpoint.tablet}) {
-    width: 232px;
+  gap: 24px;
+  width: 232px;
+
+  @media screen and (min-width: ${i.breakpoint.tablet}) {
+    width: 544px;
+    margin: 0;
   }
 `,Ut=s.div`
   display: flex;
   flex-direction: column;
-  row-gap: 24px;
+  gap: 24px;
 
   h2 {
     color: ${i.colors.black};
@@ -963,12 +966,12 @@ import{n as s,t as i,d as _e,e as ge,f as F,r as y,g as Ye,h as ze,i as Ee,p as 
   }
 `,Kt=s.div`
   display: flex;
-  flex-direction: column;
-  row-gap: 24px;
+  flex-direction: column-reverse;
+  gap: 24px;
 
   @media screen and (min-width: ${i.breakpoint.tablet}) {
     flex-direction: row;
-    margin-left: 200px;
+    justify-content: flex-end;
     column-gap: 24px;
   }
 `,Zt=s.button`
