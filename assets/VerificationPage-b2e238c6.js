@@ -1,0 +1,1 @@
+import{u as r,r as s,j as t,N as i}from"./index-f79ab81f.js";function c(){const{getVerify:e}=r(),a=new URLSearchParams(window.location.search),o=a.get("verificationToken");return console.log("urlParams================>",a),s.useEffect(()=>{console.log("verificationToken================> ",o),e({verificationToken:o})},[e,o]),t.jsx(i,{to:"/login"})}export{c as default};
