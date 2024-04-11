@@ -26,7 +26,7 @@ import { DrinkGlass, WaterItem } from './EditWaterModal.styled';
 export const EditWaterModal = ({ toggleModal }) => {
   const [time, setTime] = useState('');
   const [timeOptions, setTimeOptions] = useState([]);
-  const { addOneDrink, createWater } = useWater();
+  const { patchWater, reps } = useWater();
   const [amount, setAmount] = useState(0);
 
   useEffect(() => {
@@ -75,9 +75,13 @@ export const EditWaterModal = ({ toggleModal }) => {
       amount: amount,
       date: formattedDate,
     };
+    const id = {
+      id: reps.id,
+    };
 
-    addOneDrink(waterData);
-    createWater({ date: formattedDate });
+    // addOneDrink(waterData);
+    // createWater({ date: formattedDate });
+    patchWater({ waterData, id });
     setAmount(0);
     setTime('');
     toggleModal();

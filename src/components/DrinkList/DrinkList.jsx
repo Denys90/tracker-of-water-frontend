@@ -24,14 +24,17 @@ import useWater from 'hooks/useWaters';
 
 export const DrinkList = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [modalContent, setModalContent] = useState(null);
-  const { createWater } = useWater();
 
+  console.log('isOpen =====>>>>', isOpen);
+
+  const [modalContent, setModalContent] = useState(null);
+
+  const { createWater, reps } = useWater();
+  // --------------------------------------------------------------
   const currentData = Date.now();
   const date = new Date(currentData);
   const stringDate = date.toLocaleDateString();
-
-  const { reps } = useWater();
+  // --------------------------------------------------------------
 
   useEffect(() => {
     createWater({ date: stringDate });
@@ -43,6 +46,7 @@ export const DrinkList = () => {
 
   const openModalWithContent = (content) => {
     setModalContent(content);
+
     setIsOpen(true);
   };
 
@@ -86,12 +90,12 @@ export const DrinkList = () => {
                     onClick={() =>
                       openModalWithContent(
                         <DeleteEntry
-                          toggleModal={toggleModal}
                           id={drink._id}
                           date={{ date: stringDate }}
                         />
                       )
                     }
+                    toggleModal={toggleModal}
                   >
                     <use href={`${svg}#icon-trash`}></use>
                   </DrinkButtonMinus>
@@ -101,7 +105,9 @@ export const DrinkList = () => {
           })}
         </DrinkListUl>
         <DrinkListAddWater
-          onClick={() => openModalWithContent(<AddWaterModal />)}
+          onClick={() =>
+            openModalWithContent(<AddWaterModal onClick={toggleModal} />)
+          }
         >
           <svg>
             <use href={`${svg}#icon-increment`}></use>
@@ -111,6 +117,14 @@ export const DrinkList = () => {
       </DrinkListWrapper>
 
       {isOpen && <Modal onClose={toggleModal}>{modalContent}</Modal>}
+      {/* {Object.entries(modalStates).map(
+        ([modalId, isOpen]) =>
+          isOpen && (
+            <Modal key={modalId} onClose={() => closeModal(modalId)}>
+              {modalContent}
+            </Modal>
+          )
+      )} */}
     </>
   );
 };

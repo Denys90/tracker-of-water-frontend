@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import useWater from 'hooks/useWaters';
 import {
   ButtonCancel,
@@ -14,7 +13,10 @@ export const DeleteEntry = ({ id, date, toggleModal }) => {
   const handleClick = () => {
     deleteReps({ id, date });
     createWater(date);
+
+    toggleModal();
   };
+
   return (
     <>
       <ContainerPopUp>
@@ -23,7 +25,7 @@ export const DeleteEntry = ({ id, date, toggleModal }) => {
           <p>Are you sure you want to delete the entry?</p>
         </TextContainer>
         <ButtonContainer>
-          <ButtonCancel type="button" onClick={toggleModal}>
+          <ButtonCancel type="button" onClick={() => toggleModal()}>
             Cancel
           </ButtonCancel>
           <ButtonDelete type="button" onClick={handleClick}>
