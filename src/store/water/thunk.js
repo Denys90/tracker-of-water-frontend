@@ -151,6 +151,8 @@ export const deleteTodoThunk = createAsyncThunk(
           headers,
         }
       );
+      console.log('Delete todo', response.data);
+
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);

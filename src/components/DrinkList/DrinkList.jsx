@@ -41,12 +41,15 @@ export const DrinkList = () => {
   const openModalWithContent = (content, isOpen) => {
     setModalContent(content);
     setIsOpen(!isOpen);
-
     setIsOpen(true);
   };
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -113,7 +116,7 @@ export const DrinkList = () => {
         </DrinkListAddWater>
       </DrinkListWrapper>
 
-      {isOpen && <Modal onClose={isOpen}>{modalContent}</Modal>}
+      {isOpen && <Modal onClose={toggleModal}>{modalContent}</Modal>}
     </>
   );
 };
