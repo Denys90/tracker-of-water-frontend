@@ -22,7 +22,7 @@ import {
 } from './AddWaterModal.styled';
 import { DrinkGlass, WaterItem } from './EditWaterModal.styled';
 
-export const EditWaterModal = ({ toggleModal, id }) => {
+export const EditWaterModal = ({ onClose, id }) => {
   const [time, setTime] = useState('');
   const [timeOptions, setTimeOptions] = useState([]);
   const { patchWater, createWater } = useWater();
@@ -68,7 +68,7 @@ export const EditWaterModal = ({ toggleModal, id }) => {
     return errorMessage;
   };
 
-  const handleSubmit = async (amount) => {
+  const handleSubmit = (amount) => {
     const waterData = {
       time: time,
       amount,
@@ -77,11 +77,11 @@ export const EditWaterModal = ({ toggleModal, id }) => {
 
     patchWater({ waterData, id });
 
-    await patchWater({ id, waterData });
+    patchWater({ id, waterData });
     createWater({ date: formattedDate });
     setAmount(0);
     setTime('');
-    toggleModal();
+    onClose();
   };
 
   const decrementAmount = () => {
