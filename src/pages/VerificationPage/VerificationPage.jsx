@@ -1,25 +1,23 @@
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { useUsers } from 'hooks/useUsers';
-import { useEffect } from 'react';
 
 function VerificationPage() {
-  const { verificationToken } = useParams();
-
-  const { getVerify } = useUsers();
-
   const redirectToLogin = true;
 
+  const { verificationToken } = useParams();
+  const { getVerify } = useUsers();
+
   useEffect(() => {
-    console.log('verificationToken================> ', verificationToken);
-    getVerify({ verificationToken });
-  }, [getVerify, verificationToken]);
+    getVerify(verificationToken);
+  }, [verificationToken, getVerify]);
 
   if (redirectToLogin) {
     return <Navigate to="/login" />;
   }
 
-  return <div>The verification was successful</div>;
+  return <div>Verification in progress...</div>;
 }
 
 export default VerificationPage;
