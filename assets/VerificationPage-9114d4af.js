@@ -1,0 +1,1 @@
+import{d as s,u as t,r as a,j as i,N as r}from"./index-4024112d.js";function f(){const{verificationToken:e}=s(),{getVerify:o}=t();return a.useEffect(()=>{console.log("verificationToken on verify Page================> ",e),o({verificationToken:e})},[o,e]),i.jsx(r,{to:"/login"})}export{f as default};
