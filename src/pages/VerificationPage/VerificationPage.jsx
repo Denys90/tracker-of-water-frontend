@@ -11,7 +11,10 @@ function VerificationPage() {
   const redirectToLogin = true;
 
   useEffect(() => {
-    console.log('verificationToken================> ', verificationToken);
+    console.log(
+      'verificationToken on verify Page================> ',
+      verificationToken
+    );
     getVerify({ verificationToken });
   }, [getVerify, verificationToken]);
 
