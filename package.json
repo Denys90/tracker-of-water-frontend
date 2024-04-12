@@ -24,6 +24,7 @@
     "date-fns": "^3.6.0",
     "flowbite-react": "^0.8.0",
     "formik": "^2.4.5",
+    "material-ui-popup-state": "^5.1.0",
     "modern-normalize": "^2.0.0",
     "nanoid": "^5.0.7",
     "normalize.css": "^8.0.1",

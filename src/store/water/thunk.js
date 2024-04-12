@@ -20,6 +20,10 @@ export const createWaterThunk = createAsyncThunk(
         headers,
       });
 
+      if (response.data) {
+        toast.success('Changed successfully');
+      }
+
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -151,7 +155,9 @@ export const deleteTodoThunk = createAsyncThunk(
           headers,
         }
       );
-      console.log('Delete todo', response.data);
+      if (response.data) {
+        toast.success('Successful removal');
+      }
 
       return response.data;
     } catch (error) {
