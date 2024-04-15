@@ -35,6 +35,7 @@ function App() {
   return (
     <>
       <Global styles={globalStyles} />
+
       <ToastContainer />
       {isRefreshingUser ? (
         <Loader />
