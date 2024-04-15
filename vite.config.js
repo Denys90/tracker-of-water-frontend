@@ -17,5 +17,5 @@ export default defineConfig({
       context: '/src/context',
     },
   },
-  base: '/tofw__frontend/',
+  base: '/tracker-of-water-frontend/',
 });

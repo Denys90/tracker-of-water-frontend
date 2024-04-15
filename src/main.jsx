@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading="null" persistor={persistor}></PersistGate>
-      <BrowserRouter basename="/runners_of_code__frontend">
+      <BrowserRouter basename="/tracker-of-water-frontend">
         <ThemeProvider theme={theme}>
           <App />
         </ThemeProvider>
