@@ -17,5 +17,5 @@ export default defineConfig({
       context: '/src/context',
     },
   },
-  base: '/runners_of_code__frontend/',
+  base: '/tofw__frontend/',
 });
