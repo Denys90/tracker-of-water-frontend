@@ -1,1 +1,0 @@
-import{d as t,u as a,r,j as o,N as i}from"./index-69712bd7.js";function f(){const{verificationToken:s}=t(),{getVerify:e}=a();return r.useEffect(()=>{e({verificationToken:s})},[e,s]),o.jsx(i,{to:"/login"})}export{f as default};

@@ -1,4 +1,4 @@
-import{n as r,t,F as _,E as C,S as f,a as k,r as n,u as z,j as e,b as E,c as R}from"./index-69712bd7.js";import{i as B,a as T,b as A,c as H,d as I,e as Z,h as V}from"./bottle_home_deskx2-274c1be2.js";const q="/tofw__frontend/assets/bottle_sign_in_tablet@1x-bc683e21.png",M="/tofw__frontend/assets/bottle_sign_in_tablet@2x-2f35ac0a.png",U=r.div`
+import{n as s,t,F as C,E as _,S as f,a as k,r as n,u as z,j as e,b as E,c as R}from"./index-a3c54583.js";import{i as B,a as T,b as A,c as H,d as I,e as Z,h as V}from"./bottle_home_deskx2-6dad15ed.js";const q="/tracker-of-water-frontend/assets/bottle_sign_in_tablet@1x-bc683e21.png",M="/tracker-of-water-frontend/assets/bottle_sign_in_tablet@2x-2f35ac0a.png",U=s.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -21,7 +21,7 @@ import{n as r,t,F as _,E as C,S as f,a as k,r as n,u as z,j as e,b as E,c as R}f
     flex-direction: column;
     height: 312px;
   }
-`,L=r.h2`
+`,L=s.h2`
   font-size: 26px;
   font-weight: 500;
   line-height: 32px;
@@ -34,7 +34,7 @@ import{n as r,t,F as _,E as C,S as f,a as k,r as n,u as z,j as e,b as E,c as R}f
   @media screen and (min-width: ${t.breakpoint.desktop}) {
     width: 384px;
   }
-`,l=r.div`
+`,l=s.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,7 +51,7 @@ import{n as r,t,F as _,E as C,S as f,a as k,r as n,u as z,j as e,b as E,c as R}f
   @media screen and (min-width: ${t.breakpoint.desktop}) {
     width: 384px;
   }
-`,c=r.label`
+`,c=s.label`
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
@@ -64,7 +64,7 @@ import{n as r,t,F as _,E as C,S as f,a as k,r as n,u as z,j as e,b as E,c as R}f
   @media screen and (min-width: ${t.breakpoint.desktop}) {
     width: 384px;
   }
-`,D=r.button`
+`,D=s.button`
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -93,7 +93,7 @@ import{n as r,t,F as _,E as C,S as f,a as k,r as n,u as z,j as e,b as E,c as R}f
   @media screen and (min-width: ${t.breakpoint.desktop}) {
     width: 384px;
   }
-`,O=r.button`
+`,O=s.button`
   margin-top: 16px;
   color: ${t.colors.blue};
   font-weight: 400;
@@ -105,7 +105,7 @@ import{n as r,t,F as _,E as C,S as f,a as k,r as n,u as z,j as e,b as E,c as R}f
   &:hover {
     color: ${t.colors.orange};
   }
-`,x=r(_)`
+`,x=s(C)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -145,12 +145,12 @@ import{n as r,t,F as _,E as C,S as f,a as k,r as n,u as z,j as e,b as E,c as R}f
    border-color: ${t.colors.brightRed};
     color: ${t.colors.brightRed};
   `}
-`,g=r(C)`
+`,g=s(_)`
   color: red;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
-`,G=r.div`
+`,G=s.div`
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -182,7 +182,7 @@ import{n as r,t,F as _,E as C,S as f,a as k,r as n,u as z,j as e,b as E,c as R}f
     margin: 0 auto;
     justify-content: flex-start;
   }
-`,J=r.div`
+`,J=s.div`
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -200,7 +200,7 @@ import{n as r,t,F as _,E as C,S as f,a as k,r as n,u as z,j as e,b as E,c as R}f
     background-image: url(${I}), url(${Z});
     background-size: 100%;
   }
-`,K=r.img`
+`,K=s.img`
   height: 210px;
 
   @media screen and (min-width: ${t.breakpoint.tablet}) {
@@ -219,32 +219,32 @@ import{n as r,t,F as _,E as C,S as f,a as k,r as n,u as z,j as e,b as E,c as R}f
       display: block;
     }
   }
-`,N=r(f)`
+`,N=s(f)`
   position: absolute;
   right: 10px;
   width: 20px;
   top: ${i=>i.errors?"213px":"187px"};
   height: auto;
   cursor: pointer;
-`,Q=r(f)`
+`,Q=s(f)`
   position: absolute;
   right: 10px;
   width: 20px;
   top: ${i=>i.errors?"326px":"276px"};
   height: auto;
   cursor: pointer;
-`,W=r(k)`
+`,W=s(k)`
   position: absolute;
   right: 10px;
   width: 20px;
   top: ${i=>i.errors?"213px":"187px"};
   height: auto;
   cursor: pointer;
-`,X=r(k)`
+`,X=s(k)`
   position: absolute;
   right: 10px;
   width: 20px;
   top: ${i=>i.errors?"326px":"276px"};
   height: auto;
   cursor: pointer;
-`,Y=()=>{const[i,$]=n.useState("signin"),[j,h]=n.useState(!1),[a,y]=n.useState(!1),[d,S]=n.useState(!1),{signUp:P,signIn:v}=z(),F=s=>{$(s),h(!1)},m=()=>{y(!a)},w=()=>{S(!d)};return e.jsx(J,{children:e.jsxs(G,{children:[e.jsx(K,{src:V}),e.jsxs(U,{children:[e.jsx(L,{signup:i==="signup",children:i==="signin"?"Sign In":"Sign Up"}),e.jsx(E,{initialValues:{email:"",password:"",repeatPassword:""},validate:s=>{const o={};return j&&(i==="signin"?(s.email?/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(s.email)||(o.email="Some error message"):o.email="Email is required",s.password?s.password.length<8&&(o.password="Password must be at least 8 characters long"):o.password="Password is required"):i==="signup"&&(s.email?/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(s.email)||(o.email="Some error message"):o.email="Email is required",s.password?s.password.length<8&&(o.password="Password must be at least 8 characters long"):o.password="Password is required",s.repeatPassword?s.password!==s.repeatPassword&&(o.repeatPassword="Passwords do not match"):o.repeatPassword="Please repeat your password")),o},onSubmit:(s,{setSubmitting:o,resetForm:p})=>{const{email:b,password:u}=s;i==="signin"?v({email:b,password:u}):P({email:b,password:u}),o(!1),o("values",s),p()},children:({isSubmitting:s,errors:o,resetForm:p})=>e.jsxs(R,{children:[e.jsxs(l,{children:[e.jsx(c,{htmlFor:"email",children:"Enter your email"}),e.jsx(x,{error:o.email,type:"email",id:"email",name:"email",placeholder:"E-mail"}),e.jsx(g,{name:"email",component:"div"})]}),e.jsxs(l,{children:[e.jsx(c,{htmlFor:"password",children:"Enter your password"}),e.jsx(x,{error:o.password,type:a?"text":"password",id:"password",name:"password",placeholder:"Password"}),a?e.jsx(e.Fragment,{children:e.jsx(W,{onClick:m,error:o.password})}):e.jsx(N,{onClick:m,error:o.password}),e.jsx(g,{name:"password",component:"div"})]}),i==="signup"&&e.jsxs(l,{children:[e.jsx(c,{htmlFor:"repeatPassword",children:"Repeat password"}),e.jsx(x,{error:o.repeatPassword,type:d?"text":"password",id:"repeatPassword",name:"repeatPassword",placeholder:"Repeat Password"}),d?e.jsx(e.Fragment,{children:e.jsx(X,{onClick:w,error:o.password})}):e.jsx(Q,{onClick:w,error:o.password}),e.jsx(g,{name:"repeatPassword",component:"div"})]}),e.jsx(D,{type:"submit",disabled:s,onClick:()=>h(!0),children:i==="signin"?"Sign In":"Sign Up"}),e.jsx(O,{type:"button",onClick:()=>{p(),F(i==="signin"?"signup":"signin")},children:i==="signin"?"Sign up":"Sign in"})]})})]})]})})},ie=()=>e.jsx(e.Fragment,{children:e.jsx(Y,{})});export{ie as default};
+`,Y=()=>{const[i,$]=n.useState("signin"),[j,h]=n.useState(!1),[a,y]=n.useState(!1),[d,S]=n.useState(!1),{signUp:P,signIn:v}=z(),F=r=>{$(r),h(!1)},m=()=>{y(!a)},w=()=>{S(!d)};return e.jsx(J,{children:e.jsxs(G,{children:[e.jsx(K,{src:V}),e.jsxs(U,{children:[e.jsx(L,{signup:i==="signup",children:i==="signin"?"Sign In":"Sign Up"}),e.jsx(E,{initialValues:{email:"",password:"",repeatPassword:""},validate:r=>{const o={};return j&&(i==="signin"?(r.email?/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(r.email)||(o.email="Some error message"):o.email="Email is required",r.password?r.password.length<8&&(o.password="Password must be at least 8 characters long"):o.password="Password is required"):i==="signup"&&(r.email?/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(r.email)||(o.email="Some error message"):o.email="Email is required",r.password?r.password.length<8&&(o.password="Password must be at least 8 characters long"):o.password="Password is required",r.repeatPassword?r.password!==r.repeatPassword&&(o.repeatPassword="Passwords do not match"):o.repeatPassword="Please repeat your password")),o},onSubmit:(r,{setSubmitting:o,resetForm:p})=>{const{email:b,password:u}=r;i==="signin"?v({email:b,password:u}):P({email:b,password:u}),o(!1),o("values",r),p()},children:({isSubmitting:r,errors:o,resetForm:p})=>e.jsxs(R,{children:[e.jsxs(l,{children:[e.jsx(c,{htmlFor:"email",children:"Enter your email"}),e.jsx(x,{error:o.email,type:"email",id:"email",name:"email",placeholder:"E-mail"}),e.jsx(g,{name:"email",component:"div"})]}),e.jsxs(l,{children:[e.jsx(c,{htmlFor:"password",children:"Enter your password"}),e.jsx(x,{error:o.password,type:a?"text":"password",id:"password",name:"password",placeholder:"Password"}),a?e.jsx(e.Fragment,{children:e.jsx(W,{onClick:m,error:o.password})}):e.jsx(N,{onClick:m,error:o.password}),e.jsx(g,{name:"password",component:"div"})]}),i==="signup"&&e.jsxs(l,{children:[e.jsx(c,{htmlFor:"repeatPassword",children:"Repeat password"}),e.jsx(x,{error:o.repeatPassword,type:d?"text":"password",id:"repeatPassword",name:"repeatPassword",placeholder:"Repeat Password"}),d?e.jsx(e.Fragment,{children:e.jsx(X,{onClick:w,error:o.password})}):e.jsx(Q,{onClick:w,error:o.password}),e.jsx(g,{name:"repeatPassword",component:"div"})]}),e.jsx(D,{type:"submit",disabled:r,onClick:()=>h(!0),children:i==="signin"?"Sign In":"Sign Up"}),e.jsx(O,{type:"button",onClick:()=>{p(),F(i==="signin"?"signup":"signin")},children:i==="signin"?"Sign up":"Sign in"})]})})]})]})})},ie=()=>e.jsx(e.Fragment,{children:e.jsx(Y,{})});export{ie as default};

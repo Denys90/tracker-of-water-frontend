@@ -1,4 +1,4 @@
-import{n as e,t as o,o as r,j as t}from"./index-69712bd7.js";const s=e.div`
+import{n as e,t as o,o as r,j as t}from"./index-a3c54583.js";const s=e.div`
   position: relative;
   background-color: ${o.colors.blue};
   background-image: url(${r});
@@ -35,4 +35,4 @@ import{n as e,t as o,o as r,j as t}from"./index-69712bd7.js";const s=e.div`
   position: absolute;
   top: 249px;
   filter: drop-shadow(5px 5px 10px #ffffff);
-`,c="/tofw__frontend/assets/water-87d9a5e7.png",x=()=>t.jsxs(s,{children:[t.jsx(n,{src:c,alt:"water",width:"100"}),t.jsx(i,{children:"404"}),t.jsx(l,{children:"Page not found"})]});export{x as default};
+`,c="/tracker-of-water-frontend/assets/water-87d9a5e7.png",x=()=>t.jsxs(s,{children:[t.jsx(n,{src:c,alt:"water",width:"100"}),t.jsx(i,{children:"404"}),t.jsx(l,{children:"Page not found"})]});export{x as default};
