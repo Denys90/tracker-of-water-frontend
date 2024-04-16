@@ -33,7 +33,10 @@ import {
   FormBlock,
   FormDiv,
   InputBlock,
+  DeleteAccButton,
 } from './SettingUser.styled';
+import Modal from 'components/Modal/Modal';
+import { DeleteUser } from './DeleteUser/DeleteUser';
 
 import sprite from 'assets/images/icons.svg';
 import { Formik, Form, Field } from 'formik';
@@ -67,7 +70,11 @@ export const SettingUser = ({ toggleModal }) => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  const [isOpen, setIsOpen] = useState(false);
 
+  const openModal = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <>
       <ModalWrap>
@@ -275,12 +282,22 @@ export const SettingUser = ({ toggleModal }) => {
                     <li>
                       <SaveButton type="submit">Save</SaveButton>
                     </li>
+                    <li>
+                      <DeleteAccButton type="button" onClick={openModal}>
+                        Delete account
+                      </DeleteAccButton>
+                    </li>
                   </SaveButtonWrap>
                 </FormDiv>
               </Form>
             )}
           </Formik>
         }
+        {isOpen && (
+          <Modal onClose={openModal}>
+            <DeleteUser onClose={openModal} />
+          </Modal>
+        )}
       </ModalWrap>
     </>
   );
