@@ -366,6 +366,7 @@ export const SaveButton = styled.button`
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
+  margin-bottom: 15px;
 
   &:is(:hover, :focus) {
     box-shadow: ${theme.boxShadowBtn.hoverBtn};
@@ -376,6 +377,7 @@ export const SaveButton = styled.button`
     padding: 10px 30px;
     font-size: 18px;
     line-height: 24px;
+    margin-bottom: 0;
   }
 `;
 
@@ -384,18 +386,22 @@ export const DeleteAccButton = styled.button`
   padding: 8px 30px;
   border-style: none;
   border-radius: 10px;
-  background: ${theme.colors.brightRed};
+  background: ${theme.colors.paleBlue};
   color: #fff;
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
+
   &:is(:hover, :focus) {
     box-shadow: ${theme.boxShadowBtn.hoverBtn};
+  background: ${theme.colors.brightRed};
+
   }
+
   @media screen and (min-width: ${theme.breakpoint.tablet}) {
     min-width: 160px;
     padding: 10px 30px;
     font-size: 18px;
     line-height: 24px;
-  }
+   
 `;
