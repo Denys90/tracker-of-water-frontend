@@ -1,4 +1,4 @@
-import{n as s,t,F as C,E as _,S as f,a as k,r as n,u as z,j as e,b as E,c as R}from"./index-a3c54583.js";import{i as B,a as T,b as A,c as H,d as I,e as Z,h as V}from"./bottle_home_deskx2-6dad15ed.js";const q="/tracker-of-water-frontend/assets/bottle_sign_in_tablet@1x-bc683e21.png",M="/tracker-of-water-frontend/assets/bottle_sign_in_tablet@2x-2f35ac0a.png",U=s.div`
+import{n as s,t,F as C,E as _,S as f,a as k,r as n,u as z,j as e,b as E,c as R}from"./index-f5a465f2.js";import{i as B,a as T,b as A,c as H,d as I,e as Z,h as V}from"./bottle_home_deskx2-6dad15ed.js";const q="/tracker-of-water-frontend/assets/bottle_sign_in_tablet@1x-bc683e21.png",M="/tracker-of-water-frontend/assets/bottle_sign_in_tablet@2x-2f35ac0a.png",U=s.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
