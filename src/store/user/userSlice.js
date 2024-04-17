@@ -9,6 +9,7 @@ import {
   patchUserInfoThunk,
   patchUserAvatarThunk,
   getCurrentThunk,
+  deleteUserThunk,
 } from './thunk';
 
 import { getActions } from './servises/getActions';
@@ -46,7 +47,9 @@ const usersSlice = createSlice({
       .addCase(patchUserInfoThunk.fulfilled, (state, { payload }) => {
         state.profile = payload;
       })
-
+      .addCase(deleteUserThunk.fulfilled, (state, { payload }) => {
+        state.profile = payload;
+      })
       .addCase(patchUserAvatarThunk.fulfilled, (state, { payload }) => {
         state.profile.avatarURL = payload.avatarURL;
       })

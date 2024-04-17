@@ -61,6 +61,21 @@ export const logoutThunk = createAsyncThunk(
     }
   }
 );
+
+// ======================================================>
+
+export const deleteUserThunk = createAsyncThunk(
+  'users/delete',
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.delete('/users/delete');
+      toast('Your account was deleted!');
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 // ======================================================>
 // User Info
 // ======================================================>
@@ -115,7 +130,9 @@ export const patchUserInfoThunk = createAsyncThunk(
     }
   }
 );
+
 // ======================================================>
+
 export const patchUserAvatarThunk = createAsyncThunk(
   'users/patchAvatar',
   async (file, { rejectWithValue, getState }) => {

@@ -16,6 +16,7 @@ import {
   patchUserInfoThunk,
   patchUserAvatarThunk,
   verifyThunk,
+  deleteUserThunk,
 } from '../store/user/thunk';
 
 export const useUsers = () => {
@@ -39,7 +40,10 @@ export const useUsers = () => {
   );
 
   const signOut = useCallback(() => dispatch(logoutThunk()), [dispatch]);
-
+  const deleteUser = useCallback(
+    (credentials) => dispatch(deleteUserThunk(credentials)),
+    [dispatch]
+  );
   // User information
 
   const userInfo = useCallback(() => dispatch(getUserInfoThunk()), [dispatch]);
@@ -73,6 +77,7 @@ export const useUsers = () => {
     newUserInfo,
     newUserAvatar,
     getVerify,
+    deleteUser,
   };
 };
 
